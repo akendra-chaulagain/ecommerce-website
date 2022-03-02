@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js",
+    "dev":"nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Akendra Chaulagain",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
