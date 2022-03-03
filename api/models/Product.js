@@ -20,16 +20,16 @@ const productSchema = new mongoose.Schema({
         default: "0"
     },
     category: {
-        type: Array,
+        type: String,
         required: true,
     },
     stock: {
         type: Boolean,
-        default: true
+        default: false
     },
     comment: {
         type: String,
-        required:false
+        required: false
     },
 }, { timestamps: true })
 

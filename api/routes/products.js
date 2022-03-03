@@ -74,9 +74,7 @@ router.get("/", async (req, res) => {
             // search according to the price
         } else if (qPrice) {
             product = await Product.find({
-                price: { $gte: 1500, $lte: 1500 }
-                // { $in: [qPrice] },
-                // { $match: { $gte: 9, $lte: 1500 } }
+                price: { $gte: 10, $lte: 500 }
             })
         } else {
             product = await Product.find()
@@ -88,32 +86,22 @@ router.get("/", async (req, res) => {
 })
 
 
+// search product from database
+router.get("/search", async (req, res) => {
+    const search = req.query.q;
 
-
-// get by id
-router.get("/find/:id", async (req, res) => {
     try {
-        const getProductById = await Product.findById(req.params.id)
-        res.status(201).json(getProductById);
+        const product = await Product.find({
+            name: {
+                $regex: search,
+                $options: "i"
+            }
+        })
+        res.status(201).json(product)
     } catch (error) {
-        res.status(500).json(`Unablt toget   product  bt Id ${error}`)
+        console.log("unable to seacrh data" + error);
     }
-})
 
-
-
-
-
-// updare product  --- Admin
-router.put("/:id", async (req, res) => {
-    try {
-        const updateProduct = await Product.findByIdAndUpdate(req.params.id, {
-            $set: req.body
-        }, { new: true })
-        res.status(201).json(updateProduct);
-    } catch (error) {
-        res.status(500).json(`Unablt to update   product ${error}`)
-    }
 })
 
 
@@ -121,7 +109,7 @@ router.put("/:id", async (req, res) => {
 
 
 
-// delete product --Admin
+// delete product   --Admin
 router.delete("/:id", async (req, res) => {
     try {
         const deleteProduct = await Product.findByIdAndDelete(req.params.id)
