@@ -66,16 +66,21 @@ router.get("/", async (req, res) => {
             product = await Product.find().sort({ createdAt: -1 }).limit(5);
             // when we search for category section this else if function will run
         } else if (qcategory) {
-            product = await Product.find({
-                category: {
-                    $in: [qcategory]
-                }
-            })
             // search according to the price
-        } else if (qPrice) {
-            product = await Product.find({
-                price: { $gte: 10, $lte: 500 }
-            })
+            if (qPrice) {
+                product = await Product.find({
+                    price: {
+                        $gte: 10,
+                        $lte: 500
+                    }
+                })
+            } else {
+                product = await Product.find({
+                    category: {
+                        $in: [qcategory]
+                    }
+                })
+            }
         } else {
             product = await Product.find()
         }
