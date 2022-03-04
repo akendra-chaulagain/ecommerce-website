@@ -20,10 +20,12 @@ const PORT = process.env.PORT;
 // routers
 const authRoutes = require("./routes/auth")
 const productRoutes = require("./routes/products")
+const userRoutes = require("./routes/users")
 
 // routers are used
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/products", productRoutes)
+app.use("/api/v1/users", userRoutes)
 
 
 
