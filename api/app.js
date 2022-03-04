@@ -24,11 +24,17 @@ const PORT = process.env.PORT;
 const authRoutes = require("./routes/auth")
 const productRoutes = require("./routes/products")
 const userRoutes = require("./routes/users")
+const cartRoutes = require("./routes/cart")
+const orderRoutes = require("./routes/orders")
+
+
 
 // routers are used (middleware)
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/products", productRoutes)
 app.use("/api/v1/users", userRoutes)
+app.use("/api/v1/orders", orderRoutes)
+app.use("/api/v1/carts", cartRoutes)
 
 
 

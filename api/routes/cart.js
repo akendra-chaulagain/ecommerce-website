@@ -10,7 +10,7 @@ const verifyToken = require("../middleware/verifyToken")
 require("../connection/DB")
 
 // Cart schema and models
-const Cart = require("..//models/Cart")
+const Cart = require("../models/Cart")
 
 // create cart
 router.post("/", verifyToken, async (req, res) => {
@@ -19,7 +19,7 @@ router.post("/", verifyToken, async (req, res) => {
         try {
             const createCart = new Cart(body)
             const result = await createCart.save()
-            res.status(201).json(result)
+            res.status(201).json({ result: success, result })
         } catch (error) {
             res.status(401).json(error)
         }

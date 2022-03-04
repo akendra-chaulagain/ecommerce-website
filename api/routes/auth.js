@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
 
 
         if (validPassword) {
-            const { password, tokens, ...others } = user._doc;
+            const { password, tokens,cpassword, ...others } = user._doc;
             return res.status(201).json({ success: true, others })
         } else {
             return res.status(400).json("Invalid data")

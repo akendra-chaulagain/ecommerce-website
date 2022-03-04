@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
             productId: {
                 type: String
             },
-            quentity: {
+            quantity: {
                 type: Number,
                 default: 1
             }
