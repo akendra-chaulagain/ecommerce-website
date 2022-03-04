@@ -24,42 +24,15 @@ router.post("/newProduct", async (req, res) => {
 })
 
 
-// router.get("/", async (req, res) => {
-//     const qNew = req.query.new;
-//     const qCatrgory = req.query.category;
-//     try {
-//         let products;
-//         if (qNew) {
-//             products = await Product.find().sort({ createdAt: -1 }).limit(5);
-//         } else if (qCatrgory) {
-//             products = await Product.find({
-//                 categories: {
-//                     $in: [qCatrgory]
-//                 }
-//             })
-//         } else {
-//             products = await Product.find();
-//         }
-//         res.status(200).json(products)
-//     } catch (error) {
-//         res.status(401).json(error)
-//     }
-// })
-
-
-
-
-
-
-
 
 
 // get all product --Admin
-router.get("/", async (req, res) => {
+router.get("/getall", async (req, res) => {
     const qnew = req.query.new;
     const qcategory = req.query.category;
     const qPrice = req.query.price;
     try {
+        const { page = 1, limit = 3 } = req.query
         let product;
         // when we search for new product this gives latest five products
         if (qnew) {
@@ -84,14 +57,29 @@ router.get("/", async (req, res) => {
         } else {
             product = await Product.find()
         }
-        res.status(201).json(product);
+        res.status(201).json({ total: product.length, product });
+
     } catch (error) {
         res.status(500).json(`Unablt toget all  product  ${error}`)
     }
 })
 
 
-// search product from database
+// pagination
+router.get("/", async (req, res) => {
+    try {
+        const { page = 1, limit = 3 } = req.query
+        const product = await Product.find().limit(limit * 1).skip((page - 1) * limit)
+        res.status(201).json({ tootal: product.length, product });
+    } catch (error) {
+        res.status(500).json(`Unablt to update   product ${error}`)
+    }
+})
+
+
+
+
+// search product from database according to name
 router.get("/search", async (req, res) => {
     const search = req.query.q;
 
@@ -123,8 +111,5 @@ router.delete("/:id", async (req, res) => {
         res.status(500).json(`Unablt to update   product ${error}`)
     }
 })
-
-
-
 
 module.exports = router;
