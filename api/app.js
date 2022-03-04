@@ -4,9 +4,12 @@ const app = express();
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
+
 // cooki-parser for json webtoken
 const cookieparser = require("cookie-parser")
 app.use(cookieparser())
+
+
 
 // dotenv package is used to secure the importance file  (config)
 const dotenv = require("dotenv")
@@ -22,7 +25,7 @@ const authRoutes = require("./routes/auth")
 const productRoutes = require("./routes/products")
 const userRoutes = require("./routes/users")
 
-// routers are used
+// routers are used (middleware)
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/products", productRoutes)
 app.use("/api/v1/users", userRoutes)

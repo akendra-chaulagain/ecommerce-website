@@ -20,7 +20,7 @@ const User = require("../models/User")
 router.put("/:id", verifyToken, async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
         try {
-            if (req.body.password || req.body.cpassword) {
+            if (req.body.password) {
                 const salt = await bcrypt.genSalt(12);
                 req.body.password = await bcrypt.hash(req.body.password, salt)
             }
@@ -43,7 +43,7 @@ router.put("/:id", verifyToken, async (req, res) => {
 router.get("/find/:id", async (req, res) => {
     try {
         const getById = await User.findById(req.params.id)
-        const { password, tokens, cpassword, ...others } = getById._doc
+        const { password, tokens, ...others } = getById._doc
         res.status(201).json({ success: true, others });
     } catch (error) {
         res.status(500).json(`Unablt to update   user ${error}`)
