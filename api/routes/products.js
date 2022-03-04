@@ -12,7 +12,7 @@ const Product = require("../models/Product")
 
 
 // create products ---Admin
-router.post("/newProduct", async (req, res) => {
+router.post("/newproduct", async (req, res) => {
     const { name, price, desc, rating, category, stock, comment } = req.body;
     try {
         const product = new Product({ name, price, desc, rating, category, stock, comment })
@@ -25,6 +25,43 @@ router.post("/newProduct", async (req, res) => {
 
 
 
+// update product   --Admin
+router.put("/:id", async (req, res) => {
+    try {
+        const updateProduct = await Product.findByIdAndUpdate(req.params.id, {
+            $set: req.body
+        }, { new: true })
+        res.status(201).json(updateProduct);
+    } catch (error) {
+        res.status(500).json(`Unablt to update   product ${error}`)
+    }
+})
+
+
+
+// grt product according to id
+router.get("/find/:id", async (req, res) => {
+    try {
+        const getAccordingToId = await Product.findById(req.params.id)
+        res.status(201).json(getAccordingToId);
+    } catch (error) {
+        res.status(500).json(`Unablt to update   product ${error}`)
+    }
+})
+
+
+
+// delete product   --Admin
+router.delete("/:id", async (req, res) => {
+    try {
+        const deleteProduct = await Product.findByIdAndDelete(req.params.id)
+        res.status(201).json(deleteProduct);
+    } catch (error) {
+        res.status(500).json(`Unablt to delete   product ${error}`)
+    }
+})
+
+
 
 // get all product --Admin
 router.get("/getall", async (req, res) => {
@@ -32,7 +69,6 @@ router.get("/getall", async (req, res) => {
     const qcategory = req.query.category;
     const qPrice = req.query.price;
     try {
-        const { page = 1, limit = 3 } = req.query
         let product;
         // when we search for new product this gives latest five products
         if (qnew) {
@@ -68,7 +104,7 @@ router.get("/getall", async (req, res) => {
 // pagination
 router.get("/", async (req, res) => {
     try {
-        const { page = 1, limit = 3 } = req.query
+        const { page, limit } = req.query
         const product = await Product.find().limit(limit * 1).skip((page - 1) * limit)
         res.status(201).json({ tootal: product.length, product });
     } catch (error) {
@@ -95,21 +131,6 @@ router.get("/search", async (req, res) => {
         console.log("unable to seacrh data" + error);
     }
 
-})
-
-
-
-
-
-
-// delete product   --Admin
-router.delete("/:id", async (req, res) => {
-    try {
-        const deleteProduct = await Product.findByIdAndDelete(req.params.id)
-        res.status(201).json(deleteProduct);
-    } catch (error) {
-        res.status(500).json(`Unablt to update   product ${error}`)
-    }
 })
 
 module.exports = router;
