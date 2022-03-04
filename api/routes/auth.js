@@ -41,4 +41,28 @@ router.post("/register", async (req, res) => {
 })
 
 
+
+// login
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(401).json("enter all the data")
+    }
+    const user = await User.findOne({ email });
+    try {
+        // check user password with hashed password stored in the database
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (validPassword) {
+            const { password, cpassword, ...others } = user._doc;
+            return res.status(201).json(others)
+        } else {
+            return res.status(400).json("Invalid data")
+        }
+    } catch (error) {
+        return res.status(400).json("Unable to login")
+
+    }
+})
+
+
 module.exports = router;
