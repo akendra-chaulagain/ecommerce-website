@@ -2,6 +2,8 @@ const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const verifyToken = require("../middleware/verifyToken")
+
 
 
 
@@ -28,6 +30,8 @@ router.post("/register", async (req, res) => {
         } else {
 
             const user = new User({ username, email, password, number, cpassword })
+
+
             // generate salt to hash password
             const salt = await bcrypt.genSalt(12);
             // now we set user password to hashed password
@@ -37,6 +41,10 @@ router.post("/register", async (req, res) => {
 
             // jsonwebtoken  when register
             const token = await user.generateToken()
+            res.cookie("jwtToken", token, {
+                expires: new Date(Date.now + process.env.COOKI_EXPIRE * 24860 * 60 * 1000),
+                httpOnly: true,
+            })
             const result = await user.save();
             return res.status(201).json({ success: true, result })
         }
@@ -58,16 +66,38 @@ router.post("/login", async (req, res) => {
     try {
         // check user password with hashed password stored in the database
         const validPassword = await bcrypt.compare(password, user.password);
+
         // generating login token
         const token = await user.generateToken()
+        res.cookie("jwtToken", token, {
+            expires: new Date(Date.now + process.env.COOKI_EXPIRE * 24860 * 60 * 1000),
+            httpOnly: true,
+        })
+
+
         if (validPassword) {
-            const { password, cpassword, ...others } = user._doc;
+            const { password, cpassword, tokens, ...others } = user._doc;
             return res.status(201).json({ success: true, others })
         } else {
             return res.status(400).json("Invalid data")
         }
     } catch (error) {
-        return res.status(400).json("Unable to login")
+        return res.status(400).json("Invalid data")
+    }
+})
+
+
+// logout user
+router.get("/logout", verifyToken, async (req, res) => {
+    try {
+        res.cookie("jwtToken", null, {
+            expires: new Date(Date.now()),
+            httpOnly: true
+        })
+
+        res.status(200).json({ success: true, message: "Logged Out" })
+    } catch (error) {
+        res.status(500).json("Unable to logOut" + error)
     }
 })
 

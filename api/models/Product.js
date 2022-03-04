@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema({
         default: "0"
     },
     category: {
-        type: String,
+        type: Array,
         required: true,
     },
     stock: {

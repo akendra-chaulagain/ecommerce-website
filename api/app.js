@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
+// cooki-parser for json webtoken
+const cookieparser = require("cookie-parser")
+app.use(cookieparser())
 
 // dotenv package is used to secure the importance file  (config)
 const dotenv = require("dotenv")

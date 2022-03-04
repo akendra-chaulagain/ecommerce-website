@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const bodyParser = require('body-parser')
-router.use(bodyParser.json()) // for parsing application/json
+const verifyToken = require("../middleware/verifyToken")
 
 
 // database
@@ -11,35 +10,46 @@ require("../connection/DB")
 const Product = require("../models/Product")
 
 
-// create products ---Admin
-router.post("/newproduct", async (req, res) => {
-    const { name, price, desc, rating, category, stock, comment } = req.body;
-    try {
-        const product = new Product({ name, price, desc, rating, category, stock, comment })
-        const result = await product.save()
-        res.status(201).json(result);
-    } catch (error) {
-        res.status(500).json(`Unablt to create product  ${error}`)
+// create products ---Admin  (only admin can create product)
+router.post("/newproduct", verifyToken, async (req, res) => {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+        const { name, price, desc, rating, category, } = req.body;
+        // creating new product
+        try {
+            const product = new Product({ name, price, desc, rating, category })
+            const result = await product.save()
+            res.status(201).json(result);
+        } catch (error) {
+            res.status(500).json(`Unablt to create product  ${error}`)
+        }
+    } else {
+        res.status(401).json("You are not allowed to create product")
     }
+
 })
 
 
 
-// update product   --Admin
-router.put("/:id", async (req, res) => {
-    try {
-        const updateProduct = await Product.findByIdAndUpdate(req.params.id, {
-            $set: req.body
-        }, { new: true })
-        res.status(201).json(updateProduct);
-    } catch (error) {
-        res.status(500).json(`Unablt to update   product ${error}`)
+// update product   --Admin (only admin can update product)
+router.put("/:id", verifyToken, async (req, res) => {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+        try {
+            const updateProduct = await Product.findByIdAndUpdate(req.params.id, {
+                $set: req.body
+            }, { new: true })
+            res.status(201).json(updateProduct);
+        } catch (error) {
+            res.status(500).json(`Unablt to update   product ${error}`)
+        }
+    } else {
+        res.status(401).json("You are not allowed to update")
     }
+
 })
 
 
 
-// grt product according to id
+// get product according to id
 router.get("/find/:id", async (req, res) => {
     try {
         const getAccordingToId = await Product.findById(req.params.id)
@@ -51,19 +61,23 @@ router.get("/find/:id", async (req, res) => {
 
 
 
-// delete product   --Admin
-router.delete("/:id", async (req, res) => {
-    try {
-        const deleteProduct = await Product.findByIdAndDelete(req.params.id)
-        res.status(201).json(deleteProduct);
-    } catch (error) {
-        res.status(500).json(`Unablt to delete   product ${error}`)
+// delete product   --Admin (only admin can delete product)
+router.delete("/:id", verifyToken, async (req, res) => {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+        try {
+            const deleteProduct = await Product.findByIdAndDelete(req.params.id)
+            res.status(201).json(deleteProduct);
+        } catch (error) {
+            res.status(500).json(`Unablt to delete   product ${error}`)
+        }
+    } else {
+        res.status(401).json("You are not allowed to do this process")
     }
 })
 
 
 
-// get all product --Admin
+// get all product 
 router.get("/getall", async (req, res) => {
     const qnew = req.query.new;
     const qcategory = req.query.category;
@@ -134,3 +148,4 @@ router.get("/search", async (req, res) => {
 })
 
 module.exports = router;
+

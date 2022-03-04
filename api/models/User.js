@@ -50,12 +50,14 @@ const userSchema = new mongoose.Schema({
 // creating jwt token  when register
 userSchema.methods.generateToken = async function () {
     try {
-        const token = jwt.sign({ _id: this._id.toString() }, process.env.JWT_SECRET_KEY)
+        const token = jwt.sign({ _id: this._id.toString() }, process.env.JWT_SECRET_KEY,{
+            expiresIn: process.env.JWT_EXPIRE
+        })
         this.tokens = this.tokens.concat({ token })
         await this.save();
         return token;
     } catch (error) {
-        console.log(`token error `+ error);
+        console.log(`token error ` + error);
     }
 }
 
