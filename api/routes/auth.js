@@ -1,6 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+
 
 
 // database
@@ -24,19 +26,23 @@ router.post("/register", async (req, res) => {
         } else if (password !== cpassword) {
             return res.status(500).json("Password does not match")
         } else {
-            // 
-            const user = new User({ username, email, password, number, password, cpassword })
+
+            const user = new User({ username, email, password, number, cpassword })
             // generate salt to hash password
             const salt = await bcrypt.genSalt(12);
             // now we set user password to hashed password
             user.password = await bcrypt.hash(user.password, salt);
             user.cpassword = await bcrypt.hash(user.cpassword, salt);
+
+
+            // jsonwebtoken  when register
+            const token = await user.generateToken()
             const result = await user.save();
-            res.status(201).json(result)
+            return res.status(201).json({ success: true, result })
         }
 
     } catch (error) {
-        res.status(400).json("unable to register data")
+        return res.status(400).json("unable to register data")
     }
 })
 
@@ -52,15 +58,16 @@ router.post("/login", async (req, res) => {
     try {
         // check user password with hashed password stored in the database
         const validPassword = await bcrypt.compare(password, user.password);
+        // generating login token
+        const token = await user.generateToken()
         if (validPassword) {
             const { password, cpassword, ...others } = user._doc;
-            return res.status(201).json(others)
+            return res.status(201).json({ success: true, others })
         } else {
             return res.status(400).json("Invalid data")
         }
     } catch (error) {
         return res.status(400).json("Unable to login")
-
     }
 })
 
