@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express();
 
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
 
 // dotenv package is used to secure the importance file  (config)
@@ -22,9 +24,6 @@ app.use("/api/v1/products", productRoutes)
 
 
 
-app.get("/", (req, res) => {
-    res.send("Hello from app.js")
-})
 
 
 app.listen(PORT, () => {
