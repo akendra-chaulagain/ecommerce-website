@@ -1,0 +1,100 @@
+.navbarContainer {
+  height: 10vh;
+  width: 100%;
+  background-color: whitesmoke;
+  position: fixed;
+  z-index: 9;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 35px;
+  color: #023047;
+  margin-left: 30px;
+}
+.navbar-brand:hover {
+  color: #023047;
+}
+.navbarContainer input {
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid gray;
+  padding: 4px 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.navbarContainer input::placeholder {
+  letter-spacing: 3px;
+}
+
+.nav-item a {
+  color: gray;
+  font-size: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+.nav-item a:hover {
+  color: red;
+}
+
+.notification {
+  color: gray;
+  position: relative;
+  display: inline-block;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+  padding: 3px 6px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbarContainer {
+    height: auto;
+  }
+  .navbar-brand {
+    font-size: 25px;
+    margin-left: 0px;
+  }
+  .navbarContainer input {
+    width: 50%;
+    height: 30px;
+    /* padding: 2px 10px; */
+  }
+  .notification .badge {
+    top: -2px;
+    right: -6px;
+  }
+  .navbar-toggler {
+    background-color: black;
+    color: whitesmoke;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar-toggler .navbar-toggler-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 361px) {
+  .navbar-brand {
+    font-size: 20px;
+    margin-left: 0px;
+  }
+  .navbarContainer input {
+    width: 50%;
+    height: 25px;
+    padding: 2px 4px;
+    margin-left: -8%;
+  }
+}
