@@ -49,17 +49,17 @@ router.put("/:id", verifyToken, async (req, res) => {
 
 // get category acccording to id
 
-router.get("/find/:id", verifyToken, async (req, res) => {
-  if (req.user.isAdmin) {
-    try {
-      const result = await Category.findById(req.params.id);
-      return res.status(201).json(result);
-    } catch (error) {
-      res.status(400).json(error);
-    }
-  } else {
-    return res.status(401).json("You are not allowed to get other category");
+router.get("/find/:id", async (req, res) => {
+  // if (req.user.isAdmin) {
+  try {
+    const result = await Category.findById(req.params.id);
+    return res.status(201).json(result);
+  } catch (error) {
+    res.status(400).json("ak");
   }
+  // } else {
+  //   return res.status(401).json("You are not allowed to get other category");
+  // }
 });
 
 // delete category

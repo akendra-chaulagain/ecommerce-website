@@ -1,12 +1,12 @@
-import React from 'react'
-import "./App.css"
+import React from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from './pages/home/Home';
-import Register from './pages/register/Register';
-import Login from './pages/login/Login';
-import Cart from './pages/cart/Cart';
-import Product from './pages/products/Product';
-import SingleProductPage from './pages/singleProductPage/SingleProductPage';
+import Home from "./pages/home/Home";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import Cart from "./pages/cart/Cart";
+import Product from "./pages/products/Product";
+import SingleProductPage from "./pages/singleProductPage/SingleProductPage";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         {/* home page */}
         <Route exact path="/" element={<Home />} />
         {/* productList */}
-        <Route path="/products/:cetegory" element={<Product />} />
+        <Route path="/products/:cetegory/:id" element={<Product />} />
         {/* single productList page */}
         <Route path="/product/:id" element={<SingleProductPage />} />
         {/* cart page */}
@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
