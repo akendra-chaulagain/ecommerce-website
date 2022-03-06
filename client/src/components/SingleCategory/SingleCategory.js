@@ -2,7 +2,7 @@ import React from 'react'
 import "./SingleCategory.css"
 import { Link } from "react-router-dom"
 
-const SingleCategory = ({ item}) => {
+const SingleCategory = ({ item }) => {
     return (
         <>
             <Link className='link-item' to={`products/${item.cat}`}>

@@ -5,19 +5,26 @@ import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Cart from './pages/cart/Cart';
+import Product from './pages/products/Product';
+import Navbar from './components/navbar/Navbar';
+import Announcementt from './components/announcenemt/Announcement';
 
 const App = () => {
   return (
     <>
+      {/* Announcement import from announcement components */}
+      <Announcementt />
+      {/* navbar */}
+      <Navbar />
       <Routes>
         {/* home page */}
         <Route exact path="/" element={<Home />} />
         {/* productList */}
-        {/* <Route path="/products/:cetegory" element={<ProductList />} /> */}
+        <Route path="/products/:cetegory" element={<Product />} />
         {/* single productList page */}
         {/* <Route path="/product/:id" element={<SingleProductPage />} /> */}
         {/* cart page */}
-        <Route path="/cart" element={ <Cart />} />
+        <Route path="/cart" element={<Cart />} />
         {/* cart page */}
         {/* <Route path="/success" element={<Success />} /> */}
         {/* register page */}
