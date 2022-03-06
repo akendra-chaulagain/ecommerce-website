@@ -2,13 +2,13 @@ import React from "react";
 import SingleCategory from "../SingleCategory/SingleCategory";
 import "./Category.css";
 import { Link } from "react-router-dom";
-// import { category } from "../../data";
 
 const Category = ({ category }) => {
   return (
     <>
       <div className="container-fluid category">
         <div className="row">
+          {/* map of category */}
           {category?.map((item, id) => (
             <div className=" col-lg-3 category_box" key={id}>
               <SingleCategory item={item} />

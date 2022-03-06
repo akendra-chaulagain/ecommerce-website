@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const Product = () => {
+    // get location is used to feth data  of an individual category  given user id in the url
   const location = useLocation();
   const path = location.pathname.split("/")[3];
 

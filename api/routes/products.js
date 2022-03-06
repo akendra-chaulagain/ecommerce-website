@@ -51,7 +51,7 @@ router.get("/find/:id", async (req, res) => {
     const getAccordingToId = await Product.findById(req.params.id);
     res.status(201).json(getAccordingToId);
   } catch (error) {
-    res.status(500).json(`Unablt to update   product ${error}`);
+    res.status(500).json(`Unablt to get   product ${error}`);
   }
 });
 

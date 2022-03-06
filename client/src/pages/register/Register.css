@@ -1,5 +1,5 @@
 .registerPage {
-  height: 80vh;
+  height: 90vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -52,9 +52,8 @@
   color: white;
   border-radius: 4px;
 }
-.inputBox button:hover{
+.inputBox button:hover {
   background-color: rgb(247, 82, 82);
-
 }
 .registerFrom p {
   margin: 10px 0px 0px 8%;
@@ -66,12 +65,25 @@
 .link:hover {
   text-decoration: underline;
 }
-.terms{
+.terms {
   margin: 15px 0px 0px 8%;
- font-size: 15px;
+  font-size: 15px;
 }
 @media only screen and (max-width: 768px) {
   .registerFrom {
     width: 80%;
+    height: auto;
+  }
+  .LoginFormContainer h4 {
+    margin-top: 10px;
+    font-size: 17px;
+  }
+  .inputBox input {
+    height: 20px;
+    padding: 2px 8px;
+  }
+  .inputBox button {
+    margin-top: 10px;
+    padding: 2px 20px;
   }
 }

@@ -17,7 +17,7 @@ const App = () => {
         {/* productList */}
         <Route path="/products/:cetegory/:id" element={<Product />} />
         {/* single productList page */}
-        <Route path="/product/:id" element={<SingleProductPage />} />
+        <Route path="/products/single/:id" element={<SingleProductPage />} />
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
         {/* cart page */}

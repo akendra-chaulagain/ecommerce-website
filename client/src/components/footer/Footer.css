@@ -2,7 +2,13 @@
   height: 40vh;
   width: 100%;
   margin-top: 10vh;
-  position: relative;
+  /* position: relative; */
+  background-color: rgb(235, 232, 232);
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rightSideFooter h4 {
   font-weight: 800;
@@ -47,9 +53,6 @@
   background-color: rgb(5, 175, 5);
   color: white;
 }
-.leftSideFooter h4 {
-  font-weight: 800;
-}
 .location .contact .email,
 span {
   letter-spacing: 2px;
@@ -64,10 +67,13 @@ span {
   color: red;
 }
 @media only screen and (max-width: 768px) {
-  .middleSideContainer {
-    margin-top: 6vh;
+  .footer {
+    height: auto;
   }
-  .rightSideFooter {
-    margin-top: 7vh;
+  .footerIcons .footerSocialMediaIcon {
+    height: 30px;
+    width: 30px;
+    margin-bottom: 30px;
+    
   }
 }

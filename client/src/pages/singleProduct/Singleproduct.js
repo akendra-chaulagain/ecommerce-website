@@ -9,22 +9,10 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const SingleProduct = ({ product }) => {
-  const [didMount, setDidMount] = useState(false);
-
-  // useEffect(() => {
-  //   setDidMount(true);
-  //   return () => setDidMount(false);
-  // }, []);
-
-  // if (!didMount) {
-  //   return null;
-  // }
-
   //   get product data according to id
   const [getProductData, setgetProductData] = useState({});
   useEffect(() => {
     const getData = async () => {
-       
       try {
         const res = await axios.get("/products/find/" + product);
         setgetProductData(res.data);
@@ -33,12 +21,12 @@ const SingleProduct = ({ product }) => {
       }
     };
     getData();
-    return () =>{
-        setgetProductData(null)
-    }
+    return () => {
+      setgetProductData({});
+    };
   }, [product]);
 
-
+  // single product page
   return (
     <>
       <div className="singleProduct">
@@ -52,7 +40,7 @@ const SingleProduct = ({ product }) => {
               <Cart />
             </div>
             <div className="icon">
-              <Link to={`/product/${getProductData._id}`}>
+              <Link to={`/products/single/${getProductData._id}`}>
                 <Search />
               </Link>
             </div>

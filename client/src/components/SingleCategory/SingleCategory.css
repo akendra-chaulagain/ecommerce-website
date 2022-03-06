@@ -1,5 +1,5 @@
 .category-box {
-  height: 48vh;
+  height: 50vh;
   width: 100%;
   background-color: #eaf4f4;
   margin-top: 10px;
@@ -22,11 +22,13 @@
   border-radius: 4px;
   margin-top: 20px;
 }
-.category-box span {
+.category-box-info p {
   margin-left: 8%;
-  font-size: 18px;
+  font-size: 15px;
+  margin-top: 30px;
+  font-weight: 600;
 }
-.category-box span:hover {
+.category-box-info p:hover {
   text-decoration: underline;
   color: red;
 }

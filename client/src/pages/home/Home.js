@@ -6,6 +6,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import Slider from "../../components/slider/Slider";
 
 const Home = () => {
   const [category, setCategory] = useState([]);
@@ -29,6 +30,8 @@ const Home = () => {
       <Announcementt />
       {/* navbar import from the navbar component */}
       <Navbar />
+      {/* slider import from slider component */}
+      <Slider />
       {/* Category import from category components */}
       <Category category={category} />
       {/* footer */}

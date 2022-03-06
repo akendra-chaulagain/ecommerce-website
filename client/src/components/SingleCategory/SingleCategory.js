@@ -9,7 +9,9 @@ const SingleCategory = ({ item }) => {
         <div className="category-box">
           <div className="categortTitle">{item.title}</div>
           <img className="img-fluid" src={item.img} alt="item_img" />
-          <span>see more</span>
+          <div className="category-box-info">
+            <p>Shop Now</p>
+          </div>
         </div>
       </Link>
     </>

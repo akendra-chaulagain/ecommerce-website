@@ -1,77 +1,83 @@
-import React from 'react'
-import Footer from "../../components/footer/Footer"
-import "./SingleProductPage.css"
-import { useState } from 'react'
-import Announcementt from "../../components/announcenemt/Announcement"
-import Navbar from "../../components/navbar/Navbar"
-
+import React from "react";
+import Footer from "../../components/footer/Footer";
+import "./SingleProductPage.css";
+import { useState } from "react";
+import Announcementt from "../../components/announcenemt/Announcement";
+import Navbar from "../../components/navbar/Navbar";
+import { useEffect } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const SingleProductPage = () => {
+  // usestate fro quantity
+  const [quantity, setQuantity] = useState(1);
 
+  // get product according to id  from the url
+  const [product, setProduct] = useState({});
 
+  //   uselocation nis used to get id from the url
+  const location = useLocation();
+  const path = location.pathname.split("/")[3];
+  // useffect
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get("/products/find/" + path);
+        setProduct(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, [path]);
 
-
-
-    // usestate fro quantity
-    const [quantity, setQuantity] = useState(1)
-
-
-
-    // increase and decrease quantity  when add or less button click
-    const handleQuantity = (type) => {
-        if (type === "desc") {
-            quantity > 1 && setQuantity(quantity - 1)
-        } else {
-            setQuantity(quantity + 1)
-        }
+  // increase and decrease quantity  when add or less button click
+  const handleQuantity = (type) => {
+    if (type === "desc") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
     }
+  };
 
+  return (
+    <>
+      <Announcementt />
+      <Navbar />
+      <div className="container-fluid singlePage">
+        <div className="row">
+          <div className="col-md-6 leftSideImg">
+            <img src={product.img} alt="" />
+          </div>
+          <div className="col-md-6 rightSide">
+            <div className="productTitle">{product.name}</div>
+            <div className="productdesc">
+              <p>{product.desc}</p>
+              <span className="productPrice">Price :$ {product.price}</span>
 
-    return (
-        <>
-            <Announcementt />
-            <Navbar />
-            <div className="container-fluid singlePage">
-                <div className="row">
-                    <div className="col-md-6 leftSideImg">
-                        <img src="https://images.pexels.com/photos/2265486/pexels-photo-2265486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" />
-                    </div>
-                    <div className="col-md-6 rightSide">
-                        <div className="productTitle">Watch</div>
-                        <div className="productdesc">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sunt.</p>
-                            <span className='productPrice'>Price :$ 60</span>
+              <div className="productSize">
+                {/* map  function for color */}
+                <span>Color :</span>
+                <span>{product.stock}</span>
+              </div>
+              <div className="increaseAnddecrease">
+                <button onClick={() => handleQuantity("desc")}>-</button>
+                <span className="number">{quantity}</span>
+                <button onClick={() => handleQuantity("inc")}>+</button>
+              </div>
 
-                            <div className="productSize">
-
-
-                                {/* map  function for color */}
-                                <span>Color :</span>
-
-                            </div>
-                            <div className="increaseAnddecrease">
-                                <button onClick={() => handleQuantity("desc")}>-</button>
-                                <span className='number'>{quantity}</span>
-                                <button onClick={() => handleQuantity("inc")}>+</button>
-
-                            </div>
-
-                            <div className="addtoCard">
-                                <button >ADD TO CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+              <div className="addtoCard">
+                <button>ADD TO CART</button>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
+      {/* footer */}
+      <Footer />
+    </>
+  );
+};
 
-
-
-            {/* footer */}
-            <Footer />
-        </>
-    )
-}
-
-export default SingleProductPage
+export default SingleProductPage;
