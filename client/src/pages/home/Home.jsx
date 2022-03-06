@@ -13,9 +13,9 @@ const Home = () => {
       <Navbar />
       {/* Category import from slider components */}
       <Category />
-      
+
       {/* footer */}
-      <Footer/>
+      <Footer />
 
     </>
   )

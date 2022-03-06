@@ -1,0 +1,82 @@
+.registerPage {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgb(0, 0, 0, 0.9)),
+    url("../../../public/img//register.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+}
+.wrapper {
+  background-color: white;
+  height: 53vh;
+  width: 50%;
+  border-radius: 5px;
+}
+.registerFrom {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.registerFrom h2 {
+  margin: 10px;
+  color: gray;
+}
+.leftSideFrom,
+.rightSideForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftSideFrom .leftSideFrom,
+input {
+  height: 40px;
+  width: 90%;
+  margin-top: 25px;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  padding: 4px 3px;
+  border-radius: 4px;
+  margin-left: 17px;
+}
+.createBtn button {
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 5px 28px;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+.createBtn button:hover {
+  background-color: red;
+  color: white;
+}
+.registerPage span {
+  font-weight: 600;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.registerFrom p {
+  margin: 10px;
+}
+.registerFrom span:hover {
+  color: red;
+  text-decoration: underline;
+}
+@media only screen and (max-width: 778px) {
+  .wrapper {
+    width: 100%;
+    height: 55vh;
+  }
+  .leftSideFrom .leftSideFrom,
+  input {
+    width: 100%;
+    padding: 4px 3px;
+    margin-left: 0px;
+  }
+}
