@@ -20,12 +20,20 @@
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
+  margin-top: 20px;
 }
-.category-box span{
- margin-left: 8%;
- font-size: 18px;
+.category-box span {
+  margin-left: 8%;
+  font-size: 18px;
 }
-.category-box span:hover{
+.category-box span:hover {
   text-decoration: underline;
   color: red;
+}
+.link-item {
+  color: initial;
+  text-decoration: none;
+}
+.link-item:hover{
+  color: initial;
 }

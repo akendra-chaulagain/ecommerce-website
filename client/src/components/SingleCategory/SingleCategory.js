@@ -1,15 +1,18 @@
 import React from 'react'
 import "./SingleCategory.css"
+import { Link } from "react-router-dom"
 
-const SingleCategory = () => {
+const SingleCategory = ({ item}) => {
     return (
         <>
-            <div className="category-box">
-                <div className="categortTitle">Electronics</div>
-                <img className='img-fluid' src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_Beauty_1x._SY304_CB432774351_.jpg" alt="" />
-                <span>see more</span>
+            <Link className='link-item' to={`products/${item.cat}`}>
+                <div className="category-box">
+                    <div className="categortTitle">{item.title}</div>
+                    <img className='img-fluid' src={item.img} alt="item_img" />
+                    <span>see more</span>
+                </div>
+            </Link>
 
-            </div>
         </>
     )
 }
