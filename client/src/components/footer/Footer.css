@@ -1,0 +1,73 @@
+.footer {
+  height: 40vh;
+  width: 100%;
+  margin-top: 10vh;
+  position: relative;
+}
+.rightSideFooter h4 {
+  font-weight: 800;
+}
+.rightSideFooter p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+}
+.footerIcons {
+  display: flex;
+  margin-top: 2vh;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.footerIcons .footerSocialMediaIcon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footerIcons .facebook {
+  background-color: rgb(76, 76, 180);
+  color: white;
+}
+.footerIcons .instagram {
+  background-color: red;
+  color: white;
+}
+.footerIcons .twitter {
+  background-color: rgb(97, 177, 204);
+  color: white;
+}
+.footerIcons .linkedin {
+  background-color: rgb(76, 76, 180);
+  color: white;
+}
+.footerIcons .whatsapp {
+  background-color: rgb(5, 175, 5);
+  color: white;
+}
+.leftSideFooter h4 {
+  font-weight: 800;
+}
+.location .contact .email,
+span {
+  letter-spacing: 2px;
+}
+.middleSideContainer h4 {
+  font-weight: 800;
+}
+.linkContainer span {
+  cursor: pointer;
+}
+.linkContainer span:hover {
+  color: red;
+}
+@media only screen and (max-width: 768px) {
+  .middleSideContainer {
+    margin-top: 6vh;
+  }
+  .rightSideFooter {
+    margin-top: 7vh;
+  }
+}

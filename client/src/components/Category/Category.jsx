@@ -33,7 +33,18 @@ const Category = () => {
                     <div className=" col-lg-3 category_box">
                         <SingleCategory />
                     </div>
-
+                    <div className=" col-lg-3 category_box">
+                        <SingleCategory />
+                    </div>
+                    <div className=" col-lg-3 category_box">
+                        <SingleCategory />
+                    </div>
+                    <div className=" col-lg-3 category_box">
+                        <SingleCategory />
+                    </div>
+                    <div className=" col-lg-3 category_box">
+                        <SingleCategory />
+                    </div>
 
                 </div>
             </div>
