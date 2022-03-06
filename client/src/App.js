@@ -6,17 +6,11 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Cart from './pages/cart/Cart';
 import Product from './pages/products/Product';
-import Navbar from './components/navbar/Navbar';
-import Announcementt from './components/announcenemt/Announcement';
 import SingleProductPage from './pages/singleProductPage/SingleProductPage';
 
 const App = () => {
   return (
     <>
-      {/* Announcement import from announcement components */}
-      <Announcementt />
-      {/* navbar */}
-      <Navbar />
       <Routes>
         {/* home page */}
         <Route exact path="/" element={<Home />} />

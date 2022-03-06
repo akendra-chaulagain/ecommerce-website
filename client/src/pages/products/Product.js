@@ -5,6 +5,9 @@ import SingleProduct from '../singleProduct/Singleproduct'
 import Footer from "../../components/footer/Footer"
 import ProductFilter from '../../components/productFilter/ProductFilter'
 import { useLocation } from 'react-router-dom'
+import Announcementt from "../../components/announcenemt/Announcement"
+import Navbar from "../../components/navbar/Navbar"
+
 
 
 const Product = () => {
@@ -12,6 +15,8 @@ const Product = () => {
     const path = location.pathname.split("/")[2];
     return (
         <>
+            <Announcementt/>
+            <Navbar/>
             {/* product filter import from product filter components */}
             <ProductFilter path={path} />
             <div className="container-fluid Product">

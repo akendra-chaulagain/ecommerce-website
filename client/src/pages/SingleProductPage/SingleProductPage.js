@@ -2,6 +2,9 @@ import React from 'react'
 import Footer from "../../components/footer/Footer"
 import "./SingleProductPage.css"
 import { useState } from 'react'
+import Announcementt from "../../components/announcenemt/Announcement"
+import Navbar from "../../components/navbar/Navbar"
+
 
 const SingleProductPage = () => {
 
@@ -26,10 +29,12 @@ const SingleProductPage = () => {
 
     return (
         <>
+            <Announcementt />
+            <Navbar />
             <div className="container-fluid singlePage">
                 <div className="row">
                     <div className="col-md-6 leftSideImg">
-                        <img  src="https://images.pexels.com/photos/2265486/pexels-photo-2265486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" />
+                        <img src="https://images.pexels.com/photos/2265486/pexels-photo-2265486.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" />
                     </div>
                     <div className="col-md-6 rightSide">
                         <div className="productTitle">Watch</div>
@@ -62,7 +67,7 @@ const SingleProductPage = () => {
 
 
 
-          
+
             {/* footer */}
             <Footer />
         </>
