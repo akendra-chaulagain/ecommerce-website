@@ -2,9 +2,9 @@
   height: 10vh;
   width: 100%;
   background-color: whitesmoke;
-  position: fixed;
+  /* position: fixed; */
   z-index: 9;
-  margin-top: 4vh;
+  /* margin-top: 4vh; */
 }
 .navbar-brand {
   font-weight: 700;
