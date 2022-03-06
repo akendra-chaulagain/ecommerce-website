@@ -27,4 +27,5 @@
 }
 .category-box span:hover{
   text-decoration: underline;
+  color: red;
 }

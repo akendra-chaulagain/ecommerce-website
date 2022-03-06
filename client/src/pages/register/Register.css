@@ -52,6 +52,10 @@
   color: white;
   border-radius: 4px;
 }
+.inputBox button:hover{
+  background-color: rgb(247, 82, 82);
+
+}
 .registerFrom p {
   margin: 10px 0px 0px 8%;
 }

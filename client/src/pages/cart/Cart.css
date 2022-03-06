@@ -1,0 +1,180 @@
+.cart {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 18vh;
+  background-color: rgb(231, 229, 229);
+}
+/* cart tobbar */
+
+.cartTitle {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(6, 6, 95);
+}
+.cartTopbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.continueBtn {
+  margin-left: 5%;
+  outline: none;
+  border: none;
+  height: 45px;
+  padding: 3px 8px;
+  cursor: pointer;
+  background-color: red;
+  color: whitesmoke;
+  border-radius: 4px;
+}
+.continueBtn:hover {
+  background-color: black;
+  color: white;
+}
+.checkOutBtn {
+  margin-right: 5%;
+  outline: none;
+  border: none;
+  height: 45px;
+  padding: 3px 8px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
+.checkOutBtn:hover {
+  background-color: red;
+  color: white;
+}
+
+/* product part */
+.cartTopbarP {
+  margin-top: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+.leftSideCart {
+  height: 35vh;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cartproductInfo {
+  margin-top: 30px;
+}
+.leftSideproductInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.leftSideCart img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.leftsideproductInfodata p {
+  font-weight: 600;
+  font-size: 19px;
+}
+.leftsideproductInfodata span {
+  font-weight: 500;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.increaseAnddecrease {
+  margin-top: 15px;
+}
+.increaseAnddecrease button {
+  padding: 2px 8px;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  margin: 20px;
+  background-color: red;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+.increaseAnddecrease .number {
+  padding: 1px 8px;
+  border: 1px solid red;
+  border-radius: 8px;
+  font-size: 25px;
+}
+.righrSideProductInfoPrice p {
+  font-size: 32px;
+  margin-left: 20px;
+  font-weight: 400;
+}
+
+/* check box */
+.checkBox {
+  height: 60vh;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.checkBox h3 {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.checkBoxContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+.checkBoxInfo p {
+  font-size: 23px;
+}
+.checkBoxInfo span {
+  font-weight: 600;
+  font-size: 25px;
+}
+.checkOutButton {
+  display: flex;
+  justify-content: center;
+}
+.checkOutButton button {
+  padding: 4px 50px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+}
+.checkOutButton button:hover {
+  background-color: red;
+  color: white;
+}
+
+@media only screen and (max-width: 778px) {
+  .continueBtn {
+    margin-left: 2%;
+    height: 30px;
+    padding: 2px 5px;
+  }
+  .checkBox{
+    height: 80vh;
+  }
+
+  .checkOutBtn {
+    height: 30px;
+    padding: 2px 5px;
+    margin-top: 40px;
+  }
+  .checkOutBtn:hover {
+    background-color: red;
+    color: white;
+  }
+  .cartTopbarP {
+    margin-top: 0px;
+    letter-spacing: 0px;
+  }
+  .leftSideCart {
+    height: auto;
+  }
+}
