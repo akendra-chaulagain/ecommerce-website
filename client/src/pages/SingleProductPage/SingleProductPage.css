@@ -1,0 +1,75 @@
+.singlePage {
+  height: auto;
+  width: 100%;
+  padding-top: 5vh;
+}
+.leftSideImg img {
+  height: 90vh;
+  width: 100%;
+  object-fit: contain;
+}
+.rightSide .productTitle {
+  margin-top: 20px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.productdesc {
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.productPrice {
+  font-size: 45px;
+}
+.productSize {
+  margin-top: 20px;
+}
+.productSize span {
+  font-size: 24px;
+  outline: none;
+  margin-right: 10px;
+}
+.productSize select {
+  padding: 4px 15px;
+}
+
+.increaseAnddecrease {
+  margin-top: 15px;
+}
+.increaseAnddecrease button {
+  padding: 2px 8px;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  margin: 20px;
+  background-color: red;
+  color: whitesmoke;
+}
+.increaseAnddecrease .number {
+  padding: 1px 8px;
+  border: 1px solid red;
+  border-radius: 8px;
+  font-size: 25px;
+}
+.addtoCard {
+  margin-top: 15px;
+}
+.addtoCard button {
+  padding: 6px 20px;
+  outline: none;
+  border: none;
+  border: 1px solid red;
+  background-color: whitesmoke;
+  color: black;
+}
+.addtoCard button:hover {
+  background-color: red;
+  color: whitesmoke;
+}
+@media only screen and (max-width: 778px) {
+  .leftSideImg img {
+    margin-top: -75px;
+    height: 60vh;
+  }
+}

@@ -1,13 +1,13 @@
 import React from 'react'
 import "./ProductFilter.css"
 
-const ProductFilter = () => {
+const ProductFilter = ({path}) => {
     
     return (
         <>
           
             <div className="container-fluid productlistContainer">
-                <h1>cloth</h1>
+                <h1>{path}</h1>
                 <div className=" row productfilter">
                     <div className="col-md-6 leftSideFilter">
                         <span>Filter Products :</span>

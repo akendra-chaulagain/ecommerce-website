@@ -8,6 +8,7 @@ import Cart from './pages/cart/Cart';
 import Product from './pages/products/Product';
 import Navbar from './components/navbar/Navbar';
 import Announcementt from './components/announcenemt/Announcement';
+import SingleProductPage from './pages/singleProductPage/SingleProductPage';
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
         {/* productList */}
         <Route path="/products/:cetegory" element={<Product />} />
         {/* single productList page */}
-        {/* <Route path="/product/:id" element={<SingleProductPage />} /> */}
+        <Route path="/product/:id" element={<SingleProductPage />} />
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
         {/* cart page */}
