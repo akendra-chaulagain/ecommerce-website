@@ -1,0 +1,26 @@
+.announcement {
+  height: 4vh;
+  width: 100%;
+  background-color: #3f37c9;
+  color: whitesmoke;
+  position: fixed;
+  z-index: 99;
+}
+.dealupdate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media only screen and (max-width: 778px) {
+  .dealupdate p {
+    letter-spacing: 0px;
+    font-size: 13px;
+    height: 25px;
+    margin-top: 10px;
+  }
+  .announcement {
+    height: 5vh;
+  }
+}

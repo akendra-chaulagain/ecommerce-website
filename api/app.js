@@ -26,6 +26,7 @@ const productRoutes = require("./routes/products")
 const userRoutes = require("./routes/users")
 const cartRoutes = require("./routes/cart")
 const orderRoutes = require("./routes/orders")
+const categoryRoutes = require("./routes/category")
 
 
 
@@ -35,6 +36,7 @@ app.use("/api/v1/products", productRoutes)
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/orders", orderRoutes)
 app.use("/api/v1/carts", cartRoutes)
+app.use("/api/v1/categorys", categoryRoutes)
 
 
 

@@ -4,6 +4,7 @@
   background-color: whitesmoke;
   position: fixed;
   z-index: 9;
+  margin-top: 4vh;
 }
 .navbar-brand {
   font-weight: 700;
