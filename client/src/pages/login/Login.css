@@ -50,7 +50,7 @@
   border: 1px solid gray;
   border-radius: 4px;
 }
-.loginBtn button:disabled{
+.loginBtn button:disabled {
   cursor: not-allowed;
   color: green;
 }
@@ -58,7 +58,7 @@
   background-color: red;
   color: white;
 }
-.loginBtn p{
+.loginBtn p {
   color: red;
 }
 .loginPage span {
@@ -78,8 +78,8 @@
     width: 100%;
     height: auto;
   }
-  
-  .loginFromInput  input {
+
+  .loginFromInput input {
     width: 90%;
     padding: 4px 3px;
   }

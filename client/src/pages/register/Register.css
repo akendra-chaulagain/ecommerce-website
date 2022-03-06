@@ -1,82 +1,73 @@
 .registerPage {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgb(0, 0, 0, 0.9)),
-    url("../../../public/img//register.webp");
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  opacity: 0.9;
+  flex-direction: row;
+  margin-top: 2vh;
 }
-.wrapper {
-  background-color: white;
-  height: 53vh;
-  width: 50%;
-  border-radius: 5px;
+.registerTitle {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-weight: 600;
+  font-size: 35px;
+  margin-top: 10px;
 }
 .registerFrom {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  height: 75vh;
+  width: 25%;
+  -webkit-box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.48);
+  box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.48);
 }
-.registerFrom h2 {
-  margin: 10px;
-  color: gray;
-}
-.leftSideFrom,
-.rightSideForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.leftSideFrom .leftSideFrom,
-input {
-  height: 40px;
-  width: 90%;
-  margin-top: 25px;
-  outline: none;
-  border: none;
-  border: 1px solid gray;
-  padding: 4px 3px;
-  border-radius: 4px;
-  margin-left: 17px;
-}
-.createBtn button {
+.LoginFormContainer h4 {
+  margin-left: 8%;
   margin-top: 20px;
-  margin-left: 10px;
-  padding: 5px 28px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.inputBox label {
+  margin-top: 10px;
+  margin-left: 8%;
+  font-weight: 600;
+  font-size: 13px;
+}
+.inputBox input {
+  margin-left: 8%;
+  width: 80%;
+  height: 35px;
   outline: none;
+  padding: 4px 8px;
+  border-radius: 4px;
   border: none;
   border: 1px solid gray;
-  border-radius: 4px;
 }
-.createBtn button:hover {
+.inputBox button {
+  margin-left: 8%;
+  margin-top: 20px;
+  width: 80%;
+  padding: 3px 20px;
+  border: none;
   background-color: red;
   color: white;
-}
-.registerPage span {
-  font-weight: 600;
-  margin-left: 20px;
-  cursor: pointer;
+  border-radius: 4px;
 }
 .registerFrom p {
-  margin: 10px;
+  margin: 10px 0px 0px 8%;
 }
-.registerFrom span:hover {
+.link {
+  margin-left: 5px;
+}
+.link:hover {
   color: red;
   text-decoration: underline;
 }
-@media only screen and (max-width: 778px) {
-  .wrapper {
-    width: 100%;
-    height: 55vh;
-  }
-  .leftSideFrom .leftSideFrom,
-  input {
-    width: 100%;
-    padding: 4px 3px;
-    margin-left: 0px;
+.terms{
+  margin: 15px 0px 0px 8%;
+ font-size: 15px;
+}
+@media only screen and (max-width: 768px) {
+  .registerFrom {
+    width: 80%;
   }
 }
