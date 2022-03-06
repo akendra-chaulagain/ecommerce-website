@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 2vh;
+  margin-top: 4vh;
 }
 .registerTitle {
   display: flex;
@@ -23,7 +23,7 @@
 .LoginFormContainer h4 {
   margin-left: 8%;
   margin-top: 20px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
 }
 .inputBox label {
@@ -57,9 +57,9 @@
 }
 .link {
   margin-left: 5px;
+  color: red;
 }
 .link:hover {
-  color: red;
   text-decoration: underline;
 }
 .terms{

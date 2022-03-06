@@ -11,26 +11,26 @@ const Register = () => {
                 <form className='registerFrom'>
                     <h2 className='registerTitle'>All In One</h2>
                     <div className=" LoginFormContainer">
-                        <h4>CREATE AN ACCOUNT</h4>
+                        <h4>Create An Account</h4>
                         <div className="inputBox">
                             <label >Your Name</label><br />
-                            <input type="text" placeholder=' first  name' />
+                            <input type="text"  />
                         </div>
                         <div className="inputBox">
                             <label >Email</label><br />
-                            <input type="email" placeholder=' first  name' />
+                            <input type="email"  />
                         </div>
                         <div className="inputBox">
                             <label >Phone Number</label><br />
-                            <input type="number" placeholder=' first  name' />
+                            <input type="number"  />
                         </div>
 
                         <div className="inputBox">
                             <label >Password</label><br />
-                            <input type="password" placeholder=' first  name' />
+                            <input type="password" placeholder=' ' />
                         </div>
                         <div className="inputBox">
-                            <button>CREATE</button>
+                            <button>Continue</button>
                         </div>
 
                     </div>
