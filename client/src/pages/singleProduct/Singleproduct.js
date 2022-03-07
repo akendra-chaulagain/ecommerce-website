@@ -1,8 +1,5 @@
 import React from "react";
 import "./SingleProduct.css";
-import Cart from "@material-ui/icons/ShoppingCartOutlined";
-import Search from "@material-ui/icons/SearchOutlined";
-import Favourite from "@material-ui/icons/FavoriteBorderOutlined";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -29,24 +26,18 @@ const SingleProduct = ({ product }) => {
   // single product page
   return (
     <>
-      <div className="singleProduct">
-        <img className="img-fluid" src={getProductData.img} alt="img" />
-        <div className="info">
-          <div className="icons">
-            <div className="icon">
-              <Favourite />
-            </div>
-            <div className="icon">
-              <Cart />
-            </div>
-            <div className="icon">
-              <Link to={`/products/single/${getProductData._id}`}>
-                <Search />
-              </Link>
-            </div>
+      <Link
+        className="singleproductLink"
+        to={`/products/single/${getProductData._id}`}
+      >
+        <div className="singleProduct">
+          <img className="img-fluid" src={getProductData.img} alt="img" />
+          <div className="info"></div>
+          <div className="productInfo">
+            <p>{getProductData.name}</p>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

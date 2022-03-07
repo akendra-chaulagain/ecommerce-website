@@ -2,9 +2,11 @@
   height: 40vh;
   width: 100%;
   margin-top: 10vh;
-  background-color: rgb(235, 232, 232);
+  /* background-color: rgb(235, 232, 232); */
+  background-color: rgb(63, 16, 107);
   display: flex;
   justify-content: center;
+  color: white;
 }
 .wrapper {
   width: 44%;
@@ -18,38 +20,36 @@ h3 {
   font-size: 21px;
 }
 
-.wrapper span{
-cursor: pointer;
-margin-top: 10px;
+.wrapper span {
+  cursor: pointer;
+  margin-top: 10px;
 }
-.wrapper span:hover{
+.wrapper span:hover {
   color: red;
   text-decoration: underline;
 }
 
 @media only screen and (max-width: 778px) {
   .wrapper {
-  width: 95%;
-  
-}
-.left .right .middle,
-h3 {
-  font-size: 15px;
-  font-weight: 600;
-}
-.wrapper span{
-  font-size: 13px;
-}
+    width: 95%;
+  }
+  .left .right .middle,
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .wrapper span {
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 280px) {
- 
-.left .right .middle,
-h3 {
-  font-size: 14px;
-  font-weight: 600;
-}
-.wrapper span{
-  font-size: 10px;
-}
+  .left .right .middle,
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .wrapper span {
+    font-size: 10px;
+  }
 }

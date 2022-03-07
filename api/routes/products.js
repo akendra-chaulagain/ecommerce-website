@@ -11,10 +11,10 @@ const Product = require("../models/Product");
 // create products ---Admin  (only admin can create product)
 router.post("/newproduct", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
-    const { name, price, desc, rating, category } = req.body;
+    const body = req.body;
     // creating new product
     try {
-      const product = new Product({ name, price, desc, rating, category });
+      const product = new Product(body);
       const result = await product.save();
       res.status(201).json(result);
     } catch (error) {
@@ -78,7 +78,7 @@ router.get("/getall", async (req, res) => {
     let product;
     // when we search for new product this gives latest five products
     if (qnew) {
-      product = await Product.find().sort({ createdAt: -1 }).limit(5);
+      product = await Product.find().sort({ createdAt: -1 }).limit(10);
       // when we search for category section this else if function will run
     } else if (qcategory) {
       // search according to the price

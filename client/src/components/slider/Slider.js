@@ -14,54 +14,41 @@ const Slider = () => {
             <div className="carousel-inner">
               <div className="carousel-item active ">
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="sliderImg">
-                      <img src="../images/4.png" alt="..." />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="sliderData">
-                      <h1>SUMMER SALE</h1>
-                      <p>
-                        Don't Compare Your Style! Get flat 20% for <br /> new
-                        arrivals
-                      </p>
+                      <img
+                        className="img-fluid"
+                        src="https://m.media-amazon.com/images/I/61jovjd+f9L._SX3000_.jpg"
+                        alt="..."
+                      />
                     </div>
                   </div>
                 </div>
               </div>
+
               <div className="carousel-item">
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="sliderImg">
-                      <img src="../images/2.png" alt="..." />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="sliderData">
-                      <h1>WINTER SALE</h1>
-                      <p>
-                        Make Your Style Unique! Get flat 20% for <br /> new
-                        arrivals
-                      </p>
+                      <img
+                        className="img-fluid"
+                        src="https://images.pexels.com/photos/8101520/pexels-photo-8101520.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="..."
+                      />
                     </div>
                   </div>
                 </div>
               </div>
+
               <div className="carousel-item">
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="sliderImg">
-                      <img src="../images/3.png" alt="..." />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="sliderData">
-                      <h1> MONSOON LOVE</h1>
-                      <p>
-                        Make Your Own Style! Get flat 10% for <br /> new
-                        visiters
-                      </p>
+                      <img
+                        className="img-fluid"
+                        src="https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg"
+                        alt="..."
+                      />
                     </div>
                   </div>
                 </div>
