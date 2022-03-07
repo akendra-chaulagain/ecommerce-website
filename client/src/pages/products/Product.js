@@ -2,7 +2,6 @@ import React from "react";
 import "./Product.css";
 import SingleProduct from "../singleProduct/Singleproduct";
 import Footer from "../../components/footer/Footer";
-import ProductFilter from "../../components/productFilter/ProductFilter";
 import { useLocation } from "react-router-dom";
 import Announcementt from "../../components/announcenemt/Announcement";
 import Navbar from "../../components/navbar/Navbar";
@@ -35,8 +34,15 @@ const Product = () => {
       <Announcementt />
       {/* import from navbar compomnents */}
       <Navbar />
-      <ProductFilter path={getCategory.title} />
       <div className="container-fluid Product">
+        <div className="productheader">
+          <h3>RESULTS</h3>
+          <p>
+            Price and other details may vary based on product size and color.
+          </p>
+        </div>
+        <hr />
+        {/* map method is used to show all the products   */}
         <div className="row">
           {getCategory?.map((product, i) => (
             <div className="col-md-3" key={i}>

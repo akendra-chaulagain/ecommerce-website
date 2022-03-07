@@ -22,10 +22,11 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         {/* cart page */}
         {/* <Route path="/success" element={<Success />} /> */}
+
         {/* register page */}
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={ <Register />} />
         {/* login page */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={ <Login />} />
       </Routes>
     </>
   );

@@ -2,7 +2,7 @@
   height: auto;
   width: 100%;
   overflow: hidden;
-  padding-top: 18vh;
+  padding-top: 3vh;
   background-color: rgb(231, 229, 229);
 }
 /* cart tobbar */
@@ -157,7 +157,7 @@
     height: 30px;
     padding: 2px 5px;
   }
-  .checkBox{
+  .checkBox {
     height: 80vh;
   }
 

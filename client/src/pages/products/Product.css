@@ -4,3 +4,10 @@
   margin-top: 6vh;
 
 }
+.productheader{
+  margin: 0% 0% 0% 7%;
+}
+
+.productheader h3{
+  font-size: 30px;
+}
