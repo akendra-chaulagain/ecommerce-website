@@ -7,15 +7,22 @@ import Navbar from "../../components/navbar/Navbar";
 import { useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addproduct } from "../../redux/cartRedux";
 
 const SingleProductPage = () => {
+  const dispatch = useDispatch();
+
   // usestate fro quantity
   const [quantity, setQuantity] = useState(1);
+
+  // usestate fro color
+  const [color, setColor] = useState("");
 
   // get product according to id  from the url
   const [product, setProduct] = useState({});
 
-  //   uselocation nis used to get id from the url
+  //   uselocation is used to get id from the url
   const location = useLocation();
   const path = location.pathname.split("/")[3];
   // useffect
@@ -40,6 +47,11 @@ const SingleProductPage = () => {
     }
   };
 
+  // this function will run when we click add to cart button
+  const handleClick = async () => {
+    dispatch(addproduct({ ...product, quantity, color }));
+  };
+
   return (
     <>
       <Announcementt />
@@ -57,7 +69,7 @@ const SingleProductPage = () => {
               <div className="productSize">
                 {/* map of color product */}
                 <span>Color :</span>
-                <select>
+                <select onChange={(e) => setColor(e.target.value)}>
                   {product.color?.map((item, key) => (
                     <option key={key}>{item}</option>
                   ))}
@@ -65,7 +77,7 @@ const SingleProductPage = () => {
 
                 {/* stock */}
                 <span>
-                  <p> {product.stock}</p>{" "}
+                  <p> {product.stock}</p>
                 </span>
 
                 {/* Brand name */}
@@ -82,7 +94,7 @@ const SingleProductPage = () => {
               </div>
 
               <div className="addtoCard">
-                <button>ADD TO CART</button>
+                <button onClick={handleClick}>ADD TO CART</button>
               </div>
               <h4 className="mt-5">: {product.desc}</h4>
             </div>

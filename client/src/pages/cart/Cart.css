@@ -29,35 +29,9 @@
   color: whitesmoke;
   border-radius: 4px;
 }
-.continueBtn:hover {
-  background-color: black;
-  color: white;
-}
-.checkOutBtn {
-  margin-right: 5%;
-  outline: none;
-  border: none;
-  height: 45px;
-  padding: 3px 8px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  border-radius: 4px;
-}
-.checkOutBtn:hover {
-  background-color: red;
-  color: white;
-}
 
-/* product part */
-.cartTopbarP {
-  margin-top: 20px;
-  text-decoration: underline;
-  cursor: pointer;
-  letter-spacing: 2px;
-}
 .leftSideCart {
-  height: 35vh;
+  height: 40vh;
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
@@ -71,39 +45,26 @@
   justify-content: space-between;
 }
 .leftSideCart img {
-  width: 100%;
+  width: 35%;
+  width: 35vh;
   object-fit: contain;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .leftsideproductInfodata p {
   font-weight: 600;
   font-size: 19px;
 }
 .leftsideproductInfodata span {
+  border: 2px solid rgb(255, 7, 7);
   font-weight: 500;
   font-size: 20px;
   margin-left: 10px;
+  padding: 3px 10px;
 }
 
-.increaseAnddecrease {
-  margin-top: 15px;
-}
-.increaseAnddecrease button {
-  padding: 2px 8px;
-  font-weight: 900;
-  outline: none;
-  border: none;
-  margin: 20px;
-  background-color: red;
-  color: whitesmoke;
-  border-radius: 5px;
-}
-.increaseAnddecrease .number {
-  padding: 1px 8px;
-  border: 1px solid red;
-  border-radius: 8px;
-  font-size: 25px;
-}
 .righrSideProductInfoPrice p {
   font-size: 32px;
   margin-left: 20px;
@@ -152,24 +113,6 @@
 }
 
 @media only screen and (max-width: 778px) {
-  .continueBtn {
-    margin-left: 2%;
-    height: 30px;
-    padding: 2px 5px;
-  }
-  .checkBox {
-    height: 80vh;
-  }
-
-  .checkOutBtn {
-    height: 30px;
-    padding: 2px 5px;
-    margin-top: 40px;
-  }
-  .checkOutBtn:hover {
-    background-color: red;
-    color: white;
-  }
   .cartTopbarP {
     margin-top: 0px;
     letter-spacing: 0px;

@@ -1,10 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Announcementt from "../../components/announcenemt/Announcement";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import "./Cart.css";
 
 const Cart = () => {
+  // get cart data
+  const cart = useSelector((state) => state.cart.products);
+
   return (
     <>
       {/* announcement */}
@@ -12,41 +16,35 @@ const Cart = () => {
       <Navbar />
       <div className="container-fuid cart">
         <div className="text-center cartTitle">Your Collection</div>
-
         <div className="row mt-1">
+          {/* cart container */}
           <div className="col-md-9">
-            <div className="row leftSideCart">
-              <div className="col-4">
-                <img
-                  className="img-fluid"
-                  src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_SmartWatch_1X._SY304_CB639922137_.jpg"
-                  alt=""
-                />
-              </div>
-              <div className="col-8 leftSideproductInfo">
-                <div className="leftsideproductInfodata">
-                  <p>
-                    Product: <span>Cloth</span>
-                  </p>
-                  <p>
-                    Color :<span>black</span>
-                  </p>
-                  <p>
-                    Size: <span>XXL</span>
-                  </p>
-                </div> 
-
-                {/* <div className="righrSideProductInfoPrice">
-                  <div className="increaseAnddecrease">
-                    <button>-</button>
-                    <span className="number">3</span>
-                    <button>+</button>
-                    <p>$ 50</p>
+            {cart?.map((item, id) => (
+              <div className="row leftSideCart" key={id}>
+                <div className="col-3">
+                  <img className="img-fluid" src={item.img} alt="" />
+                </div>
+                <div className="col-9 leftSideproductInfo">
+                  <div className="leftsideproductInfodata">
+                    {/* product name */}
+                    <p>{item.name}</p>
+                    {/* product color */}
+                    <p>
+                      Color : <span>{item.color}</span>
+                    </p>
+                    {/* product quantity */}
+                    <p>
+                      Quiantity: <span>{item.quantity}</span>
+                    </p>
+                    {/* product Price */}
+                    <p>
+                      price : <span>$ {item.price}</span>
+                    </p>
                   </div>
-                </div> */}
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
+            ))}
           </div>
 
           {/* check box */}
