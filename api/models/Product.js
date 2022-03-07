@@ -20,8 +20,8 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     color: {
-      type: String,
-      default:""
+      type: Array,
+      default: "",
     },
     stock: {
       type: Boolean,
@@ -29,6 +29,14 @@ const productSchema = new mongoose.Schema(
     },
     feature: {
       type: String,
+    },
+    brand: {
+      type: String,
+      default: "",
+    },
+    size: {
+      type: "number",
+      default:""
     },
   },
   { timestamps: true }

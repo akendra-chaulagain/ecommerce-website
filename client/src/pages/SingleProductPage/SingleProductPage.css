@@ -4,14 +4,14 @@
   padding-top: 5vh;
 }
 .leftSideImg img {
-  height: 90vh;
+  height: 70vh;
   width: 100%;
   object-fit: contain;
+  margin-top: 10vh;
 }
 .rightSide .productTitle {
   margin-top: 20px;
-  font-size: 28px;
-  letter-spacing: 2px;
+  font-size: 23px;
   font-weight: 600;
 }
 .productdesc {
@@ -20,15 +20,19 @@
   margin-top: 20px;
 }
 .productPrice {
-  font-size: 45px;
+  font-size: 28px;
+  border-bottom: 1px solid red;
+  font-weight: 600;
+  color: red;
 }
 .productSize {
   margin-top: 20px;
 }
 .productSize span {
-  font-size: 24px;
+  font-size: 20px;
   outline: none;
   margin-right: 10px;
+  font-weight: 600;
 }
 .productSize select {
   padding: 4px 15px;
@@ -56,7 +60,7 @@
   margin-top: 15px;
 }
 .addtoCard button {
-  padding: 6px 20px;
+  padding: 6px 15px;
   outline: none;
   border: none;
   border: 1px solid red;

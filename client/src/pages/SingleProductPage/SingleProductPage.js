@@ -52,14 +52,29 @@ const SingleProductPage = () => {
           <div className="col-md-6 rightSide">
             <div className="productTitle">{product.name}</div>
             <div className="productdesc">
-              <p>{product.desc}</p>
-              <span className="productPrice">Price :$ {product.price}</span>
+              <span className="productPrice"> Price : {product.price}</span>
 
               <div className="productSize">
-                {/* map  function for color */}
+                {/* map of color product */}
                 <span>Color :</span>
-                <span>{product.stock}</span>
+                <select>
+                  {product.color?.map((item, key) => (
+                    <option key={key}>{item}</option>
+                  ))}
+                </select>
+
+                {/* stock */}
+                <span>
+                  <p> {product.stock}</p>{" "}
+                </span>
+
+                {/* Brand name */}
+                <span>
+                  Brand: <p>{product.brand}</p>
+                </span>
               </div>
+
+              {/* increase or decrease number */}
               <div className="increaseAnddecrease">
                 <button onClick={() => handleQuantity("desc")}>-</button>
                 <span className="number">{quantity}</span>
@@ -69,6 +84,7 @@ const SingleProductPage = () => {
               <div className="addtoCard">
                 <button>ADD TO CART</button>
               </div>
+              <h4 className="mt-5">: {product.desc}</h4>
             </div>
           </div>
         </div>
