@@ -36,12 +36,15 @@ const Cart = () => {
                     <p>
                       Quiantity: <span>{item.quantity}</span>
                     </p>
-                    {/* product Price */}
-                    <p>
-                      price : <span>$ {item.price}</span>
-                    </p>
                   </div>
                 </div>
+                <div className="totalPrice text-end">
+                  <p>
+                    Total : <span>$ {item.price}</span>
+                  </p>
+                </div>
+                {/* product Price */}
+
                 <hr />
               </div>
             ))}
