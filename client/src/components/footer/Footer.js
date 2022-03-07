@@ -1,69 +1,64 @@
 import React from "react";
 import "./Footer.css";
-import FaceBook from "@material-ui/icons/Facebook";
+import Facebook from "@material-ui/icons/Facebook";
 import Instagram from "@material-ui/icons/Instagram";
-import Twitter from "@material-ui/icons/Twitter";
-import LinkedIn from "@material-ui/icons/LinkedIn";
 import WhatsApp from "@material-ui/icons/WhatsApp";
-import Location from "@material-ui/icons/LocationOn";
-import Phone from "@material-ui/icons/PhoneAndroidOutlined";
-import Email from "@material-ui/icons/EmailOutlined";
+import Twitter from "@material-ui/icons/Twitter";
 
 const Footer = () => {
   return (
     <>
-      {/* <div className="container-fluid footer">
+      <div className="footer">
         <div className="wrapper">
-          <div className="col-6 leftSideContainer">
-            <h4>Useful Links</h4>
-            <div className="linkContainer">
-              <div className="">
-                <span>Home</span>
-                <br />
-                <span>Man Fashion</span>
-                <br />
-                <span>Order Tracking</span>
-                <br />
-                <span>Order</span>
-              </div>
-              <div className="">
-                <span>Cart</span>
-                <br />
-                <span>Women Fashion</span>
-                <br />
-                <span>My Account</span>
-                <br />
-                <span>Privacy</span>
-              </div>
-            </div>
+          <div className="left">
+            <h3>Get to Know Us</h3>
+            <span>Home</span>
+            <br />
+            <span>About All In One</span>
+            <br />
+            <span>Blog</span>
+            <br />
+            <span>Contact</span>
+            <br />
+            <span>Policy</span>
           </div>
 
-          <div className="col-6 rightsideContainer">
-            <h4>ALL IN ONE</h4>
-            <p>
-              This is the place where you can found all products.WE offers many
-              new products to the customers.
-            </p>
-            <div className="footerIcons">
-              <div className=" footerSocialMediaIcon  facebook">
-                <FaceBook />
-              </div>
-              <div className=" footerSocialMediaIcon instagram">
-                <Instagram />
-              </div>
-              <div className=" footerSocialMediaIcon twitter">
-                <Twitter />
-              </div>
-              <div className=" footerSocialMediaIcon linkedin">
-                <LinkedIn />
-              </div>
-              <div className=" footerSocialMediaIcon whatsapp">
-                <WhatsApp />
-              </div>
-            </div>
+          <div className="middle">
+            <h3>Payment Methods</h3>
+            <span>Credit Card</span>
+            <br />
+            <span>E-sewa</span>
+            <br />
+            <span>Phone Pay</span>
+            <br />
+            <span>G-Pay</span>
+            <br />
+            <span>PayPal</span>
+          </div>
+
+          <div className="right">
+            <h3>Contact Us On</h3>
+            <span>
+              <Facebook style={{ marginRight: 10, color: "blue" }} />
+              Facebook
+            </span>
+            <br />
+            <span>
+              <Instagram style={{ marginRight: 10, color: "red" }} /> Instagram
+            </span>
+            <br />
+            <span>
+              <Twitter style={{ marginRight: 10, color: "lightBlue" }} />{" "}
+              Twitter
+            </span>
+            <br />
+            <span>
+              <WhatsApp style={{ marginRight: 10, color: "green" }} />
+              WhatsApp
+            </span>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

@@ -2,78 +2,54 @@
   height: 40vh;
   width: 100%;
   margin-top: 10vh;
-  /* position: relative; */
   background-color: rgb(235, 232, 232);
+  display: flex;
+  justify-content: center;
 }
 .wrapper {
+  width: 44%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
-.rightSideFooter h4 {
-  font-weight: 800;
+.left .right .middle,
+h3 {
+  font-weight: 600;
+  font-size: 21px;
 }
-.rightSideFooter p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2vh;
+
+.wrapper span{
+cursor: pointer;
+margin-top: 10px;
 }
-.footerIcons {
-  display: flex;
-  margin-top: 2vh;
-  justify-content: space-around;
-  cursor: pointer;
-}
-.footerIcons .footerSocialMediaIcon {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.footerIcons .facebook {
-  background-color: rgb(76, 76, 180);
-  color: white;
-}
-.footerIcons .instagram {
-  background-color: red;
-  color: white;
-}
-.footerIcons .twitter {
-  background-color: rgb(97, 177, 204);
-  color: white;
-}
-.footerIcons .linkedin {
-  background-color: rgb(76, 76, 180);
-  color: white;
-}
-.footerIcons .whatsapp {
-  background-color: rgb(5, 175, 5);
-  color: white;
-}
-.location .contact .email,
-span {
-  letter-spacing: 2px;
-}
-.middleSideContainer h4 {
-  font-weight: 800;
-}
-.linkContainer span {
-  cursor: pointer;
-}
-.linkContainer span:hover {
+.wrapper span:hover{
   color: red;
+  text-decoration: underline;
 }
-@media only screen and (max-width: 768px) {
-  .footer {
-    height: auto;
-  }
-  .footerIcons .footerSocialMediaIcon {
-    height: 30px;
-    width: 30px;
-    margin-bottom: 30px;
-    
-  }
+
+@media only screen and (max-width: 778px) {
+  .wrapper {
+  width: 95%;
+  
+}
+.left .right .middle,
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+.wrapper span{
+  font-size: 13px;
+}
+}
+
+@media only screen and (max-width: 280px) {
+ 
+.left .right .middle,
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.wrapper span{
+  font-size: 10px;
+}
 }
