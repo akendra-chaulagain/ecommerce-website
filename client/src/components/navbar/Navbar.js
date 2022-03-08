@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 
 // navbar
 const Navbar = () => {
+  const user = useSelector((state) => state.user.currentUser);
+
   // use selector from react redux
   const quantity = useSelector((state) => state.cart.quantity);
 
@@ -34,7 +36,21 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              {!user && (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link " to="/register">
+                      Register
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/login">
+                      Sign In
+                    </Link>
+                  </li>
+                </>
+              )}
+              {/* <li className="nav-item">
                 <Link className="nav-link " to="/register">
                   Register
                 </Link>
@@ -43,7 +59,7 @@ const Navbar = () => {
                 <Link className="nav-link" to="/login">
                   Sign In
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 {/* <Link className="nav-link " to="/register">logOut</Link> */}
                 {/* <a className="nav-link" onClick={handleLogout}>LogOut</a> */}

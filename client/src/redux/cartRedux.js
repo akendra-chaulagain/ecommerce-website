@@ -11,8 +11,8 @@ export const cartSlice = createSlice({
     //   for increasing the cart number when add to cart is click
     addproduct: (state, action) => {
       state.quantity += 1;
-     state.products.push(action.payload);
-     state.total += action.payload.price * action.payload.quantity;
+      state.products.push(action.payload);
+      state.total += action.payload.price * action.payload.quantity;
     },
   },
 });
