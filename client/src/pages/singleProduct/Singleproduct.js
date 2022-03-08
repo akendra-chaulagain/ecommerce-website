@@ -32,7 +32,6 @@ const SingleProduct = ({ product }) => {
       >
         <div className="singleProduct">
           <img className="img-fluid" src={getProductData.img} alt="img" />
-          <div className="info"></div>
           <div className="productInfo">
             <p>{getProductData.name}</p>
           </div>

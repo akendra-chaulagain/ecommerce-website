@@ -53,9 +53,12 @@ const Cart = () => {
                       {/* Quiantity: <span>{item._id}</span> */}
                     </p>
                     {/* remove product */}
-                    <button onClick={() => handleRemove(item._id)}>delete</button>
+                    <button className="mb-3" onClick={() => handleRemove(item._id)}>
+                      delete
+                    </button>
                   </div>
                 </div>
+                <hr />
                 <div className="totalPrice text-end">
                   <p>
                     price : <span>$ {item.price}</span>

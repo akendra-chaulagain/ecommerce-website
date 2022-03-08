@@ -64,12 +64,14 @@ const SingleProductPage = () => {
           <div className="col-md-6 rightSide">
             <div className="productTitle">{product.name}</div>
             <div className="productdesc">
-              <span className="productPrice"> Price : {product.price}</span>
+              <span className="productPrice">
+                Price : <span style={{ color: "red" }}>$ {product.price}</span>
+              </span>
 
               <div className="productSize">
                 {/* map of color product */}
                 <span>Color :</span>
-                <select onChange={(e) => setColor(e.target.value)}>
+                <select className="selectBox" onChange={(e) => setColor(e.target.value)}>
                   {product.color?.map((item, key) => (
                     <option key={key}>{item}</option>
                   ))}
@@ -96,7 +98,9 @@ const SingleProductPage = () => {
               <div className="addtoCard">
                 <button onClick={handleClick}>ADD TO CART</button>
               </div>
-              <h4 className="mt-5">: {product.desc}</h4>
+              <div className="singlrproductDesc">
+                <p className="mt-5">: {product.desc}</p>
+              </div>
             </div>
           </div>
         </div>

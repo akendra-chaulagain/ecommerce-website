@@ -97,9 +97,6 @@
   text-decoration: underline;
 }
 
-
-
-
 /* checkBoxWithoutLogin */
 .containerInfo {
   height: 20vh;
@@ -127,9 +124,14 @@
   padding: 4px 5px;
   border-radius: 5px;
 }
-
+.containerInfo button:hover {
+  background-color: rgb(252, 82, 82);
+}
 
 @media only screen and (max-width: 778px) {
+  .cartTitle {
+    font-size: 23px;
+  }
   .cartTopbarP {
     margin-top: 0px;
     letter-spacing: 0px;
@@ -137,25 +139,25 @@
   .leftSideCart {
     height: auto;
   }
-  .leftsideproductInfodata p{
+  .leftsideproductInfodata p {
     font-size: 11px;
     font-weight: 500;
   }
   .totalPrice p {
-  font-size: 17px;
-}
-.totalPrice span {
-  font-size: 16px;
-}
-.leftsideproductInfodata span {
-  font-size: 14px;
-  margin-left: 10px;
-  padding: 3px 4px;
-}
-.containerInfo button {
-  font-size: 13px;
-  padding: 4px 4px;
-}
+    font-size: 17px;
+  }
+  .totalPrice span {
+    font-size: 16px;
+  }
+  .leftsideproductInfodata span {
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 3px 4px;
+  }
+  /* payment button */
 
-  
+  .containerInfo button {
+    font-size: 15px;
+    padding: 4px 4px;
+  }
 }
