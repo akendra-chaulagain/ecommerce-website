@@ -31,7 +31,7 @@
 }
 
 .leftSideCart {
-  height: 38vh;
+  height: 41vh;
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
@@ -47,8 +47,10 @@
   justify-content: space-between;
   margin-top: 15px;
 }
+
 .leftSideCart img {
   /* width: 25%; */
+  height: 30vh;
   object-fit: contain;
   border-radius: 10px;
   display: flex;
@@ -58,34 +60,41 @@
 }
 .leftsideproductInfodata p {
   font-weight: 600;
-  font-size: 19px;
+  font-size: 15px;
 }
 .leftsideproductInfodata span {
-  border: 2px solid rgb(255, 7, 7);
+  border: 2px solid red;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 17px;
   margin-left: 10px;
-  padding: 3px 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
-.leftsideproductInfodata h5 {
-  padding: 2px 4px;
+/* proceed to checkbox buttom */
+.leftsideproductInfodata button {
   outline: none;
   border: none;
-  margin-top: 30px;
-  font-weight: 600;
+  margin-top: 20px;
   cursor: pointer;
-  font-size: 16px;
-  color: red;
-  text-decoration: underline;
+  font-size: 12px;
+  background-color: black;
+  color: whitesmoke;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
-.leftsideproductInfodata h5:hover {
-  color: red;
+.leftsideproductInfodata button:hover {
+  background-color: red;
 }
 
-.righrSideProductInfoPrice p {
-  font-size: 32px;
-  margin-left: 20px;
-  font-weight: 400;
+/* price */
+.totalPrice p {
+  font-size: 25px;
+}
+.totalPrice span {
+  font-weight: 600;
+  font-size: 20px;
+  color: red;
+  text-decoration: underline;
 }
 
 /* checkBoxWithoutLogin */
@@ -115,14 +124,40 @@
   padding: 4px 5px;
   border-radius: 5px;
 }
-
+.containerInfo button:hover {
+  background-color: rgb(252, 82, 82);
+}
 
 @media only screen and (max-width: 778px) {
+  .cartTitle {
+    font-size: 23px;
+  }
   .cartTopbarP {
     margin-top: 0px;
     letter-spacing: 0px;
   }
   .leftSideCart {
     height: auto;
+  }
+  .leftsideproductInfodata p {
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .totalPrice p {
+    font-size: 17px;
+  }
+  .totalPrice span {
+    font-size: 16px;
+  }
+  .leftsideproductInfodata span {
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 3px 4px;
+  }
+  /* payment button */
+
+  .containerInfo button {
+    font-size: 15px;
+    padding: 4px 4px;
   }
 }

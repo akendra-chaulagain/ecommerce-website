@@ -121,7 +121,6 @@ router.get("/", async (req, res) => {
 // search product from database according to name
 router.get("/search", async (req, res) => {
   const search = req.query.q;
-
   try {
     const product = await Product.find({
       name: {

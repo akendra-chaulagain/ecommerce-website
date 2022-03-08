@@ -36,10 +36,10 @@ const Cart = () => {
           <div className="col-md-9">
             {cartProduct?.map((item, id) => (
               <div className="row leftSideCart" key={id}>
-                <div className="col-2">
+                <div className="col-4 ">
                   <img className="img-fluid" src={item.img} alt="" />
                 </div>
-                <div className="col-10 leftSideproductInfo">
+                <div className="col-7 leftSideproductInfo">
                   <div className="leftsideproductInfodata">
                     {/* product name */}
                     <p>{item.name}</p>
@@ -53,17 +53,17 @@ const Cart = () => {
                       {/* Quiantity: <span>{item._id}</span> */}
                     </p>
                     {/* remove product */}
-                    <h5 onClick={() => handleRemove(item._id)}>remove</h5>
+                    <button className="mb-3" onClick={() => handleRemove(item._id)}>
+                      delete
+                    </button>
                   </div>
                 </div>
+                <hr />
                 <div className="totalPrice text-end">
                   <p>
-                    Total : <span>$ {item.price}</span>
+                    price : <span>$ {item.price}</span>
                   </p>
                 </div>
-                {/* product Price */}
-
-                <hr />
               </div>
             ))}
           </div>

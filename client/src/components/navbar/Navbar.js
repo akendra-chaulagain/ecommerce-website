@@ -6,9 +6,8 @@ import Menu from "@material-ui/icons/Menu";
 import { useSelector } from "react-redux";
 
 // navbar
-const Navbar = () => {
+const Navbar = ({ setSearchProduct }) => {
   const user = useSelector((state) => state.user.currentUser);
-
   // use selector from react redux
   const quantity = useSelector((state) => state.cart.quantity);
 
@@ -20,7 +19,11 @@ const Navbar = () => {
             All In One
           </Link>
           {/* search box */}
-          <input type="text" placeholder="search" />
+          <input
+            type="text"
+            placeholder="search"
+            onChange={(e) => setSearchProduct(e.target.value)}
+          />
           <button
             className="navbar-toggler"
             type="button"
@@ -38,11 +41,13 @@ const Navbar = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {!user && (
                 <>
+                  {/* register */}
                   <li className="nav-item">
                     <Link className="nav-link " to="/register">
                       Register
                     </Link>
                   </li>
+                  {/* login */}
                   <li className="nav-item">
                     <Link className="nav-link" to="/login">
                       Sign In
@@ -50,11 +55,7 @@ const Navbar = () => {
                   </li>
                 </>
               )}
-
-              <li className="nav-item">
-                {/* <Link className="nav-link " to="/register">logOut</Link> */}
-                {/* <a className="nav-link" onClick={handleLogout}>LogOut</a> */}
-              </li>
+              {/* order page */}
               <li className="nav-item">
                 <Link className="nav-link" to="/order">
                   Order

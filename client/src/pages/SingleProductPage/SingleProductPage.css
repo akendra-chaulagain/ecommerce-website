@@ -11,7 +11,7 @@
 }
 .rightSide .productTitle {
   margin-top: 20px;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 600;
 }
 .productdesc {
@@ -20,10 +20,8 @@
   margin-top: 20px;
 }
 .productPrice {
-  font-size: 28px;
-  border-bottom: 1px solid red;
+  font-size: 22px;
   font-weight: 600;
-  color: red;
 }
 .productSize {
   margin-top: 20px;
@@ -34,46 +32,64 @@
   margin-right: 10px;
   font-weight: 600;
 }
-.productSize select {
+/* .productSize selectBox {
   padding: 4px 15px;
-}
+} */
 
-.increaseAnddecrease {
-  margin-top: 15px;
-}
+
 .increaseAnddecrease button {
-  padding: 2px 8px;
+  padding: 1px 5px;
   font-weight: 900;
   outline: none;
   border: none;
   margin: 20px;
   background-color: red;
   color: whitesmoke;
+  border-radius: 4px;
 }
 .increaseAnddecrease .number {
-  padding: 1px 8px;
+  padding: 1px 5px;
   border: 1px solid red;
-  border-radius: 8px;
-  font-size: 25px;
+  border-radius: 4px;
+  font-size:20px;
 }
 .addtoCard {
   margin-top: 15px;
 }
 .addtoCard button {
-  padding: 6px 15px;
+  padding: 4px 10px;
   outline: none;
   border: none;
   border: 1px solid red;
   background-color: whitesmoke;
   color: black;
+  border-radius: 4px;
+  font-size: 14px;
 }
 .addtoCard button:hover {
   background-color: red;
   color: whitesmoke;
 }
+.singlrproductDesc p{
+  font-size: 15px;
+}
 @media only screen and (max-width: 778px) {
   .leftSideImg img {
-    margin-top: -75px;
-    height: 60vh;
+    margin-top: -1vh;
+    height: 20vh;
   }
+  .rightSide .productTitle {
+  font-size: 15px;
+  font-weight: 500;
+}
+.productPrice {
+  font-size: 18px;
+}
+.productSize span{
+  font-size: 15px;
+}
+.productSize 
+.singlrproductDesc p{
+  font-size: 12px;
+}
 }
