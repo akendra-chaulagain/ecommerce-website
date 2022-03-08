@@ -5,6 +5,13 @@ import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import { removeproduct } from "../../redux/cartRedux";
 import "./Cart.css";
+import StripeCheckout from "react-stripe-checkout";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
+// stripe public key import from the .env file
+const key = process.env.REACT_APP_STRIPE;
 
 const Cart = () => {
   // get product data
@@ -19,9 +26,28 @@ const Cart = () => {
     dispatch(removeproduct(_id));
   };
 
+  // token for stripe
+  const [stripeToken, setStripeToken] = useState(null);
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
 
-  // 
-  // totalPrice: totalPrice + (quantity * price),
+  // useffect for dtripe token
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        await axios.post("/stripe/payment", {
+          tokenid: stripeToken.id,
+          amount: cart.total * 10,
+        });
+        alert("success");
+      } catch (error) {
+        console.log("unable to payment" + error);
+      }
+    };
+    makeRequest();
+  }, [stripeToken, cart.total]);
+
   return (
     <>
       {/* announcement */}
@@ -86,7 +112,7 @@ const Cart = () => {
             </div>
             <div className="checkOutButton">
               {/* strip container  for payment method*/}
-              {/* <StripeCheckout
+              <StripeCheckout
                 name="All In One"
                 image="https://img.freepik.com/free-vector/hand-holding-shopping-bags_23-2147491522.jpg?size=338&ext=jpg"
                 billingAddress
@@ -97,7 +123,7 @@ const Cart = () => {
                 stripeKey={key}
               >
                 <button>CHECKOUT NOW</button>
-              </StripeCheckout> */}
+              </StripeCheckout>
             </div>
           </div>
         </div>
