@@ -80,6 +80,9 @@ router.post("/login", async (req, res) => {
   }
 });
 
+
+
+
 // logout user
 router.get("/logout", verifyToken, async (req, res) => {
   try {

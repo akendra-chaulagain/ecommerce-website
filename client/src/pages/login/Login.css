@@ -56,6 +56,10 @@
   background-color: rgb(247, 82, 82);
 
 }
+.inputBox span{
+  color: red;
+  margin-left: 8%;
+}
 .loginFrom p {
   margin: 10px 0px 0px 8%;
   
