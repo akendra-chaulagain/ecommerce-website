@@ -36,7 +36,7 @@ const productSchema = new mongoose.Schema(
     },
     size: {
       type: "number",
-      default:""
+      default: "6",
     },
   },
   { timestamps: true }

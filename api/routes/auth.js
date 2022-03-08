@@ -49,6 +49,9 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+
+
 // login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -79,6 +82,10 @@ router.post("/login", async (req, res) => {
     return res.status(400).json("Invalid data");
   }
 });
+
+
+
+
 
 
 

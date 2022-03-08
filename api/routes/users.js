@@ -33,6 +33,8 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
+
+
 // get user according to id
 router.get("/find/:id", async (req, res) => {
   try {
@@ -43,6 +45,8 @@ router.get("/find/:id", async (req, res) => {
     res.status(500).json(`Unablt to update   user ${error}`);
   }
 });
+
+
 
 // delete user   --Admin (only admin can delete product)
 router.delete("/:id", verifyToken, async (req, res) => {
@@ -57,6 +61,8 @@ router.delete("/:id", verifyToken, async (req, res) => {
     res.status(401).json("You are not allowed to do this process");
   }
 });
+
+
 
 // get all product
 

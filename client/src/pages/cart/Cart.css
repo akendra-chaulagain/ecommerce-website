@@ -31,7 +31,7 @@
 }
 
 .leftSideCart {
-  height: 40vh;
+  height: 35vh;
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
@@ -45,8 +45,7 @@
   justify-content: space-between;
 }
 .leftSideCart img {
-  width: 35%;
-  width: 35vh;
+  /* width: 25%; */
   object-fit: contain;
   border-radius: 10px;
   display: flex;
@@ -63,6 +62,25 @@
   font-size: 20px;
   margin-left: 10px;
   padding: 3px 10px;
+}
+.leftsideproductInfodata h5{
+  padding: 2px 4px;
+  outline: none;
+  border: none;
+  margin-top: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(17, 10, 85);
+  text-decoration: underline;
+  width: 8%;
+  border: 1px solid red;
+
+
+}
+.leftsideproductInfodata h5:hover{
+  color: red;
+
 }
 
 .righrSideProductInfoPrice p {
