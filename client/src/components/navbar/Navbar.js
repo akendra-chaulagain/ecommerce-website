@@ -50,19 +50,15 @@ const Navbar = () => {
                   </li>
                 </>
               )}
-              {/* <li className="nav-item">
-                <Link className="nav-link " to="/register">
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Sign In
-                </Link>
-              </li> */}
+
               <li className="nav-item">
                 {/* <Link className="nav-link " to="/register">logOut</Link> */}
                 {/* <a className="nav-link" onClick={handleLogout}>LogOut</a> */}
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/order">
+                  Order
+                </Link>
               </li>
 
               {/* cart Icon */}
