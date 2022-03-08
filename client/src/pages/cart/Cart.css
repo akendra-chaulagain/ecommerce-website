@@ -31,11 +31,13 @@
 }
 
 .leftSideCart {
-  height: 40vh;
+  height: 38vh;
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: whitesmoke;
+  border-radius: 3px;
 }
 .cartproductInfo {
   margin-top: 30px;
@@ -43,15 +45,16 @@
 .leftSideproductInfo {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 .leftSideCart img {
-  width: 35%;
-  width: 35vh;
+  /* width: 25%; */
   object-fit: contain;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 .leftsideproductInfodata p {
   font-weight: 600;
@@ -64,6 +67,20 @@
   margin-left: 10px;
   padding: 3px 10px;
 }
+.leftsideproductInfodata h5 {
+  padding: 2px 4px;
+  outline: none;
+  border: none;
+  margin-top: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  color: red;
+  text-decoration: underline;
+}
+.leftsideproductInfodata h5:hover {
+  color: red;
+}
 
 .righrSideProductInfoPrice p {
   font-size: 32px;
@@ -71,56 +88,34 @@
   font-weight: 400;
 }
 
-/* check box */
-.checkBox {
-  height: 60vh;
-  border: 1px solid gray;
+/* checkBoxWithoutLogin */
+.containerInfo {
+  height: 20vh;
+  width: 100%;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
 }
-.checkBox h3 {
-  font-size: 35px;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+.containerInfo p {
+  font-size: 22px;
 }
-.checkBoxContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 70px;
-}
-.checkBoxInfo p {
-  font-size: 23px;
-}
-.checkBoxInfo span {
+.containerInfo span {
   font-weight: 600;
-  font-size: 25px;
 }
-.totalPrice p {
-  font-weight: 600;
-  font-size: 26px;
-}
-.totalPrice span {
-  font-weight: 500;
-  border: 2px solid black;
-  padding: 2px 4px;
-  color: red;
-}
-.checkOutButton {
-  display: flex;
-  justify-content: center;
-}
-.checkOutButton button {
-  padding: 4px 50px;
-  margin-top: 20px;
+.containerInfo button {
+  width: 100%;
+  margin-top: 10px;
   outline: none;
   border: none;
-  background-color: black;
-  color: white;
-}
-.checkOutButton button:hover {
   background-color: red;
   color: white;
+  font-size: 15px;
+  padding: 4px 5px;
+  border-radius: 5px;
 }
+
 
 @media only screen and (max-width: 778px) {
   .cartTopbarP {
