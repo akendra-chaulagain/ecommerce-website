@@ -10,6 +10,7 @@ import SingleProductPage from "./pages/singleProductPage/SingleProductPage";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Order from "./pages/order/Order";
+import Checkout from "./pages/checkoutBox/Checkout";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -24,12 +25,13 @@ const App = () => {
         <Route path="/products/single/:id" element={<SingleProductPage />} />
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
+        {/* checkOut page */}
+        <Route path="/payment" element={<Checkout />} />
         {/* order page */}
         <Route
           path="/order"
           element={user ? <Order /> : <Navigate to="/login" />}
         />
-
         {/* register page */}
         <Route
           path="/register"

@@ -1,0 +1,96 @@
+/* check box */
+.checkBox {
+  height: 100vh;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(228, 228, 228);
+}
+.wrappercheckBox {
+  background-color: white;
+  height: 50vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.wrappercheckBox h3 {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  text-decoration: underline;
+  margin-bottom: 15px;
+  color: gray;
+}
+.checkBoxContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.checkBoxInfo p {
+  font-size: 23px;
+}
+.checkBoxInfo span {
+  font-weight: 600;
+  font-size: 25px;
+}
+.totalPrice p {
+  font-weight: 600;
+  font-size: 26px;
+}
+.totalPrice span {
+  font-weight: 500;
+  border: 2px solid black;
+  padding: 2px 4px;
+  color: red;
+}
+.checkOutButton {
+  display: flex;
+  justify-content: center;
+}
+.checkOutButton button {
+  padding: 4px 50px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
+.checkOutButton button:hover {
+  background-color: red;
+  color: white;
+}
+
+
+@media only screen and (max-width: 778px) {
+  .wrappercheckBox {
+  height: 60vh;
+  width: 90%;
+}
+.wrappercheckBox h3 {
+  font-size: 25px;
+}
+.checkBoxInfo p {
+  font-size: 18px;
+}
+.checkOutButton button {
+  padding: 2px 30px;
+  margin-top: 20px;
+}
+.checkOutButton button:hover {
+  background-color: red;
+  color: white;
+}
+}
+
+@media only screen and (max-width: 280px) {
+  .wrappercheckBox {
+  height: 50vh;
+  width: 100%;
+}
+}
