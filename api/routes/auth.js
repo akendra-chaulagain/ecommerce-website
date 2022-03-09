@@ -12,8 +12,8 @@ const User = require("../models/User");
 
 // register user
 router.post("/register", async (req, res) => {
-  const { username, email, number, password, cpassword } = req.body;
-  if (!username || !email || !number || !password || !cpassword) {
+  const { username, email, number, password } = req.body;
+  if (!username || !email || !number || !password) {
     res.status(400).json("Enter all the data");
   }
   try {
@@ -22,16 +22,13 @@ router.post("/register", async (req, res) => {
     if (userEmail) {
       return res.status(500).json("Email already exist.Please enter new email");
       // to compare password and confirm password
-    } else if (password !== cpassword) {
-      return res.status(500).json("Password does not match");
     } else {
-      const user = new User({ username, email, password, number, cpassword });
+      const user = new User({ username, email, password, number });
 
       // generate salt to hash password
       const salt = await bcrypt.genSalt(12);
       // now we set user password to hashed password
       user.password = await bcrypt.hash(user.password, salt);
-      user.cpassword = await bcrypt.hash(user.cpassword, salt);
 
       // jsonwebtoken  when register
       const token = await user.generateToken();
@@ -48,9 +45,6 @@ router.post("/register", async (req, res) => {
     return res.status(400).json("unable to register data");
   }
 });
-
-
-
 
 // login
 router.post("/login", async (req, res) => {
@@ -82,13 +76,6 @@ router.post("/login", async (req, res) => {
     return res.status(400).json("Invalid data");
   }
 });
-
-
-
-
-
-
-
 
 // logout user
 router.get("/logout", verifyToken, async (req, res) => {

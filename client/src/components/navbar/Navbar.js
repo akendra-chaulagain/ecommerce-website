@@ -57,7 +57,7 @@ const Navbar = ({ setSearchProduct }) => {
               )}
               {/* order page */}
               <li className="nav-item">
-                <Link className="nav-link" to="/order">
+                <Link to="/order" className="nav-link">
                   Order
                 </Link>
               </li>

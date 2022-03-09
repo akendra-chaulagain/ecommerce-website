@@ -19,23 +19,38 @@ const Checkout = () => {
   const onToken = (token) => {
     setStripeToken(token);
   };
-
   // useffect for dtripe token
+  const [data, setdata] = useState({});
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await axios.post("/stripe/payment", {
+        const res = await axios.post("/stripe/payment", {
           tokenid: stripeToken.id,
           amount: cart.total * 10,
         });
         alert("success");
+        setdata(res.data);
       } catch (error) {
         console.log("unable to payment" + error);
       }
     };
     makeRequest();
   }, [stripeToken, cart.total]);
+  console.log(data);
 
+  // order list data
+  // id
+  const userId = data.id;
+  console.log(userId);
+  // amount
+  const amount = data.amount;
+  console.log(amount);
+  // status
+  const status = data.status;
+  console.log(status);
+  // address
+  // const address = data.billing_details.address;
+  // console.log(address);
   return (
     <>
       <div className="container-fluid checkBox">
@@ -63,11 +78,11 @@ const Checkout = () => {
                 name="All In One"
                 image="https://img.freepik.com/free-vector/hand-holding-shopping-bags_23-2147491522.jpg?size=338&ext=jpg"
                 billingAddress
-                shippingAddress
                 description={`Yor  amount is ${cart.total}`}
                 amount={cart.total * 100}
                 token={onToken}
                 stripeKey={key}
+                
               >
                 <button>CHECKOUT NOW</button>
               </StripeCheckout>

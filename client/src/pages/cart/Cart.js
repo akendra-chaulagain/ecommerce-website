@@ -29,10 +29,12 @@ const Cart = () => {
       {/* announcement */}
       <Announcementt />
       <Navbar />
+
       <div className="container-fuid cart">
         <div className="text-center cartTitle">Your Collection</div>
         <div className="row mt-1">
           {/* cart container */}
+
           <div className="col-md-9">
             {cartProduct?.map((item, id) => (
               <div className="row leftSideCart" key={id}>
@@ -53,7 +55,10 @@ const Cart = () => {
                       {/* Quiantity: <span>{item._id}</span> */}
                     </p>
                     {/* remove product */}
-                    <button className="mb-3" onClick={() => handleRemove(item._id)}>
+                    <button
+                      className="mb-3"
+                      onClick={() => handleRemove(item._id)}
+                    >
                       delete
                     </button>
                   </div>

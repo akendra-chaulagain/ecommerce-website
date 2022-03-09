@@ -53,7 +53,6 @@ const Product = () => {
       {/* import from navbar compomnents */}
       <Navbar setSearchProduct={setSearchProduct} />
       {/* if the user search then  this function will run and  fethc data from the database */}
-
       {searchProduct ? (
         <>
           <div className="container-fluid Product">
