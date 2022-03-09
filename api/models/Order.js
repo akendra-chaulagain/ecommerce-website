@@ -25,10 +25,6 @@ const orderSchema = new mongoose.Schema(
       type: Object,
       required: true,
     },
-    email: {
-      type: String,
-      required: true,
-    },
     status: {
       type: String,
       default: "pending",

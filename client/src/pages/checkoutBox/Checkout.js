@@ -19,7 +19,7 @@ const Checkout = () => {
   const onToken = (token) => {
     setStripeToken(token);
   };
-  // useffect for dtripe token
+  // useffect for stripe token
   const [data, setdata] = useState({});
   useEffect(() => {
     const makeRequest = async () => {
@@ -36,21 +36,17 @@ const Checkout = () => {
     };
     makeRequest();
   }, [stripeToken, cart.total]);
-  console.log(data);
 
-  // order list data
-  // id
-  const userId = data.id;
-  console.log(userId);
-  // amount
-  const amount = data.amount;
-  console.log(amount);
-  // status
-  const status = data.status;
-  console.log(status);
-  // address
-  // const address = data.billing_details.address;
-  // console.log(address);
+  // post order in database
+  const postOrder = async () => {
+    try {
+      const post = await axios.post("/orders", {});
+      console.log(post);
+    } catch (error) {
+      console.log("unable to post" + error);
+    }
+  };
+
   return (
     <>
       <div className="container-fluid checkBox">
@@ -82,9 +78,8 @@ const Checkout = () => {
                 amount={cart.total * 100}
                 token={onToken}
                 stripeKey={key}
-                
               >
-                <button>CHECKOUT NOW</button>
+                <button onClick={postOrder}>CHECKOUT NOW</button>
               </StripeCheckout>
             </div>
           </div>

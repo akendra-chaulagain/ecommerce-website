@@ -7,7 +7,6 @@ const verifyToken = require("../middleware/verifyToken");
 router.post("/payment", verifyToken, (req, res) => {
   stripe.charges.create(
     {
-      email: req.body.email,
       amount: req.body.amount,
       currency: "usd",
       source: req.body.tokenid,

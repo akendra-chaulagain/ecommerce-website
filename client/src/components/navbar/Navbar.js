@@ -15,7 +15,7 @@ const Navbar = ({ setSearchProduct }) => {
     <>
       <nav className="navbar navbar-expand-lg navbarContainer">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">
+          <Link className="navbar-brand" to="/">
             All In One
           </Link>
           {/* search box */}
