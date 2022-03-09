@@ -1,8 +1,6 @@
 import React from "react";
 import Category from "../../components/Category/Category";
 import Footer from "../../components/footer/Footer";
-import Announcementt from "../../components/announcenemt/Announcement";
-import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
@@ -26,12 +24,6 @@ const Home = () => {
 
   return (
     <>
-      {/* Announcementt import from the Announcementt component */}
-      <Announcementt />
-      {/* navbar import from the navbar component */}
-      <Navbar />
-      {/* slider import from slider component */}
-      {/* <Slider /> */}
       {/* Category import from category components */}
       <Category category={category} />
       {/* footer */}

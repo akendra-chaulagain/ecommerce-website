@@ -8,11 +8,7 @@ const Order = () => {
   return (
     <>
       {/* if the user is nor register then first login page open after login order page will on */}
-      {!user ? (
-        <>
-          <Login />
-        </>
-      ) : (
+      {user ? (
         <>
           <h1>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
@@ -22,6 +18,10 @@ const Order = () => {
             tempora tenetur libero ipsam optio recusandae, corporis deleniti a
             vel nihil consectetur asperiores, eos sint eius quod!
           </h1>
+        </>
+      ) : (
+        <>
+          <Login />
         </>
       )}
     </>
