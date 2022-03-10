@@ -4,13 +4,30 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
 const verifyToken = require("../middleware/verifyToken");
 const { v4: uuidv4 } = require("uuid");
 
+// database
+require("../connection/DB");
+// order models
+const Order = require("../models/Order");
+// create orders
+
+router.post("/", verifyToken, async (req, res) => {
+  const body = req.body;
+  try {
+    const createOrder = new Order(body);
+    const result = await createOrder.save();
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+});
+
 // strpie
 router.post("/payment", verifyToken, async (req, res) => {
   const { token, amount, cart, user } = req.body;
   try {
     const customer = await stripe.customers.create({
       email: token.email,
-      source: token,
+      source: token.id,
     });
     const payment = await stripe.charges.create(
       {
@@ -24,6 +41,22 @@ router.post("/payment", verifyToken, async (req, res) => {
       }
     );
     if (payment) {
+      const newOrder = new Order({
+        username: user.username,
+        email: user.email,
+        userid: user._id,
+        orderItems: cart,
+        amount: amount,
+        contact: user.number,
+        shippingAddress: {
+          street: token.card.address_line1,
+          city: token.card.address_city,
+          country: token.card.address_country,
+          pin: token.card.address_zip,
+        },
+        transactionId: customer.source,
+      });
+      await newOrder.save();
       res.send("success");
     } else {
       res.send("payment failed" + error);
@@ -34,18 +67,3 @@ router.post("/payment", verifyToken, async (req, res) => {
 });
 
 module.exports = router;
-
-// stripe.charges.create(
-//   {
-//     amount: req.body.amount,
-//     currency: "usd",
-//     source: req.body.tokenid,
-//   },
-//   (stripeErr, stripeRes) => {
-//     if (stripeErr) {
-//       res.status(500).json("strip error from strpie " + stripeErr);
-//     } else {
-//       res.status(200).json(stripeRes);
-//     }
-//   }
-// );

@@ -15,33 +15,33 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart);
 
   // user
-  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser.others);
+  console.log(user);
 
   // token for stripe
   const [stripeToken, setStripeToken] = useState(null);
   const onToken = (token) => {
     setStripeToken(token);
   };
+  console.log(stripeToken);
   // useffect for stripe token
-  const [data, setdata] = useState({});
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await axios.post("/stripe/payment", {
-          token: stripeToken.id,
+        await axios.post("/stripe/payment", {
+          token: stripeToken,
           amount: cart.total * 10,
           cart,
           user,
         });
         alert("success");
-        setdata(res.data);
+        // setdata(res.data);
       } catch (error) {
         console.log("unable to payment" + error);
       }
     };
     makeRequest();
   }, [stripeToken, cart.total, user, cart]);
-  console.log(data);
 
   return (
     <>
