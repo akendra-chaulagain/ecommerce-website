@@ -10,17 +10,7 @@ require("../connection/DB");
 // order schema and models
 const Order = require("../models/Order");
 
-// create orders
-router.post("/", verifyToken, async (req, res) => {
-  const body = req.body;
-  try {
-    const createOrder = new Order(body);
-    const result = await createOrder.save();
-    res.status(201).json(result);
-  } catch (error) {
-    res.status(401).json(error);
-  }
-});
+// cteate order is made in stripe components.stripe will create order when parmwnty is made
 
 // update order
 router.put("/:id", verifyToken, async (req, res) => {

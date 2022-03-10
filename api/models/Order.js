@@ -2,32 +2,33 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
-    userId: {
+    username: {
       type: String,
       required: true,
     },
-    products: [
-      {
-        productId: {
-          type: String,
-        },
-        quantity: {
-          type: Number,
-          default: 1,
-        },
-      },
-    ],
+    email: {
+      type: String,
+      required: true,
+    },
+
+    orderItems: [],
+
+    shippingAddress: {
+      type: Object,
+      // required: true,
+    },
+
     amount: {
       type: Number,
-      required: true,
+      // required: true,
     },
-    address: {
-      type: Object,
-      required: true,
-    },
-    status: {
+    isDelevired: {
       type: String,
-      default: "pending",
+      // required: true,
+    },
+    transactionId: {
+      type: String,
+      // required: true,
     },
   },
   { timestamps: true }
