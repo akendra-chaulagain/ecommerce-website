@@ -14,6 +14,9 @@ const Checkout = () => {
   // cart
   const cart = useSelector((state) => state.cart);
 
+  // user
+  const user = useSelector((state) => state.user.currentUser);
+
   // token for stripe
   const [stripeToken, setStripeToken] = useState(null);
   const onToken = (token) => {
@@ -25,8 +28,10 @@ const Checkout = () => {
     const makeRequest = async () => {
       try {
         const res = await axios.post("/stripe/payment", {
-          tokenid: stripeToken.id,
+          token: stripeToken.id,
           amount: cart.total * 10,
+          cart,
+          user,
         });
         alert("success");
         setdata(res.data);
@@ -35,17 +40,8 @@ const Checkout = () => {
       }
     };
     makeRequest();
-  }, [stripeToken, cart.total]);
-
-  // post order in database
-  const postOrder = async () => {
-    try {
-      const post = await axios.post("/orders", {});
-      console.log(post);
-    } catch (error) {
-      console.log("unable to post" + error);
-    }
-  };
+  }, [stripeToken, cart.total, user, cart]);
+  console.log(data);
 
   return (
     <>
@@ -73,13 +69,13 @@ const Checkout = () => {
               <StripeCheckout
                 name="All In One"
                 image="https://img.freepik.com/free-vector/hand-holding-shopping-bags_23-2147491522.jpg?size=338&ext=jpg"
-                billingAddress
+                shippingAddress
                 description={`Yor  amount is ${cart.total}`}
                 amount={cart.total * 100}
                 token={onToken}
                 stripeKey={key}
               >
-                <button onClick={postOrder}>CHECKOUT NOW</button>
+                <button>CHECKOUT NOW</button>
               </StripeCheckout>
             </div>
           </div>
