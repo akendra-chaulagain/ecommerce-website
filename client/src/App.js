@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Order from "./pages/order/Order";
 import Checkout from "./pages/checkoutBox/Checkout";
+import Success from "./pages/success/Success";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -25,6 +26,8 @@ const App = () => {
         <Route path="/products/single/:id" element={<SingleProductPage />} />
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
+        {/* success page */}
+        <Route path="/success-payment" element={<Success />} />
         {/* checkOut page */}
         <Route path="/payment" element={<Checkout />} />
         {/* order page */}
