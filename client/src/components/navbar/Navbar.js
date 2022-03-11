@@ -39,7 +39,7 @@ const Navbar = ({ setSearchProduct }) => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              {!user && (
+              {!user ? (
                 <>
                   {/* register */}
                   <li className="nav-item">
@@ -54,13 +54,22 @@ const Navbar = ({ setSearchProduct }) => {
                     </Link>
                   </li>
                 </>
+              ) : (
+                <>
+                  {/* order page */}
+                  <li className="nav-item">
+                    <Link to="/order" className="nav-link">
+                      Order
+                    </Link>
+                  </li>
+                  {/* login */}
+                  <li className="nav-item">
+                    <Link to="/order" className="nav-link">
+                      LogOut
+                    </Link>
+                  </li>
+                </>
               )}
-              {/* order page */}
-              <li className="nav-item">
-                <Link to="/order" className="nav-link">
-                  Order
-                </Link>
-              </li>
 
               {/* cart Icon */}
               <li className="nav-item">

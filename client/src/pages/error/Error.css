@@ -1,0 +1,53 @@
+.errorpage {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.1)),
+      url("../../../public/img/error.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-color: black;
+    color: white;
+  }
+
+ h1{
+    font-size: 90px;
+    letter-spacing: 3px;
+    
+}
+h3{
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.error-btn{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 5px 17px;
+    margin-top: 20px;
+    margin-left: 43%;
+  }
+  h2{
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 2px;
+
+  }
+  @media only screen and (max-width: 768px) {
+    .error-btn{
+    margin-left: 29%;
+
+    } 
+    h1{
+        font-size: 50px;
+        
+    }
+    h3{
+        font-size: 20px;
+    }
+  }

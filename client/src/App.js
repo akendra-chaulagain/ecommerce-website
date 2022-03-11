@@ -13,6 +13,7 @@ import Order from "./pages/order/Order";
 import Checkout from "./pages/checkoutBox/Checkout";
 import Success from "./pages/success/Success";
 import OrderInfo from "./pages/orderInfo/OrderInfo";
+import Error from "./pages/error/Error";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -45,6 +46,8 @@ const App = () => {
         />
         {/* login page */}
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        {/* error page import from error page */}
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );
