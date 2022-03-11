@@ -6,8 +6,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Footer from "../../components/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const navigate = useNavigate();
+
   // stripe public key import from the .env file
   const key = process.env.REACT_APP_STRIPE;
 
@@ -16,14 +19,12 @@ const Checkout = () => {
 
   // user
   const user = useSelector((state) => state.user.currentUser.others);
-  console.log(user);
 
   // token for stripe
   const [stripeToken, setStripeToken] = useState(null);
   const onToken = (token) => {
     setStripeToken(token);
   };
-  console.log(stripeToken);
   // useffect for stripe token
   useEffect(() => {
     const makeRequest = async () => {
@@ -34,14 +35,15 @@ const Checkout = () => {
           cart,
           user,
         });
-        alert("success");
+        navigate("/success-payment");
+
         // setdata(res.data);
       } catch (error) {
         console.log("unable to payment" + error);
       }
     };
     makeRequest();
-  }, [stripeToken, cart.total, user, cart]);
+  }, [stripeToken, cart.total, user, cart, navigate]);
 
   return (
     <>
