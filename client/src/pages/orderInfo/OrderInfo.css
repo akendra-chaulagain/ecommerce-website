@@ -1,0 +1,15 @@
+.OrderInfo{
+    height: 100vh;
+    width: 100%;
+}
+/* .wrapper{
+    margin-top: 5vh;
+} */
+.OrderInfo h1{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.OrderInfo h3{
+    text-decoration: underline;
+}

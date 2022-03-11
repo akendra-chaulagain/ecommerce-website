@@ -41,7 +41,7 @@ const Order = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {order.map((item, key) => (
+                  {order?.map((item, key) => (
                     <tr key={key}>
                       <td>{item._id}</td>
                       <td>{new Date(item.createdAt).toDateString()}</td>

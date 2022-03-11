@@ -1,9 +1,58 @@
-import React from 'react'
+import React from "react";
+import "./OrderInfo.css";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 const OrderInfo = () => {
-  return (
-      <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorem cum vel labore repellendus officia nemo consequuntur? Vitae atque facilis in impedit quo eveniet rerum quasi dicta dolorum dolor exercitationem ipsum ea eligendi illum reiciendis, aperiam eum optio laborum temporibus nostrum repellendus qui molestias quos consectetur? Deserunt, expedita architecto dignissimos omnis velit, blanditiis perferendis quisquam, obcaecati modi possimus odio veniam asperiores aspernatur. Mollitia aliquam quo voluptate suscipit maiores consequatur nobis ratione officia ducimus dolores, eos doloribus id error debitis optio aspernatur, repellat architecto dolorum quaerat cupiditate, enim temporibus dignissimos cumque nam. Voluptates repellendus saepe qui illum eius sapiente quibusdam commodi.</h1>
-  )
-}
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
 
-export default OrderInfo
+  //   get order according to id
+  const [order, setOrder] = useState({});
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await axios.get("/orders/find/" + path);
+        setOrder(res.data);
+      } catch (error) {}
+    };
+    getOrders();
+  }, [path]);
+  console.log(order);
+
+  return (
+    <div className="container OrderInfo">
+      <div className="row ">
+        <h1>Order Information</h1>
+        <div className="col-6 mt-4">
+          <h3>Order Items</h3>
+          {/* map function fro order items */}
+          {order.orderItems?.map((item, key) => (
+            <div key={key}>
+              {item.products.map((subItem, key) => (
+                <div key={key}>
+                  {subItem.name}
+                  <hr />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* address */}
+        <div className="col-3 mt-4">
+          <h3>Information</h3>
+          <p>Email :{order.email}</p>
+          <p>Contact no :{order.contact}</p>
+        </div>
+        <div className="col-3 mt-4">
+          <h3>TotalAmount</h3>${order.amount}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default OrderInfo;

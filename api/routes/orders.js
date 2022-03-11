@@ -58,13 +58,12 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 
 // get all order
 router.get("/", verifyToken, async (req, res) => {
-    try {
-      const allOrder = await Order.find().sort({ _id: -1 });
-      res.status(201).json(allOrder);
-    } catch (error) {
-      res.status(401).json(error);
-    }
- 
+  try {
+    const allOrder = await Order.find().sort({ _id: -1 });
+    res.status(201).json(allOrder);
+  } catch (error) {
+    res.status(401).json(error);
+  }
 });
 
 module.exports = router;
