@@ -58,16 +58,13 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 
 // get all order
 router.get("/", verifyToken, async (req, res) => {
-  if (req.user.id === req.params.id || req.user.isAdmin) {
     try {
-      const allOrder = await Order.find();
+      const allOrder = await Order.find().sort({ _id: -1 });
       res.status(201).json(allOrder);
     } catch (error) {
       res.status(401).json(error);
     }
-  } else {
-    res.status(401).json("Unable to get all order");
-  }
+ 
 });
 
 module.exports = router;

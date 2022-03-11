@@ -1,7 +1,7 @@
 import React from "react";
 import Done from "@material-ui/icons/DoneOutlined";
 import "./Success.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Success = () => {
   return (
