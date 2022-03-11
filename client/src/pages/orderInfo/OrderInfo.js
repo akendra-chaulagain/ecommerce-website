@@ -4,8 +4,11 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const OrderInfo = () => {
+  const navigate = useNavigate();
+
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -20,7 +23,17 @@ const OrderInfo = () => {
     };
     getOrders();
   }, [path]);
-  console.log(order);
+
+  // delete order
+  const handleDelete = async () => {
+    try {
+      await axios.delete("/orders/" + path);
+      alert("Success");
+      navigate("/order");
+    } catch (error) {
+      alert("unable to deleta");
+    }
+  };
 
   return (
     <div className="container OrderInfo">
@@ -50,6 +63,7 @@ const OrderInfo = () => {
         <div className="col-3 mt-4">
           <h3>TotalAmount</h3>${order.amount}
         </div>
+        <button onClick={handleDelete}>delete </button>
       </div>
     </div>
   );

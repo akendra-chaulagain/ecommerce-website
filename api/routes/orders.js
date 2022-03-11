@@ -34,16 +34,13 @@ router.put("/:id", verifyToken, async (req, res) => {
 
 // delete order
 router.delete("/:id", verifyToken, async (req, res) => {
-  if (req.user.id === req.params.id || req.user.isAdmin) {
     try {
       const deleteOrder = await Order.findByIdAndDelete(req.params.id);
       res.status(201).json(deleteOrder);
     } catch (error) {
       res.status(401).json(error);
     }
-  } else {
-    res.status(401).json("You are not allowed to delete other order");
-  }
+ 
 });
 
 // get individual order

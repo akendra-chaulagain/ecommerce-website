@@ -13,3 +13,14 @@
 .OrderInfo h3{
     text-decoration: underline;
 }
+.OrderInfo button{
+    height: 30px;
+    width: 30%;
+    margin-top: 20px;
+    outline: none;
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+    
+}
