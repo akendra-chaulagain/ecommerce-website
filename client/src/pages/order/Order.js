@@ -4,19 +4,25 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./Order.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Order = () => {
+  const user = useSelector((state) => state.user.currentUser.others);
   // get all order
   const [order, setOrder] = useState([]);
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await axios.get("/orders");
+        const res = await axios.post(`/orders/getusorder`, {
+          userFullId: user._id,
+        });
         setOrder(res.data);
-      } catch (error) {}
+      } catch (error) {
+        console.log("unable to get order");
+      }
     };
     getOrders();
-  }, []);
+  }, [user]);
 
   return (
     <>

@@ -29,9 +29,15 @@ const App = () => {
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
         {/* success page */}
-        <Route path="/success-payment" element={<Success />} />
+        <Route
+          path="/success-payment"
+          element={user ? <Success /> : <Navigate to="/login" />}
+        />
         {/* checkOut page */}
-        <Route path="/payment" element={<Checkout />} />
+        <Route
+          path="/payment"
+          element={user ? <Checkout /> : <Navigate to="/login" />}
+        />
         {/* single order page */}
         <Route path="/order/:id" element={<OrderInfo />} />
         {/* order page */}
