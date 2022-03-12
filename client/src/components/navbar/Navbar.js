@@ -22,7 +22,7 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
           {/* search box */}
           <input
             type="text"
-            placeholder="search"
+            placeholder="search your product"
             onChange={(e) => setSearchProduct(e.target.value)}
           />
           <button

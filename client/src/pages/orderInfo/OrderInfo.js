@@ -63,7 +63,7 @@ const OrderInfo = () => {
           <p>Username : {order.username}</p>
         </div>
         <div className="col-3 mt-4">
-          <h3>TotalAmount</h3>${order.amount}
+          <h3>Total</h3>${order.amount}
         </div>
         <button onClick={handleDelete}>delete </button>
       </div>

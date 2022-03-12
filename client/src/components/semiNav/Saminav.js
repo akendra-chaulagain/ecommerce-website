@@ -9,13 +9,18 @@ const SemiNav = ({ setCategoryData }) => {
         <div className="row">
           <div className="col-12">
             <ul className=" navBarItems">
+              {/* home */}
+              <li className="nav-itemLi">
+                <Link className="nav-itemLi" to="/">
+                  Home
+                </Link>
+              </li>
               {/* all products */}
               <li className="nav-itemLi">
                 <Link className="nav-itemLi" to="/allproducts">
-                  All
+                  All products
                 </Link>
               </li>
-              {}
               <li className="nav-itemLi">
                 <select onChange={(e) => setCategoryData(e.target.value)}>
                   <option value="electronic">Electronic</option>

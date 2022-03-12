@@ -17,7 +17,6 @@ const Category = ({ category, total }) => {
   const [searchProduct, setSearchProduct] = useState("");
   const [data, setData] = useState("");
 
-  // search bar
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -30,15 +29,15 @@ const Category = ({ category, total }) => {
     getProduct();
   }, [searchProduct]);
 
-  // function for Pagination
+  //  Pagination for category
   const [page, setPage] = useState(1);
-  const [postPerPage, setpostPerPage] = useState(2);
+  const [postPerPage, setpostPerPage] = useState(6);
 
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
   const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);
 
-  //  this below code will run when the user slect the vategory from select box
+  //  this below code will run when the user select the vategory from select box
   const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
 
@@ -53,6 +52,17 @@ const Category = ({ category, total }) => {
     };
     getOrders();
   }, [categoryData]);
+
+  // pagination for select page
+  // const [selectPage, setselectPage] = useState(1);
+  // const [selectPostPerPage, setSelectPostPerPage] = useState(6);
+
+  // const selectOfLastPage = page + selectPostPerPage;
+  // const selectOfFirstPage = selectOfLastPage - selectPostPerPage;
+  // const selectcurrestPost = Allproducts.slice(
+  //   selectOfFirstPage,
+  //   indexOfLastPage
+  // );
 
   return (
     <>
@@ -94,27 +104,44 @@ const Category = ({ category, total }) => {
               {/* if the item is selected from the select option this code will run */}
               <div className="container-fluid Product">
                 <div className="row">
-                  {Allproducts.map((item, id) => (
-                    <div className="col-md-3 col-4 searchContainer" key={id}>
-                      <Link
-                        className="singleproductLink"
-                        to={`/products/single/${item._id}`}
-                      >
-                        <div className="singleProduct">
-                          <img className="img-fluid" src={item.img} alt="img" />
-                          <div className="productInfo">
-                            <p>{item.name}</p>
+                  <>
+                    {Allproducts.map((item, id) => (
+                      <div className="col-md-3 col-4 searchContainer" key={id}>
+                        <Link
+                          className="singleproductLink"
+                          to={`/products/single/${item._id}`}
+                        >
+                          <div className="singleProduct">
+                            <img
+                              className="img-fluid"
+                              src={item.img}
+                              alt="img"
+                            />
+                            <div className="productInfo">
+                              <p>{item.name}</p>
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
+                        </Link>
+                      </div>
+                    ))}
+                    {/*  Pagination  for select page*/}
+                    {/* <div className=" Pagination">
+                      <div className=" PaginationInfo">
+                        <Pagination
+                          onChange={(value) => setselectPage(value)}
+                          pageSize={postPerPage}
+                          total={total}
+                          current={selectPage}
+                        />
+                      </div>
+                    </div> */}
+                  </>
                 </div>
               </div>
             </>
           ) : (
             <>
-              {/* if the item is not selected from the select option then omly category section will show */}
+              {/* if the item is not selected from the select option then only category section will show */}
               <div className="container-fluid category">
                 <div className="row">
                   {/* map of category */}
@@ -125,20 +152,19 @@ const Category = ({ category, total }) => {
                   ))}
                 </div>
               </div>
+              {/*  Pagination  for category*/}
+              <div className=" Pagination">
+                <div className=" PaginationInfo">
+                  <Pagination
+                    onChange={(value) => setPage(value)}
+                    pageSize={postPerPage}
+                    total={total}
+                    current={page}
+                  />
+                </div>
+              </div>
             </>
           )}
-
-          {/*  Pagination */}
-          <div className=" Pagination">
-            <div className=" PaginationInfo">
-              <Pagination
-                onChange={(value) => setPage(value)}
-                pageSize={postPerPage}
-                total={total}
-                current={page}
-              />
-            </div>
-          </div>
 
           {/* recommondation */}
           {!user && (
