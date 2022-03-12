@@ -34,20 +34,30 @@ router.put("/:id", verifyToken, async (req, res) => {
 
 // delete order
 router.delete("/:id", verifyToken, async (req, res) => {
-    try {
-      const deleteOrder = await Order.findByIdAndDelete(req.params.id);
-      res.status(201).json(deleteOrder);
-    } catch (error) {
-      res.status(401).json(error);
-    }
- 
+  try {
+    const deleteOrder = await Order.findByIdAndDelete(req.params.id);
+    res.status(201).json(deleteOrder);
+  } catch (error) {
+    res.status(401).json(error);
+  }
 });
 
 // get individual order
+router.post("/getusorder", verifyToken, async (req, res) => {
+  const { userFullId } = req.body;
+  try {
+    const getIndividulaOrder = await Order.find({ userFullId });
+    res.status(200).json(getIndividulaOrder);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+});
+
+// get individual  find by id
 router.get("/find/:id", verifyToken, async (req, res) => {
   try {
-    const getIndividulaOrder = await Order.findById(req.params.id);
-    res.status(200).json(getIndividulaOrder);
+    const getOrderById = await Order.findById(req.params.id);
+    res.status(200).json(getOrderById);
   } catch (error) {
     res.status(401).json(error);
   }

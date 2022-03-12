@@ -30,6 +30,9 @@ const productSchema = new mongoose.Schema(
     feature: {
       type: String,
     },
+    cat: {
+      type: String,
+    },
     brand: {
       type: String,
       default: "",

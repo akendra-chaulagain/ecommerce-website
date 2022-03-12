@@ -14,6 +14,7 @@ import Checkout from "./pages/checkoutBox/Checkout";
 import Success from "./pages/success/Success";
 import OrderInfo from "./pages/orderInfo/OrderInfo";
 import Error from "./pages/error/Error";
+import AllProduct from "./pages/allProducts/AllProduct";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -29,9 +30,15 @@ const App = () => {
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
         {/* success page */}
-        <Route path="/success-payment" element={<Success />} />
+        <Route
+          path="/success-payment"
+          element={user ? <Success /> : <Navigate to="/login" />}
+        />
         {/* checkOut page */}
-        <Route path="/payment" element={<Checkout />} />
+        <Route
+          path="/payment"
+          element={user ? <Checkout /> : <Navigate to="/login" />}
+        />
         {/* single order page */}
         <Route path="/order/:id" element={<OrderInfo />} />
         {/* order page */}
@@ -39,6 +46,8 @@ const App = () => {
           path="/order"
           element={user ? <Order /> : <Navigate to="/login" />}
         />
+        {/* all product page */}
+        <Route path="/allproducts" element={<AllProduct />} />
         {/* register page */}
         <Route
           path="/register"

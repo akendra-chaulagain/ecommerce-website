@@ -44,7 +44,7 @@ router.post("/payment", verifyToken, async (req, res) => {
       const newOrder = new Order({
         username: user.username,
         email: user.email,
-        userid: user._id,
+        userFullId: user._id,
         orderItems: cart,
         amount: amount,
         contact: user.number,

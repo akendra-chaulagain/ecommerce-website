@@ -29,7 +29,7 @@ const OrderInfo = () => {
     try {
       await axios.delete("/orders/" + path);
       alert("Success");
-      navigate("/order");
+      navigate("/");
     } catch (error) {
       alert("unable to deleta");
     }
@@ -46,6 +46,7 @@ const OrderInfo = () => {
             <div key={key}>
               {item.products.map((subItem, key) => (
                 <div key={key}>
+                  <img src={subItem.img} alt="" />
                   {subItem.name}
                   <hr />
                 </div>
@@ -59,9 +60,10 @@ const OrderInfo = () => {
           <h3>Information</h3>
           <p>Email :{order.email}</p>
           <p>Contact no :{order.contact}</p>
+          <p>Username : {order.username}</p>
         </div>
         <div className="col-3 mt-4">
-          <h3>TotalAmount</h3>${order.amount}
+          <h3>Total</h3>${order.amount}
         </div>
         <button onClick={handleDelete}>delete </button>
       </div>

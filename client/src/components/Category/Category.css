@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 5vh;
+  margin-top: 2vh;
 }
 .reconmondationInfo {
   display: flex;
@@ -38,4 +38,13 @@
 }
 .reconmondationInfo span {
   margin-left: 5%;
+}
+/* Pagination */
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 30px;
 }

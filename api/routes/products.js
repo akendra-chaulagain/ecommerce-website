@@ -72,13 +72,13 @@ router.delete("/:id", verifyToken, async (req, res) => {
 // get all product
 router.get("/getall", async (req, res) => {
   const qnew = req.query.new;
-  const qcategory = req.query.category;
+  const qcategory = req.query.cat;
   const qPrice = req.query.price;
   try {
     let product;
     // when we search for new product this gives latest five products
     if (qnew) {
-      product = await Product.find().sort({ createdAt: -1 }).limit(10);
+      product = await Product.find().sort({ createdAt: -1 }).limit(1);
       // when we search for category section this else if function will run
     } else if (qcategory) {
       // search according to the price
@@ -91,7 +91,7 @@ router.get("/getall", async (req, res) => {
         });
       } else {
         product = await Product.find({
-          category: {
+          cat: {
             $in: [qcategory],
           },
         });
@@ -106,17 +106,17 @@ router.get("/getall", async (req, res) => {
 });
 
 // pagination
-router.get("/", async (req, res) => {
-  try {
-    const { page, limit } = req.query;
-    const product = await Product.find()
-      .limit(limit * 1)
-      .skip((page - 1) * limit);
-    res.status(201).json({ tootal: product.length, product });
-  } catch (error) {
-    res.status(500).json(`Unablt to update   product ${error}`);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const { page, limit } = req.query;
+//     const product = await Product.find()
+//       .limit(limit * 1)
+//       .skip((page - 1) * limit);
+//     res.status(201).json({ tootal: product.length, product });
+//   } catch (error) {
+//     res.status(500).json(`Unablt to update   product ${error}`);
+//   }
+// });
 
 // search product from database according to name
 router.get("/search", async (req, res) => {

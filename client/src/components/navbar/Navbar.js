@@ -4,9 +4,10 @@ import Cart from "@material-ui/icons/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 import Menu from "@material-ui/icons/Menu";
 import { useSelector } from "react-redux";
+import SemiNav from "../semiNav/Saminav";
 
 // navbar
-const Navbar = ({ setSearchProduct }) => {
+const Navbar = ({ setSearchProduct, setCategoryData }) => {
   const user = useSelector((state) => state.user.currentUser);
   // use selector from react redux
   const quantity = useSelector((state) => state.cart.quantity);
@@ -21,7 +22,7 @@ const Navbar = ({ setSearchProduct }) => {
           {/* search box */}
           <input
             type="text"
-            placeholder="search"
+            placeholder="search your product"
             onChange={(e) => setSearchProduct(e.target.value)}
           />
           <button
@@ -62,10 +63,9 @@ const Navbar = ({ setSearchProduct }) => {
                       Order
                     </Link>
                   </li>
-                  {/* login */}
                   <li className="nav-item">
-                    <Link to="/order" className="nav-link">
-                      LogOut
+                    <Link to="/profile" className="nav-link">
+                      Profile
                     </Link>
                   </li>
                 </>
@@ -84,6 +84,8 @@ const Navbar = ({ setSearchProduct }) => {
           </div>
         </div>
       </nav>
+      {/* samiNavbar  import from component folder*/}
+      <SemiNav setCategoryData={setCategoryData} />
     </>
   );
 };

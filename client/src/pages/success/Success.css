@@ -32,3 +32,11 @@
 .successInfo button:hover{
     background-color: rgb(235, 74, 74);
 }
+@media only screen and (max-width: 778px) {
+  .successInfo h1{
+    font-size: 30px;
+}
+.successInfo button{
+    padding: 3px 20px;
+}
+}
