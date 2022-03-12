@@ -1,21 +1,48 @@
 .SaminavbarContainer {
-  background-color: rgb(13, 13, 109);
+  background-color: rgb(48, 47, 47);
   height: 6vh;
-  width: 100%;
+  overflow: hidden;
 }
-.SaminavbarContainer li {
-  font-size: 19px;
+.navBarItems {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.navBarItems .nav-itemLi {
+  font-size: 24px;
   color: white;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
+  margin-left: 40px;
+  list-style: none;
+}
+.navBarItems .nav-itemLi:hover {
+  color: red;
+}
+.navBarItems .nav-itemLi select {
+  background-color: rgb(255, 255, 255);
+  font-size: 18px;
+  padding: 3px 20px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
 }
 
 @media only screen and (max-width: 778px) {
   .SaminavbarContainer {
-    height: 4vh;
+    height: 5vh;
   }
-  .SaminavbarContainer li {
-    font-size: 14px;
+
+  .navBarItems .nav-itemLi {
+    font-size: 15px;
+    margin-left: 4px;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .SaminavbarContainer {
+    height: 5vh;
+    width: 100%;
+  }
+  .navBarItems .nav-itemLi {
+    font-size: 12px;
   }
 }

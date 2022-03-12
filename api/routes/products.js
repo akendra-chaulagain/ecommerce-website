@@ -72,7 +72,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
 // get all product
 router.get("/getall", async (req, res) => {
   const qnew = req.query.new;
-  const qcategory = req.query.category;
+  const qcategory = req.query.cat;
   const qPrice = req.query.price;
   try {
     let product;
@@ -91,7 +91,7 @@ router.get("/getall", async (req, res) => {
         });
       } else {
         product = await Product.find({
-          category: {
+          cat: {
             $in: [qcategory],
           },
         });

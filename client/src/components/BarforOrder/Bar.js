@@ -6,12 +6,12 @@ const Bar = () => {
   return (
     <>
       <nav className="barContainer">
-        <div className="container-fluid">
-          <ul>
+        <div className="container">
+          
             <Link to="/">
-              <li className="nav-item "> home page </li>
+              <span className="nav-item "> home page </span>
             </Link>
-          </ul>
+          
         </div>
       </nav>
     </>

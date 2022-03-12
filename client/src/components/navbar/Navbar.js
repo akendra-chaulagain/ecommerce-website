@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import SemiNav from "../semiNav/Saminav";
 
 // navbar
-const Navbar = ({ setSearchProduct }) => {
+const Navbar = ({ setSearchProduct, setCategoryData }) => {
   const user = useSelector((state) => state.user.currentUser);
   // use selector from react redux
   const quantity = useSelector((state) => state.cart.quantity);
@@ -85,7 +85,7 @@ const Navbar = ({ setSearchProduct }) => {
         </div>
       </nav>
       {/* samiNavbar  import from component folder*/}
-      <SemiNav />
+      <SemiNav setCategoryData={setCategoryData} />
     </>
   );
 };
