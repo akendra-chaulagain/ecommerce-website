@@ -1,0 +1,26 @@
+.barContainer {
+  background-color: rgb(13, 13, 109);
+  height: 6vh;
+  width: 100%;
+}
+.barContainer li {
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.barContainer li:hover{
+    color: red;
+}
+
+@media only screen and (max-width: 778px) {
+  .barContainer {
+    height: auto;
+  }
+  .barContainer li {
+    font-size: 19px;
+  }
+}

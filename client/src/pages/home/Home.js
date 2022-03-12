@@ -28,6 +28,7 @@ const Home = () => {
     <>
       {/* Category import from category components */}
       <Category category={category} total={total} />
+      
       {/* footer */}
       <Footer />
     </>

@@ -14,10 +14,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.left .right .middle,
-h3 {
+.footer h3 {
   font-weight: 600;
   font-size: 21px;
+  color: white;
 }
 
 .wrapper span {

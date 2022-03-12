@@ -7,7 +7,7 @@ const Error = () => {
     <>
       <div className="container-fluid errorpage">
         <div className="row ">
-          <div className="col-12  mt-5 pt-5">
+          <div className="col-12 containerError mt-5 pt-5">
             <h1 className="mt-5 pt-3 text-center">Lost Your Way?</h1>
             <h3 className="text-center">
               Sorry, we can't find the page. you'll find lots to explore on the

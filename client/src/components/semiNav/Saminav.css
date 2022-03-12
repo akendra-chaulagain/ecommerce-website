@@ -1,0 +1,21 @@
+.SaminavbarContainer {
+  background-color: rgb(13, 13, 109);
+  height: 6vh;
+  width: 100%;
+}
+.SaminavbarContainer li {
+  font-size: 19px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 778px) {
+  .SaminavbarContainer {
+    height: 4vh;
+  }
+  .SaminavbarContainer li {
+    font-size: 14px;
+  }
+}

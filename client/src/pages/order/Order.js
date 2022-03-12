@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import "./Order.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Bar from "../../components/BarforOrder/Bar"
 
 const Order = () => {
   const user = useSelector((state) => state.user.currentUser.others);
@@ -26,6 +27,8 @@ const Order = () => {
 
   return (
     <>
+    {/* bar for order and payment */}
+    <Bar/>
       {/* order page */}
       <div className="container orderContainer">
         <div className="row">
@@ -54,6 +57,11 @@ const Order = () => {
               ))}
             </tbody>
           </table>
+          {/* <h4>
+            <Link className="link" to="/">
+              Home Page
+            </Link>
+          </h4> */}
         </div>
       </div>
     </>

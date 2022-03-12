@@ -4,6 +4,7 @@ import Cart from "@material-ui/icons/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 import Menu from "@material-ui/icons/Menu";
 import { useSelector } from "react-redux";
+import SemiNav from "../semiNav/Saminav";
 
 // navbar
 const Navbar = ({ setSearchProduct }) => {
@@ -62,10 +63,9 @@ const Navbar = ({ setSearchProduct }) => {
                       Order
                     </Link>
                   </li>
-                  {/* login */}
                   <li className="nav-item">
-                    <Link to="/order" className="nav-link">
-                      LogOut
+                    <Link to="/profile" className="nav-link">
+                      Profile
                     </Link>
                   </li>
                 </>
@@ -84,6 +84,8 @@ const Navbar = ({ setSearchProduct }) => {
           </div>
         </div>
       </nav>
+      {/* samiNavbar  import from component folder*/}
+      <SemiNav />
     </>
   );
 };

@@ -106,17 +106,17 @@ router.get("/getall", async (req, res) => {
 });
 
 // pagination
-router.get("/", async (req, res) => {
-  try {
-    const { page, limit } = req.query;
-    const product = await Product.find()
-      .limit(limit * 1)
-      .skip((page - 1) * limit);
-    res.status(201).json({ tootal: product.length, product });
-  } catch (error) {
-    res.status(500).json(`Unablt to update   product ${error}`);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const { page, limit } = req.query;
+//     const product = await Product.find()
+//       .limit(limit * 1)
+//       .skip((page - 1) * limit);
+//     res.status(201).json({ tootal: product.length, product });
+//   } catch (error) {
+//     res.status(500).json(`Unablt to update   product ${error}`);
+//   }
+// });
 
 // search product from database according to name
 router.get("/search", async (req, res) => {

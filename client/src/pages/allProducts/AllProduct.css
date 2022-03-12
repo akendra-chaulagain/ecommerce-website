@@ -1,0 +1,44 @@
+
+.allProduct {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin-top: 3vh;
+}
+
+.allProduct img {
+  border-radius: 5px;
+  height: 35vh;
+  width: 100%;
+  margin-top: 1vh;
+  object-fit: contain;
+}
+
+.productInfo p {
+  text-align: start;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.AllproductLink {
+  color: inherit;
+  text-decoration: none;
+}
+.allProduct:hover {
+  color: red;
+}
+
+@media only screen and (max-width: 778px) {
+  .allProduct img {
+    border-radius: 5px;
+    height: 10vh;
+    width: 100%;
+  }
+  .productInfo p {
+    text-align: start;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+}

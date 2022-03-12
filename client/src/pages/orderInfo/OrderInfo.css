@@ -25,3 +25,8 @@
   color: white;
   border-radius: 5px;
 }
+.OrderInfo img{
+  height: 10vh;
+  width: 100%;
+  object-fit: contain;
+}
