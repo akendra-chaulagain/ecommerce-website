@@ -8,8 +8,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import Announcementt from "../announcenemt/Announcement";
 import Navbar from "../navbar/Navbar";
+import { Pagination } from "antd";
 
-const Category = ({ category }) => {
+const Category = ({ category, total }) => {
   const user = useSelector((state) => state.user.currentUser);
 
   // usestate for search
@@ -28,6 +29,14 @@ const Category = ({ category }) => {
     };
     getProduct();
   }, [searchProduct]);
+
+  // function for Pagination
+  const [page, setPage] = useState(1);
+  const [postPerPage, setpostPerPage] = useState(2);
+
+  const indexOfLastPage = page + postPerPage;
+  const indexOfFirstPage = indexOfLastPage - postPerPage;
+  const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);
 
   return (
     <>
@@ -64,11 +73,23 @@ const Category = ({ category }) => {
           <div className="container-fluid category">
             <div className="row">
               {/* map of category */}
-              {category?.map((item, id) => (
+              {currestPost?.map((item, id) => (
                 <div className=" col-lg-3 col-6 category_box" key={id}>
                   <SingleCategory item={item} />
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/*  Pagination */}
+          <div className=" Pagination">
+            <div className=" PaginationInfo">
+              <Pagination
+                onChange={(value) => setPage(value)}
+                pageSize={postPerPage}
+                total={total}
+                current={page}
+              />
             </div>
           </div>
 

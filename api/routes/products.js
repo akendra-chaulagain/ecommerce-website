@@ -78,7 +78,7 @@ router.get("/getall", async (req, res) => {
     let product;
     // when we search for new product this gives latest five products
     if (qnew) {
-      product = await Product.find().sort({ createdAt: -1 }).limit(10);
+      product = await Product.find().sort({ createdAt: -1 }).limit(1);
       // when we search for category section this else if function will run
     } else if (qcategory) {
       // search according to the price

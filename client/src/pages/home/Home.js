@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const Home = () => {
   const [category, setCategory] = useState([]);
+  const [total, setTotal] = useState("");
 
   // getting category data from database
   useEffect(() => {
@@ -15,6 +16,7 @@ const Home = () => {
       try {
         const res = await axios.get("/categories");
         setCategory(res.data);
+        setTotal(res.data.length);
       } catch (error) {
         console.log(error);
       }
@@ -25,7 +27,7 @@ const Home = () => {
   return (
     <>
       {/* Category import from category components */}
-      <Category category={category} />
+      <Category category={category} total={total} />
       {/* footer */}
       <Footer />
     </>

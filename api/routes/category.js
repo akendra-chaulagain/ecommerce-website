@@ -86,5 +86,27 @@ router.get("/", async (req, res) => {
     res.status(400).json(error);
   }
 });
+// pagination
+router.get("/pagn", async (req, res) => {
+  try {
+    const { page, limit } = req.query;
+    const category = await Category.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
+    res.status(201).json({ tootal: category.length, category });
+  } catch (error) {
+    res.status(500).json(`Unablt to pagn   category ${error}`);
+  }
+});
+
+// find number of page
+router.get("/number", async (req, res) => {
+  try {
+    const categoryNumber = await Category.find();
+    res.status(201).json({ tootal: categoryNumber.length / 2 });
+  } catch (error) {
+    res.status(500).json(`Unablt to get    product number ${error}`);
+  }
+});
 
 module.exports = router;
