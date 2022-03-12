@@ -3,6 +3,7 @@
   text-align: center;
   width: 100%;
   margin-top: 3vh;
+  border-radius: 10px;
 }
 
 .singleProduct img {
@@ -30,14 +31,14 @@
 
 @media only screen and (max-width: 778px) {
   .singleProduct img {
-  border-radius: 5px;
-  height: 10vh;
-  width: 100%;
-}
-.productInfo p {
-  text-align: start;
-  margin: 0px;
-  font-size: 10px;
-  font-weight: 500;
-}
+    border-radius: 5px;
+    height: 10vh;
+    width: 100%;
+  }
+  .productInfo p {
+    text-align: start;
+    margin: 0px;
+    font-size: 10px;
+    font-weight: 500;
+  }
 }

@@ -46,12 +46,31 @@ const Product = () => {
     getProduct();
   }, [searchProduct]);
 
+  //  this below code will run when the user select the category from select box
+  const [AllproductsCat, setAllProductscat] = useState([]);
+  const [categoryData, setCategoryData] = useState("");
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await axios.get(`/products/getall?cat=${categoryData}`);
+        setAllProductscat(res.data.product);
+      } catch (error) {
+        console.log("unable to get order");
+      }
+    };
+    getOrders();
+  }, [categoryData]);
+
   return (
     <>
       {/* import from announcemrnt compomnents */}
       <Announcementt />
       {/* import from navbar compomnents */}
-      <Navbar setSearchProduct={setSearchProduct} />
+      <Navbar
+        setSearchProduct={setSearchProduct}
+        setCategoryData={setCategoryData}
+      />
       {/* if the user search then  this function will run and  fethc data from the database */}
       {searchProduct ? (
         <>
@@ -77,25 +96,58 @@ const Product = () => {
         </>
       ) : (
         <>
-          {/* all product will shown when search function in not in process */}
-          <div className="container-fluid Product">
-            <div className="productheader">
-              <h3>RESULTS</h3>
-              <p>
-                Price and other details may vary based on product size and
-                color.
-              </p>
-            </div>
-            <hr />
-            {/* map method is used to show all the products   */}
-            <div className="row">
-              {getCategory?.map((product, i) => (
-                <div className="col-md-3 col-4" key={i}>
-                  <SingleProduct index={i} product={product} />
+          {categoryData ? (
+            <>
+              {/* if the item is selected from the select option this code will run */}
+              <div className="container-fluid Product">
+                <div className="row">
+                  <>
+                    {AllproductsCat.map((item, id) => (
+                      <div className="col-md-3 col-4 searchContainer" key={id}>
+                        <Link
+                          className="singleproductLink"
+                          to={`/products/single/${item._id}`}
+                        >
+                          <div className="singleProduct">
+                            <img
+                              className="img-fluid"
+                              src={item.img}
+                              alt="img"
+                            />
+                            <div className="productInfo">
+                              <p>{item.name}</p>
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* all product will shown when search function in not in process */}
+              <div className="container-fluid Product">
+                <div className="productheader">
+                  <h3>RESULTS</h3>
+                  <p>
+                    Price and other details may vary based on product size and
+                    color.
+                  </p>
+                </div>
+                <hr />
+                {/* map method is used to show all the products   */}
+                <div className="row">
+                  {getCategory?.map((product, i) => (
+                    <div className="col-md-3 col-4" key={i}>
+                      <SingleProduct index={i} product={product} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </>
       )}
       {/* footer */}

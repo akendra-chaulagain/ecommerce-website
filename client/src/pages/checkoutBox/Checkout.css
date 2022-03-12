@@ -57,31 +57,30 @@
   color: white;
 }
 
-
 @media only screen and (max-width: 778px) {
   .wrappercheckBox {
-  height: 60vh;
-  width: 90%;
-}
-.wrappercheckBox h3 {
-  font-size: 25px;
-}
-.checkBoxInfo p {
-  font-size: 18px;
-}
-.checkOutButton button {
-  padding: 2px 30px;
-  margin-top: 20px;
-}
-.checkOutButton button:hover {
-  background-color: red;
-  color: white;
-}
+    height: 60vh;
+    width: 90%;
+  }
+  .wrappercheckBox h3 {
+    font-size: 25px;
+  }
+  .checkBoxInfo p {
+    font-size: 18px;
+  }
+  .checkOutButton button {
+    padding: 2px 30px;
+    margin-top: 20px;
+  }
+  .checkOutButton button:hover {
+    background-color: red;
+    color: white;
+  }
 }
 
 @media only screen and (max-width: 280px) {
   .wrappercheckBox {
-  height: 50vh;
-  width: 100%;
-}
+    height: 50vh;
+    width: 100%;
+  }
 }

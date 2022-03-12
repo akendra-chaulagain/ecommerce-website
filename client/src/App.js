@@ -15,6 +15,7 @@ import Success from "./pages/success/Success";
 import OrderInfo from "./pages/orderInfo/OrderInfo";
 import Error from "./pages/error/Error";
 import AllProduct from "./pages/allProducts/AllProduct";
+import Profile from "./pages/profile/Profile";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -29,6 +30,9 @@ const App = () => {
         <Route path="/products/single/:id" element={<SingleProductPage />} />
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
+        {/* profile */}
+        {/* cart page */}
+        <Route path="/profile" element={<Profile />} />
         {/* success page */}
         <Route
           path="/success-payment"
