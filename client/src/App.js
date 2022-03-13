@@ -16,9 +16,12 @@ import OrderInfo from "./pages/orderInfo/OrderInfo";
 import Error from "./pages/error/Error";
 import AllProduct from "./pages/allProducts/AllProduct";
 import Profile from "./pages/profile/Profile";
+import ChangePassword from "./pages/changepassword/ChangePassword";
 
 const App = () => {
-  const user = useSelector((state) => state.user.currentUser);
+  // const user = useSelector((state) => state.user.currentUser);
+  const user = true;
+
   return (
     <>
       <Routes>
@@ -31,8 +34,10 @@ const App = () => {
         {/* cart page */}
         <Route path="/cart" element={<Cart />} />
         {/* profile */}
-        {/* cart page */}
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate to="/" />}
+        />
         {/* success page */}
         <Route
           path="/success-payment"
@@ -44,7 +49,10 @@ const App = () => {
           element={user ? <Checkout /> : <Navigate to="/login" />}
         />
         {/* single order page */}
-        <Route path="/order/:id" element={<OrderInfo />} />
+        <Route
+          path="/order/:id"
+          element={user ? <OrderInfo /> : <Navigate to="/" />}
+        />
         {/* order page */}
         <Route
           path="/order"
@@ -59,6 +67,12 @@ const App = () => {
         />
         {/* login page */}
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        {/* change password page */}
+        <Route
+          path="/changePassword"
+          element={user ? <ChangePassword /> : <Navigate to="/" />}
+        />
+
         {/* error page import from error page */}
         <Route path="*" element={<Error />} />
       </Routes>
