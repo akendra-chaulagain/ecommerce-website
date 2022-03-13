@@ -19,8 +19,7 @@ import Profile from "./pages/profile/Profile";
 import ChangePassword from "./pages/changepassword/ChangePassword";
 
 const App = () => {
-  // const user = useSelector((state) => state.user.currentUser);
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <>
@@ -69,7 +68,7 @@ const App = () => {
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         {/* change password page */}
         <Route
-          path="/changePassword"
+          path="/profile/changePassword"
           element={user ? <ChangePassword /> : <Navigate to="/" />}
         />
 

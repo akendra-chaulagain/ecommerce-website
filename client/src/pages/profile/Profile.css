@@ -55,14 +55,14 @@
 /* change password span */
 .changePassword {
   margin-left: 7%;
- margin-top: 15px;
+  margin-top: 15px;
 }
-.changePassword span{
+.changePassword span {
   color: red;
   font-size: 16px;
   cursor: pointer;
 }
-.changePassword span:hover{
+.changePassword span:hover {
   text-decoration: underline;
   color: black;
 }
@@ -70,28 +70,34 @@
 /* home page link */
 .homepageLink {
   margin-left: 10%;
-  font-size: 18px;
   cursor: pointer;
-  color: red;
-  text-decoration: underline;
-  margin-top: 10px;
+  margin-top: 4vh;
 }
-.homepageLink:hover {
-  color: rgb(0, 0, 0);
-  text-decoration: underline;
+.homepageLink span {
+  color: rgb(255, 0, 0);
 }
+
 .link {
   color: inherit;
 }
 .link:hover {
   color: inherit;
 }
+.profile h3 {
+  font-weight: 600;
+  font-size: 22px;
+}
 
 @media only screen and (max-width: 768px) {
   .updateProfileContainer {
     width: 80%;
+    height: auto;
+    margin-bottom: 20px;
   }
   .homepageLink {
     font-size: 12px;
   }
+  .changePassword {
+  margin-top: 10px;
+}
 }

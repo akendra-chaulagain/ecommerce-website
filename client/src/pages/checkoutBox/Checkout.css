@@ -57,6 +57,7 @@
   color: white;
 }
 
+
 @media only screen and (max-width: 778px) {
   .wrappercheckBox {
     height: 60vh;
