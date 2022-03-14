@@ -1,6 +1,6 @@
 .SaminavbarContainer {
   background-color: rgb(48, 47, 47);
-  height: 6vh;
+  height: 5vh;
   overflow: hidden;
 }
 .navBarItems {
@@ -22,11 +22,12 @@
 }
 .navBarItems .nav-itemLi select {
   background-color: rgb(255, 255, 255);
-  font-size: 18px;
-  padding: 3px 20px;
+  font-size: 15px;
+  padding: 3px 6px;
   cursor: pointer;
   color: rgb(0, 0, 0);
   outline: none;
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 778px) {
@@ -43,6 +44,7 @@
     padding: 2px 6px;
     margin-left: 10px;
   }
+  
 }
 @media only screen and (max-width: 280px) {
   .SaminavbarContainer {

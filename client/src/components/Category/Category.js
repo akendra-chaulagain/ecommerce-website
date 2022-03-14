@@ -37,7 +37,7 @@ const Category = ({ category, total }) => {
   const indexOfFirstPage = indexOfLastPage - postPerPage;
   const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);
 
-  //  this below code will run when the user select the vategory from select box
+  //  this below code will run when the user select the category from select box
   const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
 
@@ -52,17 +52,6 @@ const Category = ({ category, total }) => {
     };
     getOrders();
   }, [categoryData]);
-
-  // pagination for select page
-  // const [selectPage, setselectPage] = useState(1);
-  // const [selectPostPerPage, setSelectPostPerPage] = useState(6);
-
-  // const selectOfLastPage = page + selectPostPerPage;
-  // const selectOfFirstPage = selectOfLastPage - selectPostPerPage;
-  // const selectcurrestPost = Allproducts.slice(
-  //   selectOfFirstPage,
-  //   indexOfLastPage
-  // );
 
   return (
     <>
@@ -124,17 +113,6 @@ const Category = ({ category, total }) => {
                         </Link>
                       </div>
                     ))}
-                    {/*  Pagination  for select page*/}
-                    {/* <div className=" Pagination">
-                      <div className=" PaginationInfo">
-                        <Pagination
-                          onChange={(value) => setselectPage(value)}
-                          pageSize={postPerPage}
-                          total={total}
-                          current={selectPage}
-                        />
-                      </div>
-                    </div> */}
                   </>
                 </div>
               </div>

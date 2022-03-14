@@ -1,4 +1,11 @@
-import { loginfailure, loginStart, loginSuccess } from "./userRedux";
+import {
+  loginfailure,
+  loginStart,
+  loginSuccess,
+  updatefailure,
+  updateStart,
+  updateSuccess,
+} from "./userRedux";
 import axios from "axios";
 
 export const login = async (dispatch, user) => {
@@ -14,5 +21,22 @@ export const login = async (dispatch, user) => {
   }
 };
 
+// update user
+// export const update = async (id, dispatch, user) => {
+//   dispatch(updateStart());
+//   try {
+//     const res = await axios.put(`/users/${id}`);
+//     dispatch(updateSuccess(id, user));
+//     alert("update success");
+//     console.log(res);
+//   } catch (error) {
+//     dispatch(updatefailure());
+//     console.log("login failure" + error);
+//   }
+// };
+// const dispatch = useDispatch();
 
-
+// const handleUpdate = async (e) => {
+//   e.preventDefault();
+//   update(dispatch, { username, email, number });
+// };

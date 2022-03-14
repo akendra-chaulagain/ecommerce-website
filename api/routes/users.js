@@ -11,25 +11,21 @@ const User = require("../models/User");
 
 // update user
 router.put("/:id", verifyToken, async (req, res) => {
-  if (req.user.id === req.params.id || req.user.isAdmin) {
-    try {
-      if (req.body.password) {
-        const salt = await bcrypt.genSalt(12);
-        req.body.password = await bcrypt.hash(req.body.password, salt);
-      }
-      const updateUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
-      res.status(201).json({ success: true, updateUser });
-    } catch (error) {
-      res.status(500).json(`Unablt to update   user ${error}`);
+  try {
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(12);
+      req.body.password = await bcrypt.hash(req.body.password, salt);
     }
-  } else {
-    res.status(401).json("You are not allowed to update user");
+    const updateUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(201).json({ success: true, updateUser });
+  } catch (error) {
+    res.status(500).json(`Unablt to update   user ${error}`);
   }
 });
 

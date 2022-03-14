@@ -10,14 +10,9 @@ import "./AllProduct.css";
 import { Pagination } from "antd";
 
 const AllProduct = () => {
-  // usestate fro pagination
-  const [totalProduct, setTotalProduct] = useState("");
-  const [page, setPage] = useState(1);
-  const [postPerPage, setpostPerPage] = useState(6);
-
   // get all products
   const [Allproducts, setAllProducts] = useState([]);
-
+  const [totalProduct, setTotalProduct] = useState("");
   useEffect(() => {
     const getOrders = async () => {
       try {
@@ -31,6 +26,9 @@ const AllProduct = () => {
     getOrders();
   }, []);
 
+  // usestate fro pagination
+  const [page, setPage] = useState(1);
+  const [postPerPage, setpostPerPage] = useState(6);
   // function fro pagination
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
@@ -53,10 +51,29 @@ const AllProduct = () => {
     getProduct();
   }, [searchProduct]);
 
+  //  this below code will run when the user select the category from select box
+  const [AllproductsCat, setAllProductscat] = useState([]);
+  const [categoryData, setCategoryData] = useState("");
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await axios.get(`/products/getall?cat=${categoryData}`);
+        setAllProductscat(res.data.product);
+      } catch (error) {
+        console.log("unable to get order");
+      }
+    };
+    getOrders();
+  }, [categoryData]);
+
   return (
     <>
       <Announcementt />
-      <Navbar setSearchProduct={setSearchProduct} />
+      <Navbar
+        setSearchProduct={setSearchProduct}
+        setCategoryData={setCategoryData}
+      />
       <div className="container-fluid allproductContainer">
         <div className="row">
           {/* if the porduct is search and fond in database then this function will run */}
@@ -85,35 +102,70 @@ const AllProduct = () => {
           ) : (
             <>
               {/* when the search product is not found then this function will run */}
-              {currestPost?.map((item, i) => (
-                <div className="col-md-3 col-4" index={i} key={i}>
-                  <Link
-                    className="AllproductLink"
-                    to={`/products/single/${item._id}`}
-                  >
-                    <div className="allProduct">
-                      <img className="img-fluid" src={item.img} alt="img" />
-                      <div className="productInfo">
-                        <p>{item.name}</p>
-                      </div>
+              {categoryData ? (
+                <>
+                  {/* if the item is selected from the select option this code will run */}
+                  <div className="container-fluid Product">
+                    <div className="row">
+                      <>
+                        {AllproductsCat.map((item, id) => (
+                          <div
+                            className="col-md-3 col-4 searchContainer"
+                            key={id}
+                          >
+                            <Link
+                              className="singleproductLink"
+                              to={`/products/single/${item._id}`}
+                            >
+                              <div className="singleProduct">
+                                <img
+                                  className="img-fluid"
+                                  src={item.img}
+                                  alt="img"
+                                />
+                                <div className="productInfo">
+                                  <p>{item.name}</p>
+                                </div>
+                              </div>
+                            </Link>
+                          </div>
+                        ))}
+                      </>
                     </div>
-                  </Link>
-                </div>
-              ))}
+                  </div>
+                </>
+              ) : (
+                <>
+                  {currestPost?.map((item, i) => (
+                    <div className="col-md-3 col-4" index={i} key={i}>
+                      <Link
+                        className="AllproductLink"
+                        to={`/products/single/${item._id}`}
+                      >
+                        <div className="allProduct">
+                          <img className="img-fluid" src={item.img} alt="img" />
+                          <div className="productInfo">
+                            <p>{item.name}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                  {/*  Pagination */}
+                  <div className=" Pagination">
+                    <div className=" PaginationInfo">
+                      <Pagination
+                        onChange={(value) => setPage(value)}
+                        pageSize={postPerPage}
+                        total={totalProduct}
+                        current={page}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
             </>
           )}
-
-          {/*  Pagination */}
-          <div className=" Pagination">
-            <div className=" PaginationInfo">
-              <Pagination
-                onChange={(value) => setPage(value)}
-                pageSize={postPerPage}
-                total={totalProduct}
-                current={page}
-              />
-            </div>
-          </div>
         </div>
       </div>
       {/* Footer */}

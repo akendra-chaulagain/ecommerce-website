@@ -47,6 +47,7 @@ const Checkout = () => {
 
   return (
     <>
+    
       <div className="container-fluid checkBox">
         <div className="row wrappercheckBox">
           <div className="col-md-6 ">
