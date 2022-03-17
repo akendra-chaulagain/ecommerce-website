@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../middleware/verifyToken");
 
 const bodyParser = require("body-parser");
 router.use(bodyParser.json()); // for parsing application/json
@@ -12,7 +11,7 @@ require("../connection/DB");
 const Category = require("../models/Category");
 
 // create Category(admin only)
-router.post("/", verifyToken, async (req, res) => {
+router.post("/", async (req, res) => {
   const body = req.body;
   if (req.user.isAdmin) {
     const newCategory = new Category(body);
@@ -28,7 +27,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 // update category
-router.put("/:id", verifyToken, async (req, res) => {
+router.put("/:id", async (req, res) => {
   if (req.user.isAdmin) {
     try {
       const result = await Category.findByIdAndUpdate(
@@ -63,7 +62,7 @@ router.get("/find/:id", async (req, res) => {
 });
 
 // delete category
-router.delete("/:id", verifyToken, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   if (req.user.isAdmin) {
     try {
       const result = await Category.findByIdAndDelete(req.params.id);

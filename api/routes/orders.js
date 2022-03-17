@@ -1,8 +1,8 @@
 const express = require("express");
+const verifyToken = require("../middleware/verifyToken");
 const router = express.Router();
 
 // cooki import from middleware
-const verifyToken = require("../middleware/verifyToken");
 
 // database
 require("../connection/DB");
@@ -42,7 +42,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
-// get individual order
+// get order af an  individual person which he/she order 
 router.post("/getusorder", verifyToken, async (req, res) => {
   const { userFullId } = req.body;
   try {
@@ -53,7 +53,7 @@ router.post("/getusorder", verifyToken, async (req, res) => {
   }
 });
 
-// get individual  find by id
+// get individual ( find by id)
 router.get("/find/:id", verifyToken, async (req, res) => {
   try {
     const getOrderById = await Order.findById(req.params.id);
@@ -65,16 +65,20 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 
 // get all order
 router.get("/", verifyToken, async (req, res) => {
-  try {
-    const allOrder = await Order.find().sort({ _id: -1 });
-    res.status(201).json(allOrder);
-  } catch (error) {
-    res.status(401).json(error);
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    try {
+      const allOrder = await Order.find().sort({ _id: -1 });
+      res.status(201).json(allOrder);
+    } catch (error) {
+      res.status(401).json(error);
+    }
+  } else {
+    res.status(401).json("you are not admin to get all order");
   }
 });
 
 // get monthely income
-router.get("/income", verifyToken, async (req, res) => {
+router.get("/income", async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
     const date = new Date();
     const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
