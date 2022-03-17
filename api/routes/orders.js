@@ -12,7 +12,6 @@ const Order = require("../models/Order");
 
 // cteate order is made in stripe components.stripe will create order when parmwnty is made
 
-
 // update order
 router.put("/:id", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
@@ -71,6 +70,41 @@ router.get("/", verifyToken, async (req, res) => {
     res.status(201).json(allOrder);
   } catch (error) {
     res.status(401).json(error);
+  }
+});
+
+// get monthely income
+router.get("/income", verifyToken, async (req, res) => {
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    const date = new Date();
+    const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+    const perviousMonth = new Date(
+      new Date().setMonth(lastMonth.getMonth() - 1)
+    );
+    try {
+      const income = await Order.aggregate([
+        { $match: { createdAt: { $gte: perviousMonth } } },
+
+        {
+          $project: {
+            month: { $month: "$createdAt" },
+            amount: "$amount",
+          },
+        },
+        // to get total sales on group
+        {
+          $group: {
+            _id: "$month",
+            total: { $sum: "$amount" },
+          },
+        },
+      ]);
+      res.status(200).json(income);
+    } catch (error) {
+      res.status(401).json("not getting income" + error);
+    }
+  } else {
+    res.status(401).json("you are not admin");
   }
 });
 
