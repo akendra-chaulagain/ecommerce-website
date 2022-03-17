@@ -30,7 +30,7 @@ router.put("/:id", verifyToken, async (req, res) => {
 });
 
 // get user according to id
-router.get("/find/:id", async (req, res) => {
+router.get("/find/:id", verifyToken, async (req, res) => {
   try {
     const getById = await User.findById(req.params.id);
     const { password, tokens, ...others } = getById._doc;
@@ -40,22 +40,17 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-// delete user   --Admin (only admin can delete product)
+// delete user
 router.delete("/:id", verifyToken, async (req, res) => {
-  if (req.user.id === req.params.id || req.user.isAdmin) {
-    try {
-      const deleteUser = await User.findByIdAndDelete(req.params.id);
-      res.status(201).json({ success: true, deleteUser });
-    } catch (error) {
-      res.status(500).json(`Unablt to delete   user ${error}`);
-    }
-  } else {
-    res.status(401).json("You are not allowed to do this process");
+  try {
+    const deleteUser = await User.findByIdAndDelete(req.params.id);
+    res.status(201).json({ success: true, deleteUser });
+  } catch (error) {
+    res.status(500).json(`Unablt to delete   user ${error}`);
   }
 });
 
-// get all product
-
+// get all users(only admin)
 router.get("/", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
     try {
@@ -69,7 +64,7 @@ router.get("/", verifyToken, async (req, res) => {
   }
 });
 
-// user stats
+// user stats(only admin)
 router.get("/stats", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
     const date = new Date();
@@ -87,20 +82,6 @@ router.get("/stats", verifyToken, async (req, res) => {
     }
   } else {
     res.status(401).json("You are not allowed to do this stats");
-  }
-});
-
-// logout user
-router.get("/logout", verifyToken, async (req, res) => {
-  try {
-    res.cookie("jwtToken", null, {
-      expires: new Date(Date.now()),
-      httpOnly: true,
-    });
-
-    res.status(200).json({ success: true, message: "Logged Out" });
-  } catch (error) {
-    res.status(500).json("Unable to logOut" + error);
   }
 });
 

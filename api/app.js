@@ -15,11 +15,10 @@ dotenv.config({ path: "./config.env" });
 // port number
 const PORT = process.env.PORT;
 
-// routers
+// routers(middleware)
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
-const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/orders");
 const categoryRoutes = require("./routes/category");
 const stripeRoutes = require("./routes/stripe");
@@ -29,7 +28,6 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/orders", orderRoutes);
-app.use("/api/v1/carts", cartRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/stripe", stripeRoutes);
 
