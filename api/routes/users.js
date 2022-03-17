@@ -69,6 +69,27 @@ router.get("/", verifyToken, async (req, res) => {
   }
 });
 
+// user stats
+router.get("/stats", verifyToken, async (req, res) => {
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    const date = new Date();
+    const lastyear = new Date(date.setFullYear(date.getFullYear() - 1));
+    try {
+      // getting user according to  on the month
+      const data = await User.aggregate([
+        { $match: { createdAt: { $gte: lastyear } } },
+        { $project: { month: { $month: "$createdAt" } } },
+        { $group: { _id: "$month", total: { $sum: 1 } } },
+      ]);
+      res.status(200).json(data);
+    } catch (error) {
+      res.status(500).json(`Unablt to get stats  ${error}`);
+    }
+  } else {
+    res.status(401).json("You are not allowed to do this stats");
+  }
+});
+
 // logout user
 router.get("/logout", verifyToken, async (req, res) => {
   try {
