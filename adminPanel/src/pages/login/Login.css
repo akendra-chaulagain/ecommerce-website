@@ -1,0 +1,32 @@
+.login {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: black; */
+  /* color: whitesmoke; */
+}
+.loginform {
+  display: flex;
+  flex-direction: column;
+}
+.loginform input {
+  width: 100%;
+  padding: 3px 10px;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.login label {
+  font-weight: 600;
+  margin-top: 5px;
+}
+.loginform button {
+  margin-top: 15px;
+  outline: none;
+  border: none;
+  background-color: lightblue;
+  padding: 5px;
+}

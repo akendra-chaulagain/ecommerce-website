@@ -1,0 +1,36 @@
+.viewOrder {
+  display: flex;
+  height: 100vh;
+}
+.viewOrderContainer {
+  flex: 5;
+  margin-top: 14vh;
+}
+
+.viewOrderContainer h3 {
+  color: gray;
+  margin-top: 20px;
+}
+.wrapperOrderBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.OrderInfoBox {
+  height: 50vh;
+  width: 50%;
+  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.OrderInfoBox p {
+  font-weight: 600;
+  font-size: 19px;
+  color: gray;
+  margin-left: 10%;
+}
+.OrderInfoBox span {
+  font-size: 17px;
+  font-weight: 500;
+}

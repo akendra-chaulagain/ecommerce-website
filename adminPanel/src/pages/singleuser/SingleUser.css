@@ -1,0 +1,53 @@
+.singleuser {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+.singleuserContainer {
+  flex: 5;
+  margin-top: 15vh;
+}
+
+.singleuserContainer h3 {
+  color: gray;
+}
+.wrapperuserBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userInfoBox {
+  height: 50vh;
+  width: 50%;
+  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.userInfoBox p {
+  font-weight: 600;
+  font-size: 19px;
+  color: gray;
+  margin-left: 10%;
+}
+.userInfoBox span {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.buttonBelete {
+  width: 20%;
+  border: 1px solid red;
+  outline: none;
+  color: red;
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 15px;
+  margin-left: 10px;
+  font-size: 15px;
+  margin-left: 10%;
+}
+.buttonBelete:hover {
+  background-color: red;
+  color: white;
+}

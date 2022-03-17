@@ -1,0 +1,47 @@
+.list {
+  display: flex;
+}
+.listContainer {
+  flex: 5;
+  margin-top: 15vh;
+  margin-left: 5%;
+  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  
+
+}
+.ProductTitle{
+    font-weight: 600;
+    font-size: 25px;
+    color: gray;
+}
+.button_Edit{
+    border: 1px solid rgb(183, 0, 255);
+    outline: none;
+    color: rgb(183, 0, 255);
+    border-radius: 6px;
+    padding: 3px 6px;
+    font-size: 15px;
+}
+.button_Edit:hover{
+    background-color:  rgb(183, 0, 255);
+    color: white;
+}
+.button_delete{
+     border: 1px solid red;
+    outline: none;
+    color: red;
+    border-radius: 6px;
+    padding: 3px 6px;
+    font-size: 15px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.button_delete:hover{
+    background-color:  red;
+    color: white;
+}
+.userImg img{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
