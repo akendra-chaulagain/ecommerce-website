@@ -28,37 +28,33 @@ const userSchema = new mongoose.Schema(
     isAdmin: {
       type: Boolean,
       default: false,
-    }
-    // ,
-    // tokens: [
-    //   {
-    //     token: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //   },
-    // ],
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
 
 // creating jwt token  when register
-// userSchema.methods.generateToken = async function () {
-//   try {
-//     const token = jwt.sign(
-//       { _id: this._id.toString(), isAdmin: this.isAdmin },
-//       process.env.JWT_SECRET_KEY,
-//       {
-//         expiresIn: process.env.JWT_EXPIRE,
-//       }
-//     );
-//     this.tokens = this.tokens.concat({ token });
-//     await this.save();
-//     return token;
-//   } catch (error) {
-//     console.log(`token error ` + error);
-//   }
-// };
+userSchema.methods.generateToken = async function () {
+  try {
+    const token = jwt.sign(
+      { _id: this._id },
+      process.env.JWT_SECRET_KEY
+    );
+    this.tokens = this.tokens.concat({ token });
+    await this.save();
+    return token;
+  } catch (error) {
+    console.log(`token error ` + error);
+  }
+};
 
 const User = mongoose.model("User", userSchema);
 

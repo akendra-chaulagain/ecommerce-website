@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
 
 const Login = () => {
-    // const user  = useSelector((state) => state.user.isAdmin);
-    // console.log(user.others.isAdmin);
+  // const user = useSelector((state) => state.user);
+  // console.log(user);
 
   const dispatch = useDispatch();
 
@@ -13,7 +13,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
-
     e.preventDefault();
     login(dispatch, { email, password });
   };

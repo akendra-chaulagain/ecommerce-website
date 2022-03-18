@@ -9,81 +9,41 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-
-const rows = [
-  {
-    id: "1",
-    product: "mobile",
-    customer: "ak",
-    amount: "456",
-    date: "12 march",
-    status: "approved",
-  },
-  {
-    id: "2",
-    product: "mobile",
-    customer: "ak",
-    amount: "456",
-    date: "12 march",
-    status: "pending",
-  },
-  {
-    id: "3",
-    product: "mobile",
-    customer: "ak",
-    amount: "456",
-    date: "12 march",
-    status: "pending",
-  },
-  {
-    id: "4",
-    product: "mobile",
-    customer: "ak",
-    amount: "456",
-    date: "12 march",
-    status: "approved",
-  },
-  {
-    id: "5",
-    product: "mobile",
-    customer: "ak",
-    amount: "456",
-    date: "12 march",
-    status: "pending",
-  },
-];
-
-const LastetUser = () => {
+const LastetUser = ({ allUser }) => {
   return (
     <>
       <div className="container latestUser">
-        <h4>Latest Transactions</h4>
+        <h4 className="text-center">Latest User</h4>
+        <hr />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead >
+            <TableHead>
               <TableRow>
-                <TableCell className="tableCell">Id</TableCell>
-                <TableCell className="tableCell">Product</TableCell>
-                <TableCell className="tableCell">Customer</TableCell>
-                <TableCell className="tableCell">Amount</TableCell>
-                <TableCell className="tableCell">Date</TableCell>
-                <TableCell className="tableCell">Status</TableCell>
+                <TableCell className="tableCell tableCellBox">Id</TableCell>
+                <TableCell className="tableCell tableCellBox">UserName</TableCell>
+                <TableCell className="tableCell tableCellBox">Email</TableCell>
+                <TableCell className="tableCell tableCellBox">Contact no</TableCell>
+                <TableCell className="tableCell tableCellBox">Create date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, key) => (
+              {allUser?.map((user, key) => (
                 <TableRow
                   key={key}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell className="tableCell">{row.id}</TableCell>
-                  <TableCell className="tableCell">{row.product}</TableCell>
-                  <TableCell className="tableCell">{row.customer}</TableCell>
-                  <TableCell className="tableCell">{row.amount}</TableCell>
-                  <TableCell className="tableCell">{row.date}</TableCell>
+                  <TableCell className="tableCell">{user._id}</TableCell>
+                  <TableCell className="tableCell">{user.username}</TableCell>
+                  <TableCell className="tableCell">{user.email}</TableCell>
+                  <TableCell className="tableCell">{user.number}</TableCell>
                   <TableCell className="tableCell">
-                    <span className={`status${row.status}`}>{row.status}</span>
+                    {new Date(user.createdAt).toDateString()}
                   </TableCell>
+                  {/* <TableCell className="tableCell">
+                        <span className={`status${row.status}`}>
+                          {row.email}
+                        </span>
+                      </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>

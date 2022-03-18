@@ -152,14 +152,14 @@ const SingleProductPage = () => {
               {/* if the user does not search fro items then this function will get categroy data without searching */}
               <div className="container-fluid singlePage">
                 <div className="row">
-                  <div className="col-md-6 leftSideImg">
+                  <div className="col-md-5 leftSideImg">
                     <img src={product.img} alt="" />
                   </div>
-                  <div className="col-md-6 rightSide">
+                  <div className="col-md-7 rightSide">
                     <div className="productTitle">{product.name}</div>
                     <div className="productdesc">
                       <span className="productPrice">
-                        Price :{" "}
+                        Price :
                         <span style={{ color: "red" }}>$ {product.price}</span>
                       </span>
 

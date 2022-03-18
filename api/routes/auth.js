@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const verifyToken = require("../middleware/verifyToken");
 
 // database
 require("../connection/DB");
@@ -30,14 +28,12 @@ router.post("/register", async (req, res) => {
       // now we set user password to hashed password
       user.password = await bcrypt.hash(user.password, salt);
 
-      // jsonwebtoken  when register
-      // const token = await user.generateToken();
-      // res.cookie("jwtToken", token, {
-      //   expires: new Date(
-      //     Date.now + process.env.COOKI_EXPIRE * 24860 * 60 * 1000
-      //   ),
-      //   httpOnly: true,
-      // });
+      // generating register token
+      const token = await user.generateToken();
+      res.cookie("jsonwebToken", token, {
+        expires: new Date(Date.now() + 86400000),
+        httpOnly: true,
+      });
       const result = await user.save();
       return res.status(201).json({ success: true, result });
     }
@@ -58,26 +54,24 @@ router.post("/login", async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
 
     // generating login token
-    // const token = await user.generateToken();
-    // res.cookie("jwtToken", token, {
-    //   expires: new Date(
-    //     Date.now + process.env.COOKI_EXPIRE * 24860 * 60 * 1000
-    //   ),
-    //   httpOnly: true,
-    // });
+    const token = await user.generateToken();
+    res.cookie("jsonwebToken", token, {
+      expires: new Date(Date.now() + 86400000),
+      httpOnly: true,
+    });
 
     // creating json web token for authentication
-    const accessToken = jwt.sign(
-      { id: user._id, isAdmin: user.isAdmin },
-      process.env.JWT_SECRET_KEY,
-      { expiresIn: "2d" }
-    );
+    // const accessToken = jwt.sign(
+    //   { id: user._id, isAdmin: user.isAdmin },
+    //   process.env.JWT_SECRET_KEY,
+    //   { expiresIn: "2d" }
+    // );
 
     if (validPassword) {
       const { password, cpassword, tokens, ...others } = user._doc;
-      return res.status(201).json({ success: true, others,accessToken });
+      return res.status(201).json({ success: true, others, token });
     } else {
-      return res.status(400).json("Invalid data");
+      return res.status(400).json("Invalid user data");
     }
   } catch (error) {
     return res.status(400).json("Invalid data");

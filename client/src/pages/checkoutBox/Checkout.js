@@ -18,7 +18,7 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart);
 
   // user
-  const user = useSelector((state) => state.user.currentUser.others);
+  const user = useSelector((state) => state.user.currentUser);
 
   // token for stripe
   const [stripeToken, setStripeToken] = useState(null);
@@ -47,7 +47,6 @@ const Checkout = () => {
 
   return (
     <>
-    
       <div className="container-fluid checkBox">
         <div className="row wrappercheckBox">
           <div className="col-md-6 ">

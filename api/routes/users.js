@@ -52,15 +52,18 @@ router.delete("/:id", verifyToken, async (req, res) => {
 
 // get all users(only admin)
 router.get("/", verifyToken, async (req, res) => {
+  const query = req.query.new;
   if (req.user.id === req.params.id || req.user.isAdmin) {
     try {
-      const getAllUser = await User.find();
-      res.status(201).json({ success: true, getAllUser });
+      const getallUser = query
+        ? await User.find().sort({ _id: -1 }).limit(5)
+        : await User.find();
+      res.status(200).json(getallUser);
     } catch (error) {
-      res.status(500).json(`Unablt to get all user  ${error}`);
+      res.status(500).json(error);
     }
   } else {
-    res.status(401).json("You are not allowed to do this process");
+    res.status(500).json("unable to get all users");
   }
 });
 

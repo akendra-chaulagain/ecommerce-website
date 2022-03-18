@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const { v4: uuidv4 } = require("uuid");
+const verifyToken = require("../middleware/verifyToken");
 
 // database
 require("../connection/DB");
@@ -21,7 +22,7 @@ router.post("/", async (req, res) => {
 });
 
 // strpie
-router.post("/payment", async (req, res) => {
+router.post("/payment", verifyToken, async (req, res) => {
   const { token, amount, cart, user } = req.body;
   try {
     const customer = await stripe.customers.create({

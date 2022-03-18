@@ -1,5 +1,5 @@
 .latestUser {
-  height: 55vh;
+  height: 60vh;
   width: 90%;
   margin-top: 5vh;
   box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
@@ -8,10 +8,10 @@
 }
 .latestUser h4 {
   color: gray;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  /* margin-bottom: 10px; */
+  padding-top: 10px;
 }
-
 
 .statusapproved {
   color: rgb(22, 179, 22);
@@ -27,5 +27,8 @@
   padding: 5px 12px;
   border-radius: 5px;
   cursor: pointer;
-
+}
+.table .tableCellBox {
+  font-weight: 800;
+  font-size: 40px;
 }

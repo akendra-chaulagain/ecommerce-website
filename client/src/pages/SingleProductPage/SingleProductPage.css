@@ -4,7 +4,7 @@
   padding-top: 5vh;
 }
 .leftSideImg img {
-  height: 50vh;
+  height: 40vh;
   width: 100%;
   object-fit: contain;
   margin-top: 10vh;
@@ -24,7 +24,7 @@
   font-weight: 600;
 }
 .productSize {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .productSize span {
   font-size: 20px;
@@ -45,6 +45,7 @@
   background-color: red;
   color: whitesmoke;
   border-radius: 4px;
+
 }
 .increaseAnddecrease .number {
   padding: 1px 5px;

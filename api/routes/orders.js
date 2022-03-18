@@ -42,7 +42,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
-// get order af an  individual person which he/she order 
+// get order af an  individual person which he/she order
 router.post("/getusorder", verifyToken, async (req, res) => {
   const { userFullId } = req.body;
   try {
@@ -64,7 +64,7 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 });
 
 // get all order
-router.get("/", verifyToken, async (req, res) => {
+router.get("/",verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
     try {
       const allOrder = await Order.find().sort({ _id: -1 });

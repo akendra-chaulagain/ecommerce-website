@@ -4,16 +4,16 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-// cooki-parser for json webtoken
-const cookieparser = require("cookie-parser");
-app.use(cookieparser());
-
 // dotenv package is used to secure the importance file  (config)
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
 // port number
 const PORT = process.env.PORT;
+
+// cooki-parser for json webtoken
+const cookieparser = require("cookie-parser");
+app.use(cookieparser());
 
 // routers(middleware)
 const authRoutes = require("./routes/auth");
