@@ -1,0 +1,131 @@
+.widget {
+  height: auto;
+  width: 100%;
+  margin-top: 13vh;
+  color: gray;
+}
+.leftWidge {
+  height: 20vh;
+  width: 30%;
+  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+}
+.leftWidge p {
+  font-weight: 600;
+  color: red;
+}
+
+.middletWidget {
+  height: 20vh;
+  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  margin-left: 20px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+}
+.middletWidget p {
+  font-weight: 600;
+  color: red;
+}
+
+.rightWidget {
+  width: 30%;
+  margin-left: 20px;
+  height: 20vh;
+  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+}
+.rightWidget p {
+  font-weight: 600;
+  color: red;
+}
+.seeAlluser p {
+  font-size: 14px;
+  color: gray;
+
+  text-decoration: underline;
+  cursor: pointer;
+}
+.seeAlluser p:hover {
+  color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  .leftWidge {
+    height: auto;
+    /* margin-left: 10px; */
+    width: 25%;
+  }
+  .leftWidge h5 {
+    font-size: 11px;
+  }
+  .leftWidge p {
+    font-size: 10px;
+  }
+
+  .middletWidget {
+    height: auto;
+    /* margin-left: 10px; */
+    width: 25%;
+  }
+  .middletWidget h5 {
+    font-size: 11px;
+  }
+  .middletWidget p {
+    font-size: 10px;
+  }
+  .rightWidget {
+    height: auto;
+    /* margin-left: 10px; */
+    width: 25%;
+  }
+  .rightWidget h5 {
+    font-size: 11px;
+  }
+  .rightWidget p {
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .leftWidge {
+    width: 28%;
+  }
+  .leftWidge h5 {
+    font-size: 8px;
+  }
+  .leftWidge p {
+    font-size: 8px;
+  }
+
+  .middletWidget {
+    width: 28%;
+  }
+  .middletWidget h5 {
+    font-size: 8px;
+  }
+  .middletWidget p {
+    font-size: 8px;
+  }
+
+  .rightWidget {
+    width: 28%;
+  }
+  .rightWidget h5 {
+    font-size: 8px;
+  }
+  .rightWidget p {
+    font-size: 8px;
+  }
+}
