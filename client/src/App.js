@@ -6,7 +6,7 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Cart from "./pages/cart/Cart";
 import Product from "./pages/products/Product";
-import SingleProductPage from "./pages/singleProductPage/SingleProductPage";
+import SingleProductPage from "./pages/SingleProductPage/SingleProductPage";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Order from "./pages/order/Order";
