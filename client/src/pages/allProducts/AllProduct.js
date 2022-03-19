@@ -8,16 +8,18 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import "./AllProduct.css";
 import { Pagination } from "antd";
+import Search from "../../components/search/Search";
+import CategorySearch from "../../components/CategorySearch/CategorySearch";
 
 const AllProduct = () => {
   // get all products
-  const [Allproducts, setAllProducts] = useState([]);
+  const [AllproductsData, setAllProductsData] = useState([]);
   const [totalProduct, setTotalProduct] = useState("");
   useEffect(() => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall`);
-        setAllProducts(res.data.product);
+        setAllProductsData(res.data.product);
         setTotalProduct(res.data.product.length);
       } catch (error) {
         console.log("unable to get order");
@@ -32,7 +34,7 @@ const AllProduct = () => {
   // function fro pagination
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
-  const currestPost = Allproducts.slice(indexOfFirstPage, indexOfLastPage);
+  const currestPost = AllproductsData.slice(indexOfFirstPage, indexOfLastPage);
 
   // usestate for search
   const [searchProduct, setSearchProduct] = useState("");
@@ -52,14 +54,14 @@ const AllProduct = () => {
   }, [searchProduct]);
 
   //  this below code will run when the user select the category from select box
-  const [AllproductsCat, setAllProductscat] = useState([]);
+  const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
 
   useEffect(() => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProductscat(res.data.product);
+        setAllProducts(res.data.product);
       } catch (error) {
         console.log("unable to get order");
       }
@@ -76,63 +78,16 @@ const AllProduct = () => {
       />
       <div className="container-fluid allproductContainer">
         <div className="row">
-          {/* if the porduct is search and fond in database then this function will run */}
+          {/* if the porduct is search and foud in database then this function will run */}
           {searchProduct ? (
-            <>
-              <div className="container-fluid Product">
-                <div className="row">
-                  {data.map((item, id) => (
-                    <div className="col-md-3 col-4 searchContainer" key={id}>
-                      <Link
-                        className="singleproductLink"
-                        to={`/products/single/${item._id}`}
-                      >
-                        <div className="singleProduct">
-                          <img className="img-fluid" src={item.img} alt="img" />
-                          <div className="productInfo">
-                            <p>{item.name}</p>
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </>
+            <Search data={data} />
           ) : (
             <>
               {/* when the search product is not found then this function will run */}
               {categoryData ? (
                 <>
                   {/* if the item is selected from the select option this code will run */}
-                  <div className="container-fluid Product">
-                    <div className="row">
-                      <>
-                        {AllproductsCat.map((item, id) => (
-                          <div
-                            className="col-md-3 col-4 searchContainer"
-                            key={id}
-                          >
-                            <Link
-                              className="singleproductLink"
-                              to={`/products/single/${item._id}`}
-                            >
-                              <div className="singleProduct">
-                                <img
-                                  className="img-fluid"
-                                  src={item.img}
-                                  alt="img"
-                                />
-                                <div className="productInfo">
-                                  <p>{item.name}</p>
-                                </div>
-                              </div>
-                            </Link>
-                          </div>
-                        ))}
-                      </>
-                    </div>
-                  </div>
+                  <CategorySearch Allproducts={Allproducts} />
                 </>
               ) : (
                 <>

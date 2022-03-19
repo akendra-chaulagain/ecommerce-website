@@ -6,9 +6,11 @@ import Announcementt from "../../components/announcenemt/Announcement";
 import Navbar from "../../components/navbar/Navbar";
 import { useEffect } from "react";
 import axios from "axios";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addproduct } from "../../redux/cartRedux";
+import Search from "../../components/search/Search";
+import CategorySearch from "../../components/CategorySearch/CategorySearch";
 
 const SingleProductPage = () => {
   const dispatch = useDispatch();
@@ -55,8 +57,6 @@ const SingleProductPage = () => {
   // usestate for search
   const [searchProduct, setSearchProduct] = useState("");
   const [data, setData] = useState("");
-
-  // search bar
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -70,14 +70,14 @@ const SingleProductPage = () => {
   }, [searchProduct]);
 
   //  this below code will run when the user select the category from select box
-  const [AllproductsCat, setAllProductscat] = useState([]);
+  const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
 
   useEffect(() => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProductscat(res.data.product);
+        setAllProducts(res.data.product);
       } catch (error) {
         console.log("unable to get order");
       }
@@ -96,56 +96,13 @@ const SingleProductPage = () => {
       {/* if the user search then  this function will run and  fethc data from the database */}
       {searchProduct ? (
         <>
-          <div className="container-fluid Product">
-            <div className="row">
-              {data.map((item, id) => (
-                <div className="col-md-3 col-4 searchContainer" key={id}>
-                  <Link
-                    className="singleproductLink"
-                    to={`/products/single/${item._id}`}
-                  >
-                    <div className="singleProduct">
-                      <img className="img-fluid" src={item.img} alt="img" />
-                      <div className="productInfo">
-                        <p>{item.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Search data={data} />
         </>
       ) : (
         <>
           {categoryData ? (
             <>
-              {/* if the item is selected from the select option this code will run */}
-              <div className="container-fluid Product">
-                <div className="row">
-                  <>
-                    {AllproductsCat.map((item, id) => (
-                      <div className="col-md-3 col-4 searchContainer" key={id}>
-                        <Link
-                          className="singleproductLink"
-                          to={`/products/single/${item._id}`}
-                        >
-                          <div className="singleProduct">
-                            <img
-                              className="img-fluid"
-                              src={item.img}
-                              alt="img"
-                            />
-                            <div className="productInfo">
-                              <p>{item.name}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </>
-                </div>
-              </div>
+              <CategorySearch Allproducts={Allproducts} />
             </>
           ) : (
             <>

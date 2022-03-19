@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import Search from "../../components/search/Search";
+import CategorySearch from "../../components/CategorySearch/CategorySearch";
 
 const Cart = () => {
   // user data
@@ -44,14 +46,14 @@ const Cart = () => {
   }, [searchProduct]);
 
   //  this below code will run when the user select the category from select box
-  const [AllproductsCat, setAllProductscat] = useState([]);
+  const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
 
   useEffect(() => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProductscat(res.data.product);
+        setAllProducts(res.data.product);
       } catch (error) {
         console.log("unable to get order");
       }
@@ -69,59 +71,12 @@ const Cart = () => {
       />
 
       {searchProduct ? (
-        <>
-          <div className="container-fluid Product">
-            <div className="row">
-              {data.map((item, id) => (
-                <div className="col-md-3 col-4 searchContainer" key={id}>
-                  <Link
-                    className="singleproductLink"
-                    to={`/products/single/${item._id}`}
-                  >
-                    <div className="singleProduct">
-                      <img className="img-fluid" src={item.img} alt="img" />
-                      <div className="productInfo">
-                        <p>{item.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
+        <Search data={data} />
       ) : (
         <>
           {/* when user search according to category and click in slect section  then this below function wilkl run*/}
           {categoryData ? (
-            <>
-              {/* if the item is selected from the select option this code will run */}
-              <div className="container-fluid Product">
-                <div className="row">
-                  <>
-                    {AllproductsCat.map((item, id) => (
-                      <div className="col-md-3 col-4 searchContainer" key={id}>
-                        <Link
-                          className="singleproductLink"
-                          to={`/products/single/${item._id}`}
-                        >
-                          <div className="singleProduct">
-                            <img
-                              className="img-fluid"
-                              src={item.img}
-                              alt="img"
-                            />
-                            <div className="productInfo">
-                              <p>{item.name}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </>
-                </div>
-              </div>
-            </>
+            <CategorySearch Allproducts={Allproducts} />
           ) : (
             <>
               {/* if the user does not search fro items and does not select item according yo category then this function will get categroy data without searching */}

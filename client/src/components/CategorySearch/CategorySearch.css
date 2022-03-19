@@ -1,4 +1,4 @@
-.SearchProduct {
+.CategorySearchProduct {
   height: auto;
   width: 100%;
   margin-top: 6vh;
@@ -31,7 +31,6 @@
   margin: 10px;
   font-size: 12px;
   font-weight: 600;
-  color: black;
 }
 
 .singleproductLink {

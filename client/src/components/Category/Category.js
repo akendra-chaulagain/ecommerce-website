@@ -10,6 +10,7 @@ import Announcementt from "../announcenemt/Announcement";
 import Navbar from "../navbar/Navbar";
 import { Pagination } from "antd";
 import Search from "../search/Search";
+import CategorySearch from "../CategorySearch/CategorySearch";
 
 const Category = ({ category, total }) => {
   const user = useSelector((state) => state.user.currentUser);
@@ -17,7 +18,6 @@ const Category = ({ category, total }) => {
   // usestate for search
   const [searchProduct, setSearchProduct] = useState("");
   const [data, setData] = useState("");
-
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -73,32 +73,8 @@ const Category = ({ category, total }) => {
           {/* if the user does not search fro items then this function will get categroy data without searching */}
           {categoryData ? (
             <>
-              {/* if the item is selected from the select option this code will run */}
-              <div className="container-fluid Product">
-                <div className="row">
-                  <>
-                    {Allproducts.map((item, id) => (
-                      <div className="col-md-3 col-4 searchContainer" key={id}>
-                        <Link
-                          className="singleproductLink"
-                          to={`/products/single/${item._id}`}
-                        >
-                          <div className="singleProduct">
-                            <img
-                              className="img-fluid"
-                              src={item.img}
-                              alt="img"
-                            />
-                            <div className="productInfo">
-                              <p>{item.name}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </>
-                </div>
-              </div>
+              {/* if the item is selected from the select option this code will run  whichn is import from CategorySearch component*/}
+              <CategorySearch Allproducts={Allproducts} />
             </>
           ) : (
             <>

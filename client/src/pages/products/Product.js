@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Search from "../../components/search/Search";
 
 const Product = () => {
   // get location is used to feth data  of an individual category  given user id in the url
@@ -73,25 +74,7 @@ const Product = () => {
       {/* if the user search then  this function will run and  fethc data from the database */}
       {searchProduct ? (
         <>
-          <div className="container-fluid Product">
-            <div className="row">
-              {data.map((item, id) => (
-                <div className="col-md-3 col-4 searchContainer" key={id}>
-                  <Link
-                    className="singleproductLink"
-                    to={`/products/single/${item._id}`}
-                  >
-                    <div className="singleProduct">
-                      <img className="img-fluid" src={item.img} alt="img" />
-                      <div className="productInfo">
-                        <p>{item.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Search data={data} />
         </>
       ) : (
         <>

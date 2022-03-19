@@ -22,7 +22,7 @@
 .productInfo p {
   text-align: start;
   margin: 10px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -47,6 +47,6 @@
     font-weight: 500;
   }
   .singleProduct {
-  height: auto;
-}
+    height: auto;
+  }
 }
