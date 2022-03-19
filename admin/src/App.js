@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
+
   return (
     <>
       <Router>
@@ -73,7 +74,10 @@ const App = () => {
         {/* login container */}
         <Routes>
           {/* view single order */}
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
         </Routes>
       </Router>
     </>

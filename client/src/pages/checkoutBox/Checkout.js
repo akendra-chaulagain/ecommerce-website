@@ -4,9 +4,9 @@ import StripeCheckout from "react-stripe-checkout";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
+import { userRequest } from "../../RequestMethod";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Checkout = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await axios.post("/stripe/payment", {
+        await userRequest.post("/stripe/payment", {
           token: stripeToken,
           amount: cart.total * 10,
           cart,

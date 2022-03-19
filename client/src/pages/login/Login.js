@@ -6,14 +6,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/apicalls";
 
-
 const Login = () => {
   // usestate for email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   //  useDispatch hook is used for login (redux)
-  const { error } = useSelector((state) => state.user);
+  const { error, isFetching } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   //   handleLogin button
@@ -47,7 +46,9 @@ const Login = () => {
             </div>
             <div className="inputBox">
               {/* login button */}
-              <button onClick={handleLogin}>Continue</button>
+              <button onClick={handleLogin} disabled={isFetching}>
+                Continue
+              </button>
               {error && <span>Something went wrong!</span>}
             </div>
           </div>

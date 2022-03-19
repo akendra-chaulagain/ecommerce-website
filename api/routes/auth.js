@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // database
 require("../connection/DB");
 
 // user Model
 const User = require("../models/User");
+const verifyToken = require("../middleware/verifyToken");
 
 // register user
 router.post("/register", async (req, res) => {
@@ -29,11 +31,11 @@ router.post("/register", async (req, res) => {
       user.password = await bcrypt.hash(user.password, salt);
 
       // generating register token
-      const token = await user.generateToken();
-      res.cookie("jsonwebToken", token, {
-        expires: new Date(Date.now() + 86400000),
-        httpOnly: true,
-      });
+      // const token = await user.generateToken();
+      // res.cookie("jsonwebToken", token, {
+      //   expires: new Date(Date.now() + 86400000),
+      //   httpOnly: true,
+      // });
       const result = await user.save();
       return res.status(201).json({ success: true, result });
     }
@@ -54,22 +56,20 @@ router.post("/login", async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
 
     // generating login token
-    const token = await user.generateToken();
-    res.cookie("jsonwebToken", token, {
-      expires: new Date(Date.now() + 86400000),
-      httpOnly: true,
-    });
-
-    // creating json web token for authentication
-    // const accessToken = jwt.sign(
-    //   { id: user._id, isAdmin: user.isAdmin },
-    //   process.env.JWT_SECRET_KEY,
-    //   { expiresIn: "2d" }
-    // );
+    // const token = await user.generateToken();
+    // res.cookie("jsonwebToken", token, {
+    //   expires: new Date(Date.now() + 86400000),
+    //   httpOnly: true,
+    // });
+    const accessToken = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "1d" }
+    );
 
     if (validPassword) {
-      const { password, cpassword, tokens, ...others } = user._doc;
-      return res.status(201).json({ success: true, others, token });
+      const { password, tokens, ...others } = user._doc;
+      return res.status(201).json({ ...others, accessToken });
     } else {
       return res.status(400).json("Invalid user data");
     }
@@ -79,12 +79,9 @@ router.post("/login", async (req, res) => {
 });
 
 // logout user
-router.get("/logout", async (req, res) => {
+router.get("/logout", verifyToken, async (req, res) => {
   try {
-    res.cookie("jwtToken", null, {
-      expires: new Date(Date.now()),
-      httpOnly: true,
-    });
+    res.clearCookie("jsonwebToken");
 
     res.status(200).json({ success: true, message: "Logged Out" });
   } catch (error) {

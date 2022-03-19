@@ -4,12 +4,13 @@ import "./ChangePassword.css";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
 import Footer from "../../components/footer/Footer";
 import { useSelector } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 import { useState } from "react";
+import { userRequest } from "../../RequestMethod";
 
 const ChangePassword = () => {
   const nagivate = useNavigate();
-  const user = useSelector((state) => state.user.currentUser.others);
+  const user = useSelector((state) => state.user.currentUser);
 
   //  update user paSSWORD
   const [newPassword, setNewPassword] = useState("");
@@ -18,7 +19,7 @@ const ChangePassword = () => {
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
     if (newPassword === password) {
-      await axios.put("/users/" + user._id, {
+      await userRequest.put("/users/" + user._id, {
         password,
       });
       alert("password changed");

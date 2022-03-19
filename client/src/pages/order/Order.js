@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -6,15 +5,17 @@ import "./Order.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
+import { userRequest } from "../../RequestMethod";
 
 const Order = () => {
-  const user = useSelector((state) => state.user.currentUser.others);
-  // get all order
+  const user = useSelector((state) => state.user.currentUser);
+
+  // get all order on an individual only
   const [order, setOrder] = useState([]);
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await axios.post(`/orders/getusorder`, {
+        const res = await userRequest.post(`/orders/getusorder`, {
           userFullId: user._id,
         });
         setOrder(res.data);

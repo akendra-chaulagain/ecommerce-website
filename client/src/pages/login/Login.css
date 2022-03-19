@@ -52,17 +52,19 @@
   color: white;
   border-radius: 4px;
 }
-.inputBox button:hover{
+.inputBox button:hover {
   background-color: rgb(247, 82, 82);
-
 }
-.inputBox span{
+.inputBox button:disabled {
+  color: white;
+  cursor: not-allowed;
+}
+.inputBox span {
   color: red;
   margin-left: 8%;
 }
 .loginFrom p {
   margin: 10px 0px 0px 8%;
-  
 }
 .link {
   margin-left: 5px;
@@ -71,9 +73,9 @@
 .link:hover {
   text-decoration: underline;
 }
-.terms{
+.terms {
   margin: 15px 0px 0px 8%;
- font-size:15px;
+  font-size: 15px;
 }
 @media only screen and (max-width: 768px) {
   .loginFrom {

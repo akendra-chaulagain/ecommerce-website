@@ -5,12 +5,20 @@ import { Link } from "react-router-dom";
 import Menu from "@material-ui/icons/Menu";
 import { useSelector } from "react-redux";
 import SemiNav from "../semiNav/Saminav";
+import axios from "axios";
 
 // navbar
 const Navbar = ({ setSearchProduct, setCategoryData }) => {
   const user = useSelector((state) => state.user.currentUser);
   // use selector from react redux
   const quantity = useSelector((state) => state.cart.quantity);
+
+  // logout
+  const handleLogOut = async (e) => {
+    const res = await axios.get("/auth/logout");
+    alert("logout");
+    console.log(res);
+  };
 
   return (
     <>
@@ -63,10 +71,17 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
                       Order
                     </Link>
                   </li>
+                  {/* profile */}
                   <li className="nav-item">
                     <Link to="/profile" className="nav-link">
                       Profile
                     </Link>
+                  </li>
+                  {/* logout */}
+                  <li className="nav-item">
+                    <span className="nav-link" onClick={handleLogOut}>
+                      Logout
+                    </span>
                   </li>
                 </>
               )}

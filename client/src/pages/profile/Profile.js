@@ -5,12 +5,12 @@ import "./Profile.css";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
 import Footer from "../../components/footer/Footer";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { userRequest } from "../../RequestMethod";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.currentUser.others);
-  
+  const user = useSelector((state) => state.user.currentUser);
 
   // update user expect password
   const [email, setEmail] = useState(user.email);
@@ -20,11 +20,8 @@ const Profile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("/users/" + user._id, {
-        email,
-        username,
-        number,
-      });
+      // user request was import from RequestMethos
+      await userRequest.put("/users/" + user._id, { email, username, number });
       alert("update success");
       navigate("/");
     } catch (error) {

@@ -7,6 +7,7 @@ import LastetUser from "../../components/latestUserContainer/LatestUser";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [allUser, setAllUser] = useState([]);
@@ -17,7 +18,7 @@ const Home = () => {
     };
     getAllUser();
   }, []);
-  console.log(allUser);
+
   return (
     <>
       <div className="home">
@@ -25,7 +26,7 @@ const Home = () => {
 
         <div className="homeContainer">
           {/* import from widget component */}
-          <Widget />
+          <Widget allUser={allUser} />
           {/* import from chart component */}
           <Chart />
           {/* latest user import feom latest user */}

@@ -62,7 +62,7 @@ router.post("/payment", verifyToken, async (req, res) => {
       res.send("payment failed" + error);
     }
   } catch (error) {
-    res.status(400).json("payment Error" + error);
+    res.status(400).json("payment Error from stripe" + error);
   }
 });
 

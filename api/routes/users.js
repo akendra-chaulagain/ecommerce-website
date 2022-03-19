@@ -23,9 +23,9 @@ router.put("/:id", verifyToken, async (req, res) => {
       },
       { new: true }
     );
-    res.status(201).json({ success: true, updateUser });
+    res.status(201).json(updateUser);
   } catch (error) {
-    res.status(500).json(`Unablt to update   user ${error}`);
+    res.status(500).json(`Unable to update   user ${error}`);
   }
 });
 
@@ -34,7 +34,7 @@ router.get("/find/:id", verifyToken, async (req, res) => {
   try {
     const getById = await User.findById(req.params.id);
     const { password, tokens, ...others } = getById._doc;
-    res.status(201).json({ success: true, others });
+    res.status(201).json(others);
   } catch (error) {
     res.status(500).json(`Unablt to update   user ${error}`);
   }
@@ -44,7 +44,7 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const deleteUser = await User.findByIdAndDelete(req.params.id);
-    res.status(201).json({ success: true, deleteUser });
+    res.status(201).json(deleteUser);
   } catch (error) {
     res.status(500).json(`Unablt to delete   user ${error}`);
   }
