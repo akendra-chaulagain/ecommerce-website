@@ -63,11 +63,6 @@ const Order = () => {
               ))}
             </tbody>
           </table>
-          {/* <h4>
-            <Link className="link" to="/">
-              Home Page
-            </Link>
-          </h4> */}
         </div>
       </div>
     </>

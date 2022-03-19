@@ -3,8 +3,8 @@ import "./OrderInfo.css";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
+import { userRequest } from "../../RequestMethod";
 
 const OrderInfo = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const OrderInfo = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await axios.get("/orders/find/" + path);
+        const res = await userRequest.get("/orders/find/" + path);
         setOrder(res.data);
       } catch (error) {}
     };

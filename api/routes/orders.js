@@ -46,7 +46,9 @@ router.delete("/:id", verifyToken, async (req, res) => {
 router.post("/getusorder", verifyToken, async (req, res) => {
   const { userFullId } = req.body;
   try {
-    const getIndividulaOrder = await Order.find({ userFullId });
+    const getIndividulaOrder = await Order.find({ userFullId }).sort({
+      _id: -1,
+    });
     res.status(200).json(getIndividulaOrder);
   } catch (error) {
     res.status(401).json(error);
@@ -64,7 +66,7 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 });
 
 // get all order
-router.get("/",verifyToken, async (req, res) => {
+router.get("/", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
     try {
       const allOrder = await Order.find().sort({ _id: -1 });

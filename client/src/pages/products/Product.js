@@ -1,5 +1,4 @@
 import React from "react";
-import "./Product.css";
 import SingleProduct from "../singleProduct/Singleproduct";
 import Footer from "../../components/footer/Footer";
 import { useLocation } from "react-router-dom";

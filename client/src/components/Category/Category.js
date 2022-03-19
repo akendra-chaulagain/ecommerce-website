@@ -9,6 +9,7 @@ import axios from "axios";
 import Announcementt from "../announcenemt/Announcement";
 import Navbar from "../navbar/Navbar";
 import { Pagination } from "antd";
+import Search from "../search/Search";
 
 const Category = ({ category, total }) => {
   const user = useSelector((state) => state.user.currentUser);
@@ -29,18 +30,9 @@ const Category = ({ category, total }) => {
     getProduct();
   }, [searchProduct]);
 
-  //  Pagination for category
-  const [page, setPage] = useState(1);
-  const [postPerPage, setpostPerPage] = useState(6);
-
-  const indexOfLastPage = page + postPerPage;
-  const indexOfFirstPage = indexOfLastPage - postPerPage;
-  const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);
-
   //  this below code will run when the user select the category from select box
   const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
-
   useEffect(() => {
     const getOrders = async () => {
       try {
@@ -53,6 +45,14 @@ const Category = ({ category, total }) => {
     getOrders();
   }, [categoryData]);
 
+  //  Pagination for category
+  const [page, setPage] = useState(1);
+  const [postPerPage, setpostPerPage] = useState(6);
+
+  const indexOfLastPage = page + postPerPage;
+  const indexOfFirstPage = indexOfLastPage - postPerPage;
+  const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);
+
   return (
     <>
       {/* import from announcemrnt compomnents */}
@@ -62,28 +62,11 @@ const Category = ({ category, total }) => {
         setSearchProduct={setSearchProduct}
         setCategoryData={setCategoryData}
       />
-      {/* if the user search then  this function will run and  fethc data from the database */}
+      {/* if the user search product  then  this function will run and  fetch data from the database */}
       {searchProduct ? (
         <>
-          <div className="container-fluid Product">
-            <div className="row">
-              {data.map((item, id) => (
-                <div className="col-md-3 col-4 searchContainer" key={id}>
-                  <Link
-                    className="singleproductLink"
-                    to={`/products/single/${item._id}`}
-                  >
-                    <div className="singleProduct">
-                      <img className="img-fluid" src={item.img} alt="img" />
-                      <div className="productInfo">
-                        <p>{item.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* import from search components */}
+          <Search data={data} />
         </>
       ) : (
         <>

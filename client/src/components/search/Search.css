@@ -1,4 +1,10 @@
-.allProduct {
+.SearchProduct {
+  height: auto;
+  width: 100%;
+  margin-top: 6vh;
+}
+
+.singleProduct {
   position: relative;
   text-align: center;
   width: 100%;
@@ -12,7 +18,7 @@
   flex-direction: column;
 }
 
-.allProduct img {
+.singleProduct img {
   border-radius: 5px;
   height: 25vh;
   width: 100%;
@@ -23,23 +29,20 @@
 .productInfo p {
   text-align: start;
   margin: 10px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
 }
 
-.AllproductLink {
+.singleproductLink {
   color: inherit;
   text-decoration: none;
 }
-.allProduct:hover {
+.singleProduct:hover {
   color: red;
 }
 
 @media only screen and (max-width: 778px) {
-  .allProduct {
-    height: auto;
-  }
-  .allProduct img {
+  .singleProduct img {
     border-radius: 5px;
     height: 10vh;
     width: 100%;
@@ -50,4 +53,7 @@
     font-size: 10px;
     font-weight: 500;
   }
+  .singleProduct {
+  height: auto;
+}
 }
