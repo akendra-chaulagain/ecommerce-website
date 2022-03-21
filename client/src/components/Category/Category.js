@@ -48,7 +48,6 @@ const Category = ({ category, total }) => {
   //  Pagination for category
   const [page, setPage] = useState(1);
   const [postPerPage, setpostPerPage] = useState(6);
-
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
   const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);

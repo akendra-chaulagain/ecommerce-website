@@ -13,17 +13,23 @@ const LastetUser = ({ allUser }) => {
   return (
     <>
       <div className="container latestUser">
-        <h4 className="text-center">Latest User</h4>
+        <h4 className="text-center">New Join Members</h4>
         <hr />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className="tableCell tableCellBox">Id</TableCell>
-                <TableCell className="tableCell tableCellBox">UserName</TableCell>
+                <TableCell className="tableCell tableCellBox">
+                  UserName
+                </TableCell>
                 <TableCell className="tableCell tableCellBox">Email</TableCell>
-                <TableCell className="tableCell tableCellBox">Contact no</TableCell>
-                <TableCell className="tableCell tableCellBox">Create date</TableCell>
+                <TableCell className="tableCell tableCellBox">
+                  Contact no
+                </TableCell>
+                <TableCell className="tableCell tableCellBox">
+                  Create date
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

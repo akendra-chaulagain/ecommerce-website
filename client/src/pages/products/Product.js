@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../../components/search/Search";
+import CategorySearch from "../../components/CategorySearch/CategorySearch";
 
 const Product = () => {
   // get location is used to feth data  of an individual category  given user id in the url
@@ -47,14 +48,14 @@ const Product = () => {
   }, [searchProduct]);
 
   //  this below code will run when the user select the category from select box
-  const [AllproductsCat, setAllProductscat] = useState([]);
+  const [Allproducts, setAllProducts] = useState([]);
   const [categoryData, setCategoryData] = useState("");
 
   useEffect(() => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProductscat(res.data.product);
+        setAllProducts(res.data.product);
       } catch (error) {
         console.log("unable to get order");
       }
@@ -79,34 +80,7 @@ const Product = () => {
       ) : (
         <>
           {categoryData ? (
-            <>
-              {/* if the item is selected from the select option this code will run */}
-              <div className="container-fluid Product">
-                <div className="row">
-                  <>
-                    {AllproductsCat.map((item, id) => (
-                      <div className="col-md-3 col-4 searchContainer" key={id}>
-                        <Link
-                          className="singleproductLink"
-                          to={`/products/single/${item._id}`}
-                        >
-                          <div className="singleProduct">
-                            <img
-                              className="img-fluid"
-                              src={item.img}
-                              alt="img"
-                            />
-                            <div className="productInfo">
-                              <p>{item.name}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </>
-                </div>
-              </div>
-            </>
+            <CategorySearch Allproducts={Allproducts} />
           ) : (
             <>
               {/* all product will shown when search function in not in process */}
