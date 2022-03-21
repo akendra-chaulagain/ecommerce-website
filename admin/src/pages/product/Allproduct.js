@@ -19,9 +19,9 @@ const Allproduct = () => {
     getProducts(dispatch);
   }, [dispatch]);
 
-  // dselete product
+  // delete product
   const handleDelete = (id) => {
-    deleteProducts(dispatch, id);
+    deleteProducts(id, dispatch);
   };
 
   const columns = [

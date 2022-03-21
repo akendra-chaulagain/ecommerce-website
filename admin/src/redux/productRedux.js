@@ -21,22 +21,22 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
-  },
-  //   delete product
-  deleteProductStart: (state) => {
-    state.isFetching = true;
-    state.error = false;
-  },
-  deleteProductSuccess: (state, action) => {
-    state.isFetching = false;
-    state.products.splice(
-      state.products.findIndex((item) => item._id === action.payload),
-      1
-    );
-  },
-  deleteProductFailure: (state) => {
-    state.isFetching = false;
-    state.error = true;
+    //   delete product
+    deleteProductStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    deleteProductSuccess: (state, action) => {
+      state.isFetching = false;
+      state.products.splice(
+        state.products.findIndex((item) => item._id === action.payload),
+        1
+      );
+    },
+    deleteProductFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 

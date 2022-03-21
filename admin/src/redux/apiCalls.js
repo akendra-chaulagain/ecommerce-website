@@ -36,11 +36,11 @@ export const getProducts = async (dispatch) => {
 };
 
 // delete product
-export const deleteProducts = async (dispatch, id) => {
+export const deleteProducts = async (id, dispatch) => {
   dispatch(deleteProductStart());
   try {
-    const res = await userRequest.delete(`/products/${id}`);
-    dispatch(deleteProductSuccess(res.data));
+    await userRequest.delete(`/products/${id}`);
+    dispatch(deleteProductSuccess(id));
   } catch (error) {
     console.log("unable to get all product" + error);
     dispatch(deleteProductFailure());
