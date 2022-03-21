@@ -99,7 +99,7 @@ router.get("/getall", async (req, res) => {
     } else {
       product = await Product.find();
     }
-    res.status(201).json({ total: product.length, product });
+    res.status(201).json( product );
   } catch (error) {
     res.status(500).json(`Unablt toget all  product  ${error}`);
   }

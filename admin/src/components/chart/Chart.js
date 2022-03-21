@@ -9,10 +9,14 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const Chart = ({ data, title, grid, dataKey }) => {
+
+
+const Chart = ({data,title,grid,dataKey}) => {
   return (
     <>
-      <h5 style={{ marginTop: 20, marginLeft: 40, color: "gray" }}>{title}</h5>
+      <h5 style={{ marginTop: 20, marginLeft: 40, color: "gray" }}>
+       {title}
+      </h5>
       <ResponsiveContainer width="100%" height="30%">
         <AreaChart
           width={730}
@@ -37,7 +41,7 @@ const Chart = ({ data, title, grid, dataKey }) => {
             type="monotone"
             dataKey={dataKey}
             stroke="#8884d8"
-            fillOpacity={grid}
+            fillOpacity={1}
             fill="url(#colorUv)"
           />
         </AreaChart>

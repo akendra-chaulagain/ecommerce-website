@@ -58,7 +58,6 @@ const Home = () => {
     };
     getUserStats();
   }, [MONTHS]);
-
   return (
     <>
       <div className="home">
@@ -66,13 +65,15 @@ const Home = () => {
 
         <div className="homeContainer">
           {/* import from widget component */}
-          <Widget allUser={allUser} />
+          <Widget />
           {/* import from chart component */}
+          {/* sending props in the cart components */}
           <Chart
-          grid
-          dataKey = "Active User"
-          title="User Analytics"
-           data={userStats} />
+            grid
+            dataKey="Active User"
+            title="User Analytics"
+            data={userStats}
+          />
           {/* latest user import feom latest user */}
           <LastetUser allUser={allUser} />
         </div>
