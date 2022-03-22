@@ -1,5 +1,6 @@
 .update {
   display: flex;
+  height: 140vh;
 }
 .updateContainer {
   flex: 5;
@@ -80,4 +81,10 @@
   color: white;
   background-color: darkblue;
   border-radius: 9px;
+}
+.productForm textarea {
+  width: 100%;
+  height: 10vh;
+  border-radius: 5px;
+  outline: none;
 }

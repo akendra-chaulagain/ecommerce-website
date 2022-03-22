@@ -1,8 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Update.css";
 
 const Update = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+
+  // get product according to id
+  const product = useSelector((state) =>
+    state.product.products.find((product) => product._id === path)
+  );
+  console.log(product);
   return (
     <>
       <div className="update">
@@ -18,42 +28,55 @@ const Update = () => {
             {/* left side container */}
             <div className="col-md-8 leftSideContainer">
               <form className="productForm">
+                {/* product name */}
                 <label htmlFor="">Product Name</label>
                 <br />
-                <input type="text" />
+                <textarea type="text" placeholder={product.name} />
                 <br />
-
-                <label htmlFor="">Limit</label>
-                <br />
-                <input type="number" />
-                <br />
-
-                <label htmlFor="">Category</label>
-                <br />
-                <input type="text" />
-                <br />
-
-                <label htmlFor="">Size</label>
-                <br />
-                <input type="number" />
-                <br />
+                {/* product desc */}
                 <label htmlFor="">Description</label>
                 <br />
-                <input type="text" />
+                <textarea type="number" placeholder={product.desc} />
                 <br />
+                {/* category */}
+                <label htmlFor="">Category</label>
+                <br />
+                <input type="text" placeholder={product.cat} />
+                <br />
+                {/* color */}
+                <label htmlFor="">Color</label>
+                <br />
+                <input type="number" placeholder={product.color} />
+                <br />
+                {/* price */}
+                <label htmlFor="">Price</label>
+                <br />
+
+                <input type="text" placeholder={product.price} />
+                <br />
+                {/* features */}
                 <label htmlFor="">Features</label>
                 <br />
-                <input type="text" />
+                <textarea type="text" placeholder={product.feature} />
                 <br />
+                {/* size */}
+                <label htmlFor="">Size</label>
+                <br />
+                <input type="text" placeholder={product.size} />
+                <br />
+                {/* stock */}
+                <label htmlFor="">inStock</label>
+                <br />
+                <select>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
               </form>
             </div>
             {/* right side */}
             <div className="col-md-4 rightSideContainer">
               <div className="productImg">
-                <img
-                  src="https://media.istockphoto.com/photos/two-smartphones-with-blank-screen-soaring-on-dark-background-picture-id1315891458?b=1&k=20&m=1315891458&s=170667a&w=0&h=BUAyjvv1IRqycGAFkcq9-Nqzgv2AfB3XxcfGI9hnR3Y="
-                  alt=""
-                />
+                <img src={product.img} alt="product_img" />
                 <br />
                 {/* update button */}
                 <button>Update</button>
