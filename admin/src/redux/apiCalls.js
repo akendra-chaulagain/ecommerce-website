@@ -69,10 +69,10 @@ export const updateProducts = async (id, product, dispatch) => {
 export const createProducts = async (product, dispatch) => {
   dispatch(createProductStart());
   try {
-    await userRequest.post(`/products/newproduct`);
+    await userRequest.post(`/products/newproduct`, product);
     dispatch(createProductSuccess(product.data));
   } catch (error) {
-    console.log("unable to update product" + error);
+    console.log("unable to add product" + error);
     dispatch(createProductFailure());
   }
 };

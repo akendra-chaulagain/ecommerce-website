@@ -99,7 +99,7 @@ const Allproduct = () => {
               pageSize={7}
               rowsPerPageOptions={[8]}
               disableSelectionOnClick
-              getRowId={(r) => r._id}
+              getRowId={(row) => row._id}
             />
           </div>
         </div>

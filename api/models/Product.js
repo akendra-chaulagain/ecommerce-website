@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema(
     },
     color: {
       type: Array,
-      default: "",
+      required: true,
     },
     stock: {
       type: Boolean,
@@ -38,7 +38,7 @@ const productSchema = new mongoose.Schema(
       default: "",
     },
     size: {
-      type: "number",
+      type: Array,
       default: "6",
     },
   },

@@ -9,14 +9,20 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
+import { createProducts } from "../../redux/apiCalls";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   // usestates for all inputes
   const [inputes, setInputes] = useState({});
   const [selectImage, setSelectImages] = useState(null);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
-  console.log(selectImage);
+  const [progress, setProgress] = useState();
 
   const handleChange = (e) => {
     setInputes((prev) => {
@@ -46,22 +52,24 @@ const NewProduct = () => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
+        setProgress(progress + "% done");
         switch (snapshot.state) {
           case "paused":
-            console.log("Upload is paused");
+            setProgress(progress + "% done");
             break;
           case "running":
-            console.log("Upload is running");
+            setProgress(progress + "% done");
             break;
           default:
         }
       },
-
+      (error) => {},
       () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
+          const product = { ...inputes, img: downloadURL, color, size };
+          createProducts(product, dispatch);
+          navigate("/product");
         });
       }
     );
@@ -88,6 +96,7 @@ const NewProduct = () => {
                       <input
                         type="file"
                         id="img"
+                        required
                         onChange={(e) => setSelectImages(e.target.files[0])}
                       />
                     </div>
@@ -99,6 +108,7 @@ const NewProduct = () => {
                         type="text"
                         autoComplete="off"
                         name="name"
+                        required
                         onChange={handleChange}
                       />
                     </div>
@@ -109,6 +119,7 @@ const NewProduct = () => {
                       <textarea
                         type="text"
                         name="desc"
+                        required
                         autoComplete="off"
                         onChange={handleChange}
                       />
@@ -119,6 +130,7 @@ const NewProduct = () => {
                       <br />
                       <textarea
                         type="text"
+                        required
                         name="feature"
                         autoComplete="off"
                         onChange={handleChange}
@@ -131,6 +143,7 @@ const NewProduct = () => {
                       <input
                         type="number"
                         name="price"
+                        required
                         autoComplete="off"
                         onChange={handleChange}
                       />
@@ -141,6 +154,7 @@ const NewProduct = () => {
                       <br />
                       <input
                         type="text"
+                        required
                         name="cat"
                         autoComplete="off"
                         onChange={handleChange}
@@ -155,7 +169,8 @@ const NewProduct = () => {
                       <br />
                       <input
                         type="text"
-                        name="limit"
+                        name="color"
+                        required
                         autoComplete="off"
                         onChange={handleColor}
                       />
@@ -167,6 +182,7 @@ const NewProduct = () => {
                       <input
                         type="text"
                         name="size"
+                        required
                         autoComplete="off"
                         onChange={handleSize}
                       />
@@ -178,6 +194,7 @@ const NewProduct = () => {
                       <input
                         type="text"
                         name="brand"
+                        required
                         autoComplete="off"
                         onChange={handleChange}
                       />
@@ -196,6 +213,9 @@ const NewProduct = () => {
                     <div className="createnewButton">
                       {/* <button  onClick={handleSubmit} >Create</button> */}
                       <button onClick={handleSubmitData}>Create</button>
+                      <br />
+                      <br />
+                      {progress}
                     </div>
                   </div>
                 </div>
