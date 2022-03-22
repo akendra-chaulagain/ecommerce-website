@@ -1,12 +1,18 @@
 import axios from "axios";
 import { userRequest } from "../RequestMethod";
 import {
+  createProductFailure,
+  createProductStart,
+  createProductSuccess,
   deleteProductFailure,
   deleteProductStart,
   deleteProductSuccess,
   getProductFailure,
   getProductStart,
   getProductSuccess,
+  updateProductFailure,
+  updateProductStart,
+  updateProductSuccess,
 } from "./productRedux";
 import { loginfailure, loginStart, loginSuccess } from "./userRedux";
 
@@ -44,5 +50,29 @@ export const deleteProducts = async (id, dispatch) => {
   } catch (error) {
     console.log("unable to get all product" + error);
     dispatch(deleteProductFailure());
+  }
+};
+
+// update product
+export const updateProducts = async (id, product, dispatch) => {
+  dispatch(updateProductStart());
+  try {
+    await userRequest.put(`/products/${id}`);
+    dispatch(updateProductSuccess(id, product));
+  } catch (error) {
+    console.log("unable to update product" + error);
+    dispatch(updateProductFailure());
+  }
+};
+
+// add  product
+export const createProducts = async (product, dispatch) => {
+  dispatch(createProductStart());
+  try {
+    await userRequest.post(`/products/newproduct`);
+    dispatch(createProductSuccess(product.data));
+  } catch (error) {
+    console.log("unable to update product" + error);
+    dispatch(createProductFailure());
   }
 };

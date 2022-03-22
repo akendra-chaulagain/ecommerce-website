@@ -86,7 +86,7 @@ const Allproduct = () => {
           <div className="allContainerWrapper">
             <div className="ProductTitle ">All Products</div>
             <div className="createBtn">
-              <Link to="newProduct">
+              <Link to="/newProduct">
                 <button>Create</button>
               </Link>
             </div>

@@ -8,11 +8,10 @@ const Update = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
-  // get product according to id
+  // get product according to id from the productRedux
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === path)
   );
-  console.log(product);
   return (
     <>
       <div className="update">
@@ -29,43 +28,43 @@ const Update = () => {
             <div className="col-md-8 leftSideContainer">
               <form className="productForm">
                 {/* product name */}
-                <label htmlFor="">Product Name</label>
+                <label>Product Name</label>
                 <br />
                 <textarea type="text" placeholder={product.name} />
                 <br />
                 {/* product desc */}
-                <label htmlFor="">Description</label>
+                <label>Description</label>
                 <br />
                 <textarea type="number" placeholder={product.desc} />
                 <br />
                 {/* category */}
-                <label htmlFor="">Category</label>
+                <label>Category</label>
                 <br />
                 <input type="text" placeholder={product.cat} />
                 <br />
                 {/* color */}
-                <label htmlFor="">Color</label>
+                <label>Color</label>
                 <br />
                 <input type="number" placeholder={product.color} />
                 <br />
                 {/* price */}
-                <label htmlFor="">Price</label>
+                <label>Price</label>
                 <br />
 
                 <input type="text" placeholder={product.price} />
                 <br />
                 {/* features */}
-                <label htmlFor="">Features</label>
+                <label>Features</label>
                 <br />
                 <textarea type="text" placeholder={product.feature} />
                 <br />
                 {/* size */}
-                <label htmlFor="">Size</label>
+                <label>Size</label>
                 <br />
                 <input type="text" placeholder={product.size} />
                 <br />
                 {/* stock */}
-                <label htmlFor="">inStock</label>
+                <label>inStock</label>
                 <br />
                 <select>
                   <option value="true">Yes</option>

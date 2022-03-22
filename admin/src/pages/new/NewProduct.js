@@ -22,12 +22,7 @@ const NewProduct = () => {
                       <br />
                       <input type="file" id="img" name="img" />
                     </div>
-
-                    <div className="inputField">
-                      <label htmlFor="">Title</label>
-                      <br />
-                      <input type="text" name="title" autoComplete="off" />
-                    </div>
+                   {/* product name */}
                     <div className="inputField">
                       <label htmlFor="">product Username</label>
                       <br />

@@ -45,11 +45,6 @@ const LastetUser = ({ allUser }) => {
                   <TableCell className="tableCell">
                     {new Date(user.createdAt).toDateString()}
                   </TableCell>
-                  {/* <TableCell className="tableCell">
-                        <span className={`status${row.status}`}>
-                          {row.email}
-                        </span>
-                      </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>
