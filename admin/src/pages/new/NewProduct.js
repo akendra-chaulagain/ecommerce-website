@@ -1,8 +1,72 @@
 import React from "react";
+import { useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./NewProduct.css";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../firebase";
 
 const NewProduct = () => {
+  // usestates for all inputes
+  const [inputes, setInputes] = useState({});
+  const [selectImage, setSelectImages] = useState(null);
+  const [color, setColor] = useState([]);
+  const [size, setSize] = useState([]);
+  console.log(selectImage);
+
+  const handleChange = (e) => {
+    setInputes((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  // for color
+  const handleColor = (e) => {
+    setColor(e.target.value.split(","));
+  };
+  // for size
+  const handleSize = (e) => {
+    setSize(e.target.value.split(","));
+  };
+
+  // handleSubmitData(firebase)
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+    const fileName = new Date().getTime() + selectImage.name;
+    const Storage = getStorage(app);
+    const storageRef = ref(Storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, selectImage);
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+        }
+      },
+
+      () => {
+        // Upload completed successfully, now we can get the download URL
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("File available at", downloadURL);
+        });
+      }
+    );
+  };
+
   return (
     <>
       <div className="newProduct">
@@ -18,69 +82,120 @@ const NewProduct = () => {
                   {/* left side */}
                   <div className="col-md-6">
                     <div className="mt-3">
-                      <label htmlFor="">Image</label>
+                      {/* images */}
+                      <label>Image</label>
                       <br />
-                      <input type="file" id="img" name="img" />
+                      <input
+                        type="file"
+                        id="img"
+                        onChange={(e) => setSelectImages(e.target.files[0])}
+                      />
                     </div>
-                   {/* product name */}
+                    {/* product name */}
                     <div className="inputField">
-                      <label htmlFor="">product Username</label>
+                      <label>product Username</label>
                       <br />
-                      <input type="text" autoComplete="off" />
+                      <textarea
+                        type="text"
+                        autoComplete="off"
+                        name="name"
+                        onChange={handleChange}
+                      />
                     </div>
-
+                    {/* desc */}
                     <div className="inputField">
-                      <label htmlFor="">Description</label>
+                      <label>Description</label>
                       <br />
-                      <input type="text" name="desc" autoComplete="off" />
+                      <textarea
+                        type="text"
+                        name="desc"
+                        autoComplete="off"
+                        onChange={handleChange}
+                      />
                     </div>
-
+                    {/* features */}
                     <div className="inputField">
-                      <label htmlFor="">Price</label>
+                      <label>Features</label>
                       <br />
-                      <input type="number" name="year" autoComplete="off" />
+                      <textarea
+                        type="text"
+                        name="feature"
+                        autoComplete="off"
+                        onChange={handleChange}
+                      />
                     </div>
+                    {/* price */}
                     <div className="inputField">
-                      <label htmlFor="">Category</label>
+                      <label>Price</label>
                       <br />
-                      <input type="text" name="genre" autoComplete="off" />
+                      <input
+                        type="number"
+                        name="price"
+                        autoComplete="off"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    {/* category */}
+                    <div className="inputField">
+                      <label>Category</label>
+                      <br />
+                      <input
+                        type="text"
+                        name="cat"
+                        autoComplete="off"
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
-                  {/* right side */}
+                  {/* right side container */}
                   <div className="col-md-6">
+                    {/* color */}
                     <div className="inputField">
-                      <label htmlFor="">Size</label>
+                      <label>Color</label>
                       <br />
-                      <input type="number" name="limit" autoComplete="off" />
+                      <input
+                        type="text"
+                        name="limit"
+                        autoComplete="off"
+                        onChange={handleColor}
+                      />
                     </div>
+                    {/* size */}
                     <div className="inputField">
-                      <label htmlFor="">Brand</label>
+                      <label>Size</label>
                       <br />
-                      <input type="text" name="duration" autoComplete="off" />
+                      <input
+                        type="text"
+                        name="size"
+                        autoComplete="off"
+                        onChange={handleSize}
+                      />
                     </div>
+                    {/* brand */}
                     <div className="inputField">
-                      <label htmlFor="">Is ?</label>
+                      <label>Brand</label>
                       <br />
-                      <select name="isSeries" id="active">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                      <input
+                        type="text"
+                        name="brand"
+                        autoComplete="off"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    {/* stock */}
+                    <div className="inputField">
+                      <label>inStock ?</label>
+                      <br />
+                      <select name="stock" id="active" onChange={handleChange}>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
                       </select>
                     </div>
-
-                    {/* <div className="inputField">
-                                        <label htmlFor="">Video</label><br />
-                                        <input type="file" name='video'
-                                            onChange={(e) => setVideo(e.target.files[0])}
-                                        />
-                                    </div> */}
 
                     {/* create btn */}
                     <div className="createnewButton">
                       {/* <button  onClick={handleSubmit} >Create</button> */}
-
-                      <div className="createButton">
-                        <button>Create</button>
-                      </div>
+                      <button onClick={handleSubmitData}>Create</button>
                     </div>
                   </div>
                 </div>

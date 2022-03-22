@@ -1,6 +1,6 @@
 .newProduct {
   display: flex;
-  height: 100vh;
+  height: 120vh;
 }
 .newProductContainer {
   flex: 5;
@@ -48,7 +48,11 @@
   border-radius: 9px;
 }
 
-.createButton button {
+.createnewButton button:hover {
   background-color: red;
   color: white;
+}
+.addproductForm textarea {
+  width: 80%;
+  border-radius: 5px;
 }
