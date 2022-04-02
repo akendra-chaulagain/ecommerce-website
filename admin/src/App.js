@@ -15,6 +15,7 @@ import Order from "./pages/order/Order";
 import ViewOrder from "./pages/View/ViewOrder";
 import Login from "./pages/login/Login";
 import { useSelector } from "react-redux";
+import Category from "./pages/category/Category";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -62,8 +63,13 @@ const App = () => {
           />
           {/* view single order */}
           <Route
-            path="order/:id"
+            path="/order/:id"
             element={user ? <ViewOrder /> : <Navigate to="/login" />}
+          />
+          {/* category */}
+          <Route
+            path="/category"
+            element={user ? <Category /> : <Navigate to="/login" />}
           />
         </Routes>
         {/* login container */}

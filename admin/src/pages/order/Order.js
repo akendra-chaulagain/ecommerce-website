@@ -22,7 +22,7 @@ const Order = () => {
   };
 
   const columns = [
-    { field: "_id", headerName: "UserId", width: 280 },
+    { field: "_id", headerName: "UserId", width: 380 },
 
     { field: "email", headerName: "Email", width: 290 },
     { field: "amount", headerName: "Amount", width: 200 },
@@ -36,7 +36,7 @@ const Order = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 160,
+      width: 200,
       renderCell: (params) => {
         return (
           <>
@@ -69,7 +69,7 @@ const Order = () => {
           <div className="orderTitle mt-4 text-center">All Orders</div>
           <div
             className="OrderContainerTable"
-            style={{ height: 520, width: "90%" }}
+            style={{ height: 520, width: "100%" }}
           >
             <DataGrid
               rows={order}

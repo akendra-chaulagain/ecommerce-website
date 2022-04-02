@@ -6,6 +6,7 @@ import {
   PlayArrow,
   Menu,
   ExitToAppOutlined,
+  Category,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -53,6 +54,13 @@ const Sidebar = () => {
               <li className="sidebarItems mt-1">
                 <Menu className="sidebarIcons" style={{ marginRight: 8 }} />
                 Orders
+              </li>
+            </Link>
+            {/* category */}
+            <Link className="link" to="/category">
+              <li className="sidebarItems mt-1">
+                <Category className="sidebarIcons" style={{ marginRight: 8 }} />
+                Category
               </li>
             </Link>
           </div>

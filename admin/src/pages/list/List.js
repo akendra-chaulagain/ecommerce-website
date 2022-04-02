@@ -22,15 +22,15 @@ const List = () => {
   };
 
   const columns = [
-    { field: "_id", headerName: "UserId", width: 220 },
+    { field: "_id", headerName: "UserId", width: 280 },
     { field: "username", headerName: "Name", width: 250 },
-    { field: "email", headerName: "Email", width: 230 },
+    { field: "email", headerName: "Email", width: 250 },
     { field: "number", headerName: "Contact no", width: 200 },
 
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 150,
       renderCell: (params) => {
         return (
           <>
@@ -54,7 +54,7 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         <div className="ProductTitle text-center">All List</div>
-        <div style={{ height: 520, width: "96%" }}>
+        <div style={{ height: 520, width: "100%" }}>
           <DataGrid
             rows={allUser}
             columns={columns}

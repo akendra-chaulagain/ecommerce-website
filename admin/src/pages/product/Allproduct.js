@@ -30,7 +30,7 @@ const Allproduct = () => {
         <div className="allContainer">
           {/*  create button */}
           <div className="allContainerWrapper">
-            <div className="ProductTitle ">All Products</div>
+            <div className="ProductTitle">All Products</div>
             <div className="createBtn">
               {/* button to create new product */}
               <Link to="/newProduct">
@@ -52,7 +52,7 @@ const Allproduct = () => {
               <tbody>
                 {allProduct.map((item, key) => (
                   <tr key={key}>
-                    <th>{item._id}</th>
+                    <th className="itemId">{item._id}</th>
                     <td>{item.name}</td>
                     <td>${item.price}</td>
                     <td>

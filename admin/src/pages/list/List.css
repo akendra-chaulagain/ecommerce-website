@@ -1,11 +1,13 @@
 .list {
   display: flex;
+  overflow: hidden;
 }
 .listContainer {
-  flex: 5;
+ flex: 5;
   margin-top: 15vh;
-  margin-left: 5%;
   box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
+  margin-left: 2%;
+  margin-right: 1%;
   
 
 }

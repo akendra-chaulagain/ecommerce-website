@@ -31,10 +31,12 @@
 
 .ProductTitle {
   font-weight: 600;
-  /* font-size: 25px; */
   color: gray;
   margin-left: 3%;
   margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .button_delete {
   border: 1px solid red;
@@ -71,4 +73,8 @@
 
 .table th {
   color: gray;
+}
+.table .itemId {
+  font-weight: 400;
+  color: black;
 }

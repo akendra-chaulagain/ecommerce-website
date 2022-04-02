@@ -14,107 +14,26 @@
   font-size: 30px;
   color: rgb(5, 5, 82);
 }
-.topbar img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin-left: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}
+
 .right {
   position: relative;
 }
-.right button {
-  border: none;
-  outline: none;
-  font-weight: 600;
-  margin-left: 20px;
-  /* margin-top: 50px; */
-  background-color: lightblue;
-  color: rgb(0, 0, 0);
-  padding: 5px 20px;
-  border-radius: 9px;
-}
-
 .right .icon {
   margin: 20px 7px 0px 7px;
   font-size: 25px;
   color: rgb(177, 160, 160);
   cursor: pointer;
+  font-size: 30px;
 }
-.topIconBadge {
-  position: relative;
-  background-color: rgb(230, 25, 25);
-  padding: 2px 4px;
-  color: whitesmoke;
-  right: 20px;
-  border-radius: 50%;
-  font-size: 15px;
-  align-items: center;
-  cursor: pointer;
+.right .facebookicon {
+  color: rgb(59, 59, 219);
 }
-/* button */
-.label {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  margin-left: 20%;
-  margin-top: 3vh;
+.right .instagramicon {
+  color: red;
 }
-
-.label-text {
-  margin-left: 16px;
+.right .linkedinicon {
+  color: rgb(59, 59, 219);
 }
-
-.toggle {
-  isolation: isolate;
-  position: relative;
-  height: 25px;
-  width: 50px;
-  border-radius: 15px;
-  overflow: hidden;
-  background-color: rgb(0, 0, 0);
-}
-
-.toggle-state {
-  display: none;
-}
-
-.indicator {
-  height: 100%;
-  width: 200%;
-  background: #dbd7d7;
-  border-radius: 15px;
-  transform: translate3d(-75%, 0, 0);
-  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
-}
-
-.toggle-state:checked ~ .indicator {
-  transform: translate3d(25%, 0, 0);
-}
-
-@media only screen and (max-width: 768px) {
-  .topbar {
-    height: 7vh;
-  }
-  .topbar img {
-    margin-top: 12px;
-    height: 40px;
-    width: 40px;
-    margin-left: 0px;
-  }
-  .right .icon {
-    font-size: 25px;
-    margin: 20px 2px 0px 2px;
-  }
-  .topbar h3 {
-    font-weight: 700;
-    font-size: 22px;
-  }
-  .topIconBadge {
-    padding: 2px 4px;
-    font-size: 10px;
-    right: 15px;
-  }
+.right .twittericon {
+  color: lightskyblue;
 }
