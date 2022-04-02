@@ -56,25 +56,23 @@ const ViewOrder = () => {
               {/* order's product  */}
               <div className="OrderInfoBoxProduct">
                 {getOrderProduct.map((item, key) => (
-                  <>
-                    <div className="orderProductWrapper" key={key}>
-                      {/* order product ing */}
-                      <div className="orderImg">
-                        <img src={item.img} alt="" />
-                      </div>
-                      {/* order product title */}
-                      <div className="orderProductTitle">{item.name}</div>
-                      {/* price */}
-                      <p>
-                        Price : <span>${item.price}</span>
-                      </p>
-                      {/* quantity */}
-                      <p>
-                        Quantity : <span>{item.quantity}</span>
-                      </p>
+                  <div className="orderProductWrapper" key={key}>
+                    {/* order product ing */}
+                    <div className="orderImg">
+                      <img src={item.img} alt="" />
                     </div>
+                    {/* order product title */}
+                    <div className="orderProductTitle">{item.name}</div>
+                    {/* price */}
+                    <p>
+                      Price : <span>${item.price}</span>
+                    </p>
+                    {/* quantity */}
+                    <p>
+                      Quantity : <span>{item.quantity}</span>
+                    </p>
                     <hr />
-                  </>
+                  </div>
                 ))}
               </div>
             </div>

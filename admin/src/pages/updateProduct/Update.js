@@ -181,7 +181,7 @@ const Update = () => {
 
                 <br />
                 {/* update button */}
-                <button >Update</button>
+                <button>Update</button>
               </div>
             </div>
           </div>

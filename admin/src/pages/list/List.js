@@ -54,9 +54,6 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         <div className="ProductTitle text-center">All List</div>
-        {/* <Link to="/new" className="text-end">
-          <button className="button_Edit">Edit</button>
-        </Link> */}
         <div style={{ height: 520, width: "96%" }}>
           <DataGrid
             rows={allUser}
