@@ -42,11 +42,15 @@ router.get("/find/:id", verifyToken, async (req, res) => {
 
 // delete user
 router.delete("/:id", verifyToken, async (req, res) => {
-  try {
-    const deleteUser = await User.findByIdAndDelete(req.params.id);
-    res.status(201).json(deleteUser);
-  } catch (error) {
-    res.status(500).json(`Unablt to delete   user ${error}`);
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    try {
+      const deleteUser = await User.findByIdAndDelete(req.params.id);
+      res.status(201).json(deleteUser);
+    } catch (error) {
+      res.status(500).json(`Unablt to delete   user ${error}`);
+    }
+  } else {
+    res.status(500).json("unable to get all users");
   }
 });
 

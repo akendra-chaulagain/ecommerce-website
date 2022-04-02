@@ -13,12 +13,12 @@ const Allproduct = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
 
-  // get all product
+  // get all product  from redux
   useEffect(() => {
     getProducts(dispatch);
   }, [dispatch]);
 
-  // delete product
+  // delete product from redux
   const handleDelete = (id) => {
     deleteProducts(id, dispatch);
   };
@@ -56,8 +56,7 @@ const Allproduct = () => {
       renderCell: (params) => {
         return (
           <>
-            {/*  data button*/}
-
+            {/*  delete button*/}
             <button
               className="button_delete"
               onClick={() => handleDelete(params.row._id)}
@@ -95,11 +94,13 @@ const Allproduct = () => {
           <div className="tableContainer" style={{ height: 520, width: "96%" }}>
             <DataGrid
               rows={products}
-              columns={columns}
               pageSize={7}
               rowsPerPageOptions={[8]}
+              columns={columns}
               disableSelectionOnClick
+              checkboxSelection
               getRowId={(row) => row._id}
+              // getRowId={(row) => row.createdAt}
             />
           </div>
         </div>

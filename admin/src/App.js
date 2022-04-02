@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Topbar from "./components/navbar/Topbar";
 import List from "./pages/list/List";
-import SingleUser from "./pages/singleuser/SingleUser";
 import Allproduct from "./pages/product/Allproduct";
 import Update from "./pages/updateProduct/Update";
 import NewProduct from "./pages/new/NewProduct";
@@ -40,11 +39,7 @@ const App = () => {
             path="/list"
             element={user ? <List /> : <Navigate to="/login" />}
           />
-          {/* get user by id */}
-          <Route
-            path="list/:id"
-            element={user ? <SingleUser /> : <Navigate to="/login" />}
-          />
+
           {/* get all product */}
           <Route
             path="/product"
@@ -73,7 +68,6 @@ const App = () => {
         </Routes>
         {/* login container */}
         <Routes>
-          {/* view single order */}
           <Route
             path="/login"
             element={user ? <Navigate to="/" /> : <Login />}

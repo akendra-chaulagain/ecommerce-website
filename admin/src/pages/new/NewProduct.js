@@ -215,6 +215,7 @@ const NewProduct = () => {
                       <button onClick={handleSubmitData}>Create</button>
                       <br />
                       <br />
+                      {/* progress bar */}
                       {progress}
                     </div>
                   </div>
