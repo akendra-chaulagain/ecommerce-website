@@ -37,7 +37,6 @@ const NewProduct = () => {
   const handleSize = (e) => {
     setSize(e.target.value.split(","));
   };
-
   // handleSubmitData(firebase)
   const handleSubmitData = (e) => {
     e.preventDefault();

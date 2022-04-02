@@ -85,6 +85,7 @@ const Allproduct = () => {
           <div className="allContainerWrapper">
             <div className="ProductTitle ">All Products</div>
             <div className="createBtn">
+            {/* button to create new product */}
               <Link to="/newProduct">
                 <button>Create</button>
               </Link>
@@ -99,8 +100,7 @@ const Allproduct = () => {
               columns={columns}
               disableSelectionOnClick
               checkboxSelection
-              getRowId={(row) => row._id}
-              // getRowId={(row) => row.createdAt}
+              // getRowId={(row) => row._id}
             />
           </div>
         </div>

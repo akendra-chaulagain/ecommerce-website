@@ -1,36 +1,47 @@
 .viewOrder {
   display: flex;
-  height: 100vh;
+  height: auto;
 }
 .viewOrderContainer {
   flex: 5;
-  margin-top: 14vh;
+  margin-top: 5vh;
+  /* height: auto; */
+  margin: 15vh 3% 0% 3%;
 }
 
 .viewOrderContainer h3 {
   color: gray;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .wrapperOrderBox {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
 }
-.OrderInfoBox {
-  height: 50vh;
-  width: 50%;
-  box-shadow: -4px 5px 39px -12px rgba(83, 83, 83, 0.66);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.OrderInfoBoxAddress {
+  width: 20%;
 }
-.OrderInfoBox p {
-  font-weight: 600;
-  font-size: 19px;
+.OrderInfoBoxAddress h3 {
+  font-size: 23px;
+  text-decoration: underline;
+  margin-bottom: 3vh;
+}
+.OrderInfoBoxAddress p {
+  font-size: 18px;
   color: gray;
-  margin-left: 10%;
+  font-weight: 600;
 }
-.OrderInfoBox span {
+.OrderInfoBoxAddress span {
   font-size: 17px;
   font-weight: 500;
+}
+.OrderInfoBoxProduct {
+  width: 70%;
+  height: 85vh;
+}
+.orderImg img {
+  height: 15vh;
+}
+.TotalAmount p {
+  color: lightcoral;
+  text-decoration: underline;
 }

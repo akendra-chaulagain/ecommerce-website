@@ -26,7 +26,7 @@ export const userSlice = createSlice({
       state.error = false;
     },
     getAllUserSuccess: (state, action) => {
-      state.isFetching = true;
+      state.isFetching = false;
       state.currentUser = action.payload;
       state.error = false;
     },
@@ -40,7 +40,7 @@ export const userSlice = createSlice({
       state.error = false;
     },
     deleteUserSuccess: (state, action) => {
-      state.isFetching = true;
+      state.isFetching = false;
       state.currentUser.splice(
         state.currentUser.findIndex((item) => item._id === action.payload),
         1

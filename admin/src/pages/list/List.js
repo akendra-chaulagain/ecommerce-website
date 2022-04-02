@@ -35,12 +35,12 @@ const List = () => {
         return (
           <>
             {/* delete  user data button*/}
-              <button
-                className="button_delete"
-                onClick={() => handleDeleteUser(params.row._id)}
-              >
-                <DeleteOutlined />
-              </button>
+            <button
+              className="button_delete"
+              onClick={() => handleDeleteUser(params.row._id)}
+            >
+              <DeleteOutlined />
+            </button>
           </>
         );
       },

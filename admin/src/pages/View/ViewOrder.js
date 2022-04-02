@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./ViewOrder.css";
+import { userRequest } from "../../RequestMethod";
 
 const ViewOrder = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  // get product accroding to id
+  const [getOrderProduct, setgetOrderProduct] = useState([]);
+  const [getProductAddress, setgetProductAddress] = useState({});
+  const [total, setTotal] = useState("");
+  useEffect(() => {
+    const getProductById = async () => {
+      try {
+        const res = await userRequest.get("/orders/find/" + path);
+        setgetOrderProduct(res.data.orderItems[0].products);
+        setgetProductAddress(res.data.shippingAddress);
+        setTotal(res.data.amount);
+      } catch (error) {
+        console.log("unable to get order " + error);
+      }
+    };
+    getProductById();
+  }, [path]);
+
   return (
     <>
       <div className="viewOrder">
@@ -10,24 +32,50 @@ const ViewOrder = () => {
 
         <div className="container-fluid viewOrderContainer">
           <div className="row ">
-            <h3 className="text-center">User Information</h3>
+            <h3 className="text-center">Order Information</h3>
             <div className="wrapperOrderBox">
-              <div className="OrderInfoBox">
+              {/* address */}
+              <div className="OrderInfoBoxAddress">
+                <h3>Shipping Address</h3>
                 <p>
-                  OrderId : <span>123434555456748543</span>
+                  City : <span>{getProductAddress.city}</span>
                 </p>
                 <p>
-                  Product : <span>akendra chaulagain</span>
+                  Country : <span>{getProductAddress.country}</span>
                 </p>
                 <p>
-                  Email : <span>akendra@gmail.com</span>
+                  Pin : <span>{getProductAddress.pin}</span>
                 </p>
                 <p>
-                  Amount: : <span>989657658</span>
+                  Street: : <span>{getProductAddress.street}</span>
                 </p>
-                <p>
-                  Status: : <span>pending</span>
-                </p>
+                <div className="TotalAmount">
+                  <p>Total Amount :${total}</p>
+                </div>
+              </div>
+              {/* order's product  */}
+              <div className="OrderInfoBoxProduct">
+                {getOrderProduct.map((item, key) => (
+                  <>
+                    <div className="orderProductWrapper" key={key}>
+                      {/* order product ing */}
+                      <div className="orderImg">
+                        <img src={item.img} alt="" />
+                      </div>
+                      {/* order product title */}
+                      <div className="orderProductTitle">{item.name}</div>
+                      {/* price */}
+                      <p>
+                        Price : <span>${item.price}</span>
+                      </p>
+                      {/* quantity */}
+                      <p>
+                        Quantity : <span>{item.quantity}</span>
+                      </p>
+                    </div>
+                    <hr />
+                  </>
+                ))}
               </div>
             </div>
           </div>

@@ -1,6 +1,14 @@
 import axios from "axios";
 import { userRequest } from "../RequestMethod";
 import {
+  deleteOrderFailure,
+  deleteOrderStart,
+  deleteOrderSuccess,
+  getOrderFailure,
+  getOrderStart,
+  getOrderSuccess,
+} from "./orderRedux";
+import {
   createProductFailure,
   createProductStart,
   createProductSuccess,
@@ -55,7 +63,7 @@ export const deleteProducts = async (id, dispatch) => {
     await userRequest.delete(`/products/${id}`);
     dispatch(deleteProductSuccess(id));
   } catch (error) {
-    console.log("unable to get all product" + error);
+    console.log("unable to delete" + error);
     dispatch(deleteProductFailure());
   }
 };
@@ -96,7 +104,7 @@ export const getUser = async (dispatch) => {
   }
 };
 
-//  delete all user
+//  delete  user
 export const deleteUser = async (id, dispatch) => {
   dispatch(deleteProductStart());
   try {
@@ -105,5 +113,28 @@ export const deleteUser = async (id, dispatch) => {
   } catch (error) {
     console.log("unable to delete user" + error);
     dispatch(deleteProductFailure());
+  }
+};
+
+// get all order
+export const getOrder = async (dispatch) => {
+  dispatch(getOrderStart());
+  try {
+    const res = await userRequest.get(`/orders/`);
+    dispatch(getOrderSuccess(res.data));
+  } catch (error) {
+    console.log("unable to get all order" + error);
+    dispatch(getOrderFailure());
+  }
+};
+// delete order
+export const deleteOrder = async (id, dispatch) => {
+  dispatch(deleteOrderStart());
+  try {
+    await userRequest.delete(`/orders/${id}`);
+    dispatch(deleteOrderSuccess(id));
+  } catch (error) {
+    console.log("unable to delete order" + error);
+    dispatch(deleteOrderFailure());
   }
 };

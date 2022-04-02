@@ -1,4 +1,7 @@
+import { Publish } from "@material-ui/icons";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -12,11 +15,55 @@ const Update = () => {
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === path)
   );
+
+  // update product
+  const [inputes, setInputes] = useState({});
+  const [color, setColor] = useState([]);
+  const [size, setSize] = useState([]);
+  const [progress, setProgress] = useState();
+
+  // for inputes
+  const handleChange = (e) => {
+    setInputes((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  // for color
+  const handleColor = (e) => {
+    setColor(e.target.value.split(","));
+  };
+  // for size
+  const handleSize = (e) => {
+    setSize(e.target.value.split(","));
+  };
+
+  // preview img on select
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+  // create a preview as a side effect, whenever selected file is changed
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    // I've kept this example simple by using the first image instead of multiple
+    setSelectedFile(e.target.files[0]);
+  };
+
   return (
     <>
       <div className="update">
         <Sidebar />
-
         <div className="container-fluid updateContainer">
           <div className="updatetContainerTitle">
             <h1>Update Product</h1>
@@ -30,55 +77,111 @@ const Update = () => {
                 {/* product name */}
                 <label>Product Name</label>
                 <br />
-                <textarea type="text" placeholder={product.name} />
+                <textarea
+                  name="name"
+                  type="text"
+                  placeholder={product.name}
+                  onChange={handleChange}
+                />
                 <br />
                 {/* product desc */}
                 <label>Description</label>
                 <br />
-                <textarea type="number" placeholder={product.desc} />
+                <textarea
+                  name="desc"
+                  type="text"
+                  placeholder={product.desc}
+                  onChange={handleChange}
+                />
                 <br />
                 {/* category */}
                 <label>Category</label>
                 <br />
-                <input type="text" placeholder={product.cat} />
+                <input
+                  name="cat"
+                  type="text"
+                  placeholder={product.cat}
+                  onChange={handleChange}
+                />
                 <br />
                 {/* color */}
                 <label>Color</label>
                 <br />
-                <input type="number" placeholder={product.color} />
+                <input
+                  name="color"
+                  type="text"
+                  placeholder={product.color}
+                  onChange={handleColor}
+                />
                 <br />
                 {/* price */}
                 <label>Price</label>
                 <br />
 
-                <input type="text" placeholder={product.price} />
+                <input
+                  name="price"
+                  type="number"
+                  placeholder={product.price}
+                  onChange={handleChange}
+                />
                 <br />
                 {/* features */}
                 <label>Features</label>
                 <br />
-                <textarea type="text" placeholder={product.feature} />
+                <textarea
+                  name="feature"
+                  type="text"
+                  placeholder={product.feature}
+                  onChange={handleChange}
+                />
                 <br />
                 {/* size */}
                 <label>Size</label>
                 <br />
-                <input type="text" placeholder={product.size} />
+                <input
+                  type="text"
+                  name="size"
+                  placeholder={product.size}
+                  onChange={handleSize}
+                />
                 <br />
                 {/* stock */}
                 <label>inStock</label>
                 <br />
-                <select>
+                <select name="stock" onChange={handleChange}>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
               </form>
             </div>
-            {/* right side */}
+            {/* right side for select img and update button- */}
             <div className="col-md-4 rightSideContainer">
               <div className="productImg">
-                <img src={product.img} alt="product_img" />
+                {/* slelect img */}
+
+                <label htmlFor="file">
+                  <Publish />
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={onSelectFile}
+                    style={{ display: "none" }}
+                  />
+                  {/* select file is selected then this code will run */}
+                  {selectedFile ? (
+                    <>
+                      <img src={preview} alt="select_img" />
+                    </>
+                  ) : (
+                    <>
+                      <img src={product.img} alt="product_img" />
+                    </>
+                  )}
+                </label>
+
                 <br />
                 {/* update button */}
-                <button>Update</button>
+                <button >Update</button>
               </div>
             </div>
           </div>
