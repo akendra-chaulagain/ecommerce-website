@@ -54,7 +54,7 @@ const Category = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const categorys = { img: downloadURL, title, category };
           createCategory(categorys, dispatch);
-          navigate("/product");
+          navigate("/newcategory");
         });
       }
     );

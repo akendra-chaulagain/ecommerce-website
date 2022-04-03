@@ -15,13 +15,13 @@ export const categorySlice = createSlice({
     },
     getCategorySuccess: (state, action) => {
       state.isFetching = false;
-      state.categorys=(action.payload);
+      state.categorys = action.payload;
     },
     getCategoryFailure: (state) => {
       state.isFetching = false;
       state.error = true;
     },
-    // create new product
+    // create new category
     createCategoryStart: (state) => {
       state.isFetching = true;
       state.error = false;
@@ -31,6 +31,22 @@ export const categorySlice = createSlice({
       state.categorys.push(action.payload);
     },
     createCategoryFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+    // delete
+    deleteCategoryStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    deleteCategorySuccess: (state, action) => {
+      state.isFetching = false;
+      state.categorys.splice(
+        state.categorys.findIndex((item) => item._id === action.payload),
+        1
+      );
+    },
+    deleteCategoryFailure: (state) => {
       state.isFetching = false;
       state.error = true;
     },
@@ -44,6 +60,9 @@ export const {
   getCategoryFailure,
   getCategoryStart,
   getCategorySuccess,
+  deleteCategoryFailure,
+  deleteCategoryStart,
+  deleteCategorySuccess,
 } = categorySlice.actions;
 
 export default categorySlice.reducer;

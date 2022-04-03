@@ -53,7 +53,7 @@ const List = () => {
        */}
       <Sidebar />
       <div className="listContainer">
-        <div className="ProductTitle text-center">All List</div>
+        <div className="ProductTitle text-center">All User List</div>
         <div style={{ height: 520, width: "100%" }}>
           <DataGrid
             rows={allUser}

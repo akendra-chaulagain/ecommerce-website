@@ -4,6 +4,9 @@ import {
   createCategoryFailure,
   createCategoryStart,
   createCategorySuccess,
+  deleteCategoryFailure,
+  deleteCategoryStart,
+  deleteCategorySuccess,
   getCategoryFailure,
   getCategoryStart,
   getCategorySuccess,
@@ -77,7 +80,7 @@ export const deleteProducts = async (id, dispatch) => {
 };
 
 // update product
-export const updateProducts = async (id, product, dispatch) => {
+export const updateProducts = async (id, dispatch, product) => {
   dispatch(updateProductStart());
   try {
     await userRequest.put(`/products/${id}`);
@@ -167,5 +170,16 @@ export const createCategory = async (category, dispatch) => {
   } catch (error) {
     console.log("unable to add category" + error);
     dispatch(createCategoryFailure());
+  }
+};
+// delete category
+export const deleteCategory = async (id, dispatch) => {
+  dispatch(deleteCategoryStart());
+  try {
+    await userRequest.delete(`/categories/${id}`);
+    dispatch(deleteCategorySuccess(id));
+  } catch (error) {
+    console.log("unable to delete order" + error);
+    dispatch(deleteCategoryFailure());
   }
 };

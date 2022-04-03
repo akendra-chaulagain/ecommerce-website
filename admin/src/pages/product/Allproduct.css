@@ -32,11 +32,12 @@
 .ProductTitle {
   font-weight: 600;
   color: gray;
-  margin-left: 3%;
+  /* margin-left: 3%; */
   margin-top: 15px;
   display: flex;
   justify-content: center;
   width: 100%;
+  font-size: 25px;
 }
 .button_delete {
   border: 1px solid red;

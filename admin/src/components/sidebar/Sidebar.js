@@ -76,13 +76,6 @@ const Sidebar = () => {
               Logout
             </li>
           </div>
-          {/* color change */}
-          <div className="sidebartitle mt-3">THEME</div>
-
-          <div className="themeContainer">
-            <div className="colorWhite"></div>
-            <div className="colorBlack"></div>
-          </div>
         </div>
       </div>
     </>

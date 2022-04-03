@@ -34,26 +34,6 @@
 .link:hover {
   color: gray;
 }
-.themeContainer {
-  margin-left: 10%;
-  display: flex;
-  margin-top: 15px;
-  cursor: pointer;
-}
-.colorWhite {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid black;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-}
-.colorBlack {
-  background-color: black;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
-  margin-left: 10px;
-}
 
 @media only screen and (max-width: 768px) {
   .sidebar {

@@ -2,11 +2,11 @@ import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./CategoryList.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { Delete, Visibility } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrder, getCategory } from "../../redux/apiCalls";
+import { deleteCategory, getCategory } from "../../redux/apiCalls";
 
 const CategoryList = () => {
   // get all category
@@ -17,8 +17,8 @@ const CategoryList = () => {
   }, [dispatch]);
 
   // delete order
-  const handleDeleleOrder = (id) => {
-    deleteOrder(id, dispatch);
+  const handleDaelelCategory = (id) => {
+    deleteCategory(id, dispatch);
   };
 
   const columns = [
@@ -57,16 +57,15 @@ const CategoryList = () => {
 
             <button
               className="button_delete"
-              onClick={() => handleDeleleOrder(params.row._id)}
+              onClick={() => handleDaelelCategory(params.row._id)}
             >
               <Delete />
             </button>
-            {/* delete   button*/}
-            <Link to={`/order/` + params.row._id}>
+            {/* <Link to={`/order/` + params.row._id}>
               <button className="button_update">
                 <Visibility />
               </button>
-            </Link>
+            </Link> */}
           </>
         );
       },

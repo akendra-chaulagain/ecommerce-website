@@ -2,12 +2,24 @@ import { Publish } from "@material-ui/icons";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Update.css";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../firebase";
+import { updateProducts } from "../../redux/apiCalls";
 
 const Update = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // location is used to get url data
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -15,19 +27,19 @@ const Update = () => {
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === path)
   );
-
+  const id = product._id;
   // update product
-  const [inputes, setInputes] = useState({});
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [cat, setCat] = useState("");
+  const [price, setPrice] = useState("");
+  const [feature, setFeature] = useState("");
+  const [stock, setStock] = useState(false);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
+  const [brand, setBrand] = useState();
   const [progress, setProgress] = useState();
 
-  // for inputes
-  const handleChange = (e) => {
-    setInputes((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
   // for color
   const handleColor = (e) => {
     setColor(e.target.value.split(","));
@@ -59,6 +71,78 @@ const Update = () => {
     // I've kept this example simple by using the first image instead of multiple
     setSelectedFile(e.target.files[0]);
   };
+  // const products = {
+  //   name,
+  //   desc,
+  //   cat,
+  //   price,
+  //   color,
+  //   stock,
+  //   size,
+  //   brand,
+  //   feature,
+  // };
+
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+    updateProducts(
+      id,
+      dispatch,
+      product,
+      name,
+      desc,
+      cat,
+      price,
+      color,
+      stock,
+      size,
+      brand,
+      feature
+    );
+
+    // const fileName = new Date().getTime() + selectedFile.name;
+    // const Storage = getStorage(app);
+    // const storageRef = ref(Storage, fileName);
+    // const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+    // uploadTask.on(
+    //   "state_changed",
+    //   (snapshot) => {
+
+    //     const progress =
+    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //     setProgress(progress + "% done");
+    //     switch (snapshot.state) {
+    //       case "paused":
+    //         setProgress(progress + "% done");
+    //         break;
+    //       case "running":
+    //         setProgress(progress + "% done");
+    //         break;
+    //       default:
+    //     }
+    //   },
+    //   (error) => {},
+    //   () => {
+    //     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    //       const product = {
+    //         img: downloadURL,
+    //         name,
+    //         price,
+    //         cat,
+    //         feature,
+    //         color,
+    //         size,
+    //         desc,
+    //         stock,
+    //         selectedFile,
+    //         brand,
+    //       };
+    //       updateProducts( product, dispatch);
+    //       navigate("/product");
+    //     });
+    //   }
+    // );
+  };
 
   return (
     <>
@@ -69,46 +153,41 @@ const Update = () => {
             <h1>Update Product</h1>
             {/* create button */}
           </div>
-
-          <div className="row">
-            {/* left side container */}
-            <div className="col-md-7 leftSideContainer">
-              <form className="productForm">
+          <form className="productForm">
+            <div className="row">
+              {/* left side container */}
+              <div className="col-md-6 leftSideContainer">
                 {/* product name */}
                 <label>Product Name</label>
                 <br />
                 <textarea
-                  name="name"
                   type="text"
                   placeholder={product.name}
-                  onChange={handleChange}
+                  onChange={(e) => setName(e.target.value)}
                 />
                 <br />
                 {/* product desc */}
                 <label>Description</label>
                 <br />
                 <textarea
-                  name="desc"
                   type="text"
                   placeholder={product.desc}
-                  onChange={handleChange}
+                  onChange={(e) => setDesc(e.target.value)}
                 />
                 <br />
                 {/* category */}
                 <label>Category</label>
                 <br />
                 <input
-                  name="cat"
                   type="text"
                   placeholder={product.cat}
-                  onChange={handleChange}
+                  onChange={(e) => setCat(e.target.value)}
                 />
                 <br />
                 {/* color */}
                 <label>Color</label>
                 <br />
                 <input
-                  name="color"
                   type="text"
                   placeholder={product.color}
                   onChange={handleColor}
@@ -119,20 +198,19 @@ const Update = () => {
                 <br />
 
                 <input
-                  name="price"
                   type="number"
                   placeholder={product.price}
-                  onChange={handleChange}
+                  onChange={(e) => setPrice(e.target.value)}
                 />
+
                 <br />
                 {/* features */}
                 <label>Features</label>
                 <br />
                 <textarea
-                  name="feature"
                   type="text"
                   placeholder={product.feature}
-                  onChange={handleChange}
+                  onChange={(e) => setFeature(e.target.value)}
                 />
                 <br />
                 {/* size */}
@@ -140,51 +218,63 @@ const Update = () => {
                 <br />
                 <input
                   type="text"
-                  name="size"
                   placeholder={product.size}
                   onChange={handleSize}
                 />
                 <br />
+                {/* brand */}
+                <label>Brand</label>
+                <br />
+                <input
+                  type="text"
+                  placeholder={product.size}
+                  onChange={(e) => setBrand(e.target.value)}
+                />
+                <br />
+
                 {/* stock */}
                 <label>inStock</label>
                 <br />
-                <select name="stock" onChange={handleChange}>
+                <select onChange={(e) => setStock(e.target.value)}>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
-              </form>
-            </div>
-            {/* right side for select img and update button- */}
-            <div className="col-md-4 rightSideContainer">
-              <div className="productImg">
-                {/* slelect img */}
+              </div>
+              {/* right side for select img and update button- */}
+              <div className="col-md-4 rightSideContainer">
+                <div className="productImg">
+                  {/* slelect img */}
 
-                <label htmlFor="file">
-                  <Publish />
-                  <input
-                    type="file"
-                    id="file"
-                    onChange={onSelectFile}
-                    style={{ display: "none" }}
-                  />
-                  {/* select file is selected then this code will run */}
-                  {selectedFile ? (
-                    <>
-                      <img src={preview} alt="select_img" />
-                    </>
-                  ) : (
-                    <>
-                      <img src={product.img} alt="product_img" />
-                    </>
-                  )}
-                </label>
+                  <label htmlFor="file">
+                    <Publish />
+                    <input
+                      type="file"
+                      id="file"
+                      onChange={onSelectFile}
+                      style={{ display: "none" }}
+                    />
+                    {/* select file is selected then this code will run */}
+                    {selectedFile ? (
+                      <>
+                        <img src={preview} alt="select_img" />
+                      </>
+                    ) : (
+                      <>
+                        <img src={product.img} alt="product_img" />
+                      </>
+                    )}
+                  </label>
 
-                <br />
-                {/* update button */}
-                <button>Update</button>
+                  <br />
+                  {/* update button */}
+                  <button onClick={handleSubmitData}>Update</button>
+                  <br />
+                  <br />
+                  <p>{progress}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </>
