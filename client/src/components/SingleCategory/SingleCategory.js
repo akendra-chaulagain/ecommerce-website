@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SingleCategory = ({ item }) => {
   return (
     <>
-      <Link className="link-item" to={`products/${item.cat}/${item._id}`}>
+      <Link className="link-item" to={`products/${item.cat}`}>
         <div className="category-box">
           <div className="wrapperContainer">
             <div className="categortTitle">{item.title}</div>
@@ -16,6 +16,7 @@ const SingleCategory = ({ item }) => {
           </div>
         </div>
       </Link>
+      
     </>
   );
 };

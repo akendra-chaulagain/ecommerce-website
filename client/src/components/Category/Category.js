@@ -69,7 +69,7 @@ const Category = ({ category, total }) => {
         </>
       ) : (
         <>
-          {/* if the user does not search fro items then this function will get categroy data without searching */}
+          {/* if the user does not search for items then this function will get categroy data without searching */}
           {categoryData ? (
             <>
               {/* if the item is selected from the select option this code will run  whichn is import from CategorySearch component*/}

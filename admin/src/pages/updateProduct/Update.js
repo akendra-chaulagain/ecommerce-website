@@ -72,7 +72,7 @@ const Update = () => {
 
           <div className="row">
             {/* left side container */}
-            <div className="col-md-8 leftSideContainer">
+            <div className="col-md-7 leftSideContainer">
               <form className="productForm">
                 {/* product name */}
                 <label>Product Name</label>

@@ -10,7 +10,6 @@ import { deleteProducts, getProducts } from "../../redux/apiCalls";
 const Allproduct = () => {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.product.products);
-  console.log(allProduct);
 
   // get all product
   useEffect(() => {
@@ -50,7 +49,7 @@ const Allproduct = () => {
                 </tr>
               </thead>
               <tbody>
-                {allProduct.map((item, key) => (
+                {allProduct?.map((item, key) => (
                   <tr key={key}>
                     <th className="itemId">{item._id}</th>
                     <td>{item.name}</td>

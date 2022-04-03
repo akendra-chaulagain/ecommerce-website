@@ -36,23 +36,32 @@
   border: none;
   outline: none;
   border-radius: 6px;
+  width: 100%;
   padding: 5px 17px;
   margin-top: 20px;
 }
 .containerError h2 {
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 2px;
   color: white;
 }
 @media only screen and (max-width: 768px) {
-  .error-btn {
-    margin-left: 20%;
+  
+  .containerError h1 {
+    font-size: 40px;
+    color: white;
   }
-  h1 {
-    font-size: 50px;
-  }
-  h3 {
+  .containerError h3 {
     font-size: 20px;
+  }
+  .containerError h2 {
+    font-size: 24px;
+  }
+  .error-btn {
+    font-size: 17px;
+    width: 100%;
+    padding: 2px 20px;
+    margin-top: 20px;
   }
 }

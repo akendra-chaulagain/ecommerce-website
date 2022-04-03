@@ -19,8 +19,8 @@ const AllProduct = () => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall`);
-        setAllProductsData(res.data.product);
-        setTotalProduct(res.data.product.length);
+        setAllProductsData(res.data);
+        setTotalProduct(res.data.length);
       } catch (error) {
         console.log("unable to get order");
       }

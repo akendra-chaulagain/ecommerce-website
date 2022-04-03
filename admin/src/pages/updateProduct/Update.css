@@ -1,6 +1,7 @@
 .update {
   display: flex;
-  height: 140vh;
+  height: auto;
+  margin-bottom: 10vh;
 }
 .updateContainer {
   flex: 5;
@@ -34,7 +35,7 @@
   margin-top: 5vh;
 }
 .productForm {
-  margin-left: 5%;
+  margin-left: 2%;
 }
 .productForm input {
   width: 80%;
@@ -80,7 +81,7 @@
   border-radius: 9px;
 }
 .productForm textarea {
-  width: 100%;
+  width: 80%;
   height: 10vh;
   border-radius: 5px;
   outline: none;
