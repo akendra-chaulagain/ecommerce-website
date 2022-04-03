@@ -52,13 +52,12 @@
   color: white;
   font-size: 16px;
 }
-.nav-item span{
+.nav-item span {
   color: gray;
   font-size: 20px;
   margin: 10px;
   cursor: pointer;
 }
-
 
 @media only screen and (max-width: 768px) {
   .navbarContainer {
@@ -91,7 +90,7 @@
     justify-content: center;
     align-items: center;
   }
-  .navbarContainer input::placeholder{
+  .navbarContainer input::placeholder {
     font-size: 10px;
     letter-spacing: 0px;
   }
@@ -107,7 +106,7 @@
     padding: 2px 4px;
     margin-left: -8%;
   }
-  .navbarContainer input::placeholder{
+  .navbarContainer input::placeholder {
     font-size: 10px;
     letter-spacing: 0px;
   }

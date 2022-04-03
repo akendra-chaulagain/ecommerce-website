@@ -1,6 +1,14 @@
 import axios from "axios";
 import { userRequest } from "../RequestMethod";
 import {
+  createCategoryFailure,
+  createCategoryStart,
+  createCategorySuccess,
+  getCategoryFailure,
+  getCategoryStart,
+  getCategorySuccess,
+} from "./categoryRedux";
+import {
   deleteOrderFailure,
   deleteOrderStart,
   deleteOrderSuccess,
@@ -136,5 +144,28 @@ export const deleteOrder = async (id, dispatch) => {
   } catch (error) {
     console.log("unable to delete order" + error);
     dispatch(deleteOrderFailure());
+  }
+};
+// get category
+export const getCategory = async (dispatch) => {
+  dispatch(getCategoryStart());
+  try {
+    const res = await axios.get(`/categories/`);
+    dispatch(getCategorySuccess(res.data));
+  } catch (error) {
+    console.log("unable to get all categories" + error);
+    dispatch(getCategoryFailure());
+  }
+};
+
+// create category
+export const createCategory = async (category, dispatch) => {
+  dispatch(createCategoryStart());
+  try {
+    await userRequest.post(`/categories/`, category);
+    dispatch(createCategorySuccess(category.data));
+  } catch (error) {
+    console.log("unable to add category" + error);
+    dispatch(createCategoryFailure());
   }
 };

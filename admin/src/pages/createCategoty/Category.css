@@ -32,7 +32,7 @@
   font-weight: 600;
   margin-top: 10px;
 }
-.rightSideContainer button {
+.leftSideContainer button {
   margin-top: 5vh;
   padding: 2px 40px;
   outline: none;
@@ -41,7 +41,4 @@
   color: white;
   background-color: darkblue;
   border-radius: 5px;
-}
-.rightSideContainer select {
-  height: 200px;
 }

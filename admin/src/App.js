@@ -15,7 +15,8 @@ import Order from "./pages/order/Order";
 import ViewOrder from "./pages/View/ViewOrder";
 import Login from "./pages/login/Login";
 import { useSelector } from "react-redux";
-import Category from "./pages/category/Category";
+import Category from "./pages/createCategoty/Category";
+import CategoryList from "./pages/categoryList/CategoryList";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -69,6 +70,11 @@ const App = () => {
           {/* category */}
           <Route
             path="/category"
+            element={user ? <CategoryList /> : <Navigate to="/login" />}
+          />
+          {/*new category */}
+          <Route
+            path="/newcategory"
             element={user ? <Category /> : <Navigate to="/login" />}
           />
         </Routes>

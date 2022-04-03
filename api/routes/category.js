@@ -9,11 +9,12 @@ require("../connection/DB");
 
 // Category Schema and models
 const Category = require("../models/Category");
+const verifyToken = require("../middleware/verifyToken");
 
 // create Category(admin only)
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const body = req.body;
-  if (req.user.isAdmin) {
+  if (req.user.id === req.params.id || req.user.isAdmin) {
     const newCategory = new Category(body);
     try {
       const result = await newCategory.save();
@@ -27,7 +28,7 @@ router.post("/", async (req, res) => {
 });
 
 // update category
-router.put("/:id", async (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   if (req.user.isAdmin) {
     try {
       const result = await Category.findByIdAndUpdate(
@@ -62,7 +63,7 @@ router.get("/find/:id", async (req, res) => {
 });
 
 // delete category
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   if (req.user.isAdmin) {
     try {
       const result = await Category.findByIdAndDelete(req.params.id);
@@ -85,8 +86,5 @@ router.get("/", async (req, res) => {
     res.status(400).json(error);
   }
 });
-
-
-
 
 module.exports = router;

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Allproduct.css";
 import { Delete, Edit } from "@material-ui/icons";
+import { DataGrid } from "@mui/x-data-grid";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { deleteProducts, getProducts } from "../../redux/apiCalls";
@@ -20,6 +22,36 @@ const Allproduct = () => {
   const handleDelete = (id) => {
     deleteProducts(id, dispatch);
   };
+  const columns = [
+    { field: "_id", headerName: "UserId", width: 200 },
+    { field: "name", headerName: "Product Name", width: 720 },
+    { field: "price", headerName: "Amount", width: 100 },
+
+    {
+      field: "action",
+      headerName: "Action",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            {/* delete button */}
+            <button
+              className="button_delete"
+              onClick={() => handleDelete(params.row._id)}
+            >
+              <Delete />
+            </button>
+            {/* edit button */}
+            <Link to={`/product/` + params.row._id}>
+              <button className="button_update">
+                <Edit />
+              </button>
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
 
   return (
     <>
@@ -37,42 +69,18 @@ const Allproduct = () => {
               </Link>
             </div>
           </div>
-          {/* table */}
           <div className="tableContainer">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">UserId</th>
-                  <th scope="col">Product name</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {allProduct?.map((item, key) => (
-                  <tr key={key}>
-                    <th className="itemId">{item._id}</th>
-                    <td>{item.name}</td>
-                    <td>${item.price}</td>
-                    <td>
-                      {/*  delete button*/}
-                      <button
-                        className="button_delete"
-                        onClick={() => handleDelete(item._id)}
-                      >
-                        <Delete />
-                      </button>
-                      {/* edit   button*/}
-                      <Link to={`/product/` + item._id}>
-                        <button className="button_update">
-                          <Edit />
-                        </button>
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div style={{ height: 550, width: "100%" }}>
+              <DataGrid
+                rows={allProduct}
+                columns={columns}
+                pageSize={8}
+                rowsPerPageOptions={[8]}
+                disableSelectionOnClick
+                getRowId={(r) => r._id}
+                checkboxSelection
+              />
+            </div>
           </div>
         </div>
       </div>
