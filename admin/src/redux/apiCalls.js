@@ -59,7 +59,7 @@ export const login = async (dispatch, user) => {
 export const getProducts = async (dispatch) => {
   dispatch(getProductStart());
   try {
-    const res = await axios.get("/products/getall");
+    const res = await userRequest.get("/products/getall");
     dispatch(getProductSuccess(res.data));
   } catch (error) {
     console.log("unable to get all product" + error);
@@ -80,7 +80,7 @@ export const deleteProducts = async (id, dispatch) => {
 };
 
 // update product
-export const updateProducts = async (id, dispatch, product) => {
+export const updateProducts = async (id, product, dispatch) => {
   dispatch(updateProductStart());
   try {
     await userRequest.put(`/products/${id}`);

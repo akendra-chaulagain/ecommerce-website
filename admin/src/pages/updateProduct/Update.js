@@ -27,13 +27,13 @@ const Update = () => {
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === path)
   );
-  const id = product._id;
+
   // update product
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
-  const [cat, setCat] = useState("");
-  const [price, setPrice] = useState("");
-  const [feature, setFeature] = useState("");
+  const [name, setName] = useState({});
+  const [desc, setDesc] = useState({});
+  const [cat, setCat] = useState({});
+  const [price, setPrice] = useState({});
+  const [feature, setFeature] = useState({});
   const [stock, setStock] = useState(false);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
@@ -48,6 +48,7 @@ const Update = () => {
   const handleSize = (e) => {
     setSize(e.target.value.split(","));
   };
+  // firebase@8.9
 
   // preview img on select
   const [selectedFile, setSelectedFile] = useState();
@@ -71,77 +72,54 @@ const Update = () => {
     // I've kept this example simple by using the first image instead of multiple
     setSelectedFile(e.target.files[0]);
   };
-  // const products = {
-  //   name,
-  //   desc,
-  //   cat,
-  //   price,
-  //   color,
-  //   stock,
-  //   size,
-  //   brand,
-  //   feature,
-  // };
 
   const handleSubmitData = (e) => {
     e.preventDefault();
-    updateProducts(
-      id,
-      dispatch,
-      product,
-      name,
-      desc,
-      cat,
-      price,
-      color,
-      stock,
-      size,
-      brand,
-      feature
+    const fileName = new Date().getTime() + selectedFile.name;
+    const Storage = getStorage(app);
+    const storageRef = ref(Storage, fileName);
+
+    const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            setProgress(progress + "% done");
+            break;
+          case "running":
+            setProgress(progress + "% done");
+            break;
+          default:
+        }
+      },
+      (error) => {},
+      (id) => {
+        // Upload completed successfully, now we can get the download URL
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          const product = {
+            img: downloadURL,
+            color,
+            size,
+            desc,
+            name,
+            cat,
+            brand,
+            price,
+            feature,
+            stock,
+          };
+
+          updateProducts(id, product, dispatch);
+          // navigate("/product");
+        });
+      }
     );
-
-    // const fileName = new Date().getTime() + selectedFile.name;
-    // const Storage = getStorage(app);
-    // const storageRef = ref(Storage, fileName);
-    // const uploadTask = uploadBytesResumable(storageRef, selectedFile);
-    // uploadTask.on(
-    //   "state_changed",
-    //   (snapshot) => {
-
-    //     const progress =
-    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //     setProgress(progress + "% done");
-    //     switch (snapshot.state) {
-    //       case "paused":
-    //         setProgress(progress + "% done");
-    //         break;
-    //       case "running":
-    //         setProgress(progress + "% done");
-    //         break;
-    //       default:
-    //     }
-    //   },
-    //   (error) => {},
-    //   () => {
-    //     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-    //       const product = {
-    //         img: downloadURL,
-    //         name,
-    //         price,
-    //         cat,
-    //         feature,
-    //         color,
-    //         size,
-    //         desc,
-    //         stock,
-    //         selectedFile,
-    //         brand,
-    //       };
-    //       updateProducts( product, dispatch);
-    //       navigate("/product");
-    //     });
-    //   }
-    // );
   };
 
   return (
