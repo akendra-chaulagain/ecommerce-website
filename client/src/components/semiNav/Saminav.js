@@ -28,7 +28,7 @@ const SemiNav = ({ setCategoryData }) => {
                   <option value="fitness">Fitness</option>
                   <option value="cloth">Cloth</option>
                   <option value="book">Books</option>
-                  <option value="cosmetic">cosmetic</option>
+                  <option value="cosmetic">Cosmetic</option>
                 </select>
               </li>
             </ul>

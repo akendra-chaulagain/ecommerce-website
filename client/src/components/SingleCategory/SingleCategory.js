@@ -16,7 +16,6 @@ const SingleCategory = ({ item }) => {
           </div>
         </div>
       </Link>
-      
     </>
   );
 };

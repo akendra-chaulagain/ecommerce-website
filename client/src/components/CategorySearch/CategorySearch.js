@@ -8,10 +8,11 @@ const CategorySearch = ({ Allproducts }) => {
       <div className="container-fluid CategorySearchProduct">
         <div className="row">
           <>
-            {Allproducts.map((item, id) => (
+            {Allproducts?.map((item, id) => (
               <div className="col-md-3 col-4 searchContainer" key={id}>
                 <Link
                   className="singleproductLink"
+                  target="_blank"
                   to={`/products/single/${item._id}`}
                 >
                   <div className="singleProduct">

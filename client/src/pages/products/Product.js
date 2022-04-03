@@ -7,34 +7,18 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Search from "../../components/search/Search";
 import CategorySearch from "../../components/CategorySearch/CategorySearch";
+import "./Product.css"
 
 const Product = () => {
   // get location is used to feth data  of an individual category  given user id in the url
   const location = useLocation();
-  const path = location.pathname.split("/")[3];
-
-  //   get data according to id given in url
-  const [getCategory, setGetCategory] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get("/categories/find/" + path);
-        setGetCategory(res.data.content);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
-  }, [path]);
+  const path = location.pathname.split("/")[2];
 
   // usestate for search
   const [searchProduct, setSearchProduct] = useState("");
   const [data, setData] = useState("");
-
-  // search bar
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -54,18 +38,18 @@ const Product = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProducts(res.data.product);
+        const res = await axios.get(`/products/getall?cat=${path}`);
+        setAllProducts(res.data);
       } catch (error) {
         console.log("unable to get order");
       }
     };
     getOrders();
-  }, [categoryData]);
+  }, [path]);
 
   return (
     <>
-      {/* import from announcemrnt compomnents */}
+      {/* import from announcement compomnents */}
       <Announcementt />
       {/* import from navbar compomnents */}
       <Navbar
@@ -95,7 +79,7 @@ const Product = () => {
                 <hr />
                 {/* map method is used to show all the products   */}
                 <div className="row">
-                  {getCategory?.map((product, i) => (
+                  {Allproducts?.map((product, i) => (
                     <div className="col-md-3 col-4" key={i}>
                       <SingleProduct index={i} product={product} />
                     </div>

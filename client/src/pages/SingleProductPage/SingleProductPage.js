@@ -77,7 +77,7 @@ const SingleProductPage = () => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProducts(res.data.product);
+        setAllProducts(res.data);
       } catch (error) {
         console.log("unable to get order");
       }
@@ -139,7 +139,7 @@ const SingleProductPage = () => {
 
                         {/* Brand name */}
                         <span>
-                          Brand: <p>{product.brand}</p>
+                          Brand: <span>{product.brand}</span>
                         </span>
                       </div>
 

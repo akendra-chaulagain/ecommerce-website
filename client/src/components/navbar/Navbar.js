@@ -52,13 +52,13 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
                 <>
                   {/* register */}
                   <li className="nav-item">
-                    <Link className="nav-link " to="/register">
+                    <Link className="nav-link "  to="/register">
                       Register
                     </Link>
                   </li>
                   {/* login */}
                   <li className="nav-item">
-                    <Link className="nav-link" to="/login">
+                    <Link className="nav-link"  to="/login">
                       Sign In
                     </Link>
                   </li>

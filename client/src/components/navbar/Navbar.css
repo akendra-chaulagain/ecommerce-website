@@ -58,10 +58,7 @@
   margin: 10px;
   cursor: pointer;
 }
-.nav-item span:hover{
-  color: red;
 
-}
 
 @media only screen and (max-width: 768px) {
   .navbarContainer {

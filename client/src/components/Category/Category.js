@@ -37,9 +37,9 @@ const Category = ({ category, total }) => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProducts(res.data.product);
+        setAllProducts(res.data);
       } catch (error) {
-        console.log("unable to get order");
+        console.log("unable to get product");
       }
     };
     getOrders();
@@ -102,14 +102,14 @@ const Category = ({ category, total }) => {
             </>
           )}
 
-          {/* recommondation */}
+          {/* this code will run when the user is new this function recomend the user to login or register */}
           {!user && (
             <div className=" reconmondation">
               <div className=" reconmondationInfo">
                 <hr />
                 <h5>See personalized recommendations</h5>
 
-                {/* sign in button */}
+                {/* sign in button  */}
                 <div className="loginbtn">
                   <Link to="/login">
                     <button>Sign-In</button>

@@ -48,3 +48,27 @@
   cursor: pointer;
   margin-top: 30px;
 }
+
+@media only screen and (max-width: 778px) {
+  .reconmondation {
+    width: 100%;
+    height: auto;
+    margin-top: 5vh;
+  }
+
+  .reconmondationInfo h5 {
+    font-size: 12px;
+  }
+  .loginbtn button {
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    padding: 2px 4px;
+  }
+  .loginbtn button:hover {
+    background-color: rgb(247, 82, 82);
+  }
+  .reconmondation p {
+    font-size: 12px;
+  }
+}

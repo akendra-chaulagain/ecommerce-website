@@ -10,37 +10,27 @@ import "./AllProduct.css";
 import { Pagination } from "antd";
 import Search from "../../components/search/Search";
 import CategorySearch from "../../components/CategorySearch/CategorySearch";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../redux/apicalls";
 
 const AllProduct = () => {
-  // get all products
-  const [AllproductsData, setAllProductsData] = useState([]);
-  const [totalProduct, setTotalProduct] = useState("");
+  // get allproduct using redux from api call
+  const dispatch = useDispatch();
+  const allProducts = useSelector((state) => state.product.products);
   useEffect(() => {
-    const getOrders = async () => {
-      try {
-        const res = await axios.get(`/products/getall`);
-        setAllProductsData(res.data);
-        setTotalProduct(res.data.length);
-      } catch (error) {
-        console.log("unable to get order");
-      }
-    };
-    getOrders();
-  }, []);
+    getAllProducts(dispatch);
+  }, [dispatch]);
 
   // usestate fro pagination
   const [page, setPage] = useState(1);
-  const [postPerPage, setpostPerPage] = useState(6);
-  // function fro pagination
+  const [postPerPage, setpostPerPage] = useState(20);
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
-  const currestPost = AllproductsData.slice(indexOfFirstPage, indexOfLastPage);
+  const currestPost = allProducts.slice(indexOfFirstPage, indexOfLastPage);
 
   // usestate for search
   const [searchProduct, setSearchProduct] = useState("");
   const [data, setData] = useState("");
-
-  // search bar
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -61,7 +51,7 @@ const AllProduct = () => {
     const getOrders = async () => {
       try {
         const res = await axios.get(`/products/getall?cat=${categoryData}`);
-        setAllProducts(res.data.product);
+        setAllProducts(res.data);
       } catch (error) {
         console.log("unable to get order");
       }
@@ -95,6 +85,7 @@ const AllProduct = () => {
                     <div className="col-md-3 col-4" index={i} key={i}>
                       <Link
                         className="AllproductLink"
+                        target="_blank"
                         to={`/products/single/${item._id}`}
                       >
                         <div className="allProduct">
@@ -112,7 +103,7 @@ const AllProduct = () => {
                       <Pagination
                         onChange={(value) => setPage(value)}
                         pageSize={postPerPage}
-                        total={totalProduct}
+                        total={allProducts.length}
                         current={page}
                       />
                     </div>

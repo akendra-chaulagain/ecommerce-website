@@ -21,11 +21,11 @@
   color: red;
 }
 .navBarItems .nav-itemLi select {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   font-size: 15px;
-  padding: 2px 4px;
+  padding: 2px 15px;
   cursor: pointer;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   outline: none;
   border-radius: 4px;
 }

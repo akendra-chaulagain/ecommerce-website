@@ -1,5 +1,5 @@
 .footer {
-  height: 40vh;
+  height: 35vh;
   width: 100%;
   margin-top: 10vh;
   /* background-color: rgb(235, 232, 232); */
@@ -33,20 +33,27 @@
   .wrapper {
     width: 95%;
   }
-  .left .right .middle,
-  h3 {
-    font-size: 15px;
+  .left h3 {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .middle h3 {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .right h3 {
+    font-size: 12px;
     font-weight: 600;
   }
   .wrapper span {
-    font-size: 13px;
+    font-size: 10px;
   }
 }
 
 @media only screen and (max-width: 280px) {
   .left .right .middle,
   h3 {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
   }
   .wrapper span {
