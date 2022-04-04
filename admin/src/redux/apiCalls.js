@@ -83,7 +83,7 @@ export const deleteProducts = async (id, dispatch) => {
 export const updateProducts = async (id, product, dispatch) => {
   dispatch(updateProductStart());
   try {
-    await userRequest.put(`/products/${id}`);
+    await userRequest.put(`/products/${id}`, product);
     dispatch(updateProductSuccess(id, product));
   } catch (error) {
     console.log("unable to update product" + error);

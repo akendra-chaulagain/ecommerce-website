@@ -27,17 +27,18 @@ const Update = () => {
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === path)
   );
+  const id = product._id;
 
   // update product
-  const [name, setName] = useState({});
-  const [desc, setDesc] = useState({});
-  const [cat, setCat] = useState({});
-  const [price, setPrice] = useState({});
-  const [feature, setFeature] = useState({});
-  const [stock, setStock] = useState(false);
-  const [color, setColor] = useState([]);
-  const [size, setSize] = useState([]);
-  const [brand, setBrand] = useState();
+  const [name, setName] = useState(product.name);
+  const [desc, setDesc] = useState(product.desc);
+  const [cat, setCat] = useState(product.cat);
+  const [price, setPrice] = useState(product.price);
+  const [feature, setFeature] = useState(product.feature);
+  const [stock, setStock] = useState(product.stock);
+  const [color, setColor] = useState([product.color]);
+  const [size, setSize] = useState([product.size]);
+  const [brand, setBrand] = useState(product.brand);
   const [progress, setProgress] = useState();
 
   // for color
@@ -48,7 +49,6 @@ const Update = () => {
   const handleSize = (e) => {
     setSize(e.target.value.split(","));
   };
-  // firebase@8.9
 
   // preview img on select
   const [selectedFile, setSelectedFile] = useState();
@@ -73,6 +73,7 @@ const Update = () => {
     setSelectedFile(e.target.files[0]);
   };
 
+  // this function will run when ypdate button is clicked
   const handleSubmitData = (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + selectedFile.name;
@@ -99,7 +100,7 @@ const Update = () => {
         }
       },
       (error) => {},
-      (id) => {
+      () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const product = {
@@ -114,9 +115,9 @@ const Update = () => {
             feature,
             stock,
           };
-
+          // update  function(send id ,product and dispatch to apicall update product function)
           updateProducts(id, product, dispatch);
-          // navigate("/product");
+          navigate("/product");
         });
       }
     );
@@ -153,6 +154,15 @@ const Update = () => {
                   onChange={(e) => setDesc(e.target.value)}
                 />
                 <br />
+                {/* features */}
+                <label>Features</label>
+                <br />
+                <textarea
+                  type="text"
+                  placeholder={product.feature}
+                  onChange={(e) => setFeature(e.target.value)}
+                />
+                <br />
                 {/* category */}
                 <label>Category</label>
                 <br />
@@ -160,15 +170,6 @@ const Update = () => {
                   type="text"
                   placeholder={product.cat}
                   onChange={(e) => setCat(e.target.value)}
-                />
-                <br />
-                {/* color */}
-                <label>Color</label>
-                <br />
-                <input
-                  type="text"
-                  placeholder={product.color}
-                  onChange={handleColor}
                 />
                 <br />
                 {/* price */}
@@ -182,16 +183,9 @@ const Update = () => {
                 />
 
                 <br />
-                {/* features */}
-                <label>Features</label>
-                <br />
-                <textarea
-                  type="text"
-                  placeholder={product.feature}
-                  onChange={(e) => setFeature(e.target.value)}
-                />
-                <br />
-                {/* size */}
+              </div>
+              {/* right side for select img and update button- */}
+              <div className="col-md-4 rightSideContainer">
                 <label>Size</label>
                 <br />
                 <input
@@ -205,11 +199,19 @@ const Update = () => {
                 <br />
                 <input
                   type="text"
-                  placeholder={product.size}
+                  placeholder={product.brand}
                   onChange={(e) => setBrand(e.target.value)}
                 />
                 <br />
-
+                {/* color */}
+                <label>Color</label>
+                <br />
+                <input
+                  type="text"
+                  placeholder={product.color}
+                  onChange={handleColor}
+                />
+                <br />
                 {/* stock */}
                 <label>inStock</label>
                 <br />
@@ -217,12 +219,9 @@ const Update = () => {
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
-              </div>
-              {/* right side for select img and update button- */}
-              <div className="col-md-4 rightSideContainer">
-                <div className="productImg">
-                  {/* slelect img */}
 
+                <div className="productImg mt-5">
+                  {/* slelect img */}
                   <label htmlFor="file">
                     <Publish />
                     <input

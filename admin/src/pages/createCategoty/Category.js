@@ -26,9 +26,12 @@ const Category = () => {
 
   const handleSubmitData = (e) => {
     e.preventDefault();
-    const fileName = new Date().getTime() + selectImage.name;
-    const Storage = getStorage(app);
-    const storageRef = ref(Storage, fileName);
+    // const fileName = new Date().getTime() + selectImage.name;
+    // const Storage = getStorage(app);
+    // const storageRef = ref(Storage, fileName);
+    // const uploadTask = uploadBytesResumable(storageRef, selectImage);
+    const storage = getStorage(app);
+    const storageRef = ref(storage, selectImage.name);
     const uploadTask = uploadBytesResumable(storageRef, selectImage);
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on(

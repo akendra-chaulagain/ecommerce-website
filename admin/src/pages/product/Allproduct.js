@@ -4,7 +4,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./Allproduct.css";
 import { Delete, Edit } from "@material-ui/icons";
 import { DataGrid } from "@mui/x-data-grid";
-
+import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { deleteProducts, getProducts } from "../../redux/apiCalls";
@@ -77,7 +77,7 @@ const Allproduct = () => {
                 pageSize={8}
                 rowsPerPageOptions={[8]}
                 disableSelectionOnClick
-                getRowId={(r) => r._id}
+                getRowId={(r) =>uuidv4()}
                 checkboxSelection
               />
             </div>
