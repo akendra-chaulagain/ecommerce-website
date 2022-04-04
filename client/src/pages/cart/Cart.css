@@ -127,7 +127,11 @@
 .containerInfo button:hover {
   background-color: rgb(252, 82, 82);
 }
-
+.containerEmpty h1 {
+  background-color: aqua;
+  color: black;
+  font-size: 100px;
+}
 @media only screen and (max-width: 778px) {
   .cartTitle {
     font-size: 23px;

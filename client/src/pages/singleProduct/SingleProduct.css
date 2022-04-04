@@ -4,11 +4,11 @@
   width: 100%;
   margin-top: 3vh;
   border-radius: 10px;
-  background-color: rgb(252, 248, 248);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: gray;
 }
 
 .singleProduct img {
@@ -19,19 +19,24 @@
   object-fit: contain;
 }
 
-.productInfo p {
+.SingleproductInfo p {
   text-align: start;
   margin: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
+}
+.SingleproductInfo .name:hover {
+  color: red;
+}
+.SingleproductInfo .price {
+  font-size: 25px;
+  font-weight: 500;
+  text-align: start;
 }
 
 .singleproductLink {
   color: inherit;
   text-decoration: none;
-}
-.singleProduct:hover {
-  color: red;
 }
 
 @media only screen and (max-width: 778px) {
@@ -40,7 +45,7 @@
     height: 10vh;
     width: 100%;
   }
-  .productInfo p {
+  .SingleproductInfo p {
     text-align: start;
     margin: 0px;
     font-size: 10px;

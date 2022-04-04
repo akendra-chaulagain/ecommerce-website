@@ -17,6 +17,8 @@ const AllProduct = () => {
   // get allproduct using redux from api call
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.product.products);
+  console.log(allProducts);
+
   useEffect(() => {
     getAllProducts(dispatch);
   }, [dispatch]);
@@ -91,7 +93,8 @@ const AllProduct = () => {
                         <div className="allProduct">
                           <img className="img-fluid" src={item.img} alt="img" />
                           <div className="productInfo">
-                            <p>{item.name}</p>
+                            <p className="name">{item.name}</p>
+                            <p className="price">$ {item.price}</p>
                           </div>
                         </div>
                       </Link>

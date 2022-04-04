@@ -17,8 +17,9 @@ const Search = ({ data }) => {
               >
                 <div className="singleProduct">
                   <img className="img-fluid" src={item.img} alt="product_img" />
-                  <div className="productInfo">
-                    <p>{item.name}</p>
+                  <div className="productInfoSearch">
+                    <p className="name">{item.name}</p>
+                    <p className="price">$ {item.price}</p>
                   </div>
                 </div>
               </Link>

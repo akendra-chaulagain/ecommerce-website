@@ -9,16 +9,17 @@ const CategorySearch = ({ Allproducts }) => {
         <div className="row">
           <>
             {Allproducts?.map((item, id) => (
-              <div className="col-md-3 col-4 searchContainer" key={id}>
+              <div className="col-md-3 col-4" key={id}>
                 <Link
-                  className="singleproductLink"
+                  className="categoiryProductLink"
                   target="_blank"
                   to={`/products/single/${item._id}`}
                 >
-                  <div className="singleProduct">
+                  <div className="categoryAllProduct">
                     <img className="img-fluid" src={item.img} alt="img" />
                     <div className="productInfo">
-                      <p>{item.name}</p>
+                      <p className="name">{item.name}</p>
+                      <p className="price">$ {item.price}</p>
                     </div>
                   </div>
                 </Link>

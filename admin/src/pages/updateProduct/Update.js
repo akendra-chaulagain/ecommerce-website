@@ -39,6 +39,8 @@ const Update = () => {
   const [color, setColor] = useState([product.color]);
   const [size, setSize] = useState([product.size]);
   const [brand, setBrand] = useState(product.brand);
+  const [selectImage, setSelectImages] = useState(null);
+
   const [progress, setProgress] = useState();
 
   // for color
@@ -51,36 +53,42 @@ const Update = () => {
   };
 
   // preview img on select
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
-  // create a preview as a side effect, whenever selected file is changed
-  useEffect(() => {
-    if (!selectedFile) {
-      setPreview(undefined);
-      return;
-    }
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
-    // free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
-  const onSelectFile = (e) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined);
-      return;
-    }
-    // I've kept this example simple by using the first image instead of multiple
-    setSelectedFile(e.target.files[0]);
-  };
+  // const [selectedFile, setSelectedFile] = useState();
+  // const [preview, setPreview] = useState();
+  // useEffect(() => {
+  //   if (!selectedFile) {
+  //     setPreview(selectedFile);
+  //     return;
+  //   }
+
+  //   const objectUrl = URL.createObjectURL(selectedFile);
+  //   setPreview(objectUrl);
+  //   return () => URL.revokeObjectURL(objectUrl);
+  // }, [selectedFile]);
+
+  // const onSelectFile = (e) => {
+  //   if (!e.target.files || e.target.files.length === 0) {
+  //     setSelectedFile(undefined);
+  //     return;
+  //   }
+  //   setSelectedFile(e.target.files[0]);
+  // };
 
   // this function will run when ypdate button is clicked
   const handleSubmitData = (e) => {
+    // const ak = () => {
+    //   if (selectedFile) {
+    //     return selectedFile;
+    //   } else {
+    //     return product.img;
+    //   }
+    // };
     e.preventDefault();
-    const fileName = new Date().getTime() + selectedFile.name;
+    const fileName = new Date().getTime() + selectImage;
     const Storage = getStorage(app);
     const storageRef = ref(Storage, fileName);
 
-    const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+    const uploadTask = uploadBytesResumable(storageRef, selectImage);
     // Listen for state changes, errors, and completion of the upload.
     uploadTask.on(
       "state_changed",
@@ -227,11 +235,15 @@ const Update = () => {
                     <input
                       type="file"
                       id="file"
-                      onChange={onSelectFile}
+                      name="img"
+                      // onChange={onSelectFile}
+                      onChange={(e) => setSelectImages(e.target.files[0])}
                       style={{ display: "none" }}
                     />
+                    <img src={product.img} alt="product_img" />
+
                     {/* select file is selected then this code will run */}
-                    {selectedFile ? (
+                    {/* {selectedFile ? (
                       <>
                         <img src={preview} alt="select_img" />
                       </>
@@ -239,7 +251,7 @@ const Update = () => {
                       <>
                         <img src={product.img} alt="product_img" />
                       </>
-                    )}
+                    )} */}
                   </label>
 
                   <br />

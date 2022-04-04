@@ -40,6 +40,7 @@ const SingleProductPage = () => {
     getData();
   }, [path]);
 
+  console.log(product);
   // increase and decrease quantity  when add or less button click
   const handleQuantity = (type) => {
     if (type === "desc") {
@@ -110,7 +111,7 @@ const SingleProductPage = () => {
               <div className="container-fluid singlePage">
                 <div className="row">
                   <div className="col-md-5 leftSideImg">
-                    <img src={product.img} alt="" />
+                    <img src={product?.img} alt="" />
                   </div>
                   <div className="col-md-7 rightSide">
                     <div className="productTitle">{product.name}</div>

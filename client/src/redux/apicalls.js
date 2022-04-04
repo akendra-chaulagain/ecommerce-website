@@ -1,7 +1,7 @@
 import { loginfailure, loginStart, loginSuccess } from "./userRedux";
 import axios from "axios";
 import {
-  getProductfailure,
+  getProductFailure,
   getProductStart,
   getProductSuccess,
 } from "./productRedux";
@@ -25,9 +25,8 @@ export const getAllProducts = async (dispatch) => {
   try {
     const res = await axios.get("/products/getall");
     dispatch(getProductSuccess(res.data));
-    // alert("login success");
   } catch (error) {
-    dispatch(getProductfailure());
-    console.log("unable to get alll products" + error);
+    console.log("unable to get all product" + error);
+    dispatch(getProductFailure());
   }
 };
