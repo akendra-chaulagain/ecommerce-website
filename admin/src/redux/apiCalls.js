@@ -1,6 +1,11 @@
 import axios from "axios";
 import { userRequest } from "../RequestMethod";
 import {
+  getAllUserFailure,
+  getAllUserStart,
+  getAllUserSuccess,
+} from "./allUserRedux";
+import {
   createCategoryFailure,
   createCategoryStart,
   createCategorySuccess,
@@ -33,14 +38,7 @@ import {
   updateProductStart,
   updateProductSuccess,
 } from "./productRedux";
-import {
-  getAllUserFailure,
-  getAllUserStart,
-  getAllUserSuccess,
-  loginfailure,
-  loginStart,
-  loginSuccess,
-} from "./userRedux";
+import { loginfailure, loginStart, loginSuccess } from "./userRedux";
 
 // login
 export const login = async (dispatch, user) => {
@@ -48,6 +46,7 @@ export const login = async (dispatch, user) => {
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
+    console.log(res);
     alert("login success!");
   } catch (error) {
     console.log(error);
@@ -126,6 +125,7 @@ export const deleteUser = async (id, dispatch) => {
     dispatch(deleteProductFailure());
   }
 };
+
 
 // get all order
 export const getOrder = async (dispatch) => {

@@ -3,6 +3,7 @@ import userReducer from "./userRedux";
 import productReducer from "./productRedux";
 import orderReducer from "./orderRedux";
 import categoryReducer from "./categoryRedux";
+import allUserReducer from "./allUserRedux";
 
 import {
   persistStore,
@@ -21,7 +22,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ["order", "product", "category"],
+  blacklist: ["order", "product", "category", "allUser"],
 };
 
 const rootReducer = combineReducers({
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   order: orderReducer,
   product: productReducer,
   category: categoryReducer,
+  allUser: allUserReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

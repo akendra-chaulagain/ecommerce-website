@@ -26,6 +26,7 @@ const NewProduct = () => {
   const [progress, setProgress] = useState();
 
   const handleChange = (e) => {
+    
     setInputes((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -63,7 +64,7 @@ const NewProduct = () => {
             setProgress(progress);
             break;
           case "running":
-            setProgress("Done");
+            setProgress(progress);
             break;
           default:
         }

@@ -10,9 +10,9 @@ import { deleteProducts, getProducts } from "../../redux/apiCalls";
 
 const Allproduct = () => {
   const dispatch = useDispatch();
-  const allProduct = useSelector((state) => state.product.products);
+  const allProduct = useSelector((state) => state.product?.products);
   console.log(allProduct);
-
+ 
   // get all product
   useEffect(() => {
     getProducts(dispatch);

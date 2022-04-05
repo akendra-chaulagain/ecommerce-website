@@ -9,7 +9,8 @@ import { DeleteOutlined } from "@material-ui/icons";
 
 const List = () => {
   const dispatch = useDispatch();
-  const allUser = useSelector((state) => state.user.currentUser);
+  const allUser = useSelector((state) => state.allUser.allUsers);
+  console.log(allUser);
 
   // get alluser using redux
   useEffect(() => {
@@ -17,7 +18,7 @@ const List = () => {
   }, [dispatch]);
 
   // delete product from redux
-  const handleDeleteUser = (id) => {
+  const handleDelete = (id) => {
     deleteUser(id, dispatch);
   };
 
@@ -37,7 +38,7 @@ const List = () => {
             {/* delete  user data button*/}
             <button
               className="button_delete"
-              onClick={() => handleDeleteUser(params.row._id)}
+              onClick={() => handleDelete(params.row._id)}
             >
               <DeleteOutlined />
             </button>
