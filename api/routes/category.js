@@ -12,7 +12,7 @@ const Category = require("../models/Category");
 const verifyToken = require("../middleware/verifyToken");
 
 // create Category(admin only)
-router.post("/", verifyToken, async (req, res) => {
+router.post("/newCategory", verifyToken, async (req, res) => {
   const body = req.body;
   if (req.user.id === req.params.id || req.user.isAdmin) {
     const newCategory = new Category(body);
@@ -76,11 +76,11 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
-// get alll category
+// get all category
 
 router.get("/", async (req, res) => {
   try {
-    list = await Category.find();
+    const list = await Category.find();
     return res.status(201).json(list);
   } catch (error) {
     res.status(400).json(error);

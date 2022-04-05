@@ -20,6 +20,7 @@ const NewProduct = () => {
   // usestates for all inputes
   const [inputes, setInputes] = useState({});
   const [selectImage, setSelectImages] = useState(null);
+  const [category, setCategory] = useState([]);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
   const [progress, setProgress] = useState();
@@ -37,6 +38,12 @@ const NewProduct = () => {
   const handleSize = (e) => {
     setSize(e.target.value.split(","));
   };
+
+  // for category
+  const handleCategory = (e) => {
+    setCategory(e.target.value.split(","));
+  };
+
   // handleSubmitData(firebase)
   const handleSubmitData = (e) => {
     e.preventDefault();
@@ -51,13 +58,13 @@ const NewProduct = () => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress + "% done");
+        setProgress("progress...");
         switch (snapshot.state) {
           case "paused":
-            setProgress(progress + "% done");
+            setProgress(progress);
             break;
           case "running":
-            setProgress(progress + "% done");
+            setProgress("Done");
             break;
           default:
         }
@@ -66,8 +73,15 @@ const NewProduct = () => {
       () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const product = { ...inputes, img: downloadURL, color, size };
+          const product = {
+            ...inputes,
+            img: downloadURL,
+            color,
+            size,
+            category,
+          };
           createProducts(product, dispatch);
+          alert("new product created..");
           navigate("/product");
         });
       }
@@ -156,7 +170,7 @@ const NewProduct = () => {
                         required
                         name="cat"
                         autoComplete="off"
-                        onChange={handleChange}
+                        onChange={handleCategory}
                       />
                     </div>
                   </div>

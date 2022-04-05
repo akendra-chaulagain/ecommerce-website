@@ -1,6 +1,5 @@
 import { Publish } from "@material-ui/icons";
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -29,7 +28,7 @@ const Update = () => {
   );
   const id = product._id;
 
-  // update product
+  //usestate for update product
   const [name, setName] = useState(product.name);
   const [desc, setDesc] = useState(product.desc);
   const [cat, setCat] = useState(product.cat);
@@ -39,8 +38,7 @@ const Update = () => {
   const [color, setColor] = useState([product.color]);
   const [size, setSize] = useState([product.size]);
   const [brand, setBrand] = useState(product.brand);
-  const [selectImage, setSelectImages] = useState(null);
-
+  const [selectImage, setSelectImages] = useState(product.img);
   const [progress, setProgress] = useState();
 
   // for color
@@ -52,41 +50,12 @@ const Update = () => {
     setSize(e.target.value.split(","));
   };
 
-  // preview img on select
-  // const [selectedFile, setSelectedFile] = useState();
-  // const [preview, setPreview] = useState();
-  // useEffect(() => {
-  //   if (!selectedFile) {
-  //     setPreview(selectedFile);
-  //     return;
-  //   }
-
-  //   const objectUrl = URL.createObjectURL(selectedFile);
-  //   setPreview(objectUrl);
-  //   return () => URL.revokeObjectURL(objectUrl);
-  // }, [selectedFile]);
-
-  // const onSelectFile = (e) => {
-  //   if (!e.target.files || e.target.files.length === 0) {
-  //     setSelectedFile(undefined);
-  //     return;
-  //   }
-  //   setSelectedFile(e.target.files[0]);
-  // };
-
   // this function will run when ypdate button is clicked
   const handleSubmitData = (e) => {
-    // const ak = () => {
-    //   if (selectedFile) {
-    //     return selectedFile;
-    //   } else {
-    //     return product.img;
-    //   }
-    // };
     e.preventDefault();
     const fileName = new Date().getTime() + selectImage;
     const Storage = getStorage(app);
-    const storageRef = ref(Storage, fileName);
+    const storageRef = ref(Storage, `/items/${fileName}`);
 
     const uploadTask = uploadBytesResumable(storageRef, selectImage);
     // Listen for state changes, errors, and completion of the upload.
@@ -94,15 +63,15 @@ const Update = () => {
       "state_changed",
       (snapshot) => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress + "% done");
+        const progress = "updating...";
+
+        setProgress(progress);
         switch (snapshot.state) {
           case "paused":
-            setProgress(progress + "% done");
+            setProgress(progress);
             break;
           case "running":
-            setProgress(progress + "% done");
+            setProgress(progress);
             break;
           default:
         }
@@ -235,7 +204,6 @@ const Update = () => {
                     <input
                       type="file"
                       id="file"
-                      name="img"
                       // onChange={onSelectFile}
                       onChange={(e) => setSelectImages(e.target.files[0])}
                       style={{ display: "none" }}
@@ -243,15 +211,6 @@ const Update = () => {
                     <img src={product.img} alt="product_img" />
 
                     {/* select file is selected then this code will run */}
-                    {/* {selectedFile ? (
-                      <>
-                        <img src={preview} alt="select_img" />
-                      </>
-                    ) : (
-                      <>
-                        <img src={product.img} alt="product_img" />
-                      </>
-                    )} */}
                   </label>
 
                   <br />

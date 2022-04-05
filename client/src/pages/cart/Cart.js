@@ -86,73 +86,41 @@ const Cart = () => {
                   {/* cart container */}
 
                   <div className="col-md-9">
-                    {cartProduct ? (
-                      <>
-                        {cartProduct?.map((item, id) => (
-                          <div className="row leftSideCart" key={id}>
-                            <div className="col-4 ">
-                              <img
-                                className="img-fluid"
-                                src={item.img}
-                                alt=""
-                              />
-                            </div>
-                            <div className="col-7 leftSideproductInfo">
-                              <div className="leftsideproductInfodata">
-                                {/* product name */}
-                                <p>{item.name}</p>
-                                {/* product color */}
-                                <p>
-                                  Color : <span>{item.color}</span>
-                                </p>
-                                {/* product quantity */}
-                                <p>
-                                  Quiantity: <span>{item.quantity}</span>
-                                  {/* Quiantity: <span>{item._id}</span> */}
-                                </p>
-                                {/* remove product */}
-                                <button
-                                  className="mb-3"
-                                  onClick={() => handleRemove(item._id)}
-                                >
-                                  delete
-                                </button>
-                              </div>
-                            </div>
-                            <hr />
-                            <div className="totalPrice text-end">
-                              <p>
-                                price : <span>$ {item.price}</span>
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </>
-                    ) : (
-                      <>
-                        <div className="containerEmpty">
-                          <h1>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Amet possimus recusandae harum voluptates
-                            magni sequi dolores doloribus laborum modi tempora
-                            exercitationem adipisci doloremque dolorum eveniet,
-                            necessitatibus delectus maxime veritatis provident
-                            rem! Repudiandae consectetur nam nulla, minus
-                            laborum aut tenetur temporibus nobis reiciendis
-                            eligendi perferendis placeat commodi accusamus
-                            recusandae accusantium eum itaque ea quasi
-                            aspernatur a similique quas quis? Error inventore
-                            enim odit provident doloremque explicabo atque
-                            eveniet facere quod, non magni, molestiae iure id,
-                            commodi aperiam itaque quae. Laudantium nisi
-                            cupiditate iure placeat quaerat dolorum quas neque
-                            cum tempora doloremque! Veritatis illo eligendi
-                            eveniet laudantium doloribus accusamus, alias
-                            repellendus culpa?
-                          </h1>
+                    {cartProduct?.map((item, id) => (
+                      <div className="row leftSideCart" key={id}>
+                        <div className="col-4 ">
+                          <img className="img-fluid" src={item.img} alt="" />
                         </div>
-                      </>
-                    )}
+                        <div className="col-7 leftSideproductInfo">
+                          <div className="leftsideproductInfodata">
+                            {/* product name */}
+                            <p>{item.name}</p>
+                            {/* product color */}
+                            <p>
+                              Color : <span>{item.color}</span>
+                            </p>
+                            {/* product quantity */}
+                            <p>
+                              Quiantity: <span>{item.quantity}</span>
+                              {/* Quiantity: <span>{item._id}</span> */}
+                            </p>
+                            {/* remove product */}
+                            <button
+                              className="mb-3"
+                              onClick={() => handleRemove(item._id)}
+                            >
+                              delete
+                            </button>
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="totalPrice text-end">
+                          <p>
+                            price : <span>$ {item.price}</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   {/* check box */}

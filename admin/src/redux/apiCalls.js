@@ -153,7 +153,7 @@ export const deleteOrder = async (id, dispatch) => {
 export const getCategory = async (dispatch) => {
   dispatch(getCategoryStart());
   try {
-    const res = await axios.get(`/categories/`);
+    const res = await userRequest.get(`/categories/`);
     dispatch(getCategorySuccess(res.data));
   } catch (error) {
     console.log("unable to get all categories" + error);
@@ -165,7 +165,7 @@ export const getCategory = async (dispatch) => {
 export const createCategory = async (category, dispatch) => {
   dispatch(createCategoryStart());
   try {
-    await userRequest.post(`/categories/`, category);
+    await userRequest.post(`/categories/newCategory`, category);
     dispatch(createCategorySuccess(category.data));
   } catch (error) {
     console.log("unable to add category" + error);

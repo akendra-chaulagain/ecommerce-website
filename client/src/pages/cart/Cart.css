@@ -131,6 +131,7 @@
   background-color: aqua;
   color: black;
   font-size: 100px;
+  margin-top: 40vh;
 }
 @media only screen and (max-width: 778px) {
   .cartTitle {

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Category.css";
+
 import {
   getStorage,
   ref,
@@ -16,9 +17,10 @@ import { useNavigate } from "react-router-dom";
 const Category = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   // usestates for category items
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [cat, setCat] = useState("");
   const [selectImage, setSelectImages] = useState(null);
   const [progress, setProgress] = useState();
 
@@ -26,10 +28,7 @@ const Category = () => {
 
   const handleSubmitData = (e) => {
     e.preventDefault();
-    // const fileName = new Date().getTime() + selectImage.name;
-    // const Storage = getStorage(app);
-    // const storageRef = ref(Storage, fileName);
-    // const uploadTask = uploadBytesResumable(storageRef, selectImage);
+
     const storage = getStorage(app);
     const storageRef = ref(storage, selectImage.name);
     const uploadTask = uploadBytesResumable(storageRef, selectImage);
@@ -38,15 +37,14 @@ const Category = () => {
       "state_changed",
       (snapshot) => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress + "% done");
+        const progress = "processing..";
+        setProgress(progress);
         switch (snapshot.state) {
           case "paused":
-            setProgress(progress + "% done");
+            setProgress(progress);
             break;
           case "running":
-            setProgress(progress + "% done");
+            setProgress(progress);
             break;
           default:
         }
@@ -55,9 +53,10 @@ const Category = () => {
       () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const categorys = { img: downloadURL, title, category };
+          const categorys = { img: downloadURL, title, cat };
           createCategory(categorys, dispatch);
-          navigate("/newcategory");
+          alert("category added");
+          navigate("/category");
         });
       }
     );
@@ -99,11 +98,13 @@ const Category = () => {
                   <input
                     type="text"
                     name="cat"
-                    onChange={(e) => setCategory(e.target.value)}
+                    onChange={(e) => setCat(e.target.value)}
                     placeholder="electronic"
                   />
                 </div>
                 <button onClick={handleSubmitData}>Create</button>
+                <br />
+                <br />
                 {progress}
               </div>
 

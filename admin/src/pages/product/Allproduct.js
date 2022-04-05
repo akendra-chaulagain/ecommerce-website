@@ -4,7 +4,6 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./Allproduct.css";
 import { Delete, Edit } from "@material-ui/icons";
 import { DataGrid } from "@mui/x-data-grid";
-import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { deleteProducts, getProducts } from "../../redux/apiCalls";
@@ -12,6 +11,7 @@ import { deleteProducts, getProducts } from "../../redux/apiCalls";
 const Allproduct = () => {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.product.products);
+  console.log(allProduct);
 
   // get all product
   useEffect(() => {
@@ -77,7 +77,7 @@ const Allproduct = () => {
                 pageSize={8}
                 rowsPerPageOptions={[8]}
                 disableSelectionOnClick
-                getRowId={(r) =>uuidv4()}
+                getRowId={(row) => row._id}
                 checkboxSelection
               />
             </div>

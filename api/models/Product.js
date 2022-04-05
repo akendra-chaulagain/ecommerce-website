@@ -9,7 +9,6 @@ const productSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      
     },
     desc: {
       type: String,
@@ -31,7 +30,7 @@ const productSchema = new mongoose.Schema(
       type: String,
     },
     cat: {
-      type: String,
+      type: Array,
     },
     brand: {
       type: String,

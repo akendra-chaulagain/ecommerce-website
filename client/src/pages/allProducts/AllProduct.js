@@ -17,7 +17,6 @@ const AllProduct = () => {
   // get allproduct using redux from api call
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.product.products);
-  console.log(allProducts);
 
   useEffect(() => {
     getAllProducts(dispatch);
