@@ -77,7 +77,7 @@ const Allproduct = () => {
                 pageSize={8}
                 rowsPerPageOptions={[8]}
                 disableSelectionOnClick
-                getRowId={(row) => row._id}
+                getRowId={(r) => r._id}
                 checkboxSelection
               />
             </div>

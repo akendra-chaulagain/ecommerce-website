@@ -21,12 +21,13 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: ["order", "product", "category"],
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
-  product: productReducer,
   order: orderReducer,
+  product: productReducer,
   category: categoryReducer,
 });
 

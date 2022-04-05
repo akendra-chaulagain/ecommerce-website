@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const categorySlice = createSlice({
   name: "category",
   initialState: {
-    categorys: null,
+    categorys: [],
     isFetching: false,
     error: false,
   },

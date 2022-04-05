@@ -37,7 +37,7 @@ const Category = () => {
       "state_changed",
       (snapshot) => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress = "processing..";
+        const progress = "Processing..";
         setProgress(progress);
         switch (snapshot.state) {
           case "paused":

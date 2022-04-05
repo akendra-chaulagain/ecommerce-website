@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const userSlice = createSlice({
+export const orderSlicer = createSlice({
   name: "order",
   initialState: {
-    orders: null,
+    orders: [],
     isFetching: false,
     error: false,
   },
@@ -48,6 +48,6 @@ export const {
   deleteOrderFailure,
   deleteOrderStart,
   deleteOrderSuccess,
-} = userSlice.actions;
+} = orderSlicer.actions;
 
-export default userSlice.reducer;
+export default orderSlicer.reducer;
