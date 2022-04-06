@@ -1,0 +1,17 @@
+
+.loginPageWrapper label {
+  font-size: 17px;
+}
+.loginPageWrapper input {
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  height: 5vh;
+  width: 100%;
+  margin-top: 10px;
+}
+.loginPageWrapper span {
+  color: red;
+  font-size: 14px;
+}

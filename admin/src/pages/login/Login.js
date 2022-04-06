@@ -2,65 +2,50 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/apiCalls";
-import { useEffect } from "react";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import TextField from "../../components/TextField/TextField";
 
 const Login = () => {
-  const dispatch = useDispatch();
+  // const user = useSelector((state) => state.user);
   const { isFetching } = useSelector((state) => state.user);
+  // console.log(user);
 
-  // usestate for form
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  // useState for submit
-  const [isSubmit, setIsSubmit] = useState(false);
-  const [formErrors, setFormErrors] = useState({});
-
-  // when login button is clicked this function will run
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setFormErrors(validate(login(dispatch, { email, password })));
-    setIsSubmit(true);
-  };
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-    }
-  }, [email, password, formErrors, isSubmit]);
-
-  // validation
-  const validate = (values) => {
-    const errors = {};
-    // const regExp = RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
-    if (!values.email) {
-      errors.email = "Email is required!";
-    }
-    if (!values.password) {
-      errors.password = "Password is required!";
-    }
-    return errors;
-  };
+  // yup
+  const validate = Yup.object({
+    email: Yup.string().email("Invalid email!").required("Email is required!"),
+    password: Yup.string()
+      .min(6, "Password must be atleat 6 characters")
+      .required("Password is required!"),
+  });
 
   return (
     <>
-      <div className="login">
-        <form className="loginform">
-          {/* email */}
-          <label>Email</label>
-          <input type="email" onChange={(e) => setEmail(e.target.value)} />
-          <span>{formErrors.email}</span>
-          {/* password */}
-          <label>Password</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span>{formErrors.password}</span>
-          <button onClick={handleLogin} disabled={isFetching}>
-            Log In
-          </button>
-          {/* {error && <span className="error">Something went wrong!</span>} */}
-        </form>
-      </div>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={validate}
+        onSubmit={(values) => {
+          login(dispatch, values);
+        }}
+      >
+        <div className="formikContainer">
+          <Form>
+            <div className="loginPage">
+            <div className="textField">
+<TextField label="Email" name="email" type="text" />
+              <TextField label="Password" name="password" type="password" />
+              <button disabled={isFetching}>Log In</button>
+            </div>
+              
+            </div>
+          </Form>
+        </div>
+      </Formik>
     </>
   );
 };
