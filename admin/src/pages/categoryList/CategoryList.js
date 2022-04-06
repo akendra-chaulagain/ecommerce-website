@@ -7,26 +7,14 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCategory, getCategory } from "../../redux/apiCalls";
-import { useState } from "react";
-import axios from "axios";
 
 const CategoryList = () => {
-  const [ak, setak] = useState([]);
   // get all category
   const dispatch = useDispatch();
+  const category = useSelector((state) => state.category.categorys);
 
-  // get all category data
   useEffect(() => {
-    const getCategory = async (dispatch) => {
-      try {
-        const res = await axios.get(`/categories/`);
-        setak(res.data);
-        console.log(res.data);
-      } catch (error) {
-        console.log("unable to get all categories" + error);
-      }
-    };
-    getCategory();
+    getCategory(dispatch);
   }, [dispatch]);
 
   // delete order
@@ -99,7 +87,7 @@ const CategoryList = () => {
           <div className="tableContainer">
             <div style={{ height: 550, width: "100%" }}>
               <DataGrid
-                rows={ak}
+                rows={category}
                 columns={columns}
                 pageSize={8}
                 rowsPerPageOptions={[8]}

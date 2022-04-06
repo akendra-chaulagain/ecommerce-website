@@ -8,6 +8,20 @@ export const categorySlice = createSlice({
     error: false,
   },
   reducers: {
+    // get category
+    getCategoryStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    getCategorySuccess: (state, action) => {
+      state.isFetching = false;
+      state.categorys = action.payload;
+      state.error = false;
+    },
+    getCategoryFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
     // create new category
     createCategoryStart: (state) => {
       state.isFetching = true;

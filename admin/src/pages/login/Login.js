@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { error, isFetching } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
 
   // usestate for form
   const [email, setEmail] = useState("");

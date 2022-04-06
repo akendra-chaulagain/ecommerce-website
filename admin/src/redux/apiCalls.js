@@ -49,7 +49,6 @@ export const login = async (dispatch, user) => {
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
-    console.log(res);
     alert("login success!");
   } catch (error) {
     console.log(error);
@@ -61,7 +60,7 @@ export const login = async (dispatch, user) => {
 export const getProducts = async (dispatch) => {
   dispatch(getProductStart());
   try {
-    const res = await userRequest.get("/products/getall");
+    const res = await axios.get("/products/getall");
     dispatch(getProductSuccess(res.data));
   } catch (error) {
     console.log("unable to get all product" + error);
@@ -155,7 +154,7 @@ export const deleteOrder = async (id, dispatch) => {
 export const getCategory = async (dispatch) => {
   dispatch(getCategoryStart());
   try {
-    const res = await userRequest.get(`/categories/`);
+    const res = await axios.get(`/categories/`);
     dispatch(getCategorySuccess(res.data));
   } catch (error) {
     console.log("unable to get all categories" + error);

@@ -12,11 +12,9 @@ import {
 import app from "../../firebase";
 import { createCategory } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 const Category = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   // usestates for category items
   const [title, setTitle] = useState("");
@@ -56,7 +54,7 @@ const Category = () => {
           const categorys = { img: downloadURL, title, cat };
           createCategory(categorys, dispatch);
           alert("category added");
-          navigate("/category");
+          window.location.reload("/newcategory");
         });
       }
     );

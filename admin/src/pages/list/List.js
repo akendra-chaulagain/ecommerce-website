@@ -10,7 +10,6 @@ import { DeleteOutlined } from "@material-ui/icons";
 const List = () => {
   const dispatch = useDispatch();
   const allUser = useSelector((state) => state.allUser.allUsers);
-  console.log(allUser);
 
   // get alluser using redux
   useEffect(() => {

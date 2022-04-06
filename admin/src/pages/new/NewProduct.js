@@ -11,11 +11,9 @@ import {
 import app from "../../firebase";
 import { createProducts } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   // usestates for all inputes
   const [inputes, setInputes] = useState({});
@@ -82,7 +80,7 @@ const NewProduct = () => {
           };
           createProducts(product, dispatch);
           alert("new product created..");
-          navigate("/product");
+          window.location.reload("/product");
         });
       }
     );
