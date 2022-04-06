@@ -9,8 +9,27 @@ import {
   Category,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  logOutfailure,
+  logOutStart,
+  logOutSuccess,
+} from "../../redux/userRedux";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  // logout
+  const handlLogout = () => {
+    dispatch(logOutStart());
+    try {
+      dispatch(logOutSuccess());
+      alert("Logout success...")
+    } catch (error) {
+      dispatch(logOutfailure());
+    }
+  };
+
   return (
     <>
       <div className=" sidebar">
@@ -68,7 +87,11 @@ const Sidebar = () => {
           <div className="sidebartitle mt-3">USER</div>
           <div className="sidebarList">
             {/* feedback page */}
-            <li className="sidebarItems mt-1">
+            <li
+              className="sidebarItems mt-1"
+              onClick={handlLogout}
+              // onClick={() => dispatch(logOutSuccess())}
+            >
               <ExitToAppOutlined
                 className="sidebarIcons"
                 style={{ marginRight: 8 }}

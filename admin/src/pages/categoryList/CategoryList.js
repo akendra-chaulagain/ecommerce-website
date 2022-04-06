@@ -17,7 +17,7 @@ const CategoryList = () => {
 
   // get all category data
   useEffect(() => {
-    const getCategory = async (dispatch) => {
+    const getCategory = async () => {
       try {
         const res = await axios.get(`/categories/`);
         setak(res.data);
@@ -27,7 +27,7 @@ const CategoryList = () => {
       }
     };
     getCategory();
-  }, [dispatch]);
+  }, []);
 
   // delete order
   const handleDaelelCategory = (id) => {

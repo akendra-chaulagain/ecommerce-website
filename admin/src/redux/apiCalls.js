@@ -1,6 +1,9 @@
 import axios from "axios";
 import { userRequest } from "../RequestMethod";
 import {
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
   getAllUserFailure,
   getAllUserStart,
   getAllUserSuccess,
@@ -116,16 +119,15 @@ export const getUser = async (dispatch) => {
 
 //  delete  user
 export const deleteUser = async (id, dispatch) => {
-  dispatch(deleteProductStart());
+  dispatch(deleteUserStart());
   try {
-    await userRequest.delete(`/users/${id}`);
-    dispatch(deleteProductSuccess(id));
+    await axios.delete(`/users/${id}`);
+    dispatch(deleteUserSuccess(id));
   } catch (error) {
     console.log("unable to delete user" + error);
-    dispatch(deleteProductFailure());
+    dispatch(deleteUserFailure());
   }
 };
-
 
 // get all order
 export const getOrder = async (dispatch) => {
