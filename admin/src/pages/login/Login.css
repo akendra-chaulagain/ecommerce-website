@@ -30,3 +30,13 @@
   background-color: lightblue;
   padding: 5px;
 }
+.inputBox button:disabled {
+  color: green;
+  cursor: not-allowed;
+}
+.error {
+  color: red;
+}
+.login span{
+  color: red;
+}

@@ -24,7 +24,7 @@ const Sidebar = () => {
     dispatch(logOutStart());
     try {
       dispatch(logOutSuccess());
-      alert("Logout success...")
+      alert("Logout success...");
     } catch (error) {
       dispatch(logOutfailure());
     }
