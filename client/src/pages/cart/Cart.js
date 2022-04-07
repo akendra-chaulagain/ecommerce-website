@@ -22,7 +22,10 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
   // /for total ammount
-  const subTotal = cartProduct.reduce((x, item) => x + item.price, 0);
+  const subTotal = cartProduct.reduce(
+    (x, item) => x + item.price * item.quantity,
+    0
+  );
 
   // remove cart
   const dispatch = useDispatch();

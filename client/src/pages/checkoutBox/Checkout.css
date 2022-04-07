@@ -9,6 +9,7 @@
   flex-direction: column;
   background-color: rgb(228, 228, 228);
 }
+
 .wrappercheckBox {
   background-color: white;
   height: 50vh;
@@ -18,6 +19,7 @@
   align-items: center;
   border-radius: 10px;
 }
+
 .wrappercheckBox h3 {
   font-size: 35px;
   display: flex;
@@ -27,22 +29,26 @@
   margin-bottom: 15px;
   color: gray;
 }
+
 .checkBoxContainer {
   display: flex;
   justify-content: space-between;
 }
+
 .checkBoxInfo p {
-  font-size: 23px;
+  font-size: 20px;
 }
+
 .checkBoxInfo span {
   font-weight: 600;
-  font-size: 25px;
+  font-size: 21px;
 }
 
 .checkOutButton {
   display: flex;
   justify-content: center;
 }
+
 .checkOutButton button {
   padding: 4px 50px;
   margin-top: 20px;
@@ -52,6 +58,7 @@
   color: white;
   border-radius: 4px;
 }
+
 .checkOutButton button:hover {
   background-color: red;
   color: white;
@@ -63,16 +70,20 @@
     height: 60vh;
     width: 90%;
   }
+
   .wrappercheckBox h3 {
     font-size: 25px;
   }
+
   .checkBoxInfo p {
     font-size: 18px;
   }
+
   .checkOutButton button {
     padding: 2px 30px;
     margin-top: 20px;
   }
+
   .checkOutButton button:hover {
     background-color: red;
     color: white;

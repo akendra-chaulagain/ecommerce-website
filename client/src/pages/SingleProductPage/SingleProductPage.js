@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { addproduct } from "../../redux/cartRedux";
 import Search from "../../components/search/Search";
 import CategorySearch from "../../components/CategorySearch/CategorySearch";
-import { toast, Zoom, ToastContainer } from "react-toastify";
+import { toast, Zoom } from "react-toastify";
 
 const SingleProductPage = () => {
   const dispatch = useDispatch();
