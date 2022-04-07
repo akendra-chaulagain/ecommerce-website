@@ -16,6 +16,7 @@ const Checkout = () => {
 
   // cart
   const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   // user
   const user = useSelector((state) => state.user.currentUser);

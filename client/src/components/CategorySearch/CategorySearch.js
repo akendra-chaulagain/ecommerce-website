@@ -12,7 +12,6 @@ const CategorySearch = ({ Allproducts }) => {
               <div className="col-md-3 col-4" key={id}>
                 <Link
                   className="categoiryProductLink"
-                  target="_blank"
                   to={`/products/single/${item._id}`}
                 >
                   <div className="categoryAllProduct">

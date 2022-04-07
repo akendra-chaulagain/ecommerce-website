@@ -2,9 +2,10 @@
   height: auto;
   width: 100%;
   overflow: hidden;
-  padding-top: 3vh;
+  padding-top: 2vh;
   background-color: rgb(231, 229, 229);
 }
+
 /* cart tobbar */
 
 .cartTitle {
@@ -12,6 +13,7 @@
   font-weight: 600;
   color: rgb(6, 6, 95);
 }
+
 .cartTopbar {
   display: flex;
   justify-content: space-between;
@@ -39,9 +41,11 @@
   background-color: whitesmoke;
   border-radius: 3px;
 }
+
 .cartproductInfo {
   margin-top: 30px;
 }
+
 .leftSideproductInfo {
   display: flex;
   justify-content: space-between;
@@ -58,10 +62,12 @@
   align-items: center;
   margin-top: 10px;
 }
+
 .leftsideproductInfodata p {
   font-weight: 600;
   font-size: 15px;
 }
+
 .leftsideproductInfodata span {
   border: 2px solid red;
   font-weight: 500;
@@ -70,6 +76,7 @@
   padding: 3px 8px;
   border-radius: 4px;
 }
+
 /* proceed to checkbox buttom */
 .leftsideproductInfodata button {
   outline: none;
@@ -82,6 +89,7 @@
   padding: 2px 8px;
   border-radius: 4px;
 }
+
 .leftsideproductInfodata button:hover {
   background-color: red;
 }
@@ -90,6 +98,7 @@
 .totalPrice p {
   font-size: 25px;
 }
+
 .totalPrice span {
   font-weight: 600;
   font-size: 20px;
@@ -107,12 +116,15 @@
   align-items: center;
   border-radius: 5px;
 }
+
 .containerInfo p {
   font-size: 22px;
 }
+
 .containerInfo span {
   font-weight: 600;
 }
+
 .containerInfo button {
   width: 100%;
   margin-top: 10px;
@@ -124,41 +136,91 @@
   padding: 4px 5px;
   border-radius: 5px;
 }
+
 .containerInfo button:hover {
   background-color: rgb(252, 82, 82);
 }
+
 .containerEmpty h1 {
   background-color: aqua;
   color: black;
   font-size: 100px;
   margin-top: 40vh;
 }
+
+/* when cart is empty */
+.cartEmpty {
+  height: 60vh;
+  width: 100%;
+  background-color: rgb(231, 229, 229);
+
+}
+
+.emptyContainer {
+  background-color: whitesmoke;
+  height: 60vh;
+  width: 70%;
+
+}
+
+.emptyWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyWrapper h3 {
+  font-size: 32px;
+  font-weight: 600;
+
+}
+
+.emptyWrapper img {
+  height: 50vh;
+}
+
+.titleEmpty .link {
+  font-size: 18px;
+  color: red;
+}
+
+.titleEmpty .link:hover {
+  color: rgb(232, 9, 9);
+}
+
 @media only screen and (max-width: 778px) {
   .cartTitle {
     font-size: 23px;
   }
+
   .cartTopbarP {
     margin-top: 0px;
     letter-spacing: 0px;
   }
+
   .leftSideCart {
     height: auto;
   }
+
   .leftsideproductInfodata p {
     font-size: 11px;
     font-weight: 500;
   }
+
   .totalPrice p {
     font-size: 17px;
   }
+
   .totalPrice span {
     font-size: 16px;
   }
+
   .leftsideproductInfodata span {
     font-size: 14px;
     margin-left: 10px;
     padding: 3px 4px;
   }
+
   /* payment button */
 
   .containerInfo button {

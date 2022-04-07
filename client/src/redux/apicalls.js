@@ -76,6 +76,7 @@ export const register = async (dispatch, user) => {
     console.log("register failure" + error);
   }
 };
+
 // get all product
 export const getAllProducts = async (dispatch) => {
   dispatch(getProductStart());

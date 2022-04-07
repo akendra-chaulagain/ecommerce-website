@@ -8,7 +8,7 @@ export const cartSlice = createSlice({
     total: 0,
   },
   reducers: {
-    //   for increasing the cart number when add to cart is click
+    //   for adding cart
     addproduct: (state, action) => {
       state.quantity += 1;
       state.products.push(action.payload);
@@ -20,10 +20,12 @@ export const cartSlice = createSlice({
       state.products = state.products.filter(
         (cart) => cart._id !== action.payload
       );
-      state.total -= (action.payload.price * action.payload.quantity);
+      // state.total -= action.payload.price * action.payload.quantity;
+      // state.total = action.payload.quantity - action.payload.quantity;
     },
   },
 });
+
 
 export const { addproduct, removeproduct } = cartSlice.actions;
 

@@ -17,6 +17,7 @@ const AllProduct = () => {
   // get allproduct using redux from api call
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.product.products);
+  console.log(allProducts);
 
   useEffect(() => {
     getAllProducts(dispatch);
@@ -24,7 +25,8 @@ const AllProduct = () => {
 
   // usestate fro pagination
   const [page, setPage] = useState(1);
-  const [postPerPage, setpostPerPage] = useState(20);
+  const [postPerPage] = useState(20);
+  // const [postPerPage, setpostPerPage] = useState(20);
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
   const currestPost = allProducts.slice(indexOfFirstPage, indexOfLastPage);
@@ -86,7 +88,6 @@ const AllProduct = () => {
                     <div className="col-md-3 col-4" index={i} key={i}>
                       <Link
                         className="AllproductLink"
-                        target="_blank"
                         to={`/products/single/${item._id}`}
                       >
                         <div className="allProduct">

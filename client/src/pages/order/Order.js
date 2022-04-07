@@ -25,6 +25,7 @@ const Order = () => {
     };
     getOrders();
   }, [user]);
+  console.log(order);
 
   return (
     <>

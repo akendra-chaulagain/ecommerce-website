@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { addproduct } from "../../redux/cartRedux";
 import Search from "../../components/search/Search";
 import CategorySearch from "../../components/CategorySearch/CategorySearch";
+import { toast, Zoom, ToastContainer } from "react-toastify";
 
 const SingleProductPage = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,6 @@ const SingleProductPage = () => {
     getData();
   }, [path]);
 
-  console.log(product);
   // increase and decrease quantity  when add or less button click
   const handleQuantity = (type) => {
     if (type === "desc") {
@@ -53,6 +53,17 @@ const SingleProductPage = () => {
   // this function will run when we  add to cart button click
   const handleClick = async () => {
     dispatch(addproduct({ ...product, quantity, color }));
+    toast.success("product added!", {
+      position: "top-center",
+      autoClose: false,
+      transition: Zoom,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      theme: "dark",
+      progress: undefined,
+    });
   };
 
   // usestate for search
