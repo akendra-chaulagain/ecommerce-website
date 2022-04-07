@@ -1,10 +1,10 @@
 .registerPage {
-  height: 90vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 4vh;
+  margin-top: 7vh;
 }
 .registerTitle {
   display: flex;
@@ -58,11 +58,11 @@
 .registerFrom p {
   margin: 10px 0px 0px 8%;
 }
-.link {
+.registerFrom span {
   margin-left: 5px;
   color: red;
 }
-.link:hover {
+.registerFrom span:hover {
   text-decoration: underline;
 }
 .terms {

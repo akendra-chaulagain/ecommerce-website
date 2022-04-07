@@ -1,11 +1,12 @@
 .loginPage {
-  height: 70vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 4vh;
+  margin-top: 7vh;
 }
+
 .loginTitle {
   display: flex;
   justify-content: center;
@@ -14,24 +15,28 @@
   font-size: 35px;
   margin-top: 10px;
 }
+
 .loginFrom {
   height: 65vh;
   width: 25%;
   -webkit-box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.48);
   box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.48);
 }
+
 .LoginFormContainer h4 {
   margin-left: 8%;
   margin-top: 20px;
   font-size: 19px;
   font-weight: 600;
 }
+
 .inputBox label {
-  margin-top: 10px;
+  margin-top: 2px;
   margin-left: 8%;
   font-weight: 600;
   font-size: 13px;
 }
+
 .inputBox input {
   margin-left: 8%;
   width: 80%;
@@ -42,9 +47,10 @@
   border: none;
   border: 1px solid gray;
 }
+
 .inputBox button {
   margin-left: 8%;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 80%;
   padding: 3px 20px;
   border: none;
@@ -52,31 +58,39 @@
   color: white;
   border-radius: 4px;
 }
+
 .inputBox button:hover {
   background-color: rgb(247, 82, 82);
 }
+
 .inputBox button:disabled {
   color: white;
   cursor: not-allowed;
 }
+
 .inputBox span {
   color: red;
   margin-left: 8%;
 }
+
 .loginFrom p {
   margin: 10px 0px 0px 8%;
 }
-.link {
+
+.loginPage span {
   margin-left: 5px;
   color: red;
 }
-.link:hover {
+
+.loginPage span:hover {
   text-decoration: underline;
 }
+
 .terms {
   margin: 15px 0px 0px 8%;
   font-size: 15px;
 }
+
 @media only screen and (max-width: 768px) {
   .loginFrom {
     width: 80%;

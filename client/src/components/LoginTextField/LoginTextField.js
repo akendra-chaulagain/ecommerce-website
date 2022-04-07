@@ -1,10 +1,10 @@
 import React from "react";
 import { ErrorMessage, useField } from "formik";
-import "./TextField.css";
+import "./LoginTextField.css"
 
-const TextField = ({ label, ...props }) => {
+// textField for login page
+const LoginTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-
   return (
     <>
       <div className="loginPageWrapper">
@@ -16,12 +16,13 @@ const TextField = ({ label, ...props }) => {
           {...field}
           {...props}
         />
-        <div className="error">
+        <br />
+        <span className="error">
           <ErrorMessage name={field.name} />
-        </div>
+        </span>
       </div>
     </>
   );
 };
 
-export default TextField;
+export default LoginTextField;

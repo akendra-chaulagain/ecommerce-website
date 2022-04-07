@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/apiCalls";
@@ -36,12 +36,11 @@ const Login = () => {
         <div className="formikContainer">
           <Form>
             <div className="loginPage">
-            <div className="textField">
-<TextField label="Email" name="email" type="text" />
-              <TextField label="Password" name="password" type="password" />
-              <button disabled={isFetching}>Log In</button>
-            </div>
-              
+              <div className="textField">
+                <TextField label="Email" name="email" type="text" />
+                <TextField label="Password" name="password" type="password" />
+                <button disabled={isFetching}>Log In</button>
+              </div>
             </div>
           </Form>
         </div>

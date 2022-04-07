@@ -1,0 +1,7 @@
+.loginPageWrapper .error {
+    margin-left: 7%;
+    text-decoration: none;
+}
+.loginPageWrapper .error:hover{
+    text-decoration: none;
+}
