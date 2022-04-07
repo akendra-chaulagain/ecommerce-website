@@ -7,10 +7,13 @@ import * as Yup from "yup";
 import RegisterTextField from "../../components/RegisterTextField/RegisterTextField";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/apicalls";
+import { ToastContainer } from "react-toastify";
+
 
 const Register = () => {
   //  useDispatch hook is used for login (redux)
   const dispatch = useDispatch();
+  const { isFetching } = useSelector((state) => state.user);
 
   // yup validation is used
   const validate = Yup.object({
@@ -41,6 +44,7 @@ const Register = () => {
         validationSchema={validate}
         onSubmit={(values) => {
           register(dispatch, values);
+         
         }}
       >
         <Form>
@@ -96,7 +100,7 @@ const Register = () => {
                 </div>
                 <div className="inputBox">
                   {/* <button onClick={handleRegister}>Continue</button> */}
-                  <button>Continue</button>
+                  <button disabled={isFetching}>Continue</button>
                 </div>
               </div>
               <p>
@@ -111,6 +115,8 @@ const Register = () => {
               </div>
             </div>
           </div>
+          {/* this container is used for tostify */}
+          <ToastContainer />
           {/* login and register footer */}
           <LoginregisterFooter />
         </Form>

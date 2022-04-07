@@ -7,6 +7,7 @@ import { login } from "../../redux/apicalls";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import LoginTextField from "../../components/LoginTextField/LoginTextField";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   //  useDispatch hook is used for login (redux)
@@ -18,7 +19,6 @@ const Login = () => {
     email: Yup.string().email("Invalid email!").required("Email is required!"),
     password: Yup.string().required("Password is required!"),
   });
-
   return (
     <>
       <Formik
@@ -29,6 +29,7 @@ const Login = () => {
         validationSchema={validate}
         onSubmit={(values) => {
           login(dispatch, values);
+          //
         }}
       >
         <Form>
@@ -71,6 +72,8 @@ const Login = () => {
               </div>
             </div>
           </div>
+          {/* this container is used for tostify */}
+          <ToastContainer limit={1} />
           {/* login and register footer */}
           <LoginregisterFooter />
         </Form>

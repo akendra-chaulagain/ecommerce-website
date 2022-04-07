@@ -35,10 +35,12 @@ export const userSlice = createSlice({
     // logout user
     logOutStart: (state) => {
       state.isFetching = true;
+      state.error = false;
     },
     logOutSuccess: (state) => {
       state.isFetching = false;
       state.currentUser = localStorage.removeItem("persist:root");
+      state.error = false;
     },
     logOutfailure: (state) => {
       state.isFetching = false;

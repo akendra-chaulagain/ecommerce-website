@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import Menu from "@material-ui/icons/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import SemiNav from "../semiNav/Saminav";
-import axios from "axios";
 import {
   logOutfailure,
   logOutStart,
   logOutSuccess,
 } from "../../redux/userRedux";
+import { ToastContainer, toast, Zoom } from "react-toastify";
 
 // navbar
 const Navbar = ({ setSearchProduct, setCategoryData }) => {
@@ -25,8 +25,18 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
     dispatch(logOutStart());
     try {
       dispatch(logOutSuccess());
-      alert("Logout success...");
-      window.location.reload("/");
+      // react toastify for alert option
+      toast.success(" Logout Success!", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+        transition: Zoom,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       dispatch(logOutfailure());
     }
@@ -113,6 +123,7 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
       </nav>
       {/* samiNavbar  import from component folder*/}
       <SemiNav setCategoryData={setCategoryData} />
+      <ToastContainer />
     </>
   );
 };

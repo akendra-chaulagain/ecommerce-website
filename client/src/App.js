@@ -17,10 +17,10 @@ import Error from "./pages/error/Error";
 import AllProduct from "./pages/allProducts/AllProduct";
 import Profile from "./pages/profile/Profile";
 import ChangePassword from "./pages/changepassword/ChangePassword";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
-
   return (
     <>
       <Routes>
