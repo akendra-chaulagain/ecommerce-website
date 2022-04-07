@@ -1,0 +1,16 @@
+.registerPageWrapper p {
+    font-size: 14px;
+    margin-left: 7%;
+    color: red;
+    margin-top: 0px;
+}
+
+.registerPageWrapper .formTitleLabel {
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+.registerPageWrapper p:hover {
+    text-decoration: none;
+}

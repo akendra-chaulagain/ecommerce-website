@@ -1,4 +1,11 @@
-import { loginfailure, loginStart, loginSuccess } from "./userRedux";
+import {
+  loginfailure,
+  loginStart,
+  loginSuccess,
+  registerfailure,
+  registerStart,
+  registerSuccess,
+} from "./userRedux";
 import axios from "axios";
 import {
   getProductFailure,
@@ -19,6 +26,18 @@ export const login = async (dispatch, user) => {
   }
 };
 
+// login user
+export const register = async (dispatch, user) => {
+  dispatch(registerStart());
+  try {
+    const res = await axios.post("/auth/register", user);
+    dispatch(registerSuccess(res.data));
+    // alert("login success");
+  } catch (error) {
+    dispatch(registerfailure());
+    console.log("register failure" + error);
+  }
+};
 // get all product
 export const getAllProducts = async (dispatch) => {
   dispatch(getProductStart());

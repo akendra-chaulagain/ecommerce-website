@@ -1,26 +1,26 @@
 import React from "react";
 import { ErrorMessage, useField } from "formik";
-import "./LoginTextField.css";
+import "./RegisterTextField.css";
 
-// textField for login page
-const LoginTextField = ({ label, ...props }) => {
+const RegisterTextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <div className="loginPageWrapper">
-        <label>{label}</label>
+      <div className="registerPageWrapper">
+        <label className="formTitleLabel">{label}</label>
+
         <input
           autoComplete="off"
           className={`${meta.touch && meta.error}`}
           {...field}
           {...props}
         />
-        <span className="error">
+        <p className="error">
           <ErrorMessage name={field.name} />
-        </span>
+        </p>
       </div>
     </>
   );
 };
 
-export default LoginTextField;
+export default RegisterTextField;

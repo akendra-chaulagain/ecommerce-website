@@ -3,9 +3,14 @@ import "./Navbar.css";
 import Cart from "@material-ui/icons/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 import Menu from "@material-ui/icons/Menu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SemiNav from "../semiNav/Saminav";
 import axios from "axios";
+import {
+  logOutfailure,
+  logOutStart,
+  logOutSuccess,
+} from "../../redux/userRedux";
 
 // navbar
 const Navbar = ({ setSearchProduct, setCategoryData }) => {
@@ -13,11 +18,18 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
   // use selector from react redux
   const quantity = useSelector((state) => state.cart.quantity);
 
+  const dispatch = useDispatch();
+
   // logout
-  const handleLogOut = async (e) => {
-    const res = await axios.get("/auth/logout");
-    alert("logout");
-    console.log(res);
+  const handlLogout = () => {
+    dispatch(logOutStart());
+    try {
+      dispatch(logOutSuccess());
+      alert("Logout success...");
+      window.location.reload("/");
+    } catch (error) {
+      dispatch(logOutfailure());
+    }
   };
 
   return (
@@ -52,13 +64,13 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
                 <>
                   {/* register */}
                   <li className="nav-item">
-                    <Link className="nav-link "  to="/register">
+                    <Link className="nav-link " to="/register">
                       Register
                     </Link>
                   </li>
                   {/* login */}
                   <li className="nav-item">
-                    <Link className="nav-link"  to="/login">
+                    <Link className="nav-link" to="/login">
                       Sign In
                     </Link>
                   </li>
@@ -79,7 +91,7 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
                   </li>
                   {/* logout */}
                   <li className="nav-item">
-                    <span className="nav-link" onClick={handleLogOut}>
+                    <span className="nav-link" onClick={handlLogout}>
                       Logout
                     </span>
                   </li>

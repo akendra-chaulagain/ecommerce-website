@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 7vh;
+  margin-top: 12vh;
 }
 
 .loginTitle {
@@ -12,8 +12,8 @@
   justify-content: center;
   align-content: center;
   font-weight: 600;
-  font-size: 35px;
-  margin-top: 10px;
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .loginFrom {
@@ -25,8 +25,8 @@
 
 .LoginFormContainer h4 {
   margin-left: 8%;
-  margin-top: 20px;
-  font-size: 19px;
+  margin-top: 13px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -50,7 +50,7 @@
 
 .inputBox button {
   margin-left: 8%;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 80%;
   padding: 3px 20px;
   border: none;
