@@ -1,15 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Profile.css";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
 import Footer from "../../components/footer/Footer";
 import { useState } from "react";
-// import axios from "axios";
-import { userRequest } from "../../RequestMethod";
+import axios from "axios";
+import { ToastContainer, toast, Zoom } from "react-toastify";
 
 const Profile = () => {
-  const navigate = useNavigate();
   const user = useSelector((state) => state.user.currentUser);
 
   // update user expect password
@@ -21,9 +20,19 @@ const Profile = () => {
     e.preventDefault();
     try {
       // user request was import from RequestMethos
-      await userRequest.put("/users/" + user._id, { email, username, number });
-      alert("update success");
-      navigate("/");
+      await axios.put("/users/" + user._id, { email, username, number });
+      toast.success("profile has been updated!", {
+        position: "top-center",
+        autoClose: false,
+        transition: Zoom,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        theme: "dark",
+        progress: undefined,
+      });
+      // window.location.reload("/profile");
     } catch (error) {
       alert("unable to update");
     }
@@ -65,7 +74,7 @@ const Profile = () => {
               <div className="inputBoxs">
                 <label>Contact no</label>
                 <input
-                  type="text"
+                  type="number"
                   onChange={(e) => setNumber(e.target.value)}
                   placeholder="98677556"
                 />
@@ -84,6 +93,7 @@ const Profile = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
       {/* footer */}
       <Footer />
     </>

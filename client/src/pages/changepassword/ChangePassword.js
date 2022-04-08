@@ -1,15 +1,15 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ChangePassword.css";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
 import Footer from "../../components/footer/Footer";
 import { useSelector } from "react-redux";
 // import axios from "axios";
 import { useState } from "react";
-import { userRequest } from "../../RequestMethod";
+import axios from "axios";
+import { ToastContainer, toast, Zoom } from "react-toastify";
 
 const ChangePassword = () => {
-  const nagivate = useNavigate();
   const user = useSelector((state) => state.user.currentUser);
 
   //  update user paSSWORD
@@ -19,13 +19,33 @@ const ChangePassword = () => {
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
     if (newPassword === password) {
-      await userRequest.put("/users/" + user._id, {
+      await axios.put("/users/" + user._id, {
         password,
       });
-      alert("password changed");
-      nagivate("/");
+      toast.success("Password changed!", {
+        position: "top-center",
+        autoClose: false,
+        transition: Zoom,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        theme: "dark",
+        progress: undefined,
+      });
+      window.location.reload("/changePassword");
     } else {
-      alert("password does not match");
+      toast.error("Password does not match!", {
+        position: "top-center",
+        autoClose: false,
+        transition: Zoom,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        theme: "dark",
+        progress: undefined,
+      });
     }
   };
 
@@ -49,6 +69,7 @@ const ChangePassword = () => {
                 <input
                   type="password"
                   onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="enter new password"
                 />
               </div>
               {/* confirm number */}
@@ -57,6 +78,7 @@ const ChangePassword = () => {
                 <input
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
+                  placeholder="confirm  password"
                 />
               </div>
               {/* submmit buttom */}
@@ -67,6 +89,7 @@ const ChangePassword = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
       {/* footer */}
       <Footer />
     </>

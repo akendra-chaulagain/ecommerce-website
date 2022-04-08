@@ -159,7 +159,7 @@ const Cart = () => {
                               {/* when use is login then  user will directly go to payment method */}
                               {user ? (
                                 <>
-                                  <Link to="/payment">
+                                  <Link to="/checkout">
                                     <button>Procced to ckeckout</button>
                                   </Link>
                                 </>

@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   return (
     <>
       <Routes>
@@ -44,7 +45,7 @@ const App = () => {
         />
         {/* checkOut page */}
         <Route
-          path="/payment"
+          path="/checkout"
           element={user ? <Checkout /> : <Navigate to="/login" />}
         />
         {/* single order page */}

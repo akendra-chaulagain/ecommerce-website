@@ -6,7 +6,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
-import { userRequest } from "../../RequestMethod";
+import axios from "axios";
+import { ToastContainer, toast, Zoom } from "react-toastify";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -39,17 +40,26 @@ const Checkout = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await userRequest.post("/stripe/payment", {
+        await axios.post("/stripe/payment", {
           token: stripeToken,
           amount: totalPrice * 10,
           cart,
           user,
         });
         navigate("/success-payment");
-
-        // setdata(res.data);
       } catch (error) {
         console.log("unable to payment" + error);
+        toast.error(" Something went wrong. try again!!", {
+          position: "top-center",
+          autoClose: 2000,
+          theme: "dark",
+          transition: Zoom,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     };
     makeRequest();
@@ -63,10 +73,10 @@ const Checkout = () => {
             <h3>Order Summery</h3>
             <div className="checkBoxContainer">
               <div className="checkBoxInfo">
-                <p>Subtotal</p>
-                <p>Tax </p>
-                <p>Shipping </p>
-                <span>Total</span>
+                <p>Subtotal :</p>
+                <p>Tax : </p>
+                <p>Shipping : </p>
+                <span>Total :</span>
               </div>
               <div className="checkBoxInfo">
                 <p>${subTotal}</p>
@@ -93,6 +103,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
       {/* footer */}
       <Footer />
     </>

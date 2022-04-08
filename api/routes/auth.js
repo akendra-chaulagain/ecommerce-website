@@ -58,15 +58,15 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "30s" }
+      { expiresIn: "1hr" }
       // { expiresIn: "1d" }
       // { expiresIn: "20s" }
       // { expiresIn: "15m" }
     );
 
-    // saving in cooki
+    // saving in cookie
     res.cookie("jsonwebToken", token, {
-      expires: new Date(Date.now() + 1000 * 30),
+      expires: new Date(Date.now() + 1000 * 60 * 60),
       path: "/",
       httpOnly: true,
       sameSite: "lax",
@@ -83,13 +83,17 @@ router.post("/login", async (req, res) => {
 });
 
 // logout user
-router.get("/logout", verifyToken, async (req, res) => {
-  try {
+router.post("/logout", verifyToken, async (req, res) => {
+  const cookie = req.headers.cookie;
+  if (cookie) {
+    const token = cookie.split("=")[1];
+    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
+      if (err) res.status(403).json("Token is not valid !");
+      req.user = user;
+    });
     res.clearCookie("jsonwebToken");
-
-    res.status(200).json({ success: true, message: "Logged Out" });
-  } catch (error) {
-    res.status(500).json("Unable to logOut" + error);
+    req.cookies[`jsonwebToken`] = "";
+    return res.status(200).json("LogOut successfully..");
   }
 });
 
