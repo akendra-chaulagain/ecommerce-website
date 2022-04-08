@@ -55,21 +55,25 @@ router.post("/login", async (req, res) => {
     // check user password with hashed password stored in the database
     const validPassword = await bcrypt.compare(password, user.password);
 
-    // generating login token
-    // const token = await user.generateToken();
-    // res.cookie("jsonwebToken", token, {
-    //   expires: new Date(Date.now() + 86400000),
-    //   httpOnly: true,
-    // });
-    const accessToken = jwt.sign(
+    const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "1d" }
+      { expiresIn: "30s" }
+      // { expiresIn: "1d" }
+      // { expiresIn: "20s" }
+      // { expiresIn: "15m" }
     );
 
+    // saving in cooki
+    res.cookie("jsonwebToken", token, {
+      expires: new Date(Date.now() + 1000 * 30),
+      path: "/",
+      httpOnly: true,
+      sameSite: "lax",
+    });
     if (validPassword) {
       const { password, tokens, ...others } = user._doc;
-      return res.status(201).json({ ...others, accessToken });
+      return res.status(201).json({ ...others, token });
     } else {
       return res.status(400).json("Invalid user data");
     }
