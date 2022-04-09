@@ -7,6 +7,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { deleteProducts, getProducts } from "../../redux/apiCalls";
+import { ToastContainer } from "react-toastify";
 
 const Allproduct = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,6 @@ const Allproduct = () => {
   useEffect(() => {
     getProducts(dispatch);
   }, [dispatch]);
-  
 
   // delete product
   const handleDelete = (id) => {
@@ -83,6 +83,7 @@ const Allproduct = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

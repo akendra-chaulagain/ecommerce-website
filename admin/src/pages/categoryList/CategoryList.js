@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCategory, getCategory } from "../../redux/apiCalls";
+import { ToastContainer } from "react-toastify";
+
 
 const CategoryList = () => {
   // get all category
@@ -99,6 +101,7 @@ const CategoryList = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

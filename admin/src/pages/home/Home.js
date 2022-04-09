@@ -6,15 +6,15 @@ import Chart from "../../components/chart/Chart";
 import LastetUser from "../../components/latestUserContainer/LatestUser";
 import { useState } from "react";
 import { useEffect } from "react";
-import { userRequest } from "../../RequestMethod";
 import { useMemo } from "react";
+import axios from "axios";
 
 const Home = () => {
   // fot getting latest 5 recent user data
   const [allUser, setAllUser] = useState([]);
   useEffect(() => {
     const getAllUser = async () => {
-      const res = await userRequest.get(`/users?new=true`);
+      const res = await axios.get(`/users?new=true`);
       setAllUser(res.data);
     };
     getAllUser();
@@ -45,7 +45,7 @@ const Home = () => {
   useEffect(() => {
     const getUserStats = async () => {
       try {
-        const res = await userRequest.get("/users/stats");
+        const res = await axios.get("/users/stats");
         res.data.map((item) =>
           setUserStats((prev) => [
             ...prev,

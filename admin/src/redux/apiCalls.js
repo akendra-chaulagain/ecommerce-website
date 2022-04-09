@@ -1,5 +1,4 @@
 import axios from "axios";
-import { userRequest } from "../RequestMethod";
 import {
   deleteUserFailure,
   deleteUserStart,
@@ -42,6 +41,34 @@ import {
   updateProductSuccess,
 } from "./productRedux";
 import { loginfailure, loginStart, loginSuccess } from "./userRedux";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, Zoom } from "react-toastify";
+
+// success tostify
+const tostifySuccess = {
+  position: "top-center",
+  autoClose: false,
+  transition: Zoom,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: false,
+  theme: "dark",
+  progress: undefined,
+};
+
+// failure tostify
+const tostifyFailure = {
+  position: "top-center",
+  autoClose: false,
+  transition: Zoom,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: false,
+  theme: "dark",
+  progress: undefined,
+};
 
 // login
 export const login = async (dispatch, user) => {
@@ -49,10 +76,13 @@ export const login = async (dispatch, user) => {
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
-    alert("login success!");
+    // react toastify for alert option when success
+    toast.success(" Login Success!", tostifySuccess);
   } catch (error) {
     console.log(error);
     dispatch(loginfailure());
+    // react toastify for alert option when failure
+    toast.error("Invalid Data!", tostifyFailure);
   }
 };
 
@@ -72,11 +102,15 @@ export const getProducts = async (dispatch) => {
 export const deleteProducts = async (id, dispatch) => {
   dispatch(deleteProductStart());
   try {
-    await userRequest.delete(`/products/${id}`);
+    await axios.delete(`/products/${id}`);
     dispatch(deleteProductSuccess(id));
+    // react toastify for alert option when failure
+    toast.success("Product deleted!", tostifySuccess);
   } catch (error) {
     console.log("unable to delete" + error);
     dispatch(deleteProductFailure());
+    // react toastify for alert option when failure
+    toast.error("try again. unable to delete!", tostifyFailure);
   }
 };
 
@@ -84,10 +118,12 @@ export const deleteProducts = async (id, dispatch) => {
 export const updateProducts = async (id, product, dispatch) => {
   dispatch(updateProductStart());
   try {
-    await userRequest.put(`/products/${id}`, product);
+    await axios.put(`/products/${id}`, product);
     dispatch(updateProductSuccess(id, product));
+    toast.success("product  updated!", tostifySuccess);
   } catch (error) {
     console.log("unable to update product" + error);
+    toast.error("try again. unable to update!", tostifyFailure);
     dispatch(updateProductFailure());
   }
 };
@@ -96,11 +132,13 @@ export const updateProducts = async (id, product, dispatch) => {
 export const createProducts = async (product, dispatch) => {
   dispatch(createProductStart());
   try {
-    await userRequest.post(`/products/newproduct`, product);
+    await axios.post(`/products/newproduct`, product);
     dispatch(createProductSuccess(product.data));
+    toast.success("product  created!", tostifySuccess);
   } catch (error) {
     console.log("unable to add product" + error);
     dispatch(createProductFailure());
+    toast.error("try again. unable to create product!", tostifyFailure);
   }
 };
 
@@ -108,7 +146,7 @@ export const createProducts = async (product, dispatch) => {
 export const getUser = async (dispatch) => {
   dispatch(getAllUserStart());
   try {
-    const res = await userRequest.get(`/users/`);
+    const res = await axios.get(`/users/`);
     dispatch(getAllUserSuccess(res.data));
   } catch (error) {
     console.log("unable to get user" + error);
@@ -122,9 +160,11 @@ export const deleteUser = async (id, dispatch) => {
   try {
     await axios.delete(`/users/${id}`);
     dispatch(deleteUserSuccess(id));
+    toast.success("user deleted!", tostifySuccess);
   } catch (error) {
     console.log("unable to delete user" + error);
     dispatch(deleteUserFailure());
+    toast.error("try again. unable to delete user!", tostifyFailure);
   }
 };
 
@@ -132,7 +172,7 @@ export const deleteUser = async (id, dispatch) => {
 export const getOrder = async (dispatch) => {
   dispatch(getOrderStart());
   try {
-    const res = await userRequest.get(`/orders/`);
+    const res = await axios.get(`/orders/`);
     dispatch(getOrderSuccess(res.data));
   } catch (error) {
     console.log("unable to get all order" + error);
@@ -143,7 +183,7 @@ export const getOrder = async (dispatch) => {
 export const deleteOrder = async (id, dispatch) => {
   dispatch(deleteOrderStart());
   try {
-    await userRequest.delete(`/orders/${id}`);
+    await axios.delete(`/orders/${id}`);
     dispatch(deleteOrderSuccess(id));
   } catch (error) {
     console.log("unable to delete order" + error);
@@ -166,21 +206,26 @@ export const getCategory = async (dispatch) => {
 export const createCategory = async (category, dispatch) => {
   dispatch(createCategoryStart());
   try {
-    await userRequest.post(`/categories/newCategory`, category);
+    await axios.post(`/categories/newCategory`, category);
     dispatch(createCategorySuccess(category.data));
+    toast.success("category created!", tostifySuccess);
   } catch (error) {
     console.log("unable to add category" + error);
     dispatch(createCategoryFailure());
+    toast.error("try again. unable to create category!", tostifyFailure);
   }
 };
 // delete category
 export const deleteCategory = async (id, dispatch) => {
   dispatch(deleteCategoryStart());
   try {
-    await userRequest.delete(`/categories/${id}`);
+    await axios.delete(`/categories/${id}`);
     dispatch(deleteCategorySuccess(id));
+    toast.success("category deleted!", tostifySuccess);
   } catch (error) {
     console.log("unable to delete order" + error);
     dispatch(deleteCategoryFailure());
+    toast.error("try again. unable to delete category!", tostifyFailure);
+
   }
 };

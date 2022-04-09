@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { deleteUser, getUser } from "../../redux/apiCalls";
 import { DeleteOutlined } from "@material-ui/icons";
+import { ToastContainer } from "react-toastify";
 
 const List = () => {
   const dispatch = useDispatch();
@@ -48,25 +49,28 @@ const List = () => {
   ];
 
   return (
-    <div className=" list">
-      {/* side bar is imported from side bar container
-       */}
-      <Sidebar />
-      <div className="listContainer">
-        <div className="ProductTitle text-center">All User List</div>
-        <div style={{ height: 520, width: "100%" }}>
-          <DataGrid
-            rows={allUser}
-            columns={columns}
-            pageSize={7}
-            rowsPerPageOptions={[8]}
-            disableSelectionOnClick
-            getRowId={(r) => r._id}
-            checkboxSelection
-          />
+    <>
+      <div className=" list">
+        {/* side bar is imported from side bar container
+         */}
+        <Sidebar />
+        <div className="listContainer">
+          <div className="ProductTitle text-center">All User List</div>
+          <div style={{ height: 520, width: "100%" }}>
+            <DataGrid
+              rows={allUser}
+              columns={columns}
+              pageSize={7}
+              rowsPerPageOptions={[8]}
+              disableSelectionOnClick
+              getRowId={(r) => r._id}
+              checkboxSelection
+            />
+          </div>
         </div>
       </div>
-    </div>
+      <ToastContainer />
+    </>
   );
 };
 

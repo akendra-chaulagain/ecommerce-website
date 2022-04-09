@@ -15,18 +15,43 @@ import {
   logOutStart,
   logOutSuccess,
 } from "../../redux/userRedux";
+import { toast, Zoom } from "react-toastify";
+import axios from "axios";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
 
   // logout
-  const handlLogout = () => {
+  const handlLogout = async () => {
     dispatch(logOutStart());
     try {
-      dispatch(logOutSuccess());
-      alert("Logout success...");
+      await axios.post("/auth/logout", null).then(() => {
+        dispatch(logOutSuccess());
+      });
+      toast.success(" Logout Success!", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+        transition: Zoom,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       dispatch(logOutfailure());
+      toast.error(" Something went wrong. unable to update!", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+        transition: Zoom,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

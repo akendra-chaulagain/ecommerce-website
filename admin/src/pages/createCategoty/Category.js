@@ -12,6 +12,7 @@ import {
 import app from "../../firebase";
 import { createCategory } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 const Category = () => {
   const dispatch = useDispatch();
@@ -52,9 +53,9 @@ const Category = () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const categorys = { img: downloadURL, title, cat };
-          createCategory(categorys, dispatch);
-          alert("category added");
-          window.location.reload("/newcategory");
+          createCategory(categorys, dispatch).then(()=>{
+          window.location.reload("/category");
+          });
         });
       }
     );
@@ -111,6 +112,7 @@ const Category = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

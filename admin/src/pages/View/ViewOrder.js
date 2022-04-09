@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./ViewOrder.css";
-import { userRequest } from "../../RequestMethod";
+import axios from "axios";
 
 const ViewOrder = () => {
   const location = useLocation();
@@ -14,7 +14,7 @@ const ViewOrder = () => {
   useEffect(() => {
     const getProductById = async () => {
       try {
-        const res = await userRequest.get("/orders/find/" + path);
+        const res = await axios.get("/orders/find/" + path);
         setgetOrderProduct(res.data.orderItems[0].products);
         setgetProductAddress(res.data.shippingAddress);
         setTotal(res.data.amount);

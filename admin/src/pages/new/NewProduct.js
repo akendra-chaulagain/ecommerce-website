@@ -11,6 +11,7 @@ import {
 import app from "../../firebase";
 import { createProducts } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,6 @@ const NewProduct = () => {
   const [progress, setProgress] = useState();
 
   const handleChange = (e) => {
-    
     setInputes((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -78,9 +78,9 @@ const NewProduct = () => {
             size,
             category,
           };
-          createProducts(product, dispatch);
-          alert("new product created..");
-          window.location.reload("/product");
+          createProducts(product, dispatch).then(() => {
+            window.location.reload("/newProduct");
+          });
         });
       }
     );
@@ -236,6 +236,7 @@ const NewProduct = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

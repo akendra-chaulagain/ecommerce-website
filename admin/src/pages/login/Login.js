@@ -5,6 +5,7 @@ import { login } from "../../redux/apiCalls";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import TextField from "../../components/TextField/TextField";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   // const user = useSelector((state) => state.user);
@@ -16,9 +17,7 @@ const Login = () => {
   // yup
   const validate = Yup.object({
     email: Yup.string().email("Invalid email!").required("Email is required!"),
-    password: Yup.string()
-      .min(6, "Password must be atleat 6 characters")
-      .required("Password is required!"),
+    password: Yup.string().required("Password is required!"),
   });
 
   return (
@@ -45,6 +44,7 @@ const Login = () => {
           </Form>
         </div>
       </Formik>
+      <ToastContainer />
     </>
   );
 };
