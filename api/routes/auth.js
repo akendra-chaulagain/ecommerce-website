@@ -58,7 +58,8 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "1hr" }
+      { expiresIn: "1h" }
+      // { expiresIn: "1hr" }
       // { expiresIn: "1d" }
       // { expiresIn: "20s" }
       // { expiresIn: "15m" }
@@ -72,7 +73,7 @@ router.post("/login", async (req, res) => {
       sameSite: "lax",
     });
     if (validPassword) {
-      const { password, tokens, ...others } = user._doc;
+      const { password, ...others } = user._doc;
       return res.status(201).json({ ...others, token });
     } else {
       return res.status(400).json("Invalid user data");

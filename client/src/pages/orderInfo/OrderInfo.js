@@ -4,7 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Arrow from "@material-ui/icons/ArrowBackTwoTone";
-import { userRequest } from "../../RequestMethod";
+import axios from 'axios'
+
 
 const OrderInfo = () => {
   const location = useLocation();
@@ -15,7 +16,7 @@ const OrderInfo = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await userRequest.get("/orders/find/" + path);
+        const res = await axios.get("/orders/find/" + path);
         setOrder(res.data);
       } catch (error) {}
     };

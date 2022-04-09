@@ -80,7 +80,7 @@ router.get("/", verifyToken, async (req, res) => {
 });
 
 // get monthely income
-router.get("/income", async (req, res) => {
+router.get("/income", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
     const date = new Date();
     const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
