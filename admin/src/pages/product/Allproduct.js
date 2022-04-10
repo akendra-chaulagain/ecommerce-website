@@ -23,7 +23,9 @@ const Allproduct = () => {
   };
   const columns = [
     { field: "_id", headerName: "UserId", width: 200 },
-    { field: "name", headerName: "Product Name", width: 720 },
+    { field: "name", headerName: "Product Name", width: 560 },
+    { field: "cat", headerName: "Categories", width: 100 },
+
     { field: "price", headerName: "Amount", width: 100 },
 
     {

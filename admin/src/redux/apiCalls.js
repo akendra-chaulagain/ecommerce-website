@@ -226,6 +226,5 @@ export const deleteCategory = async (id, dispatch) => {
     console.log("unable to delete order" + error);
     dispatch(deleteCategoryFailure());
     toast.error("try again. unable to delete category!", tostifyFailure);
-
   }
 };

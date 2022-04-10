@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: gray;
+  color: black;
 }
 
 .categoryAllProduct img {
@@ -26,9 +26,11 @@
   font-weight: 500;
   margin: 10px;
 }
+
 .productInfo .name:hover {
   color: red;
 }
+
 .productInfo .price {
   font-size: 25px;
   font-weight: 500;
@@ -44,11 +46,13 @@
   .allProduct {
     height: auto;
   }
+
   .allProduct img {
     border-radius: 5px;
     height: 10vh;
     width: 100%;
   }
+
   .productInfo p {
     text-align: start;
     margin: 0px;

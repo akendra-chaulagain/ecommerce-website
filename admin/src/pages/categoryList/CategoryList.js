@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCategory, getCategory } from "../../redux/apiCalls";
 import { ToastContainer } from "react-toastify";
 
-
 const CategoryList = () => {
   // get all category
   const dispatch = useDispatch();
@@ -101,7 +100,7 @@ const CategoryList = () => {
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };

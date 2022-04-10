@@ -53,8 +53,8 @@ const Category = () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const categorys = { img: downloadURL, title, cat };
-          createCategory(categorys, dispatch).then(()=>{
-          window.location.reload("/category");
+          createCategory(categorys, dispatch).then(() => {
+            window.location.reload("/category");
           });
         });
       }

@@ -45,13 +45,6 @@ const Category = ({ category, total }) => {
     getOrders();
   }, [categoryData]);
 
-  //  Pagination for category
-  const [page, setPage] = useState(1);
-  const [postPerPage, setpostPerPage] = useState(6);
-  const indexOfLastPage = page + postPerPage;
-  const indexOfFirstPage = indexOfLastPage - postPerPage;
-  const currestPost = category.slice(indexOfFirstPage, indexOfLastPage);
-
   return (
     <>
       {/* import from announcemrnt compomnents */}
@@ -81,22 +74,11 @@ const Category = ({ category, total }) => {
               <div className="container-fluid category">
                 <div className="row">
                   {/* map of category */}
-                  {currestPost?.map((item, id) => (
+                  {category?.map((item, id) => (
                     <div className=" col-lg-3 col-6 category_box" key={id}>
                       <SingleCategory item={item} />
                     </div>
                   ))}
-                </div>
-              </div>
-              {/*  Pagination  for category*/}
-              <div className=" Pagination">
-                <div className=" PaginationInfo">
-                  <Pagination
-                    onChange={(value) => setPage(value)}
-                    pageSize={postPerPage}
-                    total={total}
-                    current={page}
-                  />
                 </div>
               </div>
             </>

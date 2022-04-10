@@ -19,7 +19,7 @@ const NewProduct = () => {
   // usestates for all inputes
   const [inputes, setInputes] = useState({});
   const [selectImage, setSelectImages] = useState(null);
-  const [category, setCategory] = useState([]);
+  const [cat, setCat] = useState([]);
   const [color, setColor] = useState([]);
   const [size, setSize] = useState([]);
   const [progress, setProgress] = useState();
@@ -40,7 +40,7 @@ const NewProduct = () => {
 
   // for category
   const handleCategory = (e) => {
-    setCategory(e.target.value.split(","));
+    setCat(e.target.value);
   };
 
   // handleSubmitData(firebase)
@@ -76,11 +76,12 @@ const NewProduct = () => {
             img: downloadURL,
             color,
             size,
-            category,
+            cat,
           };
-          createProducts(product, dispatch).then(() => {
-            window.location.reload("/newProduct");
-          });
+          createProducts(product, dispatch);
+          // .then(() => {
+          //   window.location.reload("/newProduct");
+          // });
         });
       }
     );

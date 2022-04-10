@@ -24,8 +24,7 @@ const AllProduct = () => {
 
   // usestate fro pagination
   const [page, setPage] = useState(1);
-  const [postPerPage] = useState(20);
-  // const [postPerPage, setpostPerPage] = useState(20);
+  const [postPerPage, setpostPerPage] = useState(16);
   const indexOfLastPage = page + postPerPage;
   const indexOfFirstPage = indexOfLastPage - postPerPage;
   const currestPost = allProducts.slice(indexOfFirstPage, indexOfLastPage);

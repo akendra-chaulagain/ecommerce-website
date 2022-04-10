@@ -23,8 +23,9 @@ const SemiNav = ({ setCategoryData }) => {
               </li>
               <li className="nav-itemLi">
                 <select onChange={(e) => setCategoryData(e.target.value)}>
+                  <option>Select</option>
                   <option value="electronic">Electronic</option>
-                  <option value="computer">Computer</option>
+                  <option value="laptop">Computer</option>
                   <option value="fitness">Fitness</option>
                   <option value="cloth">Cloth</option>
                   <option value="book">Books</option>
