@@ -3,36 +3,43 @@
   width: 100%;
   padding-top: 5vh;
 }
+
 .leftSideImg img {
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   object-fit: contain;
   margin-top: 10vh;
 }
+
 .rightSide .productTitle {
   margin-top: 20px;
   font-size: 20px;
   font-weight: 600;
 }
+
 .productdesc {
   font-weight: 500;
   font-size: 18px;
   margin-top: 20px;
 }
+
 .productPrice {
   font-size: 22px;
 }
+
 .productSize {
   margin-top: 10px;
 }
+
 .productSize span {
   font-size: 20px;
   outline: none;
   margin-right: 10px;
 }
+
 .productSize .selectBox {
-  background-color: black;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .increaseAnddecrease button {
@@ -45,15 +52,18 @@
   color: whitesmoke;
   border-radius: 4px;
 }
+
 .increaseAnddecrease .number {
   padding: 1px 5px;
   border: 1px solid red;
   border-radius: 4px;
   font-size: 20px;
 }
+
 .addtoCard {
   margin-top: 15px;
 }
+
 .addtoCard button {
   padding: 4px 10px;
   outline: none;
@@ -64,29 +74,47 @@
   border-radius: 4px;
   font-size: 14px;
 }
+
 .addtoCard button:hover {
   background-color: red;
   color: whitesmoke;
 }
+
 .singlrproductDesc p {
   font-size: 15px;
 }
+
+.productSize select {
+  font-size: 15px;
+  outline: none;
+}
+
 @media only screen and (max-width: 778px) {
   .leftSideImg img {
     margin-top: -1vh;
     height: 20vh;
   }
+
   .rightSide .productTitle {
     font-size: 15px;
     font-weight: 500;
   }
+
   .productPrice {
     font-size: 18px;
   }
+
   .productSize span {
     font-size: 15px;
   }
+
   .productSize .singlrproductDesc p {
     font-size: 12px;
   }
+
+  .selectBox {
+    background-color: whitesmoke;
+  }
+
+
 }

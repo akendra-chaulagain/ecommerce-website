@@ -92,7 +92,7 @@ const AllProduct = () => {
                           <img className="img-fluid" src={item.img} alt="img" />
                           <div className="productInfo">
                             <p className="name">{item.name}</p>
-                            <p className="price">$ {item.price}</p>
+                            <p className="price">Rs. {item.price}</p>
                           </div>
                         </div>
                       </Link>

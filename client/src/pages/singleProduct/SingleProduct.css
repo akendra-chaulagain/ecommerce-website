@@ -9,11 +9,12 @@
   align-items: center;
   flex-direction: column;
   color: black;
+  height: auto;
 }
 
 .singleProduct img {
   border-radius: 5px;
-  height: 25vh;
+  height: 35vh;
   width: 100%;
   margin-top: 1vh;
   object-fit: contain;
@@ -25,13 +26,18 @@
   font-size: 18px;
   font-weight: 500;
 }
+
 .SingleproductInfo .name:hover {
   color: red;
 }
+
 .SingleproductInfo .price {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 500;
   text-align: start;
+  color: red;
+  text-decoration: underline;
+  font-weight: 600;
 }
 
 .singleproductLink {
@@ -45,13 +51,19 @@
     height: 10vh;
     width: 100%;
   }
+
   .SingleproductInfo p {
     text-align: start;
     margin: 0px;
     font-size: 10px;
     font-weight: 500;
   }
+
   .singleProduct {
     height: auto;
+  }
+  .SingleproductInfo .price {
+    font-size: 10px;
+    font-weight: 500;
   }
 }

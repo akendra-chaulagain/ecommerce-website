@@ -133,9 +133,9 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
           </div>
         </div>
       </nav>
+      <ToastContainer />
       {/* samiNavbar  import from component folder*/}
       <SemiNav setCategoryData={setCategoryData} />
-      <ToastContainer />
     </>
   );
 };

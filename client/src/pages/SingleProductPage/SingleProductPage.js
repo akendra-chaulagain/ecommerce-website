@@ -22,6 +22,9 @@ const SingleProductPage = () => {
   // usestate for color
   const [color, setColor] = useState("");
 
+  // usestate for color
+  const [size, setSize] = useState([]);
+
   // get product according to id  from the url
   const [product, setProduct] = useState({});
 
@@ -52,7 +55,7 @@ const SingleProductPage = () => {
 
   // this function will run when we  add to cart button click
   const handleClick = async () => {
-    dispatch(addproduct({ ...product, quantity, color }));
+    dispatch(addproduct({ ...product, quantity, color, size }));
     toast.success("product added!", {
       position: "top-center",
       autoClose: false,
@@ -121,10 +124,10 @@ const SingleProductPage = () => {
               {/* if the user does not search fro items then this function will get categroy data without searching */}
               <div className="container-fluid singlePage">
                 <div className="row">
-                  <div className="col-md-5 leftSideImg">
+                  <div className="col-md-4 leftSideImg">
                     <img src={product?.img} alt="" />
                   </div>
-                  <div className="col-md-7 rightSide">
+                  <div className="col-md-8 rightSide">
                     <div className="productTitle">{product.name}</div>
                     <div className="productdesc">
                       <span className="productPrice">
@@ -139,7 +142,21 @@ const SingleProductPage = () => {
                           className="selectBox"
                           onChange={(e) => setColor(e.target.value)}
                         >
+                          <option>select</option>
                           {product.color?.map((item, key) => (
+                            <option key={key}>{item}</option>
+                          ))}
+                        </select>
+                        <br />
+                        <br />
+                        {/* map of size product */}
+                        <span>Size :</span>
+                        <select
+                          className="selectBox"
+                          onChange={(e) => setSize(e.target.value)}
+                        >
+                          <option>select</option>
+                          {product.size?.map((item, key) => (
                             <option key={key}>{item}</option>
                           ))}
                         </select>
@@ -168,7 +185,12 @@ const SingleProductPage = () => {
                         <button onClick={handleClick}>ADD TO CART</button>
                       </div>
                       <div className="singlrproductDesc">
-                        <p className="mt-5">: {product.desc}</p>
+                        <h5 className="mt-5">About this</h5>
+                        <p>: {product.desc}</p>
+                      </div>
+                      <div className="singlrproductDesc">
+                        <h5 className="mt-3">Features</h5>
+                        <p>: {product.feature}</p>
                       </div>
                     </div>
                   </div>

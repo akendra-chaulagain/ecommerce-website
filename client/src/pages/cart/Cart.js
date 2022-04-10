@@ -139,7 +139,7 @@ const Cart = () => {
                             <hr />
                             <div className="totalPrice text-end">
                               <p>
-                                price :{" "}
+                                price :
                                 <span>$ {item.price * item.quantity}</span>
                               </p>
                             </div>
@@ -182,21 +182,22 @@ const Cart = () => {
                   <div className="container-fuid cartEmpty">
                     <div className="row emptyContainer">
                       <div className="col-9 emptyWrapper">
-                        <div className="cartImg">
-                          <img
-                            className="img-fluid"
-                            src="./img/cart1.png"
-                            alt=""
-                          />
-                        </div>
-
-                        <div className="titleEmpty">
-                          <h3>Your Cart is empty</h3>
-                          <span>
-                            <Link className="link" to="/allproducts">
-                              Shop now
-                            </Link>
-                          </span>
+                        <div className="row">
+                          <div className="col-md-6 cartImg">
+                            <img
+                              className="img-fluid"
+                              src="./img/cart1.png"
+                              alt=""
+                            />
+                          </div>
+                          <div className="col-md-6 titleEmpty">
+                            <h3>Your Cart is empty</h3>
+                            <span>
+                              <Link className="link" to="/allproducts">
+                                Shop now
+                              </Link>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>

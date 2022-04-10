@@ -176,7 +176,13 @@
 }
 
 .emptyWrapper img {
-  height: 50vh;
+  object-fit: contain;
+}
+.titleEmpty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .titleEmpty .link {
@@ -189,6 +195,7 @@
 }
 
 @media only screen and (max-width: 778px) {
+
   .cartTitle {
     font-size: 23px;
   }
@@ -226,5 +233,27 @@
   .containerInfo button {
     font-size: 15px;
     padding: 4px 4px;
+  }
+
+  .titleEmpty .link {
+    font-size: 14px;
+  }
+
+  .emptyWrapper h3 {
+    font-size: 25px;
+    font-weight: 600;
+
+  }
+
+  /* empty */
+  .emptyWrapper h3 {
+    font-size: 15px;
+    font-weight: 500;
+
+  }
+
+  .titleEmpty .link {
+    font-size: 10px;
+    color: red;
   }
 }

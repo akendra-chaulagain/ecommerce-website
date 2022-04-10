@@ -18,7 +18,7 @@ const Search = ({ data }) => {
                   <img className="img-fluid" src={item.img} alt="product_img" />
                   <div className="productInfoSearch">
                     <p className="name">{item.name}</p>
-                    <p className="price">$ {item.price}</p>
+                    <p className="price">Rs. {item.price}</p>
                   </div>
                 </div>
               </Link>
