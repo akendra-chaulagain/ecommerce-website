@@ -24,7 +24,7 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
   const handlLogout = async () => {
     dispatch(logOutStart());
     try {
-      await axios.post("/auth/logout", null).then(() => {
+      await axios.post("/api/v1/auth/logout", null).then(() => {
         dispatch(logOutSuccess());
       });
       toast.success(" Logout Success!", {
@@ -67,6 +67,15 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
             placeholder="search your product"
             onChange={(e) => setSearchProduct(e.target.value)}
           />
+          {/* cart */}
+          <div>
+            <Link to="/cart" className=" nav-link notification">
+              <span>
+                <Cart />
+              </span>
+              <span className="badge">{quantity}</span>
+            </Link>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -119,16 +128,6 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
                   </li>
                 </>
               )}
-
-              {/* cart Icon */}
-              <li className="nav-item">
-                <Link to="/cart" className=" nav-link notification">
-                  <span>
-                    <Cart />
-                  </span>
-                  <span className="badge">{quantity}</span>
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
