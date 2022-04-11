@@ -112,7 +112,7 @@ const Cart = () => {
                               <img
                                 className="img-fluid"
                                 src={item.img}
-                                alt=""
+                                alt="ak"
                               />
                             </div>
                             <div className="col-7 leftSideproductInfo">
@@ -140,7 +140,7 @@ const Cart = () => {
                             <div className="totalPrice text-end">
                               <p>
                                 price :
-                                <span>$ {item.price * item.quantity}</span>
+                                <span>Rs. {item.price * item.quantity}</span>
                               </p>
                             </div>
                           </div>
@@ -154,7 +154,7 @@ const Cart = () => {
                           <div className="containerInfo">
                             <p>
                               Subtotal ({cart.quantity} item) :
-                              <span>$ {subTotal}.00</span>
+                              <span>Rs. {subTotal}.00</span>
                               <br />
                               {/* when use is login then  user will directly go to payment method */}
                               {user ? (

@@ -42,7 +42,7 @@ const OrderInfo = () => {
               <div key={key}>
                 {item.products.map((subItem, key) => (
                   <div key={key}>
-                    <img src={subItem.img} alt="" />
+                    <img src={subItem.img} alt="h" />
                     {subItem.name}
                     <hr />
                   </div>
@@ -59,7 +59,7 @@ const OrderInfo = () => {
             <p>Username : {order.username}</p>
           </div>
           <div className="col-3 mt-4">
-            <h3>Total</h3>${order.amount}
+            <h3>Total</h3>Rs.{order.amount}
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast, Zoom } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -42,24 +42,13 @@ const Checkout = () => {
       try {
         await axios.post("/stripe/payment", {
           token: stripeToken,
-          amount: totalPrice * 10,
+          amount: totalPrice,
           cart,
           user,
         });
         navigate("/success-payment");
       } catch (error) {
         console.log("unable to payment" + error);
-        toast.error(" Something went wrong. try again!!", {
-          position: "top-center",
-          autoClose: 2000,
-          theme: "dark",
-          transition: Zoom,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
       }
     };
     makeRequest();
@@ -79,10 +68,10 @@ const Checkout = () => {
                 <span>Total :</span>
               </div>
               <div className="checkBoxInfo">
-                <p>${subTotal}</p>
+                <p>Rs.{subTotal}</p>
                 {/* shipping cost */}
-                <p>${taxPrice}</p>
-                <p>$ {shippingPrice}</p>
+                <p>Rs.{taxPrice}</p>
+                <p>Rs. {shippingPrice}</p>
                 <span>{totalPrice}</span>
               </div>
             </div>
@@ -92,8 +81,8 @@ const Checkout = () => {
                 name="All In One"
                 image="https://img.freepik.com/free-vector/hand-holding-shopping-bags_23-2147491522.jpg?size=338&ext=jpg"
                 shippingAddress
-                description={`Yor  amount is ${totalPrice}`}
-                amount={totalPrice * 100}
+                description={`Yor  amount is Rs. ${totalPrice}`}
+                amount={totalPrice}
                 token={onToken}
                 stripeKey={key}
               >
