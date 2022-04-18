@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/apicalls";
 import { ToastContainer } from "react-toastify";
 
-
 const Register = () => {
   //  useDispatch hook is used for login (redux)
   const dispatch = useDispatch();
@@ -44,7 +43,6 @@ const Register = () => {
         validationSchema={validate}
         onSubmit={(values) => {
           register(dispatch, values);
-         
         }}
       >
         <Form>

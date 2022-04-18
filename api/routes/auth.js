@@ -29,15 +29,25 @@ router.post("/register", async (req, res) => {
       const salt = await bcrypt.genSalt(12);
       // now we set user password to hashed password
       user.password = await bcrypt.hash(user.password, salt);
+      const token = jwt.sign(
+        { id: user._id, isAdmin: user.isAdmin },
+        process.env.JWT_SECRET_KEY,
+        { expiresIn: "1d" }
+        // { expiresIn: "1hr" }
+        // { expiresIn: "1d" }
+        // { expiresIn: "20s" }
+        // { expiresIn: "15m" }
+      );
+      // saving in cookie
+      res.cookie("jsonwebToken", token, {
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5),
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",
+      });
 
-      // generating register token
-      // const token = await user.generateToken();
-      // res.cookie("jsonwebToken", token, {
-      //   expires: new Date(Date.now() + 86400000),
-      //   httpOnly: true,
-      // });
       const result = await user.save();
-      return res.status(201).json({ success: true, result });
+      return res.status(201).json({ success: true, result, token });
     }
   } catch (error) {
     return res.status(400).json("unable to register data");
@@ -67,7 +77,7 @@ router.post("/login", async (req, res) => {
 
     // saving in cookie
     res.cookie("jsonwebToken", token, {
-      expires: new Date(Date.now() + 1000 * 60 * 60),
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 5),
       path: "/",
       httpOnly: true,
       sameSite: "lax",

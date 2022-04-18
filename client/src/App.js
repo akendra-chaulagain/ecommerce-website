@@ -26,7 +26,11 @@ const App = () => {
     <>
       <Routes>
         {/* home page */}
-        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/"
+          element={user ? <Home /> : <Navigate to="/login" />}
+        />
         {/* productList */}
         <Route path="/products/:cetegory" element={<Product />} />
         {/* single productList page */}

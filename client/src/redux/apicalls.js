@@ -32,7 +32,7 @@ export const login = async (dispatch, user) => {
     // react toastify for alert option when failure
     toast.error("Invalid Data!", {
       position: "top-center",
-      autoClose: false,
+      autoClose: 2000,
       transition: Zoom,
       hideProgressBar: true,
       closeOnClick: true,
