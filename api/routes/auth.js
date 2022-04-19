@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const verify = require("../verifyToken");
+const verify = require("../middleware/verifyToken");
 
 const bodyParser = require("body-parser");
 router.use(bodyParser.json()); // for parsing application/json
@@ -12,10 +12,10 @@ router.get("/", (req, res) => {
 });
 
 // database
-require("../connection/database");
+require("../connection/DB");
 
 // usere schema and models
-const User = require("../modules/User");
+const User = require("../models/User");
 
 // register user data
 

@@ -21,16 +21,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(user);
   return (
     <>
       <Routes>
         {/* home page */}
-        <Route
-          exact
-          path="/"
-          element={user ? <Home /> : <Navigate to="/login" />}
-        />
+        <Route exact path="/" element={<Home />} />
         {/* productList */}
         <Route path="/products/:cetegory" element={<Product />} />
         {/* single productList page */}

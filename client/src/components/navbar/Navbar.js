@@ -24,9 +24,7 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
   const handlLogout = async () => {
     dispatch(logOutStart());
     try {
-      await axios.post("/api/v1/auth/logout", null).then(() => {
-        dispatch(logOutSuccess());
-      });
+      dispatch(logOutSuccess());
       toast.success(" Logout Success!", {
         position: "top-center",
         autoClose: 2000,
@@ -40,7 +38,7 @@ const Navbar = ({ setSearchProduct, setCategoryData }) => {
       });
     } catch (error) {
       dispatch(logOutfailure());
-      toast.error(" Something went wrong. unable to update!", {
+      toast.error(" Something went wrong!", {
         position: "top-center",
         autoClose: 2000,
         theme: "dark",

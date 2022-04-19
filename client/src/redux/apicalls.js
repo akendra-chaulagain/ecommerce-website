@@ -24,7 +24,7 @@ export const login = async (dispatch, user) => {
     dispatch(loginSuccess(res.data));
      setTimeout(() => {
        dispatch(logOutSuccess());
-     }, 1000 * 10);
+     }, 1000 * 60 * 60 * 4);
     // react toastify for alert option when success
     toast.success(" Login Success!", {
       position: "top-center",
