@@ -18,6 +18,8 @@ const AllProduct = () => {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.product.products);
 
+  
+
   useEffect(() => {
     getAllProducts(dispatch);
   }, [dispatch]);

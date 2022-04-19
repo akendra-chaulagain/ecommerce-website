@@ -11,7 +11,6 @@ import {
   logOutSuccess,
 } from "../../redux/userRedux";
 import { ToastContainer, toast, Zoom } from "react-toastify";
-import axios from "axios";
 
 // navbar
 const Navbar = ({ setSearchProduct, setCategoryData }) => {

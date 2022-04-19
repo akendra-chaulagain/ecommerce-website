@@ -27,8 +27,8 @@
   padding: 6px 10px;
 }
 
-.navbarContainer ::placeholder {
-  font-size: 15px;
+.navbarContainer input::placeholder {
+  font-size: 20px;
   margin-left: 10px;
 }
 
@@ -104,10 +104,7 @@
   align-items: center;
 }
 
-.navbarContainer input::placeholder {
-  font-size: 10px;
-  letter-spacing: 0px;
-}
+
 
 .nav-item a {
   font-size: 17px;
@@ -160,8 +157,8 @@
   }
 
   .navbarContainer input::placeholder {
-    font-size: 8px;
-    letter-spacing: 0px;
+    font-size: 12px;
+    letter-spacing: 2px;
   }
 
   .nav-item a {
