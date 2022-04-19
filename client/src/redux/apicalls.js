@@ -2,6 +2,7 @@ import {
   loginfailure,
   loginStart,
   loginSuccess,
+  logOutSuccess,
   registerfailure,
   registerStart,
   registerSuccess,
@@ -21,6 +22,9 @@ export const login = async (dispatch, user) => {
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
+     setTimeout(() => {
+       dispatch(logOutSuccess());
+     }, 1000 * 10);
     // react toastify for alert option when success
     toast.success(" Login Success!", {
       position: "top-center",
@@ -61,6 +65,9 @@ export const register = async (dispatch, user) => {
     });
   } catch (error) {
     dispatch(registerfailure());
+     setTimeout(() => {
+       dispatch(logOutSuccess());
+     }, 1000 * 60 * 60 * 4);
     // react toastify for alert option when failure
     toast.error("Something went Wrong. Try again!", {
       position: "top-center",
