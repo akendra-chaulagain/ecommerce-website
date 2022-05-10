@@ -128,12 +128,12 @@ router.post("/logout", verify, async (req, res) => {
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
-// google call back
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login/failed" }),
-  (req, res) => {
-    res.redirect("http://localhost:3000/")
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("http://localhost:3000/");
   }
 );
 

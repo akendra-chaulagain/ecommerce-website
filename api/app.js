@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require("passport");
 const app = express();
 
+
+// body parser
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
@@ -22,13 +24,12 @@ app.use(
   cookieSession({
     name: "session",
     keys: process.env.cookieSession,
-    maxAge: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5),
+    maxAge: new Date(Date.now() + 100 * 60 * 60 * 24 * 5),
   })
 );
-
-// passport
-const password = require("passport");
-app.use(password.initialize());
+require("./passport");
+// passport middleware
+app.use(passport.initialize());
 app.use(passport.session());
 
 // routers(middleware)
@@ -38,8 +39,6 @@ const userRoutes = require("./routes/users");
 const orderRoutes = require("./routes/orders");
 const categoryRoutes = require("./routes/category");
 const stripeRoutes = require("./routes/stripe");
-// passport
-const passRoutes = require("./passport");
 
 // routers are used (middleware)
 app.use("/api/v1/auth", authRoutes);

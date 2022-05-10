@@ -8,9 +8,6 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/api/v1/auth/google/callback",
     },
-    // async (accessToken, refreshToken, profile, done) => {
-    //   console.log(profile);
-    // }
     function (accessToken, refreshToken, profile, done) {
       done(null, profile);
       console.log(profile);
