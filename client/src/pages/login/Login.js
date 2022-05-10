@@ -70,6 +70,12 @@ const Login = () => {
                 By creating an account, you agree to All In One's Conditions of
                 Use and Privacy Notice.
               </div>
+              <div className="loginWithGoogle">
+                <p className="googleIconItem text-center">
+                  <i className="fa-brands fa-google"></i>
+                  <span>Login with Google</span>
+                </p>
+              </div>
             </div>
           </div>
           {/* this container is used for tostify */}

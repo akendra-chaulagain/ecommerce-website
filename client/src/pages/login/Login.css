@@ -17,7 +17,7 @@
 }
 
 .loginFrom {
-  height: 60vh;
+  height: 63vh;
   width: 25%;
   -webkit-box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.48);
   box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.48);
@@ -91,6 +91,23 @@
   font-size: 15px;
 }
 
+/* goole icon */
+.loginWithGoogle p {
+  width: 80%;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  background-color: #0082f1;
+  color: white;
+  padding: 4px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.loginWithGoogle span {
+  color: white;
+  margin-left: 10px;
+}
+
 @media only screen and (max-width: 768px) {
   .loginPage {
     height: auto;
@@ -102,12 +119,15 @@
 
   .loginFrom {
     height: auto;
-
   }
 
   .terms {
-    margin: 15px 0px 0px 8%;
+    margin: 8px 0px 0px 8%;
     font-size: 12px;
+  }
+  .loginWithGoogle p {
+    margin-top: 7px;
     margin-bottom: 30px;
+    font-size: 13px;
   }
 }
