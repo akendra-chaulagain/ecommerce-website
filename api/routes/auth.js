@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const verify = require("../middleware/verifyToken");
+const passport = require("passport");
 
 const bodyParser = require("body-parser");
 router.use(bodyParser.json()); // for parsing application/json
@@ -103,5 +104,37 @@ router.post("/logout", verify, async (req, res) => {
     return res.status(200).json("LogOut successfully..");
   }
 });
+
+// login with google
+
+// login failed
+// router.get("/login/failed", (req, res) => {
+//   res.status(401).json({
+//     success: false,
+//     message: "login failed",
+//   });
+// });
+
+// login success
+// router.get("/login/success", (req, res) => {
+//   if (req.user) {
+//     res.status(401).json({
+//       success: true,
+//       message: "login success",
+//       user: req.user,
+//     });
+//   }
+// });
+
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+// google call back
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login/failed" }),
+  (req, res) => {
+    res.redirect("http://localhost:3000/")
+  }
+);
 
 module.exports = router;

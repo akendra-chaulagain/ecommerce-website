@@ -19,6 +19,11 @@ const Login = () => {
     email: Yup.string().email("Invalid email!").required("Email is required!"),
     password: Yup.string().required("Password is required!"),
   });
+
+  // login with google
+  const loginGoogle = () => {
+    window.open("http://localhost:2001/api/v1/auth/google", "_self");
+  };
   return (
     <>
       <Formik
@@ -73,7 +78,7 @@ const Login = () => {
               <div className="loginWithGoogle">
                 <p className="googleIconItem text-center">
                   <i className="fa-brands fa-google"></i>
-                  <span>Login with Google</span>
+                  <span onClick={loginGoogle}>Login with Google</span>
                 </p>
               </div>
             </div>

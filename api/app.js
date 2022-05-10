@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("passport");
 const app = express();
 
 const bodyParser = require("body-parser");
@@ -15,6 +16,21 @@ const PORT = process.env.PORT;
 const cookieparser = require("cookie-parser");
 app.use(cookieparser());
 
+// cookie session
+const cookieSession = require("cookie-session");
+app.use(
+  cookieSession({
+    name: "session",
+    keys: process.env.cookieSession,
+    maxAge: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5),
+  })
+);
+
+// passport
+const password = require("passport");
+app.use(password.initialize());
+app.use(passport.session());
+
 // routers(middleware)
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
@@ -22,6 +38,8 @@ const userRoutes = require("./routes/users");
 const orderRoutes = require("./routes/orders");
 const categoryRoutes = require("./routes/category");
 const stripeRoutes = require("./routes/stripe");
+// passport
+const passRoutes = require("./passport");
 
 // routers are used (middleware)
 app.use("/api/v1/auth", authRoutes);
