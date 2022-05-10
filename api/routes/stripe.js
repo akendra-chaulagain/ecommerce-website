@@ -31,7 +31,7 @@ router.post("/payment", verifyToken, async (req, res) => {
     });
     const payment = await stripe.charges.create(
       {
-        amount: amount * 100,
+        amount: amount,
         currency: "usd",
         customer: customer.id,
         receipt_email: token.email,

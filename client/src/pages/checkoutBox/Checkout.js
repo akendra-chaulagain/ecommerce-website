@@ -42,7 +42,7 @@ const Checkout = () => {
       try {
         await axios.post("/stripe/payment", {
           token: stripeToken,
-          amount: totalPrice,
+          amount: Math.round(totalPrice),
           cart,
           user,
         });
@@ -51,7 +51,7 @@ const Checkout = () => {
         console.log("unable to payment" + error);
       }
     };
-    makeRequest();
+    stripeToken && makeRequest();
   }, [stripeToken, totalPrice, user, cart, navigate]);
 
   return (
