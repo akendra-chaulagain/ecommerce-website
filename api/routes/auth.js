@@ -124,17 +124,34 @@ router.post("/logout", verify, async (req, res) => {
 //       user: req.user,
 //     });
 //   }
-// });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", {
+    failureRedirect: "http://localhost:3000/login",
+  }),
   function (req, res) {
-    // Successful authentication, redirect home.
+    // Successful authentication, redirect success.
     res.redirect("http://localhost:3000/");
   }
 );
+
+// router.get(
+//   "/google",
+//   passport.authenticate("google", { scope: ["profile", "email"] })
+// );
+
+// router.get(
+//   "/google/callback",
+//   passport.authenticate("google", { failureRedirect: "/login" }),
+//   function (req, res) {
+//     res.redirect("http://localhost:3000/");
+//   }
+// );
 
 module.exports = router;

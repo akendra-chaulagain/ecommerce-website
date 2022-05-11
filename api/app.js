@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const app = express();
-
+const session = require("express-session");
 
 // body parser
 const bodyParser = require("body-parser");
@@ -19,12 +19,20 @@ const cookieparser = require("cookie-parser");
 app.use(cookieparser());
 
 // cookie session
-const cookieSession = require("cookie-session");
+// const cookieSession = require("cookie-session");
+// app.use(
+//   cookieSession({
+//     name: "session",
+//     keys: process.env.cookieSession,
+//     maxAge: new Date(Date.now() + 100 * 60 * 60 * 24 * 5),
+//   })
+// );
+
 app.use(
-  cookieSession({
-    name: "session",
-    keys: process.env.cookieSession,
-    maxAge: new Date(Date.now() + 100 * 60 * 60 * 24 * 5),
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.cookieSession,
   })
 );
 require("./passport");
