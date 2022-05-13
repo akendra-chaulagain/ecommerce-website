@@ -19,15 +19,6 @@ const cookieparser = require("cookie-parser");
 app.use(cookieparser());
 
 // cookie session
-// const cookieSession = require("cookie-session");
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     keys: process.env.cookieSession,
-//     maxAge: new Date(Date.now() + 100 * 60 * 60 * 24 * 5),
-//   })
-// );
-
 app.use(
   session({
     resave: false,
